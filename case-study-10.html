@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en" class="is-ready">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bappy — My Good Movers Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --accent: #ff9100;
+      --accent-rgb: 255, 145, 0;
+      --case-bg: radial-gradient(circle at top, #261605 0%, #0c0702 100%);
+    }
+    body.case-study-page {
+      background: var(--case-bg);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .case-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px var(--pad);
+      box-sizing: border-box;
+    }
+    
+    /* Hero Style */
+    .case-hero {
+      padding-top: 160px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+    .case-hero-tag {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .case-hero-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+    
+    /* Back Navigation */
+    .case-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-family: var(--font-mono), monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .case-back-link:hover {
+      transform: translateX(-4px);
+      opacity: 0.85;
+    }
+    
+    /* Image Showcase container */
+    .case-img-wrap {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
+      margin-bottom: 80px;
+      aspect-ratio: 16 / 9.4;
+    }
+    .case-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    
+    /* Info grid */
+    .case-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px 0;
+      margin-bottom: 80px;
+    }
+    .case-info-item span {
+      display: block;
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.40);
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+    .case-info-item p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--paper);
+      margin: 0;
+    }
+    
+    /* Overview Split (Image 1, 3, 5 style) */
+    .overview-sec {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+      align-items: start;
+    }
+    .overview-text h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: var(--paper);
+    }
+    .overview-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 20px;
+    }
+    
+    /* Meta tags card */
+    .meta-tags-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .meta-tags-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      color: #ffffff;
+      border-left: 2px solid var(--accent);
+      padding-left: 10px;
+    }
+    .meta-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .meta-tag-list:last-child {
+      margin-bottom: 0;
+    }
+    .meta-tag {
+      background: rgba(var(--accent-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-rgb), 0.15);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--paper);
+      font-family: var(--font-mono), monospace;
+    }
+    
+    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
+    .prob-sol-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0 80px 0;
+    }
+    .prob-card {
+      background: rgba(255, 77, 77, 0.01);
+      border: 1px solid rgba(255, 77, 77, 0.08);
+      border-left: 4px solid #ff4d4d;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .sol-card {
+      background: rgba(0, 230, 118, 0.01);
+      border: 1px solid rgba(0, 230, 118, 0.08);
+      border-left: 4px solid #00e676;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .prob-sol-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .prob-sol-list {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .prob-sol-list li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 12px;
+    }
+    
+    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
+    .process-timeline-wrap {
+      margin-bottom: 80px;
+    }
+    .process-timeline-wrap h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .process-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    .process-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.3);
+    }
+    .process-num {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .process-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #ffffff;
+      font-family: 'Clash Display', sans-serif;
+    }
+    .process-desc {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.50);
+    }
+    
+    /* General content sections */
+    .case-study-sec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 80px 0 24px 0;
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+    }
+    .case-study-subsec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 48px 0 18px 0;
+    }
+    .case-study-subsubsec-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 24px 0 12px 0;
+    }
+    .case-study-paragraph {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 24px;
+    }
+    .case-study-divider {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 60px 0;
+    }
+    .case-study-list {
+      margin: 0 0 24px 0;
+      padding-left: 20px;
+    }
+    .case-study-list li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 8px;
+    }
+    
+    /* Visual Design System Swatches (Image 4 style) */
+    .design-system-swatches {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .color-swatch {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 12px;
+      width: 130px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .swatch-preview {
+      width: 100%;
+      height: 50px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .swatch-hex {
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #ffffff;
+      display: block;
+    }
+    .swatch-name {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.40);
+      margin-top: 2px;
+      display: block;
+    }
+    
+    /* Features Grid */
+    .case-study-features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .case-study-feature-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px;
+      border-radius: 12px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .case-study-feature-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .case-study-feature-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 0 0 8px 0;
+    }
+    .case-study-feature-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.55);
+      margin: 0;
+    }
+    
+    @media (max-width: 960px) {
+      .overview-sec {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .prob-sol-split {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .case-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .case-study-features-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .case-img-wrap {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .case-info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body class="case-study-page">
+
+  <!-- ══ NAV ═══════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#home" aria-label="Bappy — home">
+      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+      </svg>
+    </a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#home" class="is-active">Home</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contacts">Contacts</a>
+    </nav>
+
+    <div class="nav__status-wrapper" id="nav-status">
+      <a class="status-pill" href="#contacts">
+        <span class="beacon" aria-hidden="true">
+          <span class="beacon__dot"></span>
+          <span class="beacon__ring"></span>
+        </span>
+        <span class="status-pill__text">Available to work</span>
+      </a>
+    </div>
+
+    <div class="nav__actions">
+      <a class="btn-talk" href="#contacts" id="btn-talk">
+        <span>Let's talk</span>
+      </a>
+
+      <button class="burger" id="burger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+<div class="menu" id="menu" inert>
+  <nav class="menu__list">
+    <a href="#home"><i>01</i>Home</a>
+    <a href="#about"><i>02</i>About</a>
+    <a href="#work"><i>03</i>Projects</a>
+    <a href="#testimonials"><i>04</i>Reviews</a>
+    <a href="#contacts"><i>05</i>Contacts</a>
+  </nav>
+  <div class="menu__foot">
+    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
+  </div>
+</div>
+
+  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
+  <main class="case-wrapper">
+    <div class="case-hero">
+      <a href="projects.html" class="case-back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Selected Works
+      </a>
+      <span class="case-hero-tag">UX Case Study</span>
+      <h1 class="case-hero-title">My Good Movers</h1>
+    </div>
+    
+    <!-- Info Grid -->
+    <div class="case-info-grid">
+      <div class="case-info-item">
+        <span>Role</span>
+        <p>Lead Product Designer</p>
+      </div>
+      <div class="case-info-item">
+        <span>Timeline</span>
+        <p>4 Months (2026)</p>
+      </div>
+      <div class="case-info-item">
+        <span>Deliverables</span>
+        <p>Moving Estimator Flow, Mover Profile Boards, Route discovery</p>
+      </div>
+      <div class="case-info-item">
+        <span>Team</span>
+        <p>1 Designer, 3 Developers, 1 SEO Specialist</p>
+      </div>
+    </div>
+
+    <!-- Image Showcase -->
+    <div class="case-img-wrap">
+      <img src="assets/showcase-10.png" alt="My Good Movers Showcase" class="case-img" />
+    </div>
+
+    <!-- Overview Split Section -->
+    <div class="overview-sec">
+      <div class="overview-text">
+        <h2>About My Good Movers</h2>
+        <p>My Good Movers is a moving-company discovery and comparison platform designed to help people find reliable interstate and long-distance movers with greater confidence.
+
+The platform brings together:
+
+* Licensed moving companies
+* Verified customer reviews
+* Moving prices
+* Ratings
+* Services
+* Interstate routes
+* Moving guides
+* Cost estimation
+* Mover comparison
+* Free moving estimates
+
+into one centralized experience.
+
+The core idea is simple:
+
+**Choosing a moving company shouldn't feel like gambling with your belongings.**
+
+My Good Movers helps users research, compare, verify, and ultimately choose a mover before committing to a move.
+
+The platform's current website explicitly positions itself around comparing trusted movers, verified reviews, pricing, and services in one place.
+
+---</p>
+      </div>
+      <div class="meta-tags-card">
+        <div class="meta-tags-title">Project Context</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">User Research</span>
+<span class="meta-tag">Wireframing</span>
+<span class="meta-tag">UI/UX Design</span>
+<span class="meta-tag">Lead Generation</span>
+        </div>
+        <div class="meta-tags-title">Tools Used</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Figma</span>
+<span class="meta-tag">Miro</span>
+<span class="meta-tag">Slack</span>
+<span class="meta-tag">Google Sheets</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Problem vs Solution Visual Box -->
+    <div class="prob-sol-split">
+      <div class="prob-card">
+        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
+        <ul class="prob-sol-list">
+          <li>Consumers encounter too many unverified options when searching for interstate movers.</li>
+<li>Moving pricing is highly variable and hidden fees create mistrust.</li>
+<li>Star ratings alone lack context regarding move details and route variables.</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
+        <ul class="prob-sol-list">
+          <li>Developed card designs displaying ratings, reviews, pricing, and routes.</li>
+<li>Designed a location-based estimate flow and moving calculators.</li>
+<li>Created verified review stories containing prices, dates, and routes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Process Flow Grid -->
+    <div class="process-timeline-wrap">
+      <h2>Design Process</h2>
+      <div class="process-timeline">
+        
+        <div class="process-card">
+          <span class="process-num">Step 01</span>
+          <div class="process-title">Empathize</div>
+          <div class="process-desc">Interviewing long-distance movers about company selection anxiety.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 02</span>
+          <div class="process-title">Define</div>
+          <div class="process-desc">Defining trust gaps, pricing inconsistencies, and unlicensed mover risks.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 03</span>
+          <div class="process-title">Ideate</div>
+          <div class="process-desc">Structuring comparison tables and route-specific search wizards.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 04</span>
+          <div class="process-title">Design</div>
+          <div class="process-desc">Creating orange stats indicators and dark safety methodology layout cards.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 05</span>
+          <div class="process-title">Test</div>
+          <div class="process-desc">Testing estimate CTAs and date calculators with relocation groups.</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Dynamic Content Area -->
+    <div class="case-content">
+      <h3 class='case-study-subsec-title'>Compare Smarter. Move With Confidence.</h3>
+<p class='case-study-paragraph'>My Good Movers is a moving-company discovery and comparison platform designed to help people find reliable interstate and long-distance movers with greater confidence.</p>
+<p class='case-study-paragraph'>The platform brings together:</p>
+<ul class='case-study-list'>
+  <li>Licensed moving companies</li>
+  <li>Verified customer reviews</li>
+  <li>Moving prices</li>
+  <li>Ratings</li>
+  <li>Services</li>
+  <li>Interstate routes</li>
+  <li>Moving guides</li>
+  <li>Cost estimation</li>
+  <li>Mover comparison</li>
+  <li>Free moving estimates</li>
+</ul>
+<p class='case-study-paragraph'>into one centralized experience.</p>
+<p class='case-study-paragraph'>The core idea is simple:</p>
+<p class='case-study-paragraph'><strong>Choosing a moving company shouldn't feel like gambling with your belongings.</strong></p>
+<p class='case-study-paragraph'>My Good Movers helps users research, compare, verify, and ultimately choose a mover before committing to a move.</p>
+<p class='case-study-paragraph'>The platform's current website explicitly positions itself around comparing trusted movers, verified reviews, pricing, and services in one place.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why My Good Movers Exists</h2>
+<p class='case-study-paragraph'>Moving to another city or state is a major life event.</p>
+<p class='case-study-paragraph'>For most people, choosing the moving company is not something they do regularly.</p>
+<p class='case-study-paragraph'>That creates a major information problem.</p>
+<p class='case-study-paragraph'>A user may find dozens or hundreds of moving companies online, but the real questions are:</p>
+<p class='case-study-paragraph'><strong>Which companies are actually licensed?</strong></p>
+<p class='case-study-paragraph'><strong>Which ones have real customer reviews?</strong></p>
+<p class='case-study-paragraph'><strong>How much should the move cost?</strong></p>
+<p class='case-study-paragraph'><strong>Which company is reliable for my specific route?</strong></p>
+<p class='case-study-paragraph'><strong>Who should I trust with my belongings?</strong></p>
+<p class='case-study-paragraph'>The problem is therefore not simply:</p>
+<p class='case-study-paragraph'><strong>“Find a mover.”</strong></p>
+<p class='case-study-paragraph'>The real problem is:</p>
+<p class='case-study-paragraph'><strong>“Find the right mover with enough confidence to make a high-stakes decision.”</strong></p>
+<p class='case-study-paragraph'>My Good Movers exists to simplify that decision.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>The Business Problem</h2>
+<p class='case-study-paragraph'>The core business challenge was to transform an overwhelming moving-company search into a <strong>trustworthy comparison experience</strong>.</p>
+<p class='case-study-paragraph'>Several problems had to be addressed.</p>
+<h3 class='case-study-subsec-title'>01 — Too Many Moving Companies</h3>
+<p class='case-study-paragraph'>Consumers can encounter a large number of moving companies when searching online.</p>
+<p class='case-study-paragraph'>More choices do not automatically create better decisions.</p>
+<p class='case-study-paragraph'>Without structured comparison, users can become overwhelmed.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>02 — Trust Is Difficult to Establish</h3>
+<p class='case-study-paragraph'>A moving company will physically handle a customer's belongings and potentially transport them hundreds or thousands of miles.</p>
+<p class='case-study-paragraph'>Users need confidence before making that decision.</p>
+<p class='case-study-paragraph'>MGM therefore places significant emphasis on:</p>
+<ul class='case-study-list'>
+  <li>Verified reviews</li>
+  <li>Licensing</li>
+  <li>Ratings</li>
+  <li>Pricing</li>
+  <li>Methodology</li>
+  <li>Company information</li>
+</ul>
+<p class='case-study-paragraph'>The platform's own methodology explains that its evaluations consider customer feedback, experience, services, pricing, credentials, and ongoing monitoring.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>03 — Moving Prices Are Unclear</h3>
+<p class='case-study-paragraph'>Moving costs can vary substantially depending on:</p>
+<ul class='case-study-list'>
+  <li>Distance</li>
+  <li>Move size</li>
+  <li>Route</li>
+  <li>Timing</li>
+  <li>Services</li>
+  <li>Company</li>
+</ul>
+<p class='case-study-paragraph'>This makes it difficult for consumers to know whether a quote is reasonable.</p>
+<p class='case-study-paragraph'>MGM addresses this by surfacing price information and providing moving-cost tools.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>04 — Reviews Can Be Hard to Trust</h3>
+<p class='case-study-paragraph'>A star rating alone is not enough.</p>
+<p class='case-study-paragraph'>Users want to know:</p>
+<ul class='case-study-list'>
+  <li>Was the reviewer actually a customer?</li>
+  <li>What kind of move did they complete?</li>
+  <li>How much did the move cost?</li>
+  <li>What did they experience?</li>
+</ul>
+<p class='case-study-paragraph'>MGM makes verified reviews a central part of the product experience.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>05 — Users Need More Than a Company List</h3>
+<p class='case-study-paragraph'>A directory alone does not solve the decision problem.</p>
+<p class='case-study-paragraph'>Users also need:</p>
+<p class='case-study-paragraph'><strong>Comparison + Reviews + Pricing + Routes + Guides + Estimates</strong></p>
+<p class='case-study-paragraph'>The product therefore needs to work as a decision-support platform rather than simply a directory.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Primary Audience — Long-Distance Movers</h3>
+<p class='case-study-paragraph'>People preparing to move from one city or state to another.</p>
+<p class='case-study-paragraph'>This is the core audience because interstate moving involves greater distance, cost, and uncertainty than a simple local move.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>First-Time Long-Distance Movers</h3>
+<p class='case-study-paragraph'>People who have little experience choosing a moving company.</p>
+<p class='case-study-paragraph'>They need:</p>
+<ul class='case-study-list'>
+  <li>Education</li>
+  <li>Guidance</li>
+  <li>Trust signals</li>
+  <li>Pricing context</li>
+  <li>Simple comparison</li>
+</ul>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Families Relocating</h3>
+<p class='case-study-paragraph'>Families moving homes need to protect a large amount of personal property while managing a major life transition.</p>
+<p class='case-study-paragraph'>They are likely to value:</p>
+<ul class='case-study-list'>
+  <li>Reliability</li>
+  <li>Reviews</li>
+  <li>Price transparency</li>
+  <li>Company reputation</li>
+  <li>Route coverage</li>
+</ul>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Professionals & Relocating Individuals</h3>
+<p class='case-study-paragraph'>People relocating for:</p>
+<ul class='case-study-list'>
+  <li>Jobs</li>
+  <li>Career opportunities</li>
+  <li>Lifestyle changes</li>
+  <li>Housing changes</li>
+</ul>
+<p class='case-study-paragraph'>They often need a fast way to compare movers without spending hours researching individual companies.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Price-Conscious Users</h3>
+<p class='case-study-paragraph'>Users who want to compare prices before requesting a quote.</p>
+<p class='case-study-paragraph'>For these users, cost information and moving calculators are important decision-making tools.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>01 — “I Don't Know Which Mover to Trust.”</h4>
+<p class='case-study-paragraph'>The biggest emotional barrier is uncertainty.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>02 — “There Are Too Many Options.”</h4>
+<p class='case-study-paragraph'>Searching independently can produce a huge list of companies without meaningful prioritization.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>03 — “I Don't Know What a Fair Price Is.”</h4>
+<p class='case-study-paragraph'>Without benchmarks, users may struggle to evaluate quotes.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>04 — “Can I Trust These Reviews?”</h4>
+<p class='case-study-paragraph'>Reviews need credibility and context.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>05 — “Is This Company Right for My Route?”</h4>
+<p class='case-study-paragraph'>A mover may be highly rated but not necessarily the right fit for a specific interstate route.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>06 — “I Don't Know What I Should Look For.”</h4>
+<p class='case-study-paragraph'>First-time movers may not understand:</p>
+<ul class='case-study-list'>
+  <li>Licensing</li>
+  <li>Pricing models</li>
+  <li>Services</li>
+  <li>Moving terminology</li>
+  <li>Red flags</li>
+</ul>
+<p class='case-study-paragraph'>The platform therefore needs to educate as well as compare.</p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>The experience was designed around six major objectives:</p>
+<p class='case-study-paragraph'>1. <strong>Build trust immediately</strong></p>
+<p class='case-study-paragraph'>2. <strong>Make moving-company comparison simple</strong></p>
+<p class='case-study-paragraph'>3. <strong>Reduce decision anxiety</strong></p>
+<p class='case-study-paragraph'>4. <strong>Make reviews and pricing understandable</strong></p>
+<p class='case-study-paragraph'>5. <strong>Guide users toward the right mover</strong></p>
+<p class='case-study-paragraph'>6. <strong>Convert research intent into quote requests</strong></p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>The central UX strategy can be summarized as:</p>
+<p class='case-study-paragraph'><strong>Trust → Understand → Compare → Verify → Act</strong></p>
+<p class='case-study-paragraph'>This is the foundation of the entire experience.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>01 — Trust First</h2>
+<p class='case-study-paragraph'>The hero immediately establishes credibility.</p>
+<p class='case-study-paragraph'>The headline:</p>
+<p class='case-study-paragraph'><strong>Compare Top Interstate Moving Companies</strong></p>
+<p class='case-study-paragraph'>clearly communicates what the platform does.</p>
+<p class='case-study-paragraph'>The supporting message emphasizes:</p>
+<ul class='case-study-list'>
+  <li>Trusted companies</li>
+  <li>Verified reviews</li>
+  <li>Real prices</li>
+  <li>Easy comparison</li>
+</ul>
+<p class='case-study-paragraph'>This is followed by credibility indicators:</p>
+<p class='case-study-paragraph'><strong>12,400+ verified customer reviews</strong></p>
+<p class='case-study-paragraph'><strong>4.7 average mover rating</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>300+ licensed interstate movers</strong></p>
+<p class='case-study-paragraph'>The website also displays a “As Featured In” section with recognizable media brands.</p>
+<p class='case-study-paragraph'>The goal is to reduce uncertainty before asking users to take action.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Hero Experience</h2>
+<p class='case-study-paragraph'>The hero contains:</p>
+<h4 class='case-study-subsubsec-title'>Brand</h4>
+<p class='case-study-paragraph'><strong>My Good Movers</strong></p>
+<h4 class='case-study-subsubsec-title'>Category</h4>
+<p class='case-study-paragraph'>Moving Company Comparison</p>
+<h4 class='case-study-subsubsec-title'>Main Message</h4>
+<p class='case-study-paragraph'><strong>Compare Top Interstate Moving Companies</strong></p>
+<h4 class='case-study-subsubsec-title'>Value Proposition</h4>
+<p class='case-study-paragraph'>Compare trusted and verified movers, explore real customer reviews and prices, and get instant recommendations.</p>
+<h4 class='case-study-subsubsec-title'>Primary Action</h4>
+<p class='case-study-paragraph'><strong>Get Instant Estimate</strong></p>
+<h4 class='case-study-subsubsec-title'>Search Inputs</h4>
+<p class='case-study-paragraph'><strong>Moving from</strong></p>
+<p class='case-study-paragraph'><strong>Moving to</strong></p>
+<p class='case-study-paragraph'>The hero therefore combines:</p>
+<p class='case-study-paragraph'><strong>What the product does + Why it is trustworthy + What the user should do next.</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why the Hero Works</h2>
+<p class='case-study-paragraph'>The hero does not start with a generic marketing statement such as:</p>
+<p class='case-study-paragraph'><strong>“We make moving easier.”</strong></p>
+<p class='case-study-paragraph'>Instead, it immediately answers the user's actual question:</p>
+<p class='case-study-paragraph'><strong>“Can you help me choose a moving company?”</strong></p>
+<p class='case-study-paragraph'>The answer is:</p>
+<p class='case-study-paragraph'><strong>Yes — compare top interstate moving companies.</strong></p>
+<p class='case-study-paragraph'>This is strong task-oriented UX writing.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Location-Based Search</h2>
+<p class='case-study-paragraph'>The hero search asks:</p>
+<p class='case-study-paragraph'><strong>Moving from — city or ZIP</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>Moving to — city or ZIP</strong></p>
+<p class='case-study-paragraph'>A mover's suitability and cost depend heavily on the route.</p>
+<p class='case-study-paragraph'>The search therefore begins with the user's real-world context rather than asking users to browse a generic company directory.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Estimate CTA</h2>
+<p class='case-study-paragraph'>The primary CTA:</p>
+<p class='case-study-paragraph'><strong>Get Instant Estimate</strong></p>
+<p class='case-study-paragraph'>creates a clear next step.</p>
+<p class='case-study-paragraph'>It converts the user's initial intent:</p>
+<p class='case-study-paragraph'><strong>“I'm planning a move.”</strong></p>
+<p class='case-study-paragraph'>into:</p>
+<p class='case-study-paragraph'><strong>“Let's calculate my moving needs.”</strong></p>
+<p class='case-study-paragraph'>The site's moving-estimate flow subsequently asks for information such as moving date, move size, contact method, and contact details.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Trust Through Numbers</h2>
+<p class='case-study-paragraph'>The website uses large statistics:</p>
+<p class='case-study-paragraph'><strong>300+</strong></p>
+<p class='case-study-paragraph'>Licensed interstate movers</p>
+<p class='case-study-paragraph'><strong>12,400</strong></p>
+<p class='case-study-paragraph'>Verified customer reviews</p>
+<p class='case-study-paragraph'><strong>$4,286</strong></p>
+<p class='case-study-paragraph'>Average verified move</p>
+<p class='case-study-paragraph'><strong>4.7 ★</strong></p>
+<p class='case-study-paragraph'>Average mover rating</p>
+<p class='case-study-paragraph'>These numbers work as a fast credibility layer.</p>
+<p class='case-study-paragraph'>Instead of requiring the user to read paragraphs, the interface communicates:</p>
+<p class='case-study-paragraph'><strong>Scale + Data + Price Context + Reputation</strong></p>
+<p class='case-study-paragraph'>in seconds.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why These Four Metrics Matter</h2>
+<p class='case-study-paragraph'>Each metric answers a different user concern.</p>
+<h4 class='case-study-subsubsec-title'>300+ Movers</h4>
+<p class='case-study-paragraph'><strong>Do I have enough options?</strong></p>
+<h4 class='case-study-subsubsec-title'>12,400 Reviews</h4>
+<p class='case-study-paragraph'><strong>Is there enough customer evidence?</strong></p>
+<h4 class='case-study-subsubsec-title'>$4,286 Average Move</h4>
+<p class='case-study-paragraph'><strong>What does a typical move cost?</strong></p>
+<h4 class='case-study-subsubsec-title'>4.7 Rating</h4>
+<p class='case-study-paragraph'><strong>How good are the movers?</strong></p>
+<p class='case-study-paragraph'>Together, they form a compact trust framework.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>“Find the Best Fit for Your Move”</h2>
+<p class='case-study-paragraph'>The next major CTA section introduces:</p>
+<p class='case-study-paragraph'><strong>Find the Best Fit for Your Move</strong></p>
+<p class='case-study-paragraph'>with supporting text around comparing movers based on specific moving needs.</p>
+<p class='case-study-paragraph'>This is an important UX shift.</p>
+<p class='case-study-paragraph'>The platform is not saying:</p>
+<p class='case-study-paragraph'><strong>“Here are 300 companies. Good luck.”</strong></p>
+<p class='case-study-paragraph'>Instead, it says:</p>
+<p class='case-study-paragraph'><strong>“We'll help you find the right fit.”</strong></p>
+<p class='case-study-paragraph'>This reduces decision fatigue.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why “Best Fit” Is Better Than “Best Mover”</h2>
+<p class='case-study-paragraph'>There may not be one universally best moving company.</p>
+<p class='case-study-paragraph'>The right mover depends on:</p>
+<ul class='case-study-list'>
+  <li>Route</li>
+  <li>Budget</li>
+  <li>Services</li>
+  <li>Move size</li>
+  <li>Timing</li>
+  <li>Customer priorities</li>
+</ul>
+<p class='case-study-paragraph'>Therefore, the product frames the decision around:</p>
+<p class='case-study-paragraph'><strong>Best Fit</strong></p>
+<p class='case-study-paragraph'>rather than:</p>
+<p class='case-study-paragraph'><strong>Best Overall</strong></p>
+<p class='case-study-paragraph'>This is a more user-centered approach.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Trust Methodology</h2>
+<p class='case-study-paragraph'>The section:</p>
+<p class='case-study-paragraph'><strong>Why people trust us with long-distance moves</strong></p>
+<p class='case-study-paragraph'>explains the platform's trust framework.</p>
+<p class='case-study-paragraph'>Four key principles are shown:</p>
+<h4 class='case-study-subsubsec-title'>Verified Reviews</h4>
+<p class='case-study-paragraph'>Reviews come from real customers who completed a move.</p>
+<h4 class='case-study-subsubsec-title'>Always Fresh Info</h4>
+<p class='case-study-paragraph'>Mover ratings and costs are updated regularly.</p>
+<h4 class='case-study-subsubsec-title'>Your Moving Companion</h4>
+<p class='case-study-paragraph'>The platform provides tools, tips, and checklists.</p>
+<h4 class='case-study-subsubsec-title'>Compare With Confidence</h4>
+<p class='case-study-paragraph'>Users can compare licensed movers side by side.</p>
+<p class='case-study-paragraph'>These principles are consistent with the platform's current public positioning.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Verified Reviews</h2>
+<p class='case-study-paragraph'>Verified reviews are arguably the most important trust feature in the product.</p>
+<p class='case-study-paragraph'>The design gives them a dedicated section:</p>
+<p class='case-study-paragraph'><strong>Latest verified reviews.</strong></p>
+<p class='case-study-paragraph'>Each review card communicates:</p>
+<ul class='case-study-list'>
+  <li>Reviewer</li>
+  <li>Rating</li>
+  <li>Review content</li>
+  <li>Verification</li>
+  <li>Moving experience</li>
+  <li>Move cost</li>
+</ul>
+<p class='case-study-paragraph'>This makes reviews more useful than a simple star rating.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why Review Context Matters</h2>
+<p class='case-study-paragraph'>A 5-star review by itself tells very little.</p>
+<p class='case-study-paragraph'>But:</p>
+<p class='case-study-paragraph'><strong>5 stars + real customer + route + moving experience + price</strong></p>
+<p class='case-study-paragraph'>provides much more decision-making value.</p>
+<p class='case-study-paragraph'>The product therefore turns reviews into <strong>evidence</strong> rather than decoration.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Review Carousel</h2>
+<p class='case-study-paragraph'>The review section uses horizontally arranged cards.</p>
+<p class='case-study-paragraph'>This allows the platform to show multiple customer experiences without consuming excessive vertical space.</p>
+<p class='case-study-paragraph'>The interaction model is:</p>
+<p class='case-study-paragraph'><strong>Scan → Select → Read</strong></p>
+<p class='case-study-paragraph'>rather than forcing users into a long list.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>User-Generated Content as Trust</h2>
+<p class='case-study-paragraph'>The platform also invites users to:</p>
+<p class='case-study-paragraph'><strong>Share your long-distance moving story.</strong></p>
+<p class='case-study-paragraph'>This creates a feedback loop:</p>
+<p class='case-study-paragraph'><strong>Move → Review → Help future movers → Generate more trustworthy data</strong></p>
+<p class='case-study-paragraph'>This is valuable from both UX and business perspectives.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Methodology Section</h2>
+<p class='case-study-paragraph'>The dark section introduces:</p>
+<p class='case-study-paragraph'><strong>How we keep your move safe.</strong></p>
+<p class='case-study-paragraph'>This is a deeper trust layer.</p>
+<p class='case-study-paragraph'>Instead of simply claiming:</p>
+<p class='case-study-paragraph'><strong>“We are trustworthy.”</strong></p>
+<p class='case-study-paragraph'>the platform explains:</p>
+<p class='case-study-paragraph'><strong>How trust is created.</strong></p>
+<p class='case-study-paragraph'>The methodology includes:</p>
+<h4 class='case-study-subsubsec-title'>Moving Methodology</h4>
+<p class='case-study-paragraph'>How movers are selected and verified.</p>
+<h4 class='case-study-subsubsec-title'>Pricing Methodology</h4>
+<p class='case-study-paragraph'>How pricing data is gathered.</p>
+<h4 class='case-study-subsubsec-title'>Review & Verification</h4>
+<p class='case-study-paragraph'>How reviews are authenticated.</p>
+<h4 class='case-study-subsubsec-title'>Scam Protection</h4>
+<p class='case-study-paragraph'>How the platform helps protect users from problematic movers.</p>
+<p class='case-study-paragraph'>The site's methodology content similarly describes its evaluation process across customer feedback, experience, service offerings, pricing, credentials, and ongoing monitoring.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why the Methodology Section Matters</h2>
+<p class='case-study-paragraph'>This is an excellent example of <strong>transparency UX</strong>.</p>
+<p class='case-study-paragraph'>The product is asking users to trust its recommendations.</p>
+<p class='case-study-paragraph'>Therefore, users need to understand:</p>
+<p class='case-study-paragraph'><strong>“Why should I trust your rankings?”</strong></p>
+<p class='case-study-paragraph'>The methodology section provides the answer.</p>
+<p class='case-study-paragraph'>This creates:</p>
+<p class='case-study-paragraph'><strong>Recommendation → Explanation → Trust</strong></p>
+<p class='case-study-paragraph'>instead of:</p>
+<p class='case-study-paragraph'><strong>Recommendation → Trust me</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>State & Route Discovery</h2>
+<p class='case-study-paragraph'>The section:</p>
+<p class='case-study-paragraph'><strong>Movers across America</strong></p>
+<p class='case-study-paragraph'>allows users to explore movers based on location.</p>
+<p class='case-study-paragraph'>State chips include examples such as:</p>
+<ul class='case-study-list'>
+  <li>Arizona</li>
+  <li>California</li>
+  <li>Colorado</li>
+  <li>Delaware</li>
+  <li>Florida</li>
+  <li>Georgia</li>
+  <li>Idaho</li>
+  <li>Minnesota</li>
+  <li>Nevada</li>
+  <li>New York</li>
+  <li>North Carolina</li>
+  <li>Oregon</li>
+  <li>South Carolina</li>
+  <li>Tennessee</li>
+  <li>Texas</li>
+  <li>Washington</li>
+</ul>
+<p class='case-study-paragraph'>This creates a scalable location-based information architecture.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why Geographic Navigation Matters</h2>
+<p class='case-study-paragraph'>Moving is inherently geographic.</p>
+<p class='case-study-paragraph'>A user does not simply need:</p>
+<p class='case-study-paragraph'><strong>“A good mover.”</strong></p>
+<p class='case-study-paragraph'>They need:</p>
+<p class='case-study-paragraph'><strong>“A good mover for my route.”</strong></p>
+<p class='case-study-paragraph'>Location-based navigation therefore connects the platform's content structure directly to the user's real-world task.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Popular Guides</h2>
+<p class='case-study-paragraph'>The website also includes:</p>
+<p class='case-study-paragraph'><strong>Popular Guides</strong></p>
+<p class='case-study-paragraph'>with resources such as:</p>
+<ul class='case-study-list'>
+  <li>Best moving companies</li>
+  <li>Best long-distance movers</li>
+  <li>Popular state-to-state routes</li>
+  <li>Ultimate long-distance moving checklist</li>
+  <li>Moving cost guides</li>
+</ul>
+<p class='case-study-paragraph'>This serves an important educational function.</p>
+<p class='case-study-paragraph'>Not every user is ready to request an estimate immediately.</p>
+<p class='case-study-paragraph'>Some users are still researching.</p>
+<p class='case-study-paragraph'>The guides capture these users earlier in the decision journey.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Content as Product UX</h2>
+<p class='case-study-paragraph'>The guides are not simply blog content.</p>
+<p class='case-study-paragraph'>They support the overall decision funnel:</p>
+<p class='case-study-paragraph'><strong>Learn → Compare → Trust → Estimate → Choose</strong></p>
+<p class='case-study-paragraph'>This allows the product to serve users at different levels of purchase readiness.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Final Conversion</h2>
+<p class='case-study-paragraph'>The final CTA:</p>
+<p class='case-study-paragraph'><strong>Ready when you are.</strong></p>
+<p class='case-study-paragraph'>is intentionally softer than:</p>
+<p class='case-study-paragraph'><strong>Get an estimate now.</strong></p>
+<p class='case-study-paragraph'>This acknowledges that moving is a major decision.</p>
+<p class='case-study-paragraph'>The supporting copy reinforces the idea that users can compare licensed interstate movers or contact the team.</p>
+<p class='case-study-paragraph'>The CTA options include:</p>
+<ul class='case-study-list'>
+  <li>Get Free Estimate</li>
+  <li>Compare Movers</li>
+  <li>Call</li>
+</ul>
+<p class='case-study-paragraph'>This provides multiple conversion paths.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Conversion Strategy</h2>
+<p class='case-study-paragraph'>The website supports multiple user intents.</p>
+<h4 class='case-study-subsubsec-title'>Research Intent</h4>
+<p class='case-study-paragraph'><strong>Popular Guides</strong></p>
+<h4 class='case-study-subsubsec-title'>Comparison Intent</h4>
+<p class='case-study-paragraph'><strong>Compare Movers</strong></p>
+<h4 class='case-study-subsubsec-title'>Price Intent</h4>
+<p class='case-study-paragraph'><strong>Get Free Estimate</strong></p>
+<h4 class='case-study-subsubsec-title'>Trust Intent</h4>
+<p class='case-study-paragraph'><strong>Verified Reviews</strong></p>
+<h4 class='case-study-subsubsec-title'>Route Intent</h4>
+<p class='case-study-paragraph'><strong>State / Route Pages</strong></p>
+<h4 class='case-study-subsubsec-title'>Human Support Intent</h4>
+<p class='case-study-paragraph'><strong>Call</strong></p>
+<p class='case-study-paragraph'>This makes the experience more flexible than a single CTA funnel.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Complete User Journey</h2>
+<p class='case-study-paragraph'>The platform essentially follows:</p>
+<p class='case-study-paragraph'><strong>Search → Understand → Compare → Verify → Estimate → Choose</strong></p>
+<h4 class='case-study-subsubsec-title'>Search</h4>
+<p class='case-study-paragraph'>Enter origin and destination.</p>
+<h4 class='case-study-subsubsec-title'>Understand</h4>
+<p class='case-study-paragraph'>Learn about movers and moving costs.</p>
+<h4 class='case-study-subsubsec-title'>Compare</h4>
+<p class='case-study-paragraph'>Evaluate different companies.</p>
+<h4 class='case-study-subsubsec-title'>Verify</h4>
+<p class='case-study-paragraph'>Read verified reviews and methodology.</p>
+<h4 class='case-study-subsubsec-title'>Estimate</h4>
+<p class='case-study-paragraph'>Get a personalized moving estimate.</p>
+<h4 class='case-study-subsubsec-title'>Choose</h4>
+<p class='case-study-paragraph'>Select the mover that best fits the user's needs.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Information Architecture</h2>
+<p class='case-study-paragraph'>The website's navigation is structured around the user's moving journey:</p>
+<ul class='case-study-list'>
+  <li>Search movers</li>
+  <li>Estimates & calculators</li>
+  <li>Resources</li>
+  <li>Stories</li>
+  <li>Why MGM</li>
+</ul>
+<p class='case-study-paragraph'>This creates a useful separation between:</p>
+<h4 class='case-study-subsubsec-title'>Action</h4>
+<p class='case-study-paragraph'>Search / Estimate</p>
+<h4 class='case-study-subsubsec-title'>Education</h4>
+<p class='case-study-paragraph'>Resources</p>
+<h4 class='case-study-subsubsec-title'>Social Proof</h4>
+<p class='case-study-paragraph'>Stories</p>
+<h4 class='case-study-subsubsec-title'>Brand Trust</h4>
+<p class='case-study-paragraph'>Why MGM</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Moving Tools</h2>
+<p class='case-study-paragraph'>The platform includes tools such as:</p>
+<ul class='case-study-list'>
+  <li>Moving Cost Calculator</li>
+  <li>Moving Box Calculator</li>
+  <li>Compare Movers</li>
+</ul>
+<p class='case-study-paragraph'>These tools reduce uncertainty before users make decisions.</p>
+<p class='case-study-paragraph'>This is especially useful because moving is a high-information task.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Visual Design Strategy</h2>
+<p class='case-study-paragraph'>The visual design is intentionally calm and trustworthy.</p>
+<p class='case-study-paragraph'>It uses:</p>
+<ul class='case-study-list'>
+  <li>Light blue backgrounds</li>
+  <li>Deep navy</li>
+  <li>White cards</li>
+  <li>Blue CTA accents</li>
+  <li>Large typography</li>
+  <li>Rounded containers</li>
+  <li>Soft shadows</li>
+  <li>Real photography</li>
+  <li>Spacious layouts</li>
+  <li>High-contrast dark methodology section</li>
+</ul>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why Blue Works Here</h2>
+<p class='case-study-paragraph'>Blue communicates:</p>
+<ul class='case-study-list'>
+  <li>Trust</li>
+  <li>Reliability</li>
+  <li>Safety</li>
+  <li>Professionalism</li>
+  <li>Stability</li>
+</ul>
+<p class='case-study-paragraph'>These are exactly the emotional qualities required for a moving decision.</p>
+<p class='case-study-paragraph'>The product is asking users to trust someone with their belongings.</p>
+<p class='case-study-paragraph'>Therefore, the visual language avoids aggressive or overly playful branding.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Real Photography</h2>
+<p class='case-study-paragraph'>The hero uses a real-life moving context:</p>
+<p class='case-study-paragraph'>A person sitting among moving boxes and preparing for a relocation.</p>
+<p class='case-study-paragraph'>This immediately communicates:</p>
+<p class='case-study-paragraph'><strong>Moving is a real life event.</strong></p>
+<p class='case-study-paragraph'>The image also humanizes the product.</p>
+<p class='case-study-paragraph'>Instead of showing a truck alone, the design shows the <strong>person experiencing the move</strong>.</p>
+<p class='case-study-paragraph'>This keeps the user at the center.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Light vs Dark</h2>
+<p class='case-study-paragraph'>The website uses a light interface for:</p>
+<ul class='case-study-list'>
+  <li>Search</li>
+  <li>Statistics</li>
+  <li>Reviews</li>
+  <li>Guides</li>
+  <li>Location discovery</li>
+</ul>
+<p class='case-study-paragraph'>and a dark section for:</p>
+<ul class='case-study-list'>
+  <li>Methodology</li>
+  <li>Safety</li>
+  <li>Verification</li>
+</ul>
+<p class='case-study-paragraph'>This creates a visual distinction between:</p>
+<p class='case-study-paragraph'><strong>Explore</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>Understand why you can trust us.</strong></p>
+<p class='case-study-paragraph'>The dark methodology section feels more serious and authoritative.</p>
+<p class='case-study-paragraph'>That is appropriate for safety and verification content.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Card-Based Information Architecture</h2>
+<p class='case-study-paragraph'>Cards are used for:</p>
+<ul class='case-study-list'>
+  <li>Trust principles</li>
+  <li>Reviews</li>
+  <li>Guides</li>
+  <li>Statistics</li>
+  <li>Moving routes</li>
+</ul>
+<p class='case-study-paragraph'>This allows complex information to be broken into digestible units.</p>
+<p class='case-study-paragraph'>Each card communicates one idea.</p>
+<p class='case-study-paragraph'>That supports fast scanning.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>What I Focused on as a Product Designer</h2>
+<p class='case-study-paragraph'>The central challenge was not simply designing a moving website.</p>
+<p class='case-study-paragraph'>It was designing a <strong>decision-making experience for a high-stakes purchase</strong>.</p>
+<p class='case-study-paragraph'>I focused on:</p>
+<h4 class='case-study-subsubsec-title'>Trust</h4>
+<p class='case-study-paragraph'>Making verification, reviews, ratings, and methodology visible.</p>
+<h4 class='case-study-subsubsec-title'>Comparison</h4>
+<p class='case-study-paragraph'>Helping users compare movers rather than researching them individually.</p>
+<h4 class='case-study-subsubsec-title'>Price Transparency</h4>
+<p class='case-study-paragraph'>Showing average costs and connecting users with estimates.</p>
+<h4 class='case-study-subsubsec-title'>Geographic Relevance</h4>
+<p class='case-study-paragraph'>Organizing content around states and moving routes.</p>
+<h4 class='case-study-subsubsec-title'>Education</h4>
+<p class='case-study-paragraph'>Providing guides and tools for users who are still researching.</p>
+<h4 class='case-study-subsubsec-title'>Conversion</h4>
+<p class='case-study-paragraph'>Creating multiple paths toward comparison, estimates, and support.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Design Outcome</h2>
+<p class='case-study-paragraph'>The final experience transforms a complicated moving-company search into a guided decision journey.</p>
+<p class='case-study-paragraph'>Instead of:</p>
+<p class='case-study-paragraph'><strong>Search Google → Open many websites → Read random reviews → Request quotes → Compare manually</strong></p>
+<p class='case-study-paragraph'>the experience becomes:</p>
+<p class='case-study-paragraph'><strong>Enter Route → Discover Movers → Compare → Read Verified Reviews → Understand Pricing → Get Estimate → Choose</strong></p>
+<p class='case-study-paragraph'>This dramatically simplifies the user's research process.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>The Core Product Value</h2>
+<p class='case-study-paragraph'>My Good Movers is essentially solving an <strong>information asymmetry problem</strong>.</p>
+<p class='case-study-paragraph'>Moving companies know their services, pricing, credentials, and reputation.</p>
+<p class='case-study-paragraph'>The consumer does not.</p>
+<p class='case-study-paragraph'>MGM acts as an information layer between them.</p>
+<p class='case-study-paragraph'>It gives the consumer:</p>
+<p class='case-study-paragraph'><strong>Data + Reviews + Pricing + Verification + Comparison</strong></p>
+<p class='case-study-paragraph'>so they can make a more informed decision.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key UX Decisions</h2>
+<h3 class='case-study-subsec-title'>From Directory → Decision Platform</h3>
+<p class='case-study-paragraph'>The product does not simply list moving companies.</p>
+<p class='case-study-paragraph'>It helps users decide.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From “Best” → “Best Fit”</h3>
+<p class='case-study-paragraph'>Instead of assuming one company is best for everyone, the experience considers the user's route and needs.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Star Rating → Verified Evidence</h3>
+<p class='case-study-paragraph'>Reviews include context and verification instead of functioning as simple decorative ratings.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From “Trust Us” → “Here's Our Methodology”</h3>
+<p class='case-study-paragraph'>The methodology section explains how movers, pricing, and reviews are evaluated.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Generic Search → Route-Based Discovery</h3>
+<p class='case-study-paragraph'>Origin and destination are introduced immediately because moving decisions are geographic.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From One Conversion → Multiple Paths</h3>
+<p class='case-study-paragraph'>Users can:</p>
+<p class='case-study-paragraph'><strong>Compare Movers</strong></p>
+<p class='case-study-paragraph'><strong>Get an Estimate</strong></p>
+<p class='case-study-paragraph'><strong>Read Guides</strong></p>
+<p class='case-study-paragraph'><strong>Explore Routes</strong></p>
+<p class='case-study-paragraph'><strong>Call</strong></p>
+<p class='case-study-paragraph'>This accommodates different levels of purchase readiness.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Blog → Decision Support</h3>
+<p class='case-study-paragraph'>Guides and calculators are integrated into the product journey rather than treated as unrelated content.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key Takeaways</h2>
+<h4 class='case-study-subsubsec-title'>Trust is the actual product experience.</h4>
+<p class='case-study-paragraph'>For a high-risk service such as interstate moving, trust cannot be a footer element.</p>
+<p class='case-study-paragraph'>It must appear throughout the journey.</p>
+<h4 class='case-study-subsubsec-title'>Comparison reduces decision fatigue.</h4>
+<p class='case-study-paragraph'>Users should not have to research dozens of companies independently.</p>
+<h4 class='case-study-subsubsec-title'>Verified reviews are more powerful when contextualized.</h4>
+<p class='case-study-paragraph'>A review becomes significantly more useful when users can understand the real moving experience behind it.</p>
+<h4 class='case-study-subsubsec-title'>Transparency creates credibility.</h4>
+<p class='case-study-paragraph'>Explaining methodology is often more convincing than simply claiming to be trustworthy.</p>
+<h4 class='case-study-subsubsec-title'>Location is a core part of the UX.</h4>
+<p class='case-study-paragraph'>Moving companies should be evaluated in the context of the user's actual route.</p>
+<h4 class='case-study-subsubsec-title'>Content can support conversion.</h4>
+<p class='case-study-paragraph'>Guides, calculators, and educational resources help users move from uncertainty toward action.</p>
+<h4 class='case-study-subsubsec-title'>The best marketplace UX doesn't just provide more choices.</h4>
+<p class='case-study-paragraph'>It helps users make <strong>better choices</strong>.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Case Study Page Structure for AI</h2>
+<h3 class='case-study-subsec-title'>Section 01 — Hero</h3>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Choosing a mover shouldn't feel like a gamble.”</strong></p>
+<p class='case-study-paragraph'>Supporting copy:</p>
+<p class='case-study-paragraph'>“My Good Movers helps people compare licensed interstate movers, verified reviews, pricing, and services before making a high-stakes relocation decision.”</p>
+<p class='case-study-paragraph'>Project metadata:</p>
+<ul class='case-study-list'>
+  <li>Product: My Good Movers</li>
+  <li>Category: Marketplace / Moving Services</li>
+  <li>Platform: Web</li>
+  <li>Focus: Mover comparison, trust & lead generation</li>
+</ul>
+<p class='case-study-paragraph'>Keep the hero photograph large.</p>
+<p class='case-study-paragraph'>The search bar should remain visible.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 02 — The Challenge</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“How do you help someone trust the company handling everything they own?”</strong></p>
+<p class='case-study-paragraph'>Use a split layout.</p>
+<h4 class='case-study-subsubsec-title'>Left</h4>
+<p class='case-study-paragraph'>Explain:</p>
+<ul class='case-study-list'>
+  <li>Too many movers</li>
+  <li>Unclear pricing</li>
+  <li>Unverified reviews</li>
+  <li>Route-specific decisions</li>
+  <li>High decision anxiety</li>
+</ul>
+<h4 class='case-study-subsubsec-title'>Right</h4>
+<p class='case-study-paragraph'>Use a large crop of the hero image with the person and moving boxes.</p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>Create a large horizontal journey:</p>
+<p class='case-study-paragraph'><strong>Search → Understand → Compare → Verify → Estimate → Choose</strong></p>
+<p class='case-study-paragraph'>This should be one of the primary visual diagrams of the case study.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 04 — Trust at First Glance</h2>
+<p class='case-study-paragraph'><strong>300+ / 12,400 / $4,286 / 4.7★</strong></p>
+<p class='case-study-paragraph'>statistics.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Give users evidence before asking for trust.”</strong></p>
+<p class='case-study-paragraph'>Explain what each number communicates.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 05 — Route-Based Search</h2>
+<p class='case-study-paragraph'>Highlight:</p>
+<p class='case-study-paragraph'><strong>Moving From</strong></p>
+<p class='case-study-paragraph'><strong>Moving To</strong></p>
+<p class='case-study-paragraph'><strong>Get Instant Estimate</strong></p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Start with the user's real-world problem.”</strong></p>
+<p class='case-study-paragraph'>Explain why origin and destination are the first inputs.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 06 — Best Fit</h2>
+<p class='case-study-paragraph'><strong>Find the Best Fit for Your Move</strong></p>
+<p class='case-study-paragraph'>card.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“There isn't one best mover. There's a best fit.”</strong></p>
+<p class='case-study-paragraph'>Explain how the platform reduces decision fatigue by helping users narrow their options.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 07 — Trust Framework</h2>
+<p class='case-study-paragraph'><strong>Verified Reviews</strong></p>
+<p class='case-study-paragraph'><strong>Always Fresh Info</strong></p>
+<p class='case-study-paragraph'><strong>Your Moving Companion</strong></p>
+<p class='case-study-paragraph'><strong>Compare With Confidence</strong></p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Trust is designed into every step.”</strong></p>
+<p class='case-study-paragraph'>Show the four principles as a visual framework.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 08 — Verified Reviews</h2>
+<p class='case-study-paragraph'><strong>Latest verified reviews</strong></p>
+<p class='case-study-paragraph'>section.</p>
+<p class='case-study-paragraph'>Zoom into one review card.</p>
+<p class='case-study-paragraph'>Annotate:</p>
+<ul class='case-study-list'>
+  <li>Verified customer</li>
+  <li>Rating</li>
+  <li>Review</li>
+  <li>Move cost</li>
+  <li>Company information</li>
+</ul>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Turn reviews into decision-making evidence.”</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 09 — Methodology</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Don't just claim trust. Explain how you earn it.”</strong></p>
+<p class='case-study-paragraph'>Show:</p>
+<p class='case-study-paragraph'>01 Moving Methodology</p>
+<p class='case-study-paragraph'>02 Pricing Methodology</p>
+<p class='case-study-paragraph'>03 Review & Verification</p>
+<p class='case-study-paragraph'>04 Scam Protection</p>
+<p class='case-study-paragraph'>This should be one of the most visually dramatic sections in the case study.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 10 — Location Architecture</h2>
+<p class='case-study-paragraph'>Use:</p>
+<p class='case-study-paragraph'><strong>Movers across America</strong></p>
+<p class='case-study-paragraph'>with the state chips.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Moving is geographic. The experience should be too.”</strong></p>
+<p class='case-study-paragraph'>Explain state and route discovery.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 11 — Guides & Tools</h2>
+<p class='case-study-paragraph'>Show the guide cards.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Help users before they're ready to buy.”</strong></p>
+<p class='case-study-paragraph'>Explain how content and tools support users during the research phase.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 12 — Conversion</h2>
+<p class='case-study-paragraph'>Use:</p>
+<p class='case-study-paragraph'><strong>Ready when you are.</strong></p>
+<p class='case-study-paragraph'>Show the three actions:</p>
+<p class='case-study-paragraph'><strong>Get Free Estimate</strong></p>
+<p class='case-study-paragraph'><strong>Compare Movers</strong></p>
+<p class='case-study-paragraph'><strong>Call</strong></p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Give every user a next step.”</strong></p>
+<p class='case-study-paragraph'>Explain how multiple CTAs support different intent levels.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 13 — Visual Design</h2>
+<p class='case-study-paragraph'>Show crops of:</p>
+<ul class='case-study-list'>
+  <li>Hero</li>
+  <li>Search</li>
+  <li>Trust cards</li>
+  <li>Review cards</li>
+  <li>Methodology</li>
+  <li>Route chips</li>
+  <li>Final CTA</li>
+</ul>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“A calm interface for a stressful decision.”</strong></p>
+<p class='case-study-paragraph'>Explain:</p>
+<ul class='case-study-list'>
+  <li>Blue trust language</li>
+  <li>Large whitespace</li>
+  <li>Real photography</li>
+  <li>Soft cards</li>
+  <li>Clear hierarchy</li>
+  <li>Strong CTA contrast</li>
+</ul>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 14 — UX Outcome</h2>
+<p class='case-study-paragraph'>Create a before/after comparison.</p>
+<h4 class='case-study-subsubsec-title'>Before</h4>
+<p class='case-study-paragraph'>Search many companies</p>
+<p class='case-study-paragraph'>Read scattered reviews</p>
+<p class='case-study-paragraph'>Guess pricing</p>
+<p class='case-study-paragraph'>Check credentials manually</p>
+<p class='case-study-paragraph'>Request multiple quotes</p>
+<h4 class='case-study-subsubsec-title'>After</h4>
+<p class='case-study-paragraph'>Enter route</p>
+<p class='case-study-paragraph'>Compare movers</p>
+<p class='case-study-paragraph'>Read verified reviews</p>
+<p class='case-study-paragraph'>Understand pricing</p>
+<p class='case-study-paragraph'>Get an estimate</p>
+<p class='case-study-paragraph'>Choose confidently</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“From overwhelming research to confident decision-making.”</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 15 — Final Experience</h2>
+<p class='case-study-paragraph'>Create a visual montage:</p>
+<p class='case-study-paragraph'><strong>Hero → Search → Trust → Reviews → Methodology → Routes → CTA</strong></p>
+<p class='case-study-paragraph'>Use varied image sizes.</p>
+<p class='case-study-paragraph'>The methodology and hero should receive the largest visual treatments.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 16 — Closing</h2>
+<p class='case-study-paragraph'>End with:</p>
+<p class='case-study-paragraph'><strong>“Move with confidence.”</strong></p>
+<p class='case-study-paragraph'>Supporting copy:</p>
+<p class='case-study-paragraph'><strong>“A comparison experience designed to make one of life's biggest logistical decisions feel simpler, clearer, and more trustworthy.”</strong></p>
+<p class='case-study-paragraph'>Final CTA:</p>
+<p class='case-study-paragraph'><strong>Compare Movers</strong></p>
+<hr class='case-study-divider' />
+    </div>
+
+    <!-- Visual Palette Showcase -->
+    <div class="case-study-divider"></div>
+    <div class="process-timeline-wrap">
+      <h2>Fonts & Colors Swatches</h2>
+      <div class="design-system-swatches">
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #ff9100;"></div>
+          <span class="swatch-hex">#ff9100</span>
+          <span class="swatch-name">Accent Orange</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #261605;"></div>
+          <span class="swatch-hex">#261605</span>
+          <span class="swatch-name">Deep Charcoal</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #0c0702;"></div>
+          <span class="swatch-hex">#0c0702</span>
+          <span class="swatch-name">Dark Void</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #ffffff;"></div>
+          <span class="swatch-hex">#ffffff</span>
+          <span class="swatch-name">Neutral White</span>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
+<div class="contact-footer-wrap">
+<section class="sec contact-sec" id="contacts">
+  <div class="contact-sticky-stage">
+    <!-- Interactive Wood Hover Reveal Element -->
+    <div class="contact-wood-interactive">
+      <div class="wood-img-base"></div>
+      <div class="wood-img-grass"></div>
+    </div>
+
+    <div class="contact-layout">
+      
+      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
+      <div class="contact-left-col">
+        <header class="contact-head">
+          <h2 class="testimonials-title contact-heading">
+            <span class="testi-word">Get</span>
+            <span class="testi-word">in</span>
+            <span class="testi-word testi-word--orange">touch</span>
+          </h2>
+          
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email:</span>
+              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Phone:</span>
+              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Address:</span>
+              <span class="contact-detail-value">Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <div class="contact-socials-wrap">
+            <span class="contact-socials-label">Follow us:</span>
+            <div class="contact-social-icons">
+              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
+                </svg>
+              </a>
+              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
+                </svg>
+              </a>
+              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Right Column: Interactive Form aligned to bottom-right -->
+      <div class="contact-right-col">
+        <form class="contact-form" id="contact-form">
+          <div class="contact-form-row">
+            <div class="contact-form-field">
+              <label for="contact-name" class="contact-form-label">Your Name</label>
+              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-email" class="contact-form-label">Email address</label>
+              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
+            </div>
+          </div>
+
+          <div class="contact-form-field">
+            <label for="contact-message" class="contact-form-label">Message</label>
+            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<footer class="footer-sec">
+  <div class="contact-bottom-footer">
+    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
+    <div class="contact-mid-wrap" data-reveal>
+      <div class="contact-mid-row">
+        <div class="contact-tagline">
+          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
+            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
+              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+            </svg>
+          </a>
+          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
+        </div>
+
+        <nav class="contact-links-nav" aria-label="Footer navigation">
+          <div class="contact-links-group">
+            <span class="contact-links-title">Links</span>
+            <a href="#home" class="contact-nav-link">Home</a>
+            <a href="#about" class="contact-nav-link">About Me</a>
+            <a href="#process" class="contact-nav-link">Process</a>
+          </div>
+          <div class="contact-links-group">
+            <span class="contact-links-title">Explore</span>
+            <a href="#work" class="contact-nav-link">Projects</a>
+            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
+            <a href="#contacts" class="contact-nav-link">Contacts</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
+    <div class="contact-copyright-wrap">
+      <div class="contact-copyright-row">
+        <span class="contact-copy-left">© 2026 Bappy Islam</span>
+        <span class="contact-copy-right">All rights reserved.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
+  <div class="contact-designer-banner">
+    <div class="contact-wordmark wordmark" aria-hidden="true">
+      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
+    </div>
+  </div>
+</footer>
+</div> </div> <!-- End of contact-footer-wrap -->
+  <script>
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+
+  function updateNavState() {
+    if (!nav) return;
+    const isScrolled = window.scrollY > 40;
+    nav.classList.toggle('is-scrolled', isScrolled);
+  }
+
+  updateNavState();
+  window.addEventListener('scroll', updateNavState, { passive: true });
+
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', !open);
+      burger.classList.toggle('is-open');
+      menu.classList.toggle('is-open');
+      if (!open) {
+        menu.removeAttribute('inert');
+        document.body.classList.add('no-scroll');
+      } else {
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.setAttribute('aria-expanded', 'false');
+        burger.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      });
+    });
+  }
+
+  // Redirect hash links on subpages to landing page sections
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#') && href !== '#') {
+      link.href = 'index.html' + href;
+    }
+  });
+
+  // Initialize interactive wood hover reveal effect in the footer
+  function initContactWoodHover() {
+    const stage = document.querySelector('.contact-sticky-stage');
+    if (!stage) return;
+
+    const grass = stage.querySelector('.wood-img-grass');
+    if (!grass) return;
+
+    stage.addEventListener('pointermove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      grass.style.setProperty('--mouse-x', `${x}px`);
+      grass.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    stage.addEventListener('pointerleave', () => {
+      grass.style.setProperty('--mouse-x', '-1000px');
+      grass.style.setProperty('--mouse-y', '-1000px');
+    });
+  }
+
+  // Contact Form AJAX Submission (FormSubmit.co)
+  function initContactFormSubmit() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('.contact-submit-btn');
+      if (!submitBtn) return;
+      
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending...</span>';
+      
+      const formData = {
+        name: document.getElementById('contact-name').value,
+        email: document.getElementById('contact-email').value,
+        message: document.getElementById('contact-message').value,
+        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
+      };
+      
+      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === 'true' || data.success === true) {
+          submitBtn.innerHTML = '<span>Message Sent!</span>';
+          submitBtn.style.background = '#2e7d32';
+          contactForm.reset();
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+          }, 4000);
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        submitBtn.innerHTML = '<span>Error! Try again</span>';
+        submitBtn.style.background = '#c62828';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+        }, 4000);
+      });
+    });
+  }
+
+  initContactWoodHover();
+  initContactFormSubmit();
+</script>
+</body>
+</html>

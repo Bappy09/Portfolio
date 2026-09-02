@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en" class="is-ready">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bappy — MyDoct Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --accent: #00e676;
+      --accent-rgb: 0, 230, 118;
+      --case-bg: radial-gradient(circle at top, #052617 0%, #010c07 100%);
+    }
+    body.case-study-page {
+      background: var(--case-bg);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .case-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px var(--pad);
+      box-sizing: border-box;
+    }
+    
+    /* Hero Style */
+    .case-hero {
+      padding-top: 160px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+    .case-hero-tag {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .case-hero-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+    
+    /* Back Navigation */
+    .case-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-family: var(--font-mono), monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .case-back-link:hover {
+      transform: translateX(-4px);
+      opacity: 0.85;
+    }
+    
+    /* Image Showcase container */
+    .case-img-wrap {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
+      margin-bottom: 80px;
+      aspect-ratio: 16 / 9.4;
+    }
+    .case-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    
+    /* Info grid */
+    .case-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px 0;
+      margin-bottom: 80px;
+    }
+    .case-info-item span {
+      display: block;
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.40);
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+    .case-info-item p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--paper);
+      margin: 0;
+    }
+    
+    /* Overview Split (Image 1, 3, 5 style) */
+    .overview-sec {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+      align-items: start;
+    }
+    .overview-text h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: var(--paper);
+    }
+    .overview-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 20px;
+    }
+    
+    /* Meta tags card */
+    .meta-tags-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .meta-tags-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      color: #ffffff;
+      border-left: 2px solid var(--accent);
+      padding-left: 10px;
+    }
+    .meta-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .meta-tag-list:last-child {
+      margin-bottom: 0;
+    }
+    .meta-tag {
+      background: rgba(var(--accent-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-rgb), 0.15);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--paper);
+      font-family: var(--font-mono), monospace;
+    }
+    
+    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
+    .prob-sol-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0 80px 0;
+    }
+    .prob-card {
+      background: rgba(255, 77, 77, 0.01);
+      border: 1px solid rgba(255, 77, 77, 0.08);
+      border-left: 4px solid #ff4d4d;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .sol-card {
+      background: rgba(0, 230, 118, 0.01);
+      border: 1px solid rgba(0, 230, 118, 0.08);
+      border-left: 4px solid #00e676;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .prob-sol-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .prob-sol-list {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .prob-sol-list li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 12px;
+    }
+    
+    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
+    .process-timeline-wrap {
+      margin-bottom: 80px;
+    }
+    .process-timeline-wrap h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .process-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    .process-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.3);
+    }
+    .process-num {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .process-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #ffffff;
+      font-family: 'Clash Display', sans-serif;
+    }
+    .process-desc {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.50);
+    }
+    
+    /* General content sections */
+    .case-study-sec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 80px 0 24px 0;
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+    }
+    .case-study-subsec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 48px 0 18px 0;
+    }
+    .case-study-subsubsec-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 24px 0 12px 0;
+    }
+    .case-study-paragraph {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 24px;
+    }
+    .case-study-divider {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 60px 0;
+    }
+    .case-study-list {
+      margin: 0 0 24px 0;
+      padding-left: 20px;
+    }
+    .case-study-list li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 8px;
+    }
+    
+    /* Visual Design System Swatches (Image 4 style) */
+    .design-system-swatches {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .color-swatch {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 12px;
+      width: 130px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .swatch-preview {
+      width: 100%;
+      height: 50px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .swatch-hex {
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #ffffff;
+      display: block;
+    }
+    .swatch-name {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.40);
+      margin-top: 2px;
+      display: block;
+    }
+    
+    /* Features Grid */
+    .case-study-features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .case-study-feature-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px;
+      border-radius: 12px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .case-study-feature-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .case-study-feature-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 0 0 8px 0;
+    }
+    .case-study-feature-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.55);
+      margin: 0;
+    }
+    
+    @media (max-width: 960px) {
+      .overview-sec {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .prob-sol-split {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .case-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .case-study-features-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .case-img-wrap {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .case-info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body class="case-study-page">
+
+  <!-- ══ NAV ═══════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#home" aria-label="Bappy — home">
+      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+      </svg>
+    </a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#home" class="is-active">Home</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contacts">Contacts</a>
+    </nav>
+
+    <div class="nav__status-wrapper" id="nav-status">
+      <a class="status-pill" href="#contacts">
+        <span class="beacon" aria-hidden="true">
+          <span class="beacon__dot"></span>
+          <span class="beacon__ring"></span>
+        </span>
+        <span class="status-pill__text">Available to work</span>
+      </a>
+    </div>
+
+    <div class="nav__actions">
+      <a class="btn-talk" href="#contacts" id="btn-talk">
+        <span>Let's talk</span>
+      </a>
+
+      <button class="burger" id="burger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+<div class="menu" id="menu" inert>
+  <nav class="menu__list">
+    <a href="#home"><i>01</i>Home</a>
+    <a href="#about"><i>02</i>About</a>
+    <a href="#work"><i>03</i>Projects</a>
+    <a href="#testimonials"><i>04</i>Reviews</a>
+    <a href="#contacts"><i>05</i>Contacts</a>
+  </nav>
+  <div class="menu__foot">
+    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
+  </div>
+</div>
+
+  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
+  <main class="case-wrapper">
+    <div class="case-hero">
+      <a href="projects.html" class="case-back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Selected Works
+      </a>
+      <span class="case-hero-tag">UX Case Study</span>
+      <h1 class="case-hero-title">MyDoct</h1>
+    </div>
+    
+    <!-- Info Grid -->
+    <div class="case-info-grid">
+      <div class="case-info-item">
+        <span>Role</span>
+        <p>Lead Telehealth Designer</p>
+      </div>
+      <div class="case-info-item">
+        <span>Timeline</span>
+        <p>3 Months (2026)</p>
+      </div>
+      <div class="case-info-item">
+        <span>Deliverables</span>
+        <p>Doctor App UI, Consultation Interface, Slot Selector</p>
+      </div>
+      <div class="case-info-item">
+        <span>Team</span>
+        <p>1 Designer, 3 Mobile Developers</p>
+      </div>
+    </div>
+
+    <!-- Image Showcase -->
+    <div class="case-img-wrap">
+      <img src="assets/showcase-13.jpg" alt="MyDoct Showcase" class="case-img" />
+    </div>
+
+    <!-- Overview Split Section -->
+    <div class="overview-sec">
+      <div class="overview-text">
+        <h2>About MyDoct</h2>
+        <p>Personal design portfolio showcase detailing the creative journey, layout experiments, component grids, and UX strategy.</p>
+      </div>
+      <div class="meta-tags-card">
+        <div class="meta-tags-title">Project Context</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Healthcare UX</span>
+<span class="meta-tag">Telehealth Systems</span>
+<span class="meta-tag">Visual Layouts</span>
+<span class="meta-tag">Interactive Calendars</span>
+        </div>
+        <div class="meta-tags-title">Tools Used</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Figma</span>
+<span class="meta-tag">Miro</span>
+<span class="meta-tag">Photoshop</span>
+<span class="meta-tag">Google Sheets</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Problem vs Solution Visual Box -->
+    <div class="prob-sol-split">
+      <div class="prob-card">
+        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
+        <ul class="prob-sol-list">
+          <li>Patients struggle to evaluate doctor credentials and trust listings.</li>
+<li>Appointment scheduling involves back-and-forth calling and calendar friction.</li>
+<li>Telehealth sessions require switching from booking apps to third-party tools.</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
+        <ul class="prob-sol-list">
+          <li>Highlighted doctor photo, ratings, reviews, and experience on card profiles.</li>
+<li>Created simple service selection cards featuring upfront pricing.</li>
+<li>Connected appointment records to secure, in-app video consultation screens.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Process Flow Grid -->
+    <div class="process-timeline-wrap">
+      <h2>Design Process</h2>
+      <div class="process-timeline">
+        
+        <div class="process-card">
+          <span class="process-num">Step 01</span>
+          <div class="process-title">Empathize</div>
+          <div class="process-desc">Speaking with patients about directory-search booking fatigue.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 02</span>
+          <div class="process-title">Define</div>
+          <div class="process-desc">Mapping trust builders (rating, experience, reviews) and pricing transparency.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 03</span>
+          <div class="process-title">Ideate</div>
+          <div class="process-desc">Designing doctor profiles and visual time scheduling selectors.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 04</span>
+          <div class="process-title">Design</div>
+          <div class="process-desc">Creating split-screen video consult panels and appointment states.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 05</span>
+          <div class="process-title">Test</div>
+          <div class="process-desc">Testing checkout validation and slot selectors with active users.</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Dynamic Content Area -->
+    <div class="case-content">
+      <p class='case-study-paragraph'>13. MyDoct — Doctor Discovery & Appointment Booking App</p>
+<p class='case-study-paragraph'>Find the Right Doctor. Book the Right Time.</p>
+<p class='case-study-paragraph'>MyDoct is a mobile healthcare platform designed to simplify the process of discovering doctors, evaluating specialists, choosing an appointment time, and booking a medical session.</p>
+<p class='case-study-paragraph'>From the provided screens, the product is centered around a patient-first journey:</p>
+<p class='case-study-paragraph'>Discover → Search → Evaluate → Select Time → Book → Consult</p>
+<p class='case-study-paragraph'>The interface also introduces a video consultation experience, suggesting that the platform is designed to support both appointment booking and remote healthcare interactions.</p>
+<p class='case-study-paragraph'>The screens show a product branded CliniQ inside the interface, with doctor discovery, service categories, pricing, doctor profiles, scheduling, and video consultation functionality.</p>
+<p class='case-study-paragraph'>Important: I found public references to products named MyDoct, but I could not verify that those public products are the same product shown in your uploaded design. So the business/problem statements below are derived primarily from the actual UI and product flow shown in the project image, rather than being presented as verified facts about an external company.</p>
+<p class='case-study-paragraph'>Why MyDoct Exists</p>
+<p class='case-study-paragraph'>Finding healthcare should not feel like searching through a generic directory.</p>
+<p class='case-study-paragraph'>A patient typically needs to answer several questions:</p>
+<p class='case-study-paragraph'>Which doctor should I choose?</p>
+<p class='case-study-paragraph'>Is the doctor experienced?</p>
+<p class='case-study-paragraph'>Do other patients trust them?</p>
+<p class='case-study-paragraph'>What type of visit do I need?</p>
+<p class='case-study-paragraph'>How much will it cost?</p>
+<p class='case-study-paragraph'>When are they available?</p>
+<p class='case-study-paragraph'>Can I speak with them remotely?</p>
+<p class='case-study-paragraph'>How quickly can I book?</p>
+<p class='case-study-paragraph'>Traditional healthcare booking experiences often separate these decisions across different pages or systems.</p>
+<p class='case-study-paragraph'>MyDoct brings them together into one mobile experience.</p>
+<p class='case-study-paragraph'>The core product promise is:</p>
+<p class='case-study-paragraph'>Make finding and booking healthcare feel as simple as choosing a time that works for you.</p>
+<p class='case-study-paragraph'>The Business Problem</p>
+<p class='case-study-paragraph'>01 — Finding the Right Doctor Takes Too Much Effort</p>
+<p class='case-study-paragraph'>Patients often need to evaluate multiple doctors before deciding.</p>
+<p class='case-study-paragraph'>The product therefore makes important information visible directly on doctor cards:</p>
+<p class='case-study-paragraph'>Doctor name</p>
+<p class='case-study-paragraph'>Specialty</p>
+<p class='case-study-paragraph'>Experience</p>
+<p class='case-study-paragraph'>Rating</p>
+<p class='case-study-paragraph'>Reviews</p>
+<p class='case-study-paragraph'>Availability</p>
+<p class='case-study-paragraph'>This reduces the amount of searching required.</p>
+<p class='case-study-paragraph'>02 — Patients Need Trust Before Booking</p>
+<p class='case-study-paragraph'>Healthcare is fundamentally a trust-based service.</p>
+<p class='case-study-paragraph'>A patient isn't simply choosing a product.</p>
+<p class='case-study-paragraph'>They're choosing a professional to provide care.</p>
+<p class='case-study-paragraph'>The interface therefore emphasizes:</p>
+<p class='case-study-paragraph'>Rating + Experience + Reviews</p>
+<p class='case-study-paragraph'>For example, the doctor profile surfaces:</p>
+<p class='case-study-paragraph'>4.6 rating</p>
+<p class='case-study-paragraph'>8+ Years Experience</p>
+<p class='case-study-paragraph'>3.5K+ Reviews</p>
+<p class='case-study-paragraph'>These act as immediate credibility signals.</p>
+<p class='case-study-paragraph'>03 — Healthcare Pricing Can Be Unclear</p>
+<p class='case-study-paragraph'>The service-selection interface introduces different categories and their prices:</p>
+<p class='case-study-paragraph'>General Visits</p>
+<p class='case-study-paragraph'>Specialist Visits</p>
+<p class='case-study-paragraph'>Medical Tests</p>
+<p class='case-study-paragraph'>Therapeutic</p>
+<p class='case-study-paragraph'>This helps users understand the financial side of the appointment before committing.</p>
+<p class='case-study-paragraph'>The design makes pricing part of the discovery experience rather than hiding it until checkout.</p>
+<p class='case-study-paragraph'>04 — Scheduling Creates Friction</p>
+<p class='case-study-paragraph'>A patient doesn't simply need a doctor.</p>
+<p class='case-study-paragraph'>They need a doctor at a suitable time.</p>
+<p class='case-study-paragraph'>The booking interface therefore combines:</p>
+<p class='case-study-paragraph'>Date + Time + Doctor + Session</p>
+<p class='case-study-paragraph'>into one focused interaction.</p>
+<p class='case-study-paragraph'>This reduces the back-and-forth often associated with appointment scheduling.</p>
+<p class='case-study-paragraph'>05 — Healthcare Is Moving Beyond Physical Visits</p>
+<p class='case-study-paragraph'>The presence of a video consultation screen suggests that MyDoct also supports remote interactions.</p>
+<p class='case-study-paragraph'>The consultation interface includes:</p>
+<p class='case-study-paragraph'>Doctor video</p>
+<p class='case-study-paragraph'>Patient video</p>
+<p class='case-study-paragraph'>Microphone control</p>
+<p class='case-study-paragraph'>Camera control</p>
+<p class='case-study-paragraph'>Audio control</p>
+<p class='case-study-paragraph'>End-call action</p>
+<p class='case-study-paragraph'>This allows the appointment experience to continue inside the product rather than moving users to another communication platform.</p>
+<p class='case-study-paragraph'>Primary Audience — Patients Looking for Doctors</p>
+<p class='case-study-paragraph'>People who need to:</p>
+<p class='case-study-paragraph'>Find a doctor</p>
+<p class='case-study-paragraph'>Compare doctors</p>
+<p class='case-study-paragraph'>Check availability</p>
+<p class='case-study-paragraph'>Book appointments</p>
+<p class='case-study-paragraph'>Attend consultations</p>
+<p class='case-study-paragraph'>Busy Professionals</p>
+<p class='case-study-paragraph'>Users who may not have time to call clinics or wait for manual appointment confirmation.</p>
+<p class='case-study-paragraph'>They benefit from:</p>
+<p class='case-study-paragraph'>Search → Choose → Schedule → Book</p>
+<p class='case-study-paragraph'>Patients Seeking Specialists</p>
+<p class='case-study-paragraph'>Users who already know that they need a particular type of healthcare professional.</p>
+<p class='case-study-paragraph'>The service categories and doctor profiles make specialist discovery easier.</p>
+<p class='case-study-paragraph'>Remote / Telehealth Patients</p>
+<p class='case-study-paragraph'>People who prefer to consult a doctor digitally rather than physically visiting a clinic.</p>
+<p class='case-study-paragraph'>The video consultation interface directly supports this audience.</p>
+<p class='case-study-paragraph'>Patients Who Prioritize Trust</p>
+<p class='case-study-paragraph'>Users who care about:</p>
+<p class='case-study-paragraph'>Experience</p>
+<p class='case-study-paragraph'>Ratings</p>
+<p class='case-study-paragraph'>Reviews</p>
+<p class='case-study-paragraph'>Doctor profile information</p>
+<p class='case-study-paragraph'>The interface provides these signals before booking.</p>
+<p class='case-study-paragraph'>“I don't know which doctor to choose.”</p>
+<p class='case-study-paragraph'>“I want to see their experience before booking.”</p>
+<p class='case-study-paragraph'>“Can I trust this doctor?”</p>
+<p class='case-study-paragraph'>“How much will the appointment cost?”</p>
+<p class='case-study-paragraph'>“When is the doctor available?”</p>
+<p class='case-study-paragraph'>“I don't want to call a clinic just to schedule.”</p>
+<p class='case-study-paragraph'>“Can I speak to the doctor online?”</p>
+<p class='case-study-paragraph'>These pain points define the product journey.</p>
+<p class='case-study-paragraph'>The product experience was designed around six key goals:</p>
+<p class='case-study-paragraph'>Make doctor discovery effortless</p>
+<p class='case-study-paragraph'>Build trust before booking</p>
+<p class='case-study-paragraph'>Make services and pricing understandable</p>
+<p class='case-study-paragraph'>Make appointment scheduling visual</p>
+<p class='case-study-paragraph'>Reduce booking friction</p>
+<p class='case-study-paragraph'>Bring consultation into the same ecosystem</p>
+<p class='case-study-paragraph'>The product follows a very clear healthcare decision journey:</p>
+<p class='case-study-paragraph'>Discover → Trust → Select → Schedule → Book → Consult</p>
+<p class='case-study-paragraph'>Each stage has a dedicated interaction.</p>
+<p class='case-study-paragraph'>01 — Discover</p>
+<p class='case-study-paragraph'>The home screen introduces:</p>
+<p class='case-study-paragraph'>Let's find your doctor</p>
+<p class='case-study-paragraph'>This is an excellent product-oriented entry point.</p>
+<p class='case-study-paragraph'>The interface immediately presents:</p>
+<p class='case-study-paragraph'>Doctor cards</p>
+<p class='case-study-paragraph'>Search</p>
+<p class='case-study-paragraph'>Filter</p>
+<p class='case-study-paragraph'>Service categories</p>
+<p class='case-study-paragraph'>The user doesn't need to understand the entire platform first.</p>
+<p class='case-study-paragraph'>They can immediately start looking for care.</p>
+<p class='case-study-paragraph'>Doctor Discovery</p>
+<p class='case-study-paragraph'>Doctor cards show the most important information immediately.</p>
+<p class='case-study-paragraph'>For example:</p>
+<p class='case-study-paragraph'>Dr. Sarah Johnson</p>
+<p class='case-study-paragraph'>AIBBS, MD</p>
+<p class='case-study-paragraph'>2064+ minutes</p>
+<p class='case-study-paragraph'>alongside her photograph.</p>
+<p class='case-study-paragraph'>Another doctor is presented alongside her, allowing users to visually compare options.</p>
+<p class='case-study-paragraph'>Why Doctor Photography Matters</p>
+<p class='case-study-paragraph'>Healthcare is personal.</p>
+<p class='case-study-paragraph'>Showing the doctor's face creates a stronger sense of human connection than presenting names and text alone.</p>
+<p class='case-study-paragraph'>The large portraits also make the doctors feel like real people rather than entries in a database.</p>
+<p class='case-study-paragraph'>This is particularly useful in telehealth.</p>
+<p class='case-study-paragraph'>Doctor Profile</p>
+<p class='case-study-paragraph'>Selecting a doctor reveals a richer profile.</p>
+<p class='case-study-paragraph'>The interface shows:</p>
+<p class='case-study-paragraph'>Doctor name</p>
+<p class='case-study-paragraph'>Rating</p>
+<p class='case-study-paragraph'>Credentials</p>
+<p class='case-study-paragraph'>Experience</p>
+<p class='case-study-paragraph'>Reviews</p>
+<p class='case-study-paragraph'>Actions</p>
+<p class='case-study-paragraph'>Availability</p>
+<p class='case-study-paragraph'>The profile therefore combines:</p>
+<p class='case-study-paragraph'>Trust + Information + Action</p>
+<p class='case-study-paragraph'>in one screen.</p>
+<p class='case-study-paragraph'>Trust Layer</p>
+<p class='case-study-paragraph'>The profile includes three particularly important signals:</p>
+<p class='case-study-paragraph'>Rating</p>
+<p class='case-study-paragraph'>4.6</p>
+<p class='case-study-paragraph'>Experience</p>
+<p class='case-study-paragraph'>8+ Years</p>
+<p class='case-study-paragraph'>Reviews</p>
+<p class='case-study-paragraph'>3.5K+</p>
+<p class='case-study-paragraph'>Together they answer:</p>
+<p class='case-study-paragraph'>Is this doctor credible?</p>
+<p class='case-study-paragraph'>The patient doesn't have to navigate somewhere else to find this information.</p>
+<p class='case-study-paragraph'>Why Trust Information Is Above the Booking Flow</p>
+<p class='case-study-paragraph'>The product intentionally places credibility information before appointment selection.</p>
+<p class='case-study-paragraph'>This follows a natural healthcare decision:</p>
+<p class='case-study-paragraph'>“Can I trust this doctor?”</p>
+<p class='case-study-paragraph'>before:</p>
+<p class='case-study-paragraph'>“When should I book?”</p>
+<p class='case-study-paragraph'>That ordering is important.</p>
+<p class='case-study-paragraph'>Service Discovery</p>
+<p class='case-study-paragraph'>The platform also lets users select the type of healthcare service they need.</p>
+<p class='case-study-paragraph'>The visible categories include:</p>
+<p class='case-study-paragraph'>General Visits</p>
+<p class='case-study-paragraph'>For routine healthcare needs.</p>
+<p class='case-study-paragraph'>Specialist Visits</p>
+<p class='case-study-paragraph'>For specialist consultations.</p>
+<p class='case-study-paragraph'>Medical Tests</p>
+<p class='case-study-paragraph'>For diagnostic services.</p>
+<p class='case-study-paragraph'>Therapeutic</p>
+<p class='case-study-paragraph'>For therapy-related care.</p>
+<p class='case-study-paragraph'>Each category displays a price.</p>
+<p class='case-study-paragraph'>Why Service Categories Matter</p>
+<p class='case-study-paragraph'>Not every patient starts with a doctor.</p>
+<p class='case-study-paragraph'>Some users start with a need:</p>
+<p class='case-study-paragraph'>“I need a general consultation.”</p>
+<p class='case-study-paragraph'>Others start with a provider:</p>
+<p class='case-study-paragraph'>“I want Dr. Sarah.”</p>
+<p class='case-study-paragraph'>The product supports both entry points.</p>
+<p class='case-study-paragraph'>This makes the information architecture more flexible.</p>
+<p class='case-study-paragraph'>Pricing Transparency</p>
+<p class='case-study-paragraph'>The service cards display pricing directly:</p>
+<p class='case-study-paragraph'>-$39</p>
+<p class='case-study-paragraph'>-$329</p>
+<p class='case-study-paragraph'>-$139</p>
+<p class='case-study-paragraph'>-$15</p>
+<p class='case-study-paragraph'>The specific prices shown in the showcase appear to be sample/product UI values rather than verified real-world pricing.</p>
+<p class='case-study-paragraph'>From a UX perspective, their purpose is clear:</p>
+<p class='case-study-paragraph'>Help the patient understand cost before booking.</p>
+<p class='case-study-paragraph'>Search & Filter</p>
+<p class='case-study-paragraph'>The discovery interface includes both:</p>
+<p class='case-study-paragraph'>Search</p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'>Filter</p>
+<p class='case-study-paragraph'>This supports two distinct behaviors.</p>
+<p class='case-study-paragraph'>Known Intent</p>
+<p class='case-study-paragraph'>“I already know which doctor I want.”</p>
+<p class='case-study-paragraph'>→ Search</p>
+<p class='case-study-paragraph'>Exploratory Intent</p>
+<p class='case-study-paragraph'>“I need help finding the right doctor.”</p>
+<p class='case-study-paragraph'>→ Filter / Browse</p>
+<p class='case-study-paragraph'>This is a strong marketplace-style interaction pattern.</p>
+<p class='case-study-paragraph'>Appointment Scheduling</p>
+<p class='case-study-paragraph'>The booking interface introduces:</p>
+<p class='case-study-paragraph'>Select Time</p>
+<p class='case-study-paragraph'>followed by a date selector.</p>
+<p class='case-study-paragraph'>The user can choose among dates such as:</p>
+<p class='case-study-paragraph'>22 Friday</p>
+<p class='case-study-paragraph'>23 Saturday</p>
+<p class='case-study-paragraph'>24 Sunday</p>
+<p class='case-study-paragraph'>25 Monday</p>
+<p class='case-study-paragraph'>The selected date receives a visually stronger treatment.</p>
+<p class='case-study-paragraph'>Why Date Selection Is Simple</p>
+<p class='case-study-paragraph'>The interface avoids a large traditional calendar.</p>
+<p class='case-study-paragraph'>Instead, it uses a compact horizontal date selector.</p>
+<p class='case-study-paragraph'>This is appropriate for mobile because it minimizes visual complexity.</p>
+<p class='case-study-paragraph'>The user can quickly scan nearby availability.</p>
+<p class='case-study-paragraph'>Time Selection</p>
+<p class='case-study-paragraph'>Below the date selector is a visual time scale.</p>
+<p class='case-study-paragraph'>The user can select a session around:</p>
+<p class='case-study-paragraph'>730 → 800 → 830 → 900</p>
+<p class='case-study-paragraph'>The selected time is emphasized using a visual marker.</p>
+<p class='case-study-paragraph'>This creates a more tactile scheduling interaction than a standard dropdown.</p>
+<p class='case-study-paragraph'>Why the Time Slider Is Effective</p>
+<p class='case-study-paragraph'>Traditional time dropdowns require users to:</p>
+<p class='case-study-paragraph'>Open → Scroll → Find → Select</p>
+<p class='case-study-paragraph'>The visual time scale makes availability feel more continuous.</p>
+<p class='case-study-paragraph'>It allows the patient to understand:</p>
+<p class='case-study-paragraph'>Where the available time sits within the day.</p>
+<p class='case-study-paragraph'>Booking CTA</p>
+<p class='case-study-paragraph'>At the bottom:</p>
+<p class='case-study-paragraph'>Book Session</p>
+<p class='case-study-paragraph'>is presented as the primary action.</p>
+<p class='case-study-paragraph'>The button remains visually dominant.</p>
+<p class='case-study-paragraph'>The user journey is therefore:</p>
+<p class='case-study-paragraph'>Doctor → Date → Time → Book</p>
+<p class='case-study-paragraph'>with minimal distractions.</p>
+<p class='case-study-paragraph'>Consultation Experience</p>
+<p class='case-study-paragraph'>The product also contains a dedicated video consultation screen.</p>
+<p class='case-study-paragraph'>The doctor occupies the main visual area.</p>
+<p class='case-study-paragraph'>Smaller participant windows appear near the bottom.</p>
+<p class='case-study-paragraph'>The controls include:</p>
+<p class='case-study-paragraph'>Microphone</p>
+<p class='case-study-paragraph'>Camera</p>
+<p class='case-study-paragraph'>Audio</p>
+<p class='case-study-paragraph'>End Call</p>
+<p class='case-study-paragraph'>This is a familiar interaction model, reducing the learning curve for users.</p>
+<p class='case-study-paragraph'>Why Telehealth Belongs Inside the Product</p>
+<p class='case-study-paragraph'>The booking journey and consultation journey become connected:</p>
+<p class='case-study-paragraph'>Discover Doctor</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Book Session</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Join Consultation</p>
+<p class='case-study-paragraph'>This removes the need for the user to manually move between unrelated services.</p>
+<p class='case-study-paragraph'>End-to-End Patient Journey</p>
+<p class='case-study-paragraph'>The entire product can be represented as:</p>
+<p class='case-study-paragraph'>Find a Doctor</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Evaluate</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Choose a Service</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Select Date</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Select Time</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Book Session</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Join Consultation</p>
+<p class='case-study-paragraph'>This is the central UX story of MyDoct.</p>
+<p class='case-study-paragraph'>Information Architecture</p>
+<p class='case-study-paragraph'>The product can be divided into four major layers.</p>
+<p class='case-study-paragraph'>Layer 01 — Discovery</p>
+<p class='case-study-paragraph'>Search</p>
+<p class='case-study-paragraph'>Filter</p>
+<p class='case-study-paragraph'>Doctor cards</p>
+<p class='case-study-paragraph'>Categories</p>
+<p class='case-study-paragraph'>Layer 02 — Evaluation</p>
+<p class='case-study-paragraph'>Doctor profile</p>
+<p class='case-study-paragraph'>Rating</p>
+<p class='case-study-paragraph'>Experience</p>
+<p class='case-study-paragraph'>Reviews</p>
+<p class='case-study-paragraph'>Services</p>
+<p class='case-study-paragraph'>Pricing</p>
+<p class='case-study-paragraph'>Layer 03 — Booking</p>
+<p class='case-study-paragraph'>Date</p>
+<p class='case-study-paragraph'>Time</p>
+<p class='case-study-paragraph'>Availability</p>
+<p class='case-study-paragraph'>Book Session</p>
+<p class='case-study-paragraph'>Layer 04 — Consultation</p>
+<p class='case-study-paragraph'>Video</p>
+<p class='case-study-paragraph'>Audio</p>
+<p class='case-study-paragraph'>Camera</p>
+<p class='case-study-paragraph'>Communication controls</p>
+<p class='case-study-paragraph'>This structure keeps the user's mental model simple.</p>
+<p class='case-study-paragraph'>Visual Design Strategy</p>
+<p class='case-study-paragraph'>The design uses a modern healthcare aesthetic combining:</p>
+<p class='case-study-paragraph'>Soft blue-grey backgrounds</p>
+<p class='case-study-paragraph'>White surfaces</p>
+<p class='case-study-paragraph'>Deep navy</p>
+<p class='case-study-paragraph'>Pale cyan</p>
+<p class='case-study-paragraph'>Rounded cards</p>
+<p class='case-study-paragraph'>Large doctor photography</p>
+<p class='case-study-paragraph'>Soft shadows</p>
+<p class='case-study-paragraph'>Minimal line icons</p>
+<p class='case-study-paragraph'>High-contrast CTAs</p>
+<p class='case-study-paragraph'>The visual language feels:</p>
+<p class='case-study-paragraph'>Professional + Calm + Human + Digital</p>
+<p class='case-study-paragraph'>Why Blue-Grey Works for Healthcare</p>
+<p class='case-study-paragraph'>The blue-grey environment creates a calm atmosphere.</p>
+<p class='case-study-paragraph'>Healthcare products need to communicate confidence without feeling aggressive.</p>
+<p class='case-study-paragraph'>The visual language therefore avoids excessive saturation.</p>
+<p class='case-study-paragraph'>Instead, it relies on:</p>
+<p class='case-study-paragraph'>Soft blue → Trust</p>
+<p class='case-study-paragraph'>White → Cleanliness</p>
+<p class='case-study-paragraph'>Navy → Professionalism</p>
+<p class='case-study-paragraph'>Rounded surfaces → Approachability</p>
+<p class='case-study-paragraph'>Doctor Photography as a Brand Element</p>
+<p class='case-study-paragraph'>The doctor portraits are treated almost like product imagery.</p>
+<p class='case-study-paragraph'>Large portraits appear repeatedly throughout the experience.</p>
+<p class='case-study-paragraph'>This creates a stronger emotional connection with the platform.</p>
+<p class='case-study-paragraph'>The product doesn't feel like:</p>
+<p class='case-study-paragraph'>“A medical database.”</p>
+<p class='case-study-paragraph'>It feels more like:</p>
+<p class='case-study-paragraph'>“A place where I can meet healthcare professionals.”</p>
+<p class='case-study-paragraph'>Card-Based Architecture</p>
+<p class='case-study-paragraph'>Cards are used for:</p>
+<p class='case-study-paragraph'>Doctors</p>
+<p class='case-study-paragraph'>Services</p>
+<p class='case-study-paragraph'>Pricing</p>
+<p class='case-study-paragraph'>Dates</p>
+<p class='case-study-paragraph'>Consultation participants</p>
+<p class='case-study-paragraph'>This gives every major piece of information a defined container.</p>
+<p class='case-study-paragraph'>It also creates consistency across different healthcare workflows.</p>
+<p class='case-study-paragraph'>Bottom-Weighted Mobile Actions</p>
+<p class='case-study-paragraph'>The booking screens place the primary CTA toward the bottom:</p>
+<p class='case-study-paragraph'>Book Session</p>
+<p class='case-study-paragraph'>This is ergonomically appropriate for mobile users.</p>
+<p class='case-study-paragraph'>It also creates a natural visual endpoint after the user has selected:</p>
+<p class='case-study-paragraph'>Date + Time</p>
+<p class='case-study-paragraph'>Progressive Disclosure</p>
+<p class='case-study-paragraph'>The product does not show every detail at once.</p>
+<p class='case-study-paragraph'>Instead:</p>
+<p class='case-study-paragraph'>Discovery</p>
+<p class='case-study-paragraph'>Show enough information to find a doctor.</p>
+<p class='case-study-paragraph'>Profile</p>
+<p class='case-study-paragraph'>Show enough information to trust the doctor.</p>
+<p class='case-study-paragraph'>Booking</p>
+<p class='case-study-paragraph'>Show enough information to schedule.</p>
+<p class='case-study-paragraph'>Consultation</p>
+<p class='case-study-paragraph'>Show only the controls required during the call.</p>
+<p class='case-study-paragraph'>This reduces cognitive load.</p>
+<p class='case-study-paragraph'>Business Value</p>
+<p class='case-study-paragraph'>A strong experience like this can create business value by:</p>
+<p class='case-study-paragraph'>Increasing Appointment Conversion</p>
+<p class='case-study-paragraph'>A shorter booking journey reduces friction.</p>
+<p class='case-study-paragraph'>Improving Doctor Discovery</p>
+<p class='case-study-paragraph'>Patients can compare doctors more easily.</p>
+<p class='case-study-paragraph'>Increasing Trust</p>
+<p class='case-study-paragraph'>Ratings, reviews, and experience are visible before booking.</p>
+<p class='case-study-paragraph'>Reducing Administrative Work</p>
+<p class='case-study-paragraph'>Patients can schedule appointments without relying on manual coordination.</p>
+<p class='case-study-paragraph'>Supporting Telehealth</p>
+<p class='case-study-paragraph'>Consultations can happen directly inside the product.</p>
+<p class='case-study-paragraph'>Increasing Service Visibility</p>
+<p class='case-study-paragraph'>Different healthcare services can be promoted and booked through the same ecosystem.</p>
+<p class='case-study-paragraph'>Marketplace Dynamics</p>
+<p class='case-study-paragraph'>MyDoct effectively connects two sides:</p>
+<p class='case-study-paragraph'>Patient</p>
+<p class='case-study-paragraph'>Needs:</p>
+<p class='case-study-paragraph'>Trust + Availability + Price + Convenience</p>
+<p class='case-study-paragraph'>Doctor / Provider</p>
+<p class='case-study-paragraph'>Needs:</p>
+<p class='case-study-paragraph'>Patients + Bookings + Visibility + Utilization</p>
+<p class='case-study-paragraph'>The platform sits between these two needs.</p>
+<p class='case-study-paragraph'>A successful UX must therefore work for both sides.</p>
+<p class='case-study-paragraph'>The Main Design Challenge</p>
+<p class='case-study-paragraph'>The central design challenge was:</p>
+<p class='case-study-paragraph'>How do you make a healthcare decision feel simple when the decision itself requires trust, information, timing, and money?</p>
+<p class='case-study-paragraph'>The solution is to structure the experience around the patient's natural decision process.</p>
+<p class='case-study-paragraph'>The UX Solution</p>
+<p class='case-study-paragraph'>Instead of:</p>
+<p class='case-study-paragraph'>Search → Lots of information → Confusion → Booking</p>
+<p class='case-study-paragraph'>the product creates:</p>
+<p class='case-study-paragraph'>Discover → Trust → Choose → Schedule → Consult</p>
+<p class='case-study-paragraph'>Each stage provides exactly the information needed for the next decision.</p>
+<p class='case-study-paragraph'>Before vs After</p>
+<p class='case-study-paragraph'>Traditional Healthcare Booking</p>
+<p class='case-study-paragraph'>Search Google</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Find clinic</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Check doctor</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Call clinic</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Ask about availability</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Ask about price</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Schedule</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Receive separate consultation instructions</p>
+<p class='case-study-paragraph'>MyDoct</p>
+<p class='case-study-paragraph'>Find doctor</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>See rating + experience + reviews</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Choose service</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>See price</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Select time</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Book Session</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Join consultation</p>
+<p class='case-study-paragraph'>The platform compresses multiple offline interactions into one digital journey.</p>
+<p class='case-study-paragraph'>What I Focused on as a Product Designer</p>
+<p class='case-study-paragraph'>01 — Doctor Discovery</p>
+<p class='case-study-paragraph'>Making it easy to browse and search healthcare professionals.</p>
+<p class='case-study-paragraph'>02 — Trust</p>
+<p class='case-study-paragraph'>Surfacing ratings, experience, credentials, and reviews before booking.</p>
+<p class='case-study-paragraph'>03 — Service Clarity</p>
+<p class='case-study-paragraph'>Helping users understand what type of visit they are selecting.</p>
+<p class='case-study-paragraph'>04 — Price Transparency</p>
+<p class='case-study-paragraph'>Showing service costs during discovery.</p>
+<p class='case-study-paragraph'>05 — Scheduling</p>
+<p class='case-study-paragraph'>Creating a simple date-and-time selection experience.</p>
+<p class='case-study-paragraph'>06 — Telehealth</p>
+<p class='case-study-paragraph'>Connecting booking directly to an in-app consultation experience.</p>
+<p class='case-study-paragraph'>07 — Human-Centered Healthcare</p>
+<p class='case-study-paragraph'>Using doctor photography and approachable visual design to make healthcare feel less transactional.</p>
+<p class='case-study-paragraph'>Design Outcome</p>
+<p class='case-study-paragraph'>The final experience transforms healthcare booking from a fragmented process into a continuous digital journey:</p>
+<p class='case-study-paragraph'>Find → Trust → Schedule → Consult</p>
+<p class='case-study-paragraph'>Instead of making patients coordinate multiple steps themselves, the product brings:</p>
+<p class='case-study-paragraph'>Doctor Discovery</p>
+<p class='case-study-paragraph'>Service Selection</p>
+<p class='case-study-paragraph'>Pricing</p>
+<p class='case-study-paragraph'>Availability</p>
+<p class='case-study-paragraph'>Booking</p>
+<p class='case-study-paragraph'>Telehealth</p>
+<p class='case-study-paragraph'>into one coherent experience.</p>
+<p class='case-study-paragraph'>Key UX Decisions</p>
+<p class='case-study-paragraph'>From Doctor Directory → Doctor Discovery</p>
+<p class='case-study-paragraph'>The product doesn't simply list doctors.</p>
+<p class='case-study-paragraph'>It helps users decide which doctor may be right for them.</p>
+<p class='case-study-paragraph'>From Generic Profiles → Trust Profiles</p>
+<p class='case-study-paragraph'>Ratings, experience, and reviews become part of the selection process.</p>
+<p class='case-study-paragraph'>From Service Lists → Service Decisions</p>
+<p class='case-study-paragraph'>Service categories are paired with pricing so users can understand what they're choosing.</p>
+<p class='case-study-paragraph'>From Calendar Complexity → Quick Scheduling</p>
+<p class='case-study-paragraph'>The compact date and time controls make appointment selection easier on mobile.</p>
+<p class='case-study-paragraph'>From Booking → Complete Care Journey</p>
+<p class='case-study-paragraph'>The product continues from appointment booking into video consultation.</p>
+<p class='case-study-paragraph'>From Clinical Interface → Human Experience</p>
+<p class='case-study-paragraph'>Large doctor photography, soft colors, and approachable cards make the platform feel less institutional.</p>
+<p class='case-study-paragraph'>Key Takeaways</p>
+<p class='case-study-paragraph'>Healthcare UX must reduce uncertainty.</p>
+<p class='case-study-paragraph'>Patients need confidence before taking action.</p>
+<p class='case-study-paragraph'>Trust should appear before conversion.</p>
+<p class='case-study-paragraph'>Rating, experience, and reviews should be visible before the booking CTA.</p>
+<p class='case-study-paragraph'>Scheduling should be effortless.</p>
+<p class='case-study-paragraph'>Date and time selection are among the most important interactions in an appointment platform.</p>
+<p class='case-study-paragraph'>Pricing transparency builds confidence.</p>
+<p class='case-study-paragraph'>Patients should understand the cost before they commit.</p>
+<p class='case-study-paragraph'>Telehealth should feel connected to booking.</p>
+<p class='case-study-paragraph'>The consultation should be a continuation of the appointment—not a completely separate experience.</p>
+<p class='case-study-paragraph'>Healthcare products should feel human.</p>
+<p class='case-study-paragraph'>Doctors are people, not database entries. Their presence should be reflected in the interface.</p>
+<p class='case-study-paragraph'>Good healthcare UX turns a complicated decision into a guided journey.</p>
+<p class='case-study-paragraph'>Find → Trust → Schedule → Consult.</p>
+<p class='case-study-paragraph'>Section 01 — Hero</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“Making healthcare easier to find, book, and experience.”</p>
+<p class='case-study-paragraph'>Supporting copy:</p>
+<p class='case-study-paragraph'>“MyDoct is a mobile healthcare experience that helps patients discover trusted doctors, compare services, schedule appointments, and connect through digital consultations.”</p>
+<p class='case-study-paragraph'>Project metadata:</p>
+<p class='case-study-paragraph'>Product: MyDoct</p>
+<p class='case-study-paragraph'>Category: Healthcare / Telehealth</p>
+<p class='case-study-paragraph'>Platform: Mobile App</p>
+<p class='case-study-paragraph'>Focus: Doctor discovery, appointment booking & teleconsultation</p>
+<p class='case-study-paragraph'>Keep the full multi-screen showcase prominent.</p>
+<p class='case-study-paragraph'>Section 02 — The Challenge</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“Finding healthcare shouldn't require a dozen steps.”</p>
+<p class='case-study-paragraph'>Show the problem as:</p>
+<p class='case-study-paragraph'>Find a Doctor</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Evaluate Trust</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Check Price</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Find Availability</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Book</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Join Consultation</p>
+<p class='case-study-paragraph'>Explain how fragmented healthcare journeys create friction.</p>
+<p class='case-study-paragraph'>Use a large doctor-profile crop beside the text.</p>
+<p class='case-study-paragraph'>Create the main journey:</p>
+<p class='case-study-paragraph'>DISCOVER → TRUST → SCHEDULE → CONSULT</p>
+<p class='case-study-paragraph'>Use four large stages.</p>
+<p class='case-study-paragraph'>Under each stage:</p>
+<p class='case-study-paragraph'>Discover</p>
+<p class='case-study-paragraph'>Find the right doctor.</p>
+<p class='case-study-paragraph'>Trust</p>
+<p class='case-study-paragraph'>Understand their experience and reputation.</p>
+<p class='case-study-paragraph'>Schedule</p>
+<p class='case-study-paragraph'>Choose a service, date, and time.</p>
+<p class='case-study-paragraph'>Consult</p>
+<p class='case-study-paragraph'>Meet the doctor digitally.</p>
+<p class='case-study-paragraph'>This should be the primary conceptual diagram of the case study.</p>
+<p class='case-study-paragraph'>Section 04 — Doctor Discovery</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“Start with the patient, not the system.”</p>
+<p class='case-study-paragraph'>Highlight:</p>
+<p class='case-study-paragraph'>Search</p>
+<p class='case-study-paragraph'>Filter</p>
+<p class='case-study-paragraph'>Doctor cards</p>
+<p class='case-study-paragraph'>Service categories</p>
+<p class='case-study-paragraph'>Pricing</p>
+<p class='case-study-paragraph'>Use annotation lines.</p>
+<p class='case-study-paragraph'>Section 05 — Trust</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“Before patients book, they need a reason to trust.”</p>
+<p class='case-study-paragraph'>Highlight:</p>
+<p class='case-study-paragraph'>4.6 Rating</p>
+<p class='case-study-paragraph'>8+ Years Experience</p>
+<p class='case-study-paragraph'>3.5K+ Reviews</p>
+<p class='case-study-paragraph'>Doctor Credentials</p>
+<p class='case-study-paragraph'>Explain how these elements reduce uncertainty.</p>
+<p class='case-study-paragraph'>Section 06 — Service & Pricing</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“Make the choice understandable before asking for commitment.”</p>
+<p class='case-study-paragraph'>Show:</p>
+<p class='case-study-paragraph'>General Visits</p>
+<p class='case-study-paragraph'>Specialist Visits</p>
+<p class='case-study-paragraph'>Medical Tests</p>
+<p class='case-study-paragraph'>Therapeutic</p>
+<p class='case-study-paragraph'>and their associated prices.</p>
+<p class='case-study-paragraph'>Explain that service and pricing information is surfaced before booking.</p>
+<p class='case-study-paragraph'>Section 07 — Appointment Scheduling</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“Turn appointment scheduling into a simple visual decision.”</p>
+<p class='case-study-paragraph'>Show:</p>
+<p class='case-study-paragraph'>Date → Time → Book Session</p>
+<p class='case-study-paragraph'>Highlight the horizontal date selector and visual time scale.</p>
+<p class='case-study-paragraph'>Section 08 — Progressive Disclosure</p>
+<p class='case-study-paragraph'>Create a visual:</p>
+<p class='case-study-paragraph'>Doctor Card</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Doctor Profile</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Schedule</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Consultation</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“Show the right information at the right moment.”</p>
+<p class='case-study-paragraph'>Explain how each screen progressively reveals more detail.</p>
+<p class='case-study-paragraph'>Section 09 — Telehealth</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“The journey doesn't end when the booking is confirmed.”</p>
+<p class='case-study-paragraph'>Show:</p>
+<p class='case-study-paragraph'>Doctor video</p>
+<p class='case-study-paragraph'>Patient video</p>
+<p class='case-study-paragraph'>Audio</p>
+<p class='case-study-paragraph'>Camera</p>
+<p class='case-study-paragraph'>End call</p>
+<p class='case-study-paragraph'>Explain how consultation becomes the natural final stage of the booking journey.</p>
+<p class='case-study-paragraph'>Section 10 — Visual Design</p>
+<p class='case-study-paragraph'>Use close-up crops from the showcase.</p>
+<p class='case-study-paragraph'>Show:</p>
+<p class='case-study-paragraph'>Doctor photography</p>
+<p class='case-study-paragraph'>Rounded cards</p>
+<p class='case-study-paragraph'>Blue-grey backgrounds</p>
+<p class='case-study-paragraph'>Navy CTA</p>
+<p class='case-study-paragraph'>Service cards</p>
+<p class='case-study-paragraph'>Rating badges</p>
+<p class='case-study-paragraph'>Time selector</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“Calm, human, and clinically trustworthy.”</p>
+<p class='case-study-paragraph'>Explain the visual language.</p>
+<p class='case-study-paragraph'>Section 11 — Component System</p>
+<p class='case-study-paragraph'>Show the repeated patterns from the screens:</p>
+<p class='case-study-paragraph'>Doctor Cards</p>
+<p class='case-study-paragraph'>Service Cards</p>
+<p class='case-study-paragraph'>Rating Badges</p>
+<p class='case-study-paragraph'>Date Selector</p>
+<p class='case-study-paragraph'>Time Selector</p>
+<p class='case-study-paragraph'>Buttons</p>
+<p class='case-study-paragraph'>Navigation</p>
+<p class='case-study-paragraph'>Consultation Controls</p>
+<p class='case-study-paragraph'>Explain how reusable components maintain consistency throughout the healthcare journey.</p>
+<p class='case-study-paragraph'>Section 12 — Before / After</p>
+<p class='case-study-paragraph'>Before</p>
+<p class='case-study-paragraph'>Search independently</p>
+<p class='case-study-paragraph'>Call clinics</p>
+<p class='case-study-paragraph'>Check doctor credentials</p>
+<p class='case-study-paragraph'>Ask about price</p>
+<p class='case-study-paragraph'>Ask about availability</p>
+<p class='case-study-paragraph'>Book manually</p>
+<p class='case-study-paragraph'>Use another tool for consultation</p>
+<p class='case-study-paragraph'>After</p>
+<p class='case-study-paragraph'>Find doctor</p>
+<p class='case-study-paragraph'>Check trust signals</p>
+<p class='case-study-paragraph'>Choose service</p>
+<p class='case-study-paragraph'>See price</p>
+<p class='case-study-paragraph'>Select time</p>
+<p class='case-study-paragraph'>Book</p>
+<p class='case-study-paragraph'>Consult</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“From fragmented healthcare booking to one connected journey.”</p>
+<p class='case-study-paragraph'>Section 13 — Product Outcome</p>
+<p class='case-study-paragraph'>Create the transformation:</p>
+<p class='case-study-paragraph'>DISCOVER</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>TRUST</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>SCHEDULE</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>CONSULT</p>
+<p class='case-study-paragraph'>Then below:</p>
+<p class='case-study-paragraph'>Less uncertainty</p>
+<p class='case-study-paragraph'>Less friction</p>
+<p class='case-study-paragraph'>More confidence</p>
+<p class='case-study-paragraph'>Section 14 — Final Showcase</p>
+<p class='case-study-paragraph'>But this time, crop the individual screens and arrange them according to the journey:</p>
+<p class='case-study-paragraph'>Doctor Discovery</p>
+<p class='case-study-paragraph'>→</p>
+<p class='case-study-paragraph'>Doctor Profile</p>
+<p class='case-study-paragraph'>→</p>
+<p class='case-study-paragraph'>Appointment</p>
+<p class='case-study-paragraph'>→</p>
+<p class='case-study-paragraph'>Video Consultation</p>
+<p class='case-study-paragraph'>This tells the product story visually.</p>
+<p class='case-study-paragraph'>Section 15 — Closing</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'>“Better access starts with a simpler experience.”</p>
+<p class='case-study-paragraph'>Supporting copy:</p>
+<p class='case-study-paragraph'>“MyDoct connects doctor discovery, trusted profiles, appointment scheduling, and digital consultation into one patient-centered healthcare journey.”</p>
+<p class='case-study-paragraph'>Final CTA:</p>
+<p class='case-study-paragraph'>Book a Session</p>
+<p class='case-study-paragraph'>Hero</p>
+<p class='case-study-paragraph'>Problem</p>
+<p class='case-study-paragraph'>Use a large crop of the doctor-profile screen.</p>
+<p class='case-study-paragraph'>Discovery</p>
+<p class='case-study-paragraph'>Trust</p>
+<p class='case-study-paragraph'>Use Dr. Sarah Johnson's profile.</p>
+<p class='case-study-paragraph'>Service</p>
+<p class='case-study-paragraph'>Scheduling</p>
+<p class='case-study-paragraph'>Consultation</p>
+<p class='case-study-paragraph'>Visual System</p>
+<p class='case-study-paragraph'>Crop the rounded cards, ratings, time selector, CTA, and doctor imagery.</p>
+<p class='case-study-paragraph'>Final</p>
+    </div>
+
+    <!-- Visual Palette Showcase -->
+    <div class="case-study-divider"></div>
+    <div class="process-timeline-wrap">
+      <h2>Fonts & Colors Swatches</h2>
+      <div class="design-system-swatches">
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #00e676;"></div>
+          <span class="swatch-hex">#00e676</span>
+          <span class="swatch-name">Neon Emerald</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #052617;"></div>
+          <span class="swatch-hex">#052617</span>
+          <span class="swatch-name">Deep Forest</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #010c07;"></div>
+          <span class="swatch-hex">#010c07</span>
+          <span class="swatch-name">Dark Void</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #ffffff;"></div>
+          <span class="swatch-hex">#ffffff</span>
+          <span class="swatch-name">Neutral White</span>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
+<div class="contact-footer-wrap">
+<section class="sec contact-sec" id="contacts">
+  <div class="contact-sticky-stage">
+    <!-- Interactive Wood Hover Reveal Element -->
+    <div class="contact-wood-interactive">
+      <div class="wood-img-base"></div>
+      <div class="wood-img-grass"></div>
+    </div>
+
+    <div class="contact-layout">
+      
+      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
+      <div class="contact-left-col">
+        <header class="contact-head">
+          <h2 class="testimonials-title contact-heading">
+            <span class="testi-word">Get</span>
+            <span class="testi-word">in</span>
+            <span class="testi-word testi-word--orange">touch</span>
+          </h2>
+          
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email:</span>
+              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Phone:</span>
+              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Address:</span>
+              <span class="contact-detail-value">Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <div class="contact-socials-wrap">
+            <span class="contact-socials-label">Follow us:</span>
+            <div class="contact-social-icons">
+              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
+                </svg>
+              </a>
+              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
+                </svg>
+              </a>
+              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Right Column: Interactive Form aligned to bottom-right -->
+      <div class="contact-right-col">
+        <form class="contact-form" id="contact-form">
+          <div class="contact-form-row">
+            <div class="contact-form-field">
+              <label for="contact-name" class="contact-form-label">Your Name</label>
+              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-email" class="contact-form-label">Email address</label>
+              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
+            </div>
+          </div>
+
+          <div class="contact-form-field">
+            <label for="contact-message" class="contact-form-label">Message</label>
+            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<footer class="footer-sec">
+  <div class="contact-bottom-footer">
+    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
+    <div class="contact-mid-wrap" data-reveal>
+      <div class="contact-mid-row">
+        <div class="contact-tagline">
+          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
+            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
+              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+            </svg>
+          </a>
+          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
+        </div>
+
+        <nav class="contact-links-nav" aria-label="Footer navigation">
+          <div class="contact-links-group">
+            <span class="contact-links-title">Links</span>
+            <a href="#home" class="contact-nav-link">Home</a>
+            <a href="#about" class="contact-nav-link">About Me</a>
+            <a href="#process" class="contact-nav-link">Process</a>
+          </div>
+          <div class="contact-links-group">
+            <span class="contact-links-title">Explore</span>
+            <a href="#work" class="contact-nav-link">Projects</a>
+            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
+            <a href="#contacts" class="contact-nav-link">Contacts</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
+    <div class="contact-copyright-wrap">
+      <div class="contact-copyright-row">
+        <span class="contact-copy-left">© 2026 Bappy Islam</span>
+        <span class="contact-copy-right">All rights reserved.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
+  <div class="contact-designer-banner">
+    <div class="contact-wordmark wordmark" aria-hidden="true">
+      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
+    </div>
+  </div>
+</footer>
+</div> </div> <!-- End of contact-footer-wrap -->
+  <script>
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+
+  function updateNavState() {
+    if (!nav) return;
+    const isScrolled = window.scrollY > 40;
+    nav.classList.toggle('is-scrolled', isScrolled);
+  }
+
+  updateNavState();
+  window.addEventListener('scroll', updateNavState, { passive: true });
+
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', !open);
+      burger.classList.toggle('is-open');
+      menu.classList.toggle('is-open');
+      if (!open) {
+        menu.removeAttribute('inert');
+        document.body.classList.add('no-scroll');
+      } else {
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.setAttribute('aria-expanded', 'false');
+        burger.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      });
+    });
+  }
+
+  // Redirect hash links on subpages to landing page sections
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#') && href !== '#') {
+      link.href = 'index.html' + href;
+    }
+  });
+
+  // Initialize interactive wood hover reveal effect in the footer
+  function initContactWoodHover() {
+    const stage = document.querySelector('.contact-sticky-stage');
+    if (!stage) return;
+
+    const grass = stage.querySelector('.wood-img-grass');
+    if (!grass) return;
+
+    stage.addEventListener('pointermove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      grass.style.setProperty('--mouse-x', `${x}px`);
+      grass.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    stage.addEventListener('pointerleave', () => {
+      grass.style.setProperty('--mouse-x', '-1000px');
+      grass.style.setProperty('--mouse-y', '-1000px');
+    });
+  }
+
+  // Contact Form AJAX Submission (FormSubmit.co)
+  function initContactFormSubmit() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('.contact-submit-btn');
+      if (!submitBtn) return;
+      
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending...</span>';
+      
+      const formData = {
+        name: document.getElementById('contact-name').value,
+        email: document.getElementById('contact-email').value,
+        message: document.getElementById('contact-message').value,
+        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
+      };
+      
+      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === 'true' || data.success === true) {
+          submitBtn.innerHTML = '<span>Message Sent!</span>';
+          submitBtn.style.background = '#2e7d32';
+          contactForm.reset();
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+          }, 4000);
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        submitBtn.innerHTML = '<span>Error! Try again</span>';
+        submitBtn.style.background = '#c62828';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+        }, 4000);
+      });
+    });
+  }
+
+  initContactWoodHover();
+  initContactFormSubmit();
+</script>
+</body>
+</html>

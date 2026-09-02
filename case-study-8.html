@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en" class="is-ready">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bappy — OripioFin Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --accent: #00e676;
+      --accent-rgb: 0, 230, 118;
+      --case-bg: radial-gradient(circle at top, #091f14 0%, #030b06 100%);
+    }
+    body.case-study-page {
+      background: var(--case-bg);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .case-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px var(--pad);
+      box-sizing: border-box;
+    }
+    
+    /* Hero Style */
+    .case-hero {
+      padding-top: 160px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+    .case-hero-tag {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .case-hero-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+    
+    /* Back Navigation */
+    .case-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-family: var(--font-mono), monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .case-back-link:hover {
+      transform: translateX(-4px);
+      opacity: 0.85;
+    }
+    
+    /* Image Showcase container */
+    .case-img-wrap {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
+      margin-bottom: 80px;
+      aspect-ratio: 16 / 9.4;
+    }
+    .case-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    
+    /* Info grid */
+    .case-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px 0;
+      margin-bottom: 80px;
+    }
+    .case-info-item span {
+      display: block;
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.40);
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+    .case-info-item p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--paper);
+      margin: 0;
+    }
+    
+    /* Overview Split (Image 1, 3, 5 style) */
+    .overview-sec {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+      align-items: start;
+    }
+    .overview-text h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: var(--paper);
+    }
+    .overview-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 20px;
+    }
+    
+    /* Meta tags card */
+    .meta-tags-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .meta-tags-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      color: #ffffff;
+      border-left: 2px solid var(--accent);
+      padding-left: 10px;
+    }
+    .meta-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .meta-tag-list:last-child {
+      margin-bottom: 0;
+    }
+    .meta-tag {
+      background: rgba(var(--accent-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-rgb), 0.15);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--paper);
+      font-family: var(--font-mono), monospace;
+    }
+    
+    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
+    .prob-sol-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0 80px 0;
+    }
+    .prob-card {
+      background: rgba(255, 77, 77, 0.01);
+      border: 1px solid rgba(255, 77, 77, 0.08);
+      border-left: 4px solid #ff4d4d;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .sol-card {
+      background: rgba(0, 230, 118, 0.01);
+      border: 1px solid rgba(0, 230, 118, 0.08);
+      border-left: 4px solid #00e676;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .prob-sol-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .prob-sol-list {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .prob-sol-list li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 12px;
+    }
+    
+    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
+    .process-timeline-wrap {
+      margin-bottom: 80px;
+    }
+    .process-timeline-wrap h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .process-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    .process-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.3);
+    }
+    .process-num {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .process-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #ffffff;
+      font-family: 'Clash Display', sans-serif;
+    }
+    .process-desc {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.50);
+    }
+    
+    /* General content sections */
+    .case-study-sec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 80px 0 24px 0;
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+    }
+    .case-study-subsec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 48px 0 18px 0;
+    }
+    .case-study-subsubsec-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 24px 0 12px 0;
+    }
+    .case-study-paragraph {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 24px;
+    }
+    .case-study-divider {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 60px 0;
+    }
+    .case-study-list {
+      margin: 0 0 24px 0;
+      padding-left: 20px;
+    }
+    .case-study-list li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 8px;
+    }
+    
+    /* Visual Design System Swatches (Image 4 style) */
+    .design-system-swatches {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .color-swatch {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 12px;
+      width: 130px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .swatch-preview {
+      width: 100%;
+      height: 50px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .swatch-hex {
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #ffffff;
+      display: block;
+    }
+    .swatch-name {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.40);
+      margin-top: 2px;
+      display: block;
+    }
+    
+    /* Features Grid */
+    .case-study-features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .case-study-feature-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px;
+      border-radius: 12px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .case-study-feature-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .case-study-feature-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 0 0 8px 0;
+    }
+    .case-study-feature-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.55);
+      margin: 0;
+    }
+    
+    @media (max-width: 960px) {
+      .overview-sec {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .prob-sol-split {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .case-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .case-study-features-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .case-img-wrap {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .case-info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body class="case-study-page">
+
+  <!-- ══ NAV ═══════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#home" aria-label="Bappy — home">
+      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+      </svg>
+    </a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#home" class="is-active">Home</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contacts">Contacts</a>
+    </nav>
+
+    <div class="nav__status-wrapper" id="nav-status">
+      <a class="status-pill" href="#contacts">
+        <span class="beacon" aria-hidden="true">
+          <span class="beacon__dot"></span>
+          <span class="beacon__ring"></span>
+        </span>
+        <span class="status-pill__text">Available to work</span>
+      </a>
+    </div>
+
+    <div class="nav__actions">
+      <a class="btn-talk" href="#contacts" id="btn-talk">
+        <span>Let's talk</span>
+      </a>
+
+      <button class="burger" id="burger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+<div class="menu" id="menu" inert>
+  <nav class="menu__list">
+    <a href="#home"><i>01</i>Home</a>
+    <a href="#about"><i>02</i>About</a>
+    <a href="#work"><i>03</i>Projects</a>
+    <a href="#testimonials"><i>04</i>Reviews</a>
+    <a href="#contacts"><i>05</i>Contacts</a>
+  </nav>
+  <div class="menu__foot">
+    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
+  </div>
+</div>
+
+  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
+  <main class="case-wrapper">
+    <div class="case-hero">
+      <a href="projects.html" class="case-back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Selected Works
+      </a>
+      <span class="case-hero-tag">UX Case Study</span>
+      <h1 class="case-hero-title">OripioFin</h1>
+    </div>
+    
+    <!-- Info Grid -->
+    <div class="case-info-grid">
+      <div class="case-info-item">
+        <span>Role</span>
+        <p>Lead Dashboard Designer</p>
+      </div>
+      <div class="case-info-item">
+        <span>Timeline</span>
+        <p>3 Months (2026)</p>
+      </div>
+      <div class="case-info-item">
+        <span>Deliverables</span>
+        <p>Dashboard Design, Financial Charts, Component Library</p>
+      </div>
+      <div class="case-info-item">
+        <span>Team</span>
+        <p>1 Designer, 4 Developers, 1 Security Officer</p>
+      </div>
+    </div>
+
+    <!-- Image Showcase -->
+    <div class="case-img-wrap">
+      <img src="assets/showcase-8.jpg" alt="OripioFin Showcase" class="case-img" />
+    </div>
+
+    <!-- Overview Split Section -->
+    <div class="overview-sec">
+      <div class="overview-text">
+        <h2>About OripioFin</h2>
+        <p>OripioFin is a modern financial management platform designed to bring multiple areas of personal and business finance into one centralized dashboard.
+
+
+
+The experience combines:
+
+
+
+* Wallet management
+
+* Multi-currency accounts
+
+* Savings
+
+* Investment tracking
+
+* Cash-flow monitoring
+
+* Transactions
+
+* Invoices
+
+* Recurring payments
+
+* Subscriptions
+
+* Financial analytics
+
+
+
+into a single financial workspace.
+
+
+
+Instead of forcing users to move between multiple banking apps, spreadsheets, investment platforms, and payment tools, OripioFin creates one consolidated view of their financial activity.
+
+
+
+The core product idea is simple:
+
+
+
+**Understand where your money is, where it is going, and how it is growing — from one place.**
+
+
+
+---</p>
+      </div>
+      <div class="meta-tags-card">
+        <div class="meta-tags-title">Project Context</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Dashboard Design</span>
+<span class="meta-tag">Data Visualization</span>
+<span class="meta-tag">Component Systems</span>
+<span class="meta-tag">UI Design</span>
+        </div>
+        <div class="meta-tags-title">Tools Used</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Figma</span>
+<span class="meta-tag">D3.js</span>
+<span class="meta-tag">Photoshop</span>
+<span class="meta-tag">Miro</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Problem vs Solution Visual Box -->
+    <div class="prob-sol-split">
+      <div class="prob-card">
+        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
+        <ul class="prob-sol-list">
+          <li>Business financial data is fragmented across multiple bank accounts and tools.</li>
+<li>Multi-currency wallets are confusing to monitor without conversion guides.</li>
+<li>Cash inflow and outflow trends are difficult to analyze from text listings.</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
+        <ul class="prob-sol-list">
+          <li>Designed a single overview dashboard displaying wallets, savings, and investments.</li>
+<li>Created consistent wallet cards detailing active currency states and limits.</li>
+<li>Integrated interactive cash flow bar charts with hover tooltips.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Process Flow Grid -->
+    <div class="process-timeline-wrap">
+      <h2>Design Process</h2>
+      <div class="process-timeline">
+        
+        <div class="process-card">
+          <span class="process-num">Step 01</span>
+          <div class="process-title">Empathize</div>
+          <div class="process-desc">Interviewing small business owners on spreadsheet finance fatigue.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 02</span>
+          <div class="process-title">Define</div>
+          <div class="process-desc">Mapping multi-account and multi-currency tracking complications.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 03</span>
+          <div class="process-title">Ideate</div>
+          <div class="process-desc">Structuring financial overview balances separately from cash flows.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 04</span>
+          <div class="process-title">Design</div>
+          <div class="process-desc">Designing high-density component cards and interactive charts.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 05</span>
+          <div class="process-title">Test</div>
+          <div class="process-desc">Verifying data compression and column filters with accountants.</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Dynamic Content Area -->
+    <div class="case-content">
+      <h3 class='case-study-subsec-title'>One Dashboard. Your Entire Financial Picture.</h3>
+<p class='case-study-paragraph'>OripioFin is a modern financial management platform designed to bring multiple areas of personal and business finance into one centralized dashboard.</p>
+<p class='case-study-paragraph'>The experience combines:</p>
+<ul class='case-study-list'>
+  <li>Wallet management</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Multi-currency accounts</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Savings</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Investment tracking</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Cash-flow monitoring</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Transactions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Invoices</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Recurring payments</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Subscriptions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Financial analytics</li>
+</ul>
+<p class='case-study-paragraph'>into a single financial workspace.</p>
+<p class='case-study-paragraph'>Instead of forcing users to move between multiple banking apps, spreadsheets, investment platforms, and payment tools, OripioFin creates one consolidated view of their financial activity.</p>
+<p class='case-study-paragraph'>The core product idea is simple:</p>
+<p class='case-study-paragraph'><strong>Understand where your money is, where it is going, and how it is growing — from one place.</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why OripioFin Exists</h2>
+<p class='case-study-paragraph'>Modern users rarely manage their entire financial life through a single account.</p>
+<p class='case-study-paragraph'>A user may have:</p>
+<ul class='case-study-list'>
+  <li>Money in a bank account</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Savings in another account</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Investments in a separate platform</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Multiple currencies</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Recurring subscriptions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Business invoices</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Incoming and outgoing payments</li>
+</ul>
+<p class='case-study-paragraph'>As financial activity grows, understanding the complete picture becomes increasingly difficult.</p>
+<p class='case-study-paragraph'>The problem is not necessarily a lack of financial data.</p>
+<p class='case-study-paragraph'>The problem is <strong>too much data spread across too many places</strong>.</p>
+<p class='case-study-paragraph'>OripioFin brings these different financial activities together so users can understand their overall financial position without switching between multiple systems.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>The Business Problem</h2>
+<p class='case-study-paragraph'>The primary business problem is <strong>financial fragmentation</strong>.</p>
+<p class='case-study-paragraph'>Users have access to a lot of financial information, but that information is often disconnected.</p>
+<p class='case-study-paragraph'>This creates several challenges.</p>
+<h3 class='case-study-subsec-title'>01 — Fragmented Financial Data</h3>
+<p class='case-study-paragraph'>Wallets, savings, investments, transactions, and invoices may exist in separate systems.</p>
+<p class='case-study-paragraph'>Users have to manually switch between platforms to understand their financial situation.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>02 — Difficult Financial Monitoring</h3>
+<p class='case-study-paragraph'>A balance alone does not tell the complete story.</p>
+<p class='case-study-paragraph'>Users also need to understand:</p>
+<ul class='case-study-list'>
+  <li>Cash flow</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Spending</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Savings growth</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Investment performance</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Upcoming payments</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Recurring expenses</li>
+</ul>
+<p class='case-study-paragraph'>Without a consolidated overview, financial decision-making becomes harder.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>03 — Multi-Currency Complexity</h3>
+<p class='case-study-paragraph'>International users may manage USD, EUR, GBP, BDT, and other currencies simultaneously.</p>
+<p class='case-study-paragraph'>This creates additional cognitive load.</p>
+<p class='case-study-paragraph'>Users need to know:</p>
+<p class='case-study-paragraph'><strong>How much money do I have?</strong></p>
+<p class='case-study-paragraph'><strong>Where is it?</strong></p>
+<p class='case-study-paragraph'><strong>In which currency?</strong></p>
+<p class='case-study-paragraph'><strong>What is active or inactive?</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>04 — Important Information Gets Buried</h3>
+<p class='case-study-paragraph'>Transactions and financial activities can quickly become a long list.</p>
+<p class='case-study-paragraph'>Without hierarchy, users may struggle to identify what requires attention.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>05 — Financial Management Can Feel Overwhelming</h3>
+<p class='case-study-paragraph'>Financial dashboards often contain charts, numbers, tables, filters, and account information.</p>
+<p class='case-study-paragraph'>The challenge is presenting all of this without making the interface feel intimidating.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Primary Audience — Financially Active Professionals</h3>
+<p class='case-study-paragraph'>People who manage multiple financial accounts and want a centralized view of their money.</p>
+<p class='case-study-paragraph'>They may have:</p>
+<ul class='case-study-list'>
+  <li>Multiple accounts</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Savings</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Investments</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Recurring expenses</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Multiple currencies</li>
+</ul>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Freelancers & Remote Workers</h3>
+<p class='case-study-paragraph'>Freelancers who receive payments internationally may need to manage currencies such as:</p>
+<ul class='case-study-list'>
+  <li>USD</li>
+</ul>
+<ul class='case-study-list'>
+  <li>EUR</li>
+</ul>
+<ul class='case-study-list'>
+  <li>GBP</li>
+</ul>
+<ul class='case-study-list'>
+  <li>BDT</li>
+</ul>
+<p class='case-study-paragraph'>They may also need to track invoices, subscriptions, and recurring business expenses.</p>
+<p class='case-study-paragraph'>For this audience, a centralized financial dashboard can reduce the need to manage information manually across multiple tools.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Small Business Owners</h3>
+<p class='case-study-paragraph'>Business owners need visibility into:</p>
+<ul class='case-study-list'>
+  <li>Cash flow</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Transactions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Invoices</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Recurring expenses</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Payments</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Financial performance</li>
+</ul>
+<p class='case-study-paragraph'>OripioFin's combination of financial overview and operational finance features supports this use case.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>International Users</h3>
+<p class='case-study-paragraph'>Users dealing with multiple currencies need a simple way to understand balances across different financial accounts.</p>
+<p class='case-study-paragraph'>The multi-currency wallet is particularly relevant for this audience.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>01 — Too Many Financial Tools</h4>
+<p class='case-study-paragraph'>Users often need separate platforms for:</p>
+<p class='case-study-paragraph'><strong>Banking + Savings + Investments + Payments + Invoices + Subscriptions</strong></p>
+<p class='case-study-paragraph'>This creates unnecessary friction.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>02 — No Single Source of Truth</h4>
+<p class='case-study-paragraph'>Users may know individual account balances but still struggle to understand their overall financial position.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>03 — Multi-Currency Confusion</h4>
+<p class='case-study-paragraph'>When money exists in different currencies, tracking balances becomes more complicated.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>04 — Cash Flow Is Difficult to Understand</h4>
+<p class='case-study-paragraph'>A user can have a healthy account balance while still experiencing poor cash flow.</p>
+<p class='case-study-paragraph'>Understanding inflow and outflow is therefore essential.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>05 — Important Transactions Get Lost</h4>
+<p class='case-study-paragraph'>Large transaction histories make it difficult to identify important activity without search and filtering.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>06 — Financial Analytics Can Feel Complex</h4>
+<p class='case-study-paragraph'>Charts and financial data need to be understandable at a glance.</p>
+<p class='case-study-paragraph'>Users should not need to be financial analysts to understand their dashboard.</p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>The product experience focused on six key objectives:</p>
+<p class='case-study-paragraph'>1. <strong>Create one centralized financial overview</strong></p>
+<p class='case-study-paragraph'>2. <strong>Make multi-currency management easier</strong></p>
+<p class='case-study-paragraph'>3. <strong>Surface the most important financial information first</strong></p>
+<p class='case-study-paragraph'>4. <strong>Turn complex financial data into understandable visuals</strong></p>
+<p class='case-study-paragraph'>5. <strong>Make transactions and activities easy to find</strong></p>
+<p class='case-study-paragraph'>6. <strong>Create a scalable financial workspace for different needs</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>01 — Start With an Overview</h3>
+<p class='case-study-paragraph'>The dashboard begins with:</p>
+<p class='case-study-paragraph'><strong>Overview</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>Here is the summary of overall data</strong></p>
+<p class='case-study-paragraph'>This is an important UX decision.</p>
+<p class='case-study-paragraph'>Instead of immediately showing detailed transactions, the interface starts with the user's financial summary.</p>
+<p class='case-study-paragraph'>The user first gets the answer to:</p>
+<p class='case-study-paragraph'><strong>“How am I doing financially?”</strong></p>
+<p class='case-study-paragraph'>Then they can explore individual areas.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Financial Overview Cards</h2>
+<p class='case-study-paragraph'>The top section contains three major financial cards:</p>
+<h4 class='case-study-subsubsec-title'>My Balance</h4>
+<p class='case-study-paragraph'><strong>$20,520.32</strong></p>
+<h4 class='case-study-subsubsec-title'>Savings Account</h4>
+<p class='case-study-paragraph'><strong>$15,800.45</strong></p>
+<h4 class='case-study-subsubsec-title'>Investment Portfolio</h4>
+<p class='case-study-paragraph'><strong>$50,120.78</strong></p>
+<p class='case-study-paragraph'>Each card communicates:</p>
+<ul class='case-study-list'>
+  <li>Account type</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Current value</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Performance change</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Short description</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Next action</li>
+</ul>
+<p class='case-study-paragraph'>This creates an immediate financial snapshot.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why the Card-Based Overview Works</h2>
+<p class='case-study-paragraph'>Financial information contains many numbers.</p>
+<p class='case-study-paragraph'>Showing every number at the same visual weight would overwhelm the user.</p>
+<p class='case-study-paragraph'>Instead, the dashboard establishes a hierarchy:</p>
+<p class='case-study-paragraph'><strong>Primary financial state</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Secondary financial accounts</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Detailed wallet data</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Cash flow</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Recent transactions</strong></p>
+<p class='case-study-paragraph'>This progressive disclosure keeps the interface manageable.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>My Balance</h2>
+<p class='case-study-paragraph'>The <strong>My Balance</strong> card receives the strongest visual treatment.</p>
+<p class='case-study-paragraph'>It uses the primary brand color and contains the largest visual emphasis.</p>
+<p class='case-study-paragraph'>This communicates that the user's available balance is one of the most important pieces of information.</p>
+<p class='case-study-paragraph'>The card also provides:</p>
+<p class='case-study-paragraph'><strong>+1.5%</strong></p>
+<p class='case-study-paragraph'>as a performance indicator and:</p>
+<p class='case-study-paragraph'><strong>See details</strong></p>
+<p class='case-study-paragraph'>as the next action.</p>
+<p class='case-study-paragraph'>This creates a compact combination of:</p>
+<p class='case-study-paragraph'><strong>Status + Change + Action</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Savings & Investment</h2>
+<p class='case-study-paragraph'>The Savings Account and Investment Portfolio cards are visually lighter.</p>
+<p class='case-study-paragraph'>This creates a clear hierarchy.</p>
+<p class='case-study-paragraph'>The user can quickly distinguish:</p>
+<p class='case-study-paragraph'><strong>Available / Wallet Balance</strong></p>
+<p class='case-study-paragraph'>from:</p>
+<p class='case-study-paragraph'><strong>Savings</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>Investments</strong></p>
+<p class='case-study-paragraph'>A wallet balance is immediately accessible.</p>
+<p class='case-study-paragraph'>Savings represent reserved capital.</p>
+<p class='case-study-paragraph'>Investments represent long-term financial assets.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Multi-Currency Wallet</h2>
+<p class='case-study-paragraph'>One of the strongest product features shown in the dashboard is:</p>
+<p class='case-study-paragraph'><strong>My Wallet</strong></p>
+<p class='case-study-paragraph'>The interface displays multiple currency accounts:</p>
+<ul class='case-study-list'>
+  <li>USD</li>
+</ul>
+<ul class='case-study-list'>
+  <li>EUR</li>
+</ul>
+<ul class='case-study-list'>
+  <li>BDT</li>
+</ul>
+<ul class='case-study-list'>
+  <li>GBP</li>
+</ul>
+<p class='case-study-paragraph'>Each account contains:</p>
+<ul class='case-study-list'>
+  <li>Currency</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Balance</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Monthly limit</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Active/inactive status</li>
+</ul>
+<ul class='case-study-list'>
+  <li>More actions</li>
+</ul>
+<p class='case-study-paragraph'>This makes the wallet understandable without requiring the user to open each account individually.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Multi-Currency UX</h2>
+<p class='case-study-paragraph'>The multi-currency cards solve an important problem:</p>
+<p class='case-study-paragraph'><strong>Users need to understand multiple balances without mentally converting everything into one account.</strong></p>
+<p class='case-study-paragraph'>Each currency gets its own visual identity through:</p>
+<ul class='case-study-list'>
+  <li>Currency symbol</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Country flag</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Balance</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Limit</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Status</li>
+</ul>
+<p class='case-study-paragraph'>This creates a simple mental model:</p>
+<p class='case-study-paragraph'><strong>Currency → Balance → Limit → Status</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Active & Inactive States</h2>
+<p class='case-study-paragraph'>The wallet cards clearly communicate account status.</p>
+<p class='case-study-paragraph'>For example:</p>
+<p class='case-study-paragraph'><strong>Active</strong></p>
+<p class='case-study-paragraph'>appears as a positive status.</p>
+<p class='case-study-paragraph'><strong>Inactive</strong></p>
+<p class='case-study-paragraph'>appears differently for the GBP account.</p>
+<p class='case-study-paragraph'>This is a small but important UX decision.</p>
+<p class='case-study-paragraph'>Financial dashboards need to make account states obvious because inactive accounts can otherwise be mistaken for usable balances.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Cash Flow Analytics</h2>
+<p class='case-study-paragraph'>The right side of the dashboard contains a large:</p>
+<p class='case-study-paragraph'><strong>Cash Flow</strong></p>
+<p class='case-study-paragraph'>visualization.</p>
+<p class='case-study-paragraph'>The total:</p>
+<p class='case-study-paragraph'><strong>$342,323.44</strong></p>
+<p class='case-study-paragraph'>is displayed prominently.</p>
+<p class='case-study-paragraph'>Below it, users can compare monthly cash-flow performance.</p>
+<p class='case-study-paragraph'>The chart provides a visual representation of:</p>
+<ul class='case-study-list'>
+  <li>Monthly movement</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Inflow</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Outflow</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Peaks</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Lower activity periods</li>
+</ul>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why Cash Flow Gets a Large Visualization</h2>
+<p class='case-study-paragraph'>A balance tells the user:</p>
+<p class='case-study-paragraph'><strong>How much do I have?</strong></p>
+<p class='case-study-paragraph'>Cash flow tells the user:</p>
+<p class='case-study-paragraph'><strong>How is my money moving?</strong></p>
+<p class='case-study-paragraph'>These are fundamentally different questions.</p>
+<p class='case-study-paragraph'>By placing cash flow next to the wallet section, the dashboard lets users compare:</p>
+<p class='case-study-paragraph'><strong>Current financial state</strong></p>
+<p class='case-study-paragraph'>with:</p>
+<p class='case-study-paragraph'><strong>Financial movement over time</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Interactive Data Exploration</h2>
+<p class='case-study-paragraph'>The chart includes:</p>
+<p class='case-study-paragraph'><strong>Monthly / Yearly</strong></p>
+<p class='case-study-paragraph'>controls.</p>
+<p class='case-study-paragraph'>This allows the user to change the time scale without leaving the dashboard.</p>
+<p class='case-study-paragraph'>A hover interaction also reveals detailed information:</p>
+<p class='case-study-paragraph'><strong>July 23, 2026</strong></p>
+<p class='case-study-paragraph'><strong>Cashflow — $33,847.00</strong></p>
+<p class='case-study-paragraph'><strong>Inflow — -$7,456.00</strong></p>
+<p class='case-study-paragraph'>This is an effective example of progressive disclosure.</p>
+<p class='case-study-paragraph'>The chart remains visually clean until the user needs more detail.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Recent Activities</h2>
+<p class='case-study-paragraph'>The bottom section contains:</p>
+<p class='case-study-paragraph'><strong>Recent Activities</strong></p>
+<p class='case-study-paragraph'>with a structured transaction table.</p>
+<p class='case-study-paragraph'>The table includes:</p>
+<ul class='case-study-list'>
+  <li>Activity</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Order ID</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Date</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Time</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Price</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Status</li>
+</ul>
+<p class='case-study-paragraph'>This creates a bridge between high-level analytics and individual transactions.</p>
+<p class='case-study-paragraph'>The user can start with:</p>
+<p class='case-study-paragraph'><strong>Overview</strong></p>
+<p class='case-study-paragraph'>and progressively drill down into:</p>
+<p class='case-study-paragraph'><strong>Specific financial activity</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Search & Filter</h2>
+<p class='case-study-paragraph'>The Recent Activities section includes:</p>
+<p class='case-study-paragraph'><strong>Search</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>Filter</strong></p>
+<p class='case-study-paragraph'>controls.</p>
+<p class='case-study-paragraph'>This is important because transaction lists can grow quickly.</p>
+<p class='case-study-paragraph'>Rather than forcing users to scroll through every transaction, the interface gives them tools to find the information they need.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Financial Information Hierarchy</h2>
+<p class='case-study-paragraph'>The dashboard follows a clear hierarchy:</p>
+<h4 class='case-study-subsubsec-title'>Level 01 — Overall Financial Health</h4>
+<p class='case-study-paragraph'>Balance, savings, investment.</p>
+<h4 class='case-study-subsubsec-title'>Level 02 — Financial Accounts</h4>
+<p class='case-study-paragraph'>Multi-currency wallet.</p>
+<h4 class='case-study-subsubsec-title'>Level 03 — Financial Movement</h4>
+<p class='case-study-paragraph'>Cash-flow chart.</p>
+<h4 class='case-study-subsubsec-title'>Level 04 — Individual Activity</h4>
+<p class='case-study-paragraph'>Recent transactions.</p>
+<p class='case-study-paragraph'>This is one of the strongest UX decisions in the design.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Navigation Architecture</h2>
+<p class='case-study-paragraph'>The sidebar separates the product into clear categories.</p>
+<h3 class='case-study-subsec-title'>Main Menu</h3>
+<ul class='case-study-list'>
+  <li>Dashboard</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Analytics</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Transactions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Invoices</li>
+</ul>
+<h3 class='case-study-subsec-title'>Features</h3>
+<ul class='case-study-list'>
+  <li>Recurring</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Subscriptions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Feedback</li>
+</ul>
+<h3 class='case-study-subsec-title'>General</h3>
+<ul class='case-study-list'>
+  <li>Settings</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Help Desk</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Log out</li>
+</ul>
+<p class='case-study-paragraph'>This organization creates a scalable information architecture.</p>
+<p class='case-study-paragraph'>The user can distinguish between:</p>
+<p class='case-study-paragraph'><strong>Core financial management</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>Supporting financial features</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why the Sidebar Works</h2>
+<p class='case-study-paragraph'>The dashboard contains many potential destinations.</p>
+<p class='case-study-paragraph'>Without a persistent navigation structure, users would have to rely on repeated back-and-forth interactions.</p>
+<p class='case-study-paragraph'>The sidebar provides constant access to:</p>
+<ul class='case-study-list'>
+  <li>Analytics</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Transactions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Invoices</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Recurring</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Subscriptions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Settings</li>
+</ul>
+<p class='case-study-paragraph'>This makes the platform feel like a complete financial operating system rather than a single dashboard screen.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Analytics as a Separate Destination</h2>
+<p class='case-study-paragraph'>The sidebar includes:</p>
+<p class='case-study-paragraph'><strong>Analytics</strong></p>
+<p class='case-study-paragraph'>with a visible count indicator.</p>
+<p class='case-study-paragraph'>This suggests that detailed financial analysis is available beyond the dashboard.</p>
+<p class='case-study-paragraph'>This creates a useful separation:</p>
+<h4 class='case-study-subsubsec-title'>Dashboard</h4>
+<p class='case-study-paragraph'><strong>What is happening now?</strong></p>
+<h4 class='case-study-subsubsec-title'>Analytics</h4>
+<p class='case-study-paragraph'><strong>Why is it happening?</strong></p>
+<p class='case-study-paragraph'>This keeps the dashboard focused on quick understanding while allowing deeper analysis elsewhere.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Invoice & Recurring Management</h2>
+<p class='case-study-paragraph'>The presence of:</p>
+<p class='case-study-paragraph'><strong>Invoices</strong></p>
+<p class='case-study-paragraph'><strong>Recurring</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>Subscriptions</strong></p>
+<p class='case-study-paragraph'>expands OripioFin beyond personal banking.</p>
+<p class='case-study-paragraph'>These features are particularly useful for users managing ongoing financial obligations or business operations.</p>
+<p class='case-study-paragraph'>The product therefore sits somewhere between:</p>
+<p class='case-study-paragraph'><strong>Personal Finance Dashboard</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>Financial Management Workspace</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Upgrade Experience</h2>
+<p class='case-study-paragraph'>The sidebar contains:</p>
+<p class='case-study-paragraph'><strong>Upgrade Pro!</strong></p>
+<p class='case-study-paragraph'>with:</p>
+<p class='case-study-paragraph'><strong>Higher productivity with better organization</strong></p>
+<p class='case-study-paragraph'>and two actions:</p>
+<p class='case-study-paragraph'><strong>Upgrade</strong></p>
+<p class='case-study-paragraph'><strong>Learn more</strong></p>
+<p class='case-study-paragraph'>This is a subtle monetization pattern.</p>
+<p class='case-study-paragraph'>The upgrade card is persistent but does not interrupt the primary financial workflow.</p>
+<p class='case-study-paragraph'>It lives at the bottom of the navigation where users can discover it when they are ready.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Visual Design Strategy</h2>
+<p class='case-study-paragraph'>The visual design uses a clean fintech aesthetic.</p>
+<p class='case-study-paragraph'>Key characteristics include:</p>
+<ul class='case-study-list'>
+  <li>White surfaces</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Deep green primary color</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Soft grey borders</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Rounded cards</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Large financial numbers</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Minimal iconography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Subtle gradients</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Light shadows</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Spacious layout</li>
+</ul>
+<ul class='case-study-list'>
+  <li>High information density without visual clutter</li>
+</ul>
+<p class='case-study-paragraph'>The green brand color is particularly effective for financial products because it naturally connects with:</p>
+<ul class='case-study-list'>
+  <li>Money</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Growth</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Positive performance</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Financial confidence</li>
+</ul>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Green as a Functional Color</h2>
+<p class='case-study-paragraph'>The green color is not used everywhere.</p>
+<p class='case-study-paragraph'>It is reserved for important financial states and actions.</p>
+<p class='case-study-paragraph'>For example:</p>
+<ul class='case-study-list'>
+  <li>Primary balance card</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Positive performance</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Active states</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Primary CTA</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Upgrade action</li>
+</ul>
+<p class='case-study-paragraph'>This gives green functional meaning.</p>
+<p class='case-study-paragraph'>Users begin to associate it with:</p>
+<p class='case-study-paragraph'><strong>Positive / Active / Important</strong></p>
+<p class='case-study-paragraph'>rather than simply treating it as decoration.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Number-First Design</h2>
+<p class='case-study-paragraph'>Financial dashboards are fundamentally number-driven.</p>
+<p class='case-study-paragraph'>The interface therefore uses large typography for:</p>
+<ul class='case-study-list'>
+  <li>Balance</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Savings</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Investments</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Cash flow</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Currency balances</li>
+</ul>
+<p class='case-study-paragraph'>This allows users to scan the dashboard quickly.</p>
+<p class='case-study-paragraph'>The user doesn't need to read every label to understand the overall state.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Progressive Disclosure</h2>
+<p class='case-study-paragraph'>The dashboard follows a clear principle:</p>
+<p class='case-study-paragraph'><strong>Show the summary first. Reveal the details when needed.</strong></p>
+<p class='case-study-paragraph'>For example:</p>
+<h4 class='case-study-subsubsec-title'>Summary</h4>
+<p class='case-study-paragraph'><strong>$20,520.32</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<h4 class='case-study-subsubsec-title'>Detail</h4>
+<p class='case-study-paragraph'><strong>See details</strong></p>
+<p class='case-study-paragraph'>Similarly:</p>
+<h4 class='case-study-subsubsec-title'>Cash Flow</h4>
+<p class='case-study-paragraph'><strong>$342,323.44</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<h4 class='case-study-subsubsec-title'>Chart</h4>
+<p class='case-study-paragraph'>Monthly activity</p>
+<p class='case-study-paragraph'>↓</p>
+<h4 class='case-study-subsubsec-title'>Tooltip</h4>
+<p class='case-study-paragraph'>Exact date + cash flow + inflow</p>
+<p class='case-study-paragraph'>This prevents information overload.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>What I Focused on as a Product Designer</h2>
+<p class='case-study-paragraph'>The biggest challenge was balancing <strong>high information density with simplicity</strong>.</p>
+<p class='case-study-paragraph'>I focused on:</p>
+<h4 class='case-study-subsubsec-title'>Financial Hierarchy</h4>
+<p class='case-study-paragraph'>Making the most important financial information immediately visible.</p>
+<h4 class='case-study-subsubsec-title'>Multi-Currency Clarity</h4>
+<p class='case-study-paragraph'>Giving every currency a clear balance, limit, and status.</p>
+<h4 class='case-study-subsubsec-title'>Data Visualization</h4>
+<p class='case-study-paragraph'>Turning cash-flow data into something users can understand visually.</p>
+<h4 class='case-study-subsubsec-title'>Progressive Disclosure</h4>
+<p class='case-study-paragraph'>Showing details only when users need them.</p>
+<h4 class='case-study-subsubsec-title'>Scalable Navigation</h4>
+<p class='case-study-paragraph'>Creating a structure that can support more financial features over time.</p>
+<h4 class='case-study-subsubsec-title'>Actionability</h4>
+<p class='case-study-paragraph'>Making every major information block lead to a logical next action.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Design Outcome</h2>
+<p class='case-study-paragraph'>The final dashboard creates a centralized financial command center.</p>
+<p class='case-study-paragraph'>A user can understand their financial state within seconds:</p>
+<p class='case-study-paragraph'><strong>How much do I have?</strong></p>
+<p class='case-study-paragraph'><strong>How much have I saved?</strong></p>
+<p class='case-study-paragraph'><strong>How much have I invested?</strong></p>
+<p class='case-study-paragraph'><strong>What currencies do I hold?</strong></p>
+<p class='case-study-paragraph'><strong>How is my cash flow performing?</strong></p>
+<p class='case-study-paragraph'><strong>What happened recently?</strong></p>
+<p class='case-study-paragraph'>And when they need more detail, they can move deeper into:</p>
+<p class='case-study-paragraph'><strong>Analytics → Transactions → Invoices → Recurring → Subscriptions</strong></p>
+<p class='case-study-paragraph'>The result is a product experience that turns complex financial information into a structured and scannable workspace.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>The Core UX Journey</h2>
+<p class='case-study-paragraph'>The dashboard follows:</p>
+<p class='case-study-paragraph'><strong>Overview → Understand → Explore → Analyze → Act</strong></p>
+<h4 class='case-study-subsubsec-title'>Overview</h4>
+<p class='case-study-paragraph'>See the most important numbers.</p>
+<h4 class='case-study-subsubsec-title'>Understand</h4>
+<p class='case-study-paragraph'>Review balances and account status.</p>
+<h4 class='case-study-subsubsec-title'>Explore</h4>
+<p class='case-study-paragraph'>Check wallet and cash-flow information.</p>
+<h4 class='case-study-subsubsec-title'>Analyze</h4>
+<p class='case-study-paragraph'>Use analytics and historical data.</p>
+<h4 class='case-study-subsubsec-title'>Act</h4>
+<p class='case-study-paragraph'>Manage transactions, invoices, recurring payments, and subscriptions.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key UX Decisions</h2>
+<h3 class='case-study-subsec-title'>From Multiple Financial Tools → One Workspace</h3>
+<p class='case-study-paragraph'>The product combines different financial activities into one centralized interface.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Raw Numbers → Financial Hierarchy</h3>
+<p class='case-study-paragraph'>Instead of presenting every number equally, the interface prioritizes:</p>
+<p class='case-study-paragraph'><strong>Balance → Savings → Investments → Wallet → Cash Flow → Transactions</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Multi-Currency Complexity → Clear Account Cards</h3>
+<p class='case-study-paragraph'>Each currency has a consistent card structure:</p>
+<p class='case-study-paragraph'><strong>Currency + Balance + Limit + Status</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Static Data → Interactive Analytics</h3>
+<p class='case-study-paragraph'>The cash-flow chart provides:</p>
+<p class='case-study-paragraph'><strong>Time range + Visual trend + Interactive detail</strong></p>
+<p class='case-study-paragraph'>without cluttering the default view.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Long Transaction Lists → Searchable Activity</h3>
+<p class='case-study-paragraph'>Search and filtering make large amounts of transaction data easier to navigate.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Dashboard Overload → Progressive Disclosure</h3>
+<p class='case-study-paragraph'>The dashboard communicates the summary first and allows users to drill down when necessary.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key Takeaways</h2>
+<h4 class='case-study-subsubsec-title'>A financial dashboard should answer the biggest questions first.</h4>
+<p class='case-study-paragraph'>Users should understand their overall financial position before seeing detailed data.</p>
+<h4 class='case-study-subsubsec-title'>Multi-currency products need strong visual consistency.</h4>
+<p class='case-study-paragraph'>Users should be able to compare currencies without learning a different interface for each one.</p>
+<h4 class='case-study-subsubsec-title'>Charts should support decisions, not decoration.</h4>
+<p class='case-study-paragraph'>The cash-flow visualization exists to help users understand movement over time.</p>
+<h4 class='case-study-subsubsec-title'>Financial data needs hierarchy.</h4>
+<p class='case-study-paragraph'>Balance, savings, investments, wallet, cash flow, and transactions should not compete equally for attention.</p>
+<h4 class='case-study-subsubsec-title'>Search and filtering become essential as data grows.</h4>
+<p class='case-study-paragraph'>A good financial dashboard should work just as well with thousands of transactions as it does with a few.</p>
+<h4 class='case-study-subsubsec-title'>Progressive disclosure keeps complex products approachable.</h4>
+<p class='case-study-paragraph'>Users get the information they need without being overwhelmed by everything the system knows.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Case Study Page Structure for AI</h2>
+<h3 class='case-study-subsec-title'>Section 01 — Hero</h3>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“One dashboard. Your entire financial picture.”</strong></p>
+<p class='case-study-paragraph'>Supporting text:</p>
+<p class='case-study-paragraph'>“A centralized financial workspace designed to make balances, currencies, cash flow, investments, and transactions easier to understand and manage.”</p>
+<p class='case-study-paragraph'>Project metadata:</p>
+<ul class='case-study-list'>
+  <li>Product: OripioFin</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Category: Fintech / Financial Management</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Platform: Web Application</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Focus: Financial dashboard & multi-currency management</li>
+</ul>
+<p class='case-study-paragraph'>The dashboard should appear large and sharp.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 02 — The Challenge</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Your money is everywhere. Your financial picture shouldn't be.”</strong></p>
+<p class='case-study-paragraph'>Use a split layout.</p>
+<h4 class='case-study-subsubsec-title'>Left</h4>
+<p class='case-study-paragraph'>Explain financial fragmentation:</p>
+<ul class='case-study-list'>
+  <li>Multiple accounts</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Multiple currencies</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Savings</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Investments</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Transactions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Invoices</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Recurring payments</li>
+</ul>
+<h4 class='case-study-subsubsec-title'>Right</h4>
+<p class='case-study-paragraph'>Use a crop of the dashboard showing the balance, savings, and investment cards.</p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>Create six compact cards:</p>
+<p class='case-study-paragraph'><strong>Fragmented accounts</strong></p>
+<p class='case-study-paragraph'><strong>Multi-currency complexity</strong></p>
+<p class='case-study-paragraph'><strong>Limited financial visibility</strong></p>
+<p class='case-study-paragraph'><strong>Hard-to-track cash flow</strong></p>
+<p class='case-study-paragraph'><strong>Lost transactions</strong></p>
+<p class='case-study-paragraph'><strong>Complex financial analytics</strong></p>
+<p class='case-study-paragraph'>Keep the copy short.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 04 — Design Strategy</h2>
+<p class='case-study-paragraph'>Create a large horizontal flow:</p>
+<p class='case-study-paragraph'><strong>Summarize → Organize → Visualize → Explore → Act</strong></p>
+<p class='case-study-paragraph'>Explain each step.</p>
+<p class='case-study-paragraph'>This should become the central UX framework of the case study.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 05 — Financial Overview</h2>
+<p class='case-study-paragraph'>Use a large crop of:</p>
+<p class='case-study-paragraph'><strong>My Balance</strong></p>
+<p class='case-study-paragraph'><strong>Savings Account</strong></p>
+<p class='case-study-paragraph'><strong>Investment Portfolio</strong></p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Give users the answer before asking them to analyze.”</strong></p>
+<p class='case-study-paragraph'>Highlight:</p>
+<ul class='case-study-list'>
+  <li>Current balance</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Savings</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Investments</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Performance changes</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Clear next actions</li>
+</ul>
+<p class='case-study-paragraph'>Use annotation lines around the cards.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 06 — Multi-Currency Wallet</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Multiple currencies, one mental model.”</strong></p>
+<p class='case-study-paragraph'>Highlight:</p>
+<ul class='case-study-list'>
+  <li>USD</li>
+</ul>
+<ul class='case-study-list'>
+  <li>EUR</li>
+</ul>
+<ul class='case-study-list'>
+  <li>BDT</li>
+</ul>
+<ul class='case-study-list'>
+  <li>GBP</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Limits</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Active/inactive states</li>
+</ul>
+<p class='case-study-paragraph'>Explain how consistent card structures reduce cognitive load.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 07 — Cash Flow Visualization</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Turn financial movement into something users can see.”</strong></p>
+<p class='case-study-paragraph'>Show the:</p>
+<p class='case-study-paragraph'><strong>Monthly / Yearly</strong></p>
+<p class='case-study-paragraph'>control.</p>
+<p class='case-study-paragraph'>Then zoom into the tooltip.</p>
+<p class='case-study-paragraph'>Highlight:</p>
+<ul class='case-study-list'>
+  <li>Time range</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Trend</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Cash flow</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Inflow</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Detailed tooltip</li>
+</ul>
+<p class='case-study-paragraph'>This should be one of the strongest UX sections.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 08 — Progressive Disclosure</h2>
+<p class='case-study-paragraph'>Create a visual sequence:</p>
+<p class='case-study-paragraph'><strong>$342,323.44</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Monthly chart</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Hover</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Detailed transaction data</strong></p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Show less first. Reveal more when needed.”</strong></p>
+<p class='case-study-paragraph'>Explain how the dashboard avoids information overload.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 09 — Recent Activities</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“From financial overview to individual activity.”</strong></p>
+<p class='case-study-paragraph'>Highlight:</p>
+<ul class='case-study-list'>
+  <li>Search</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Filter</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Activity</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Order ID</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Date</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Price</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Status</li>
+</ul>
+<p class='case-study-paragraph'>Show how the table provides a deeper level of financial visibility.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 10 — Information Architecture</h2>
+<p class='case-study-paragraph'>Use a large recreation of the sidebar.</p>
+<p class='case-study-paragraph'>Group it into:</p>
+<h4 class='case-study-subsubsec-title'>Main Menu</h4>
+<p class='case-study-paragraph'>Dashboard</p>
+<p class='case-study-paragraph'>Analytics</p>
+<p class='case-study-paragraph'>Transactions</p>
+<p class='case-study-paragraph'>Invoices</p>
+<h4 class='case-study-subsubsec-title'>Features</h4>
+<p class='case-study-paragraph'>Recurring</p>
+<p class='case-study-paragraph'>Subscriptions</p>
+<p class='case-study-paragraph'>Feedback</p>
+<h4 class='case-study-subsubsec-title'>General</h4>
+<p class='case-study-paragraph'>Settings</p>
+<p class='case-study-paragraph'>Help Desk</p>
+<p class='case-study-paragraph'>Log out</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“A scalable structure for a growing financial product.”</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 11 — Visual Language</h2>
+<p class='case-study-paragraph'>Show cropped UI examples of:</p>
+<ul class='case-study-list'>
+  <li>Green balance card</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Currency cards</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Cash-flow chart</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Transaction table</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Navigation</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Upgrade card</li>
+</ul>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Designed around financial clarity.”</strong></p>
+<p class='case-study-paragraph'>Explain:</p>
+<ul class='case-study-list'>
+  <li>Number-first hierarchy</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Green functional color</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Soft surfaces</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Rounded cards</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Minimal borders</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Spacious composition</li>
+</ul>
+<p class='case-study-paragraph'>Do not make this a generic style guide.</p>
+<p class='case-study-paragraph'>Show how visual decisions support usability.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 12 — Product Architecture</h2>
+<p class='case-study-paragraph'>Create a simple ecosystem diagram:</p>
+<p class='case-study-paragraph'><strong>Dashboard</strong></p>
+<p class='case-study-paragraph'>↙ ↓ ↘</p>
+<p class='case-study-paragraph'><strong>Analytics | Transactions | Invoices</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Recurring | Subscriptions</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Settings / Support</strong></p>
+<p class='case-study-paragraph'>This communicates that the dashboard is the entry point to a larger financial workspace.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 13 — UX Outcome</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“From fragmented financial data to one clear financial picture.”</strong></p>
+<p class='case-study-paragraph'>Use a before/after comparison.</p>
+<h4 class='case-study-subsubsec-title'>Before</h4>
+<p class='case-study-paragraph'>Multiple platforms</p>
+<p class='case-study-paragraph'>Multiple currencies</p>
+<p class='case-study-paragraph'>Scattered transactions</p>
+<p class='case-study-paragraph'>Manual monitoring</p>
+<p class='case-study-paragraph'>Limited visibility</p>
+<h4 class='case-study-subsubsec-title'>After</h4>
+<p class='case-study-paragraph'>One dashboard</p>
+<p class='case-study-paragraph'>Unified wallet</p>
+<p class='case-study-paragraph'>Visual cash flow</p>
+<p class='case-study-paragraph'>Searchable activity</p>
+<p class='case-study-paragraph'>Centralized financial overview</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 14 — Final Experience</h2>
+<p class='case-study-paragraph'>Create an editorial montage using:</p>
+<p class='case-study-paragraph'><strong>Overview Cards → Wallet → Cash Flow → Transactions</strong></p>
+<p class='case-study-paragraph'>Use different scales rather than equal-sized screenshots.</p>
+<p class='case-study-paragraph'>The dashboard should remain the visual hero of this section.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 15 — Closing</h2>
+<p class='case-study-paragraph'>End with:</p>
+<p class='case-study-paragraph'><strong>“See your money clearly. Manage it confidently.”</strong></p>
+<p class='case-study-paragraph'>Supporting copy:</p>
+<p class='case-study-paragraph'>“OripioFin turns complex financial information into a single, structured workspace designed for faster understanding and better financial decisions.”</p>
+<hr class='case-study-divider' />
+    </div>
+
+    <!-- Visual Palette Showcase -->
+    <div class="case-study-divider"></div>
+    <div class="process-timeline-wrap">
+      <h2>Fonts & Colors Swatches</h2>
+      <div class="design-system-swatches">
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #00e676;"></div>
+          <span class="swatch-hex">#00e676</span>
+          <span class="swatch-name">Neon Green</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #091f14;"></div>
+          <span class="swatch-hex">#091f14</span>
+          <span class="swatch-name">Mint Green</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #030b06;"></div>
+          <span class="swatch-hex">#030b06</span>
+          <span class="swatch-name">Bank Void</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #ffffff;"></div>
+          <span class="swatch-hex">#ffffff</span>
+          <span class="swatch-name">Neutral White</span>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
+<div class="contact-footer-wrap">
+<section class="sec contact-sec" id="contacts">
+  <div class="contact-sticky-stage">
+    <!-- Interactive Wood Hover Reveal Element -->
+    <div class="contact-wood-interactive">
+      <div class="wood-img-base"></div>
+      <div class="wood-img-grass"></div>
+    </div>
+
+    <div class="contact-layout">
+      
+      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
+      <div class="contact-left-col">
+        <header class="contact-head">
+          <h2 class="testimonials-title contact-heading">
+            <span class="testi-word">Get</span>
+            <span class="testi-word">in</span>
+            <span class="testi-word testi-word--orange">touch</span>
+          </h2>
+          
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email:</span>
+              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Phone:</span>
+              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Address:</span>
+              <span class="contact-detail-value">Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <div class="contact-socials-wrap">
+            <span class="contact-socials-label">Follow us:</span>
+            <div class="contact-social-icons">
+              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
+                </svg>
+              </a>
+              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
+                </svg>
+              </a>
+              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Right Column: Interactive Form aligned to bottom-right -->
+      <div class="contact-right-col">
+        <form class="contact-form" id="contact-form">
+          <div class="contact-form-row">
+            <div class="contact-form-field">
+              <label for="contact-name" class="contact-form-label">Your Name</label>
+              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-email" class="contact-form-label">Email address</label>
+              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
+            </div>
+          </div>
+
+          <div class="contact-form-field">
+            <label for="contact-message" class="contact-form-label">Message</label>
+            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<footer class="footer-sec">
+  <div class="contact-bottom-footer">
+    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
+    <div class="contact-mid-wrap" data-reveal>
+      <div class="contact-mid-row">
+        <div class="contact-tagline">
+          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
+            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
+              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+            </svg>
+          </a>
+          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
+        </div>
+
+        <nav class="contact-links-nav" aria-label="Footer navigation">
+          <div class="contact-links-group">
+            <span class="contact-links-title">Links</span>
+            <a href="#home" class="contact-nav-link">Home</a>
+            <a href="#about" class="contact-nav-link">About Me</a>
+            <a href="#process" class="contact-nav-link">Process</a>
+          </div>
+          <div class="contact-links-group">
+            <span class="contact-links-title">Explore</span>
+            <a href="#work" class="contact-nav-link">Projects</a>
+            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
+            <a href="#contacts" class="contact-nav-link">Contacts</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
+    <div class="contact-copyright-wrap">
+      <div class="contact-copyright-row">
+        <span class="contact-copy-left">© 2026 Bappy Islam</span>
+        <span class="contact-copy-right">All rights reserved.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
+  <div class="contact-designer-banner">
+    <div class="contact-wordmark wordmark" aria-hidden="true">
+      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
+    </div>
+  </div>
+</footer>
+</div> </div> <!-- End of contact-footer-wrap -->
+  <script>
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+
+  function updateNavState() {
+    if (!nav) return;
+    const isScrolled = window.scrollY > 40;
+    nav.classList.toggle('is-scrolled', isScrolled);
+  }
+
+  updateNavState();
+  window.addEventListener('scroll', updateNavState, { passive: true });
+
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', !open);
+      burger.classList.toggle('is-open');
+      menu.classList.toggle('is-open');
+      if (!open) {
+        menu.removeAttribute('inert');
+        document.body.classList.add('no-scroll');
+      } else {
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.setAttribute('aria-expanded', 'false');
+        burger.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      });
+    });
+  }
+
+  // Redirect hash links on subpages to landing page sections
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#') && href !== '#') {
+      link.href = 'index.html' + href;
+    }
+  });
+
+  // Initialize interactive wood hover reveal effect in the footer
+  function initContactWoodHover() {
+    const stage = document.querySelector('.contact-sticky-stage');
+    if (!stage) return;
+
+    const grass = stage.querySelector('.wood-img-grass');
+    if (!grass) return;
+
+    stage.addEventListener('pointermove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      grass.style.setProperty('--mouse-x', `${x}px`);
+      grass.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    stage.addEventListener('pointerleave', () => {
+      grass.style.setProperty('--mouse-x', '-1000px');
+      grass.style.setProperty('--mouse-y', '-1000px');
+    });
+  }
+
+  // Contact Form AJAX Submission (FormSubmit.co)
+  function initContactFormSubmit() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('.contact-submit-btn');
+      if (!submitBtn) return;
+      
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending...</span>';
+      
+      const formData = {
+        name: document.getElementById('contact-name').value,
+        email: document.getElementById('contact-email').value,
+        message: document.getElementById('contact-message').value,
+        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
+      };
+      
+      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === 'true' || data.success === true) {
+          submitBtn.innerHTML = '<span>Message Sent!</span>';
+          submitBtn.style.background = '#2e7d32';
+          contactForm.reset();
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+          }, 4000);
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        submitBtn.innerHTML = '<span>Error! Try again</span>';
+        submitBtn.style.background = '#c62828';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+        }, 4000);
+      });
+    });
+  }
+
+  initContactWoodHover();
+  initContactFormSubmit();
+</script>
+</body>
+</html>

@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bappy — UI/UX Designer</title>
+<link rel="preload" as="image" href="assets/hero-poster.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "./assets/three/three.module.js",
+    "three/addons/": "./assets/three/addons/"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ══ MINIMALIST PREMIUM PRELOADER SCREEN ════════════════════ -->
+<div class="preloader" id="preloader">
+  <div class="preloader__center">
+    <h2 class="preloader__headline">Shaping what comes next.</h2>
+    <div class="preloader__track">
+      <div class="preloader__bar" id="preloader-bar"></div>
+    </div>
+  </div>
+
+  <div class="preloader__quote">Good things take a moment.</div>
+
+  <div class="preloader__giant-counter">
+    <span id="preloader-num">0</span>%
+  </div>
+</div>
+
+<div class="cursor-trail" id="cursor-trail" aria-hidden="true"></div>
+
+<!-- ══ GLOBAL 3D PHONE CANVAS STAGE ══════════════════════════ -->
+<div class="hero__stage" id="hero-stage">
+  <canvas id="phone-canvas"></canvas>
+</div>
+
+<!-- ══ NAV ═══════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#home" aria-label="Bappy — home">
+      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+      </svg>
+    </a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#home" class="is-active">Home</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contacts">Contacts</a>
+    </nav>
+
+    <div class="nav__status-wrapper" id="nav-status">
+      <a class="status-pill" href="#contacts">
+        <span class="beacon" aria-hidden="true">
+          <span class="beacon__dot"></span>
+          <span class="beacon__ring"></span>
+        </span>
+        <span class="status-pill__text">Available to work</span>
+      </a>
+    </div>
+
+    <div class="nav__actions">
+      <a class="btn-talk" href="#contacts" id="btn-talk">
+        <span>Let's talk</span>
+      </a>
+
+      <button class="burger" id="burger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+<div class="menu" id="menu" inert>
+  <nav class="menu__list">
+    <a href="#home"><i>01</i>Home</a>
+    <a href="#about"><i>02</i>About</a>
+    <a href="#work"><i>03</i>Projects</a>
+    <a href="#testimonials"><i>04</i>Reviews</a>
+    <a href="#contacts"><i>05</i>Contacts</a>
+  </nav>
+  <div class="menu__foot">
+    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
+  </div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <video class="hero__video" id="video-back"
+         autoplay muted loop playsinline preload="metadata"
+         poster="assets/hero-poster.jpg">
+    <source src="assets/hero-bg.mp4" type="video/mp4" />
+  </video>
+
+  <div class="wordmark" id="wordmark" aria-hidden="true">
+    <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
+  </div>
+
+  <h1 class="hero-copy hero-copy--left">
+    <span class="word-snap">Hi,</span> <span class="word-snap">I'm</span> <span class="word-snap">Bappy</span><br />
+    <span class="word-snap">Google</span> <span class="word-snap">Certified</span> <span class="word-snap">UI/UX</span> <span class="word-snap">Designer</span><br />
+    <span class="word-snap">with</span> <span class="word-snap">4+</span> <span class="word-snap">years</span> <span class="word-snap">of</span> <span class="word-snap">experience.</span>
+  </h1>
+
+  <p class="hero-copy hero-copy--right">
+    <span class="word-snap">I</span> <span class="word-snap">help</span> <span class="word-snap">businesses</span> <span class="word-snap">solve</span> <span class="word-snap">complex</span><br />
+    <span class="word-snap">problems</span> <span class="word-snap">through</span> <span class="word-snap">clean,</span> <span class="word-snap">scalable,</span><br />
+    <span class="word-snap">and</span> <span class="word-snap">user-centered</span> <span class="word-snap">design.</span>
+  </p>
+</section>
+
+<!-- ══ CLIENT LOGOS / WORK WITH ═════════════════════════════ -->
+<section class="clients" aria-label="Clients and partners">
+  <div class="clients__inner" data-reveal>
+    <p class="clients__label">Trusted by leading companies &amp; startups worldwide</p>
+    
+    <div class="clients__marquee-wrapper">
+      <div class="clients__track">
+        <!-- Set 1 -->
+        <div class="client-logo"><img src="assets/logos/logo-1.svg" alt="Client logo 1" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-2.svg" alt="Client logo 2" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-3.svg" alt="Client logo 3" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-4.svg" alt="Client logo 4" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-5.svg" alt="Client logo 5" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-6.svg" alt="Client logo 6" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-7.svg" alt="Client logo 7" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-8.svg" alt="Client logo 8" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-9.svg" alt="Client logo 9" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-10.svg" alt="Client logo 10" loading="lazy" /></div>
+        <div class="client-logo"><img src="assets/logos/logo-11.svg" alt="Client logo 11" loading="lazy" /></div>
+
+        <!-- Set 2 (Exact Duplicate for Seamless Infinite Marquee Loop) -->
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-1.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-2.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-3.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-4.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-5.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-6.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-7.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-8.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-9.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-10.svg" alt="" loading="lazy" /></div>
+        <div class="client-logo" aria-hidden="true"><img src="assets/logos/logo-11.svg" alt="" loading="lazy" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUOTE SECTION (INTERACTIVE 3D PHONE + CLASH DISPLAY) ══ -->
+<section class="quote-sec" id="quote" aria-label="Design Philosophy">
+  <!-- Interactive Physics Starfield Canvas (Section-attached, scrolls with quote section) -->
+  <canvas class="sec-starfield quote-sec__starfield" aria-hidden="true"></canvas>
+
+  <div class="quote-sec__sticky">
+    <div class="quote-sec__container">
+      <div class="quote-sec__text-col">
+        <h2 class="quote-sec__text" id="quote-text">
+          <span class="quote-word">Great</span>
+          <span class="quote-word">products</span>
+          <span class="quote-word">reduce</span>
+          <span class="quote-word">friction</span>
+          <span class="quote-word">&</span>
+          <span class="quote-word">make</span>
+          <span class="quote-word">next</span>
+          <span class="quote-word">step</span>
+          <span class="quote-word">feel</span>
+          <span class="quote-word">obvious,</span>
+          <span class="quote-word">turning</span>
+          <span class="quote-word">user</span>
+          <span class="quote-word">attention</span>
+          <span class="quote-word">into</span>
+          <span class="quote-word">meaningful</span>
+          <span class="quote-word">action.</span>
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="page">
+
+<!-- ══ ABOUT ME (LOCKED SCREEN + STAGGERED BLUR-TO-CLEAR REVEAL) ═════════════ -->
+<section class="sec sec--about" id="about" aria-label="About Me">
+  <div class="about-sticky-stage">
+    <!-- Interactive Physics Starfield Canvas -->
+    <canvas class="sec-starfield about__starfield" aria-hidden="true"></canvas>
+
+    <div class="about-container">
+      <div class="about-head-label" id="about-head-label">About Me</div>
+
+      <div class="about-grid">
+        <!-- Left Column: Interactive 3D Tilt Portrait (Phase 1 Reveal) -->
+        <div class="about-portrait-wrapper" id="about-portrait-card">
+          <div class="about-portrait-card">
+            <img src="assets/portrait.png" alt="Bappy - UI/UX Designer" class="about-portrait-img" loading="lazy" />
+          </div>
+        </div>
+
+        <!-- Right Column: Info, Stats, CTA -->
+        <div class="about-content">
+          <!-- Phase 2: Title (Word by Word) -->
+          <h2 class="about-title" id="about-title">
+            <span class="about-word">Hi,</span>
+            <span class="about-word">I’m</span>
+            <span class="about-word">Bappy</span>
+          </h2>
+          
+          <!-- Phase 3: Description (Progressive Word-by-Word Focal Wave) -->
+          <p class="about-desc" id="about-desc">
+            <span class="about-desc-word">I</span>
+            <span class="about-desc-word">design</span>
+            <span class="about-desc-word">digital</span>
+            <span class="about-desc-word">products</span>
+            <span class="about-desc-word">for</span>
+            <span class="about-desc-word">web</span>
+            <span class="about-desc-word">and</span>
+            <span class="about-desc-word">mobile,</span>
+            <span class="about-desc-word">with</span>
+            <span class="about-desc-word">the</span>
+            <span class="about-desc-word">ability</span>
+            <span class="about-desc-word">to</span>
+            <span class="about-desc-word">bring</span>
+            <span class="about-desc-word">them</span>
+            <span class="about-desc-word">to</span>
+            <span class="about-desc-word">life</span>
+            <span class="about-desc-word">using</span>
+            <span class="about-desc-word">AI</span>
+            <span class="about-desc-word">coding</span>
+            <span class="about-desc-word">assistants.</span>
+            <span class="about-desc-word">I've</span>
+            <span class="about-desc-word">worked</span>
+            <span class="about-desc-word">with</span>
+            <span class="about-desc-word">international</span>
+            <span class="about-desc-word">teams</span>
+            <span class="about-desc-word">and</span>
+            <span class="about-desc-word">American</span>
+            <span class="about-desc-word">startups</span>
+            <span class="about-desc-word">across</span>
+            <span class="about-desc-word">healthcare,</span>
+            <span class="about-desc-word">sports,</span>
+            <span class="about-desc-word">finance,</span>
+            <span class="about-desc-word">SaaS,</span>
+            <span class="about-desc-word">CRM,</span>
+            <span class="about-desc-word">AI,</span>
+            <span class="about-desc-word">and</span>
+            <span class="about-desc-word">enterprise</span>
+            <span class="about-desc-word">dashboards.</span>
+          </p>
+
+          <!-- Phase 4: Stats / Metrics Row -->
+          <div class="about-stats-row" id="about-stats-row">
+            <div class="about-stat" data-stat-idx="0">
+              <div class="about-stat__number-wrap about-stat-flip" data-target="4" data-suffix="+">
+                <span class="about-stat__num">0</span><span class="about-stat__sym">+</span>
+              </div>
+              <span class="about-stat__lbl">Years of Experience</span>
+            </div>
+
+            <div class="about-stat" data-stat-idx="1">
+              <div class="about-stat__number-wrap about-stat-flip" data-target="20" data-suffix="+">
+                <span class="about-stat__num">0</span><span class="about-stat__sym">+</span>
+              </div>
+              <span class="about-stat__lbl">Products Delivered</span>
+            </div>
+
+            <div class="about-stat" data-stat-idx="2">
+              <div class="about-stat__number-wrap about-stat-flip" data-target="5" data-suffix="★">
+                <span class="about-stat__num">0</span><span class="about-stat__sym about-stat__star">★</span>
+              </div>
+              <span class="about-stat__lbl">Client Satisfaction</span>
+            </div>
+          </div>
+
+          <!-- Phase 5: CTA Button -->
+          <div class="about-cta-row" id="about-cta-row">
+            <a href="#contacts" class="about-btn-talk" id="about-btn-talk">
+              <span>Let's talk</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Social Links -->
+        <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="about-social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
+          </svg>
+        </a>
+        <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="about-social-link" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="about-social-link" aria-label="Behance">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
+          </svg>
+        </a>
+        <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="about-social-link" aria-label="Dribbble">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMBINED PROCESS & PROJECTS FRAME ═══════════════════════════ -->
+<div class="combined-process-projects-frame">
+
+<!-- ══ PROCESS SECTION (TRUE STICKY PINNED STAGE: 1 -> 2 -> 3 -> 4 -> 5 -> 6) ══ -->
+<section class="process-scroll-sec" id="process" aria-label="Process">
+  <div class="process-sticky-stage">
+    <!-- Full-Screen Star Particle Canvas (Left Side Morphing Numerals) -->
+    <canvas id="process-star-num-canvas" class="process-star-num-canvas" aria-hidden="true"></canvas>
+
+    <!-- Upper Left Heading -->
+    <div class="process-flex-container">
+      <div class="process-head">
+        <h2 class="process-main-title">
+          <span class="process-word">My</span>
+          <span class="process-word">Design</span>
+          <span class="process-word" style="color: #ff5722;">Process</span>
+        </h2>
+        <p class="process-main-desc">
+          A structured design process that aligns business goals &amp; user needs to create meaningful experiences.
+        </p>
+      </div>
+
+      <div class="process-body-layout">
+        <div class="process-left-spacer"></div>
+
+        <!-- Right Middle Steps Carousel -->
+        <div class="process-steps-track">
+          <div class="process-steps-slider" id="process-steps-slider">
+            <!-- Step 1: Research -->
+            <div class="process-step-item is-active" data-step="0">
+              <div class="process-step-title-row">
+                <div class="process-step-bullet"></div>
+                <h3 class="process-step-title"><span class="process-word">Research</span></h3>
+              </div>
+              <p class="process-step-desc">Understanding business goals, users, competitors, and product requirements.</p>
+            </div>
+
+            <!-- Step 2: UX Strategy -->
+            <div class="process-step-item is-next" data-step="1">
+              <div class="process-step-title-row">
+                <div class="process-step-bullet"></div>
+                <h3 class="process-step-title"><span class="process-word">UX</span> <span class="process-word">Strategy</span></h3>
+              </div>
+              <p class="process-step-desc">Information architecture, user flows, and planning the best route through the product.</p>
+            </div>
+
+            <!-- Step 3: Wireframing -->
+            <div class="process-step-item is-vanished-bottom" data-step="2">
+              <div class="process-step-title-row">
+                <div class="process-step-bullet"></div>
+                <h3 class="process-step-title"><span class="process-word">Wireframing</span></h3>
+              </div>
+              <p class="process-step-desc">Low-fidelity layouts that validate the structure before any visual design starts.</p>
+            </div>
+
+            <!-- Step 4: UI Design -->
+            <div class="process-step-item is-vanished-bottom" data-step="3">
+              <div class="process-step-title-row">
+                <div class="process-step-bullet"></div>
+                <h3 class="process-step-title"><span class="process-word">UI</span> <span class="process-word">Design</span></h3>
+              </div>
+              <p class="process-step-desc">Clean, scalable interfaces built out of a reusable design system.</p>
+            </div>
+
+            <!-- Step 5: Prototype & Testing -->
+            <div class="process-step-item is-vanished-bottom" data-step="4">
+              <div class="process-step-title-row">
+                <div class="process-step-bullet"></div>
+                <h3 class="process-step-title"><span class="process-word">Prototype</span> <span class="process-word">&amp;</span> <span class="process-word">Testing</span></h3>
+              </div>
+              <p class="process-step-desc">Interactive prototypes, then refining the design against real feedback.</p>
+            </div>
+
+            <!-- Step 6: Developer Handoff -->
+            <div class="process-step-item is-vanished-bottom" data-step="5">
+              <div class="process-step-title-row">
+                <div class="process-step-bullet"></div>
+                <h3 class="process-step-title"><span class="process-word">Developer</span> <span class="process-word">Handoff</span></h3>
+              </div>
+              <p class="process-step-desc">Organised Figma files and close collaboration until it is actually built.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SELECTED PROJECTS (PINNED HORIZONTAL SCROLL + 3D SPINNING LOGO) ══ -->
+<section class="projects-sec" id="work">
+  <canvas class="sec-starfield" aria-hidden="true"></canvas>
+
+  <div class="projects-pin-container" id="projects-pin-container">
+    <!-- Top Bar Navigation -->
+    <div class="projects-top-bar">
+      <p class="projects-top-label">Selected Projects</p>
+    </div>
+
+    <!-- 3D Spinning Logo Background Stage -->
+    <div class="projects-3d-logo-wrap" id="projects-3d-logo-wrap" aria-hidden="true">
+      <canvas id="projects-3d-logo-canvas"></canvas>
+    </div>
+
+    <!-- Horizontal Cards Stage -->
+    <div class="projects-slider-stage" id="projects-slider-stage">
+      <div class="projects-track" id="projects-track">
+        <!-- Project Card 1 (Caring Hands) -->
+        <a href="case-study-1.html" class="proj-card is-active" data-index="0" data-title="Caring Hands" data-desc="A behavioral healthcare engagement platform featuring multi-portal access, workflow automation, rewards tracking, and clinical analytics dashboards.">
+          <div class="proj-card-inner">
+            <img src="assets/showcase-1.jpg" alt="Caring Hands" class="proj-card-img" loading="eager" />
+          </div>
+        </a>
+
+        <!-- Project Card 2 (Momentum) -->
+        <a href="case-study-2.html" class="proj-card" data-index="1" data-title="Momentum" data-desc="A collaborative team workspace and productivity dashboard designed to unify apps, AI assistants, meeting tracking, and workloads in one unified place.">
+          <div class="proj-card-inner">
+            <img src="assets/showcase-2.png" alt="Momentum" class="proj-card-img" loading="lazy" />
+          </div>
+        </a>
+
+        <!-- Project Card 3 (ScoreBall) -->
+        <a href="case-study-3.html" class="proj-card" data-index="2" data-title="ScoreBall" data-desc="A real-time football live-score and match analytics mobile application providing lineups, fixtures, live stats, and sports event tracking.">
+          <div class="proj-card-inner">
+            <img src="assets/showcase-3.jpg" alt="ScoreBall" class="proj-card-img" loading="lazy" />
+          </div>
+        </a>
+
+        <!-- Project Card 4 (Sonder House) -->
+        <a href="case-study-4.html" class="proj-card" data-index="3" data-title="Sonder House" data-desc="A high-end architectural developer portfolio showcasing modern, nature-surrounded private villa layouts and luxury home designs.">
+          <div class="proj-card-inner">
+            <img src="assets/showcase-4.png" alt="Sonder House" class="proj-card-img" loading="lazy" />
+          </div>
+        </a>
+
+        <!-- Project Card 5 (Paybot) -->
+        <a href="case-study-5.html" class="proj-card" data-index="4" data-title="Paybot" data-desc="A global payment and treasury platform empowering freelancers, businesses, and marketplaces to send, receive, and manage multi-currency funds securely.">
+          <div class="proj-card-inner">
+            <img src="assets/showcase-5.png" alt="Paybot" class="proj-card-img" loading="lazy" />
+          </div>
+        </a>
+
+        <!-- Project Card 6 (Tenista) -->
+        <a href="case-study-6.html" class="proj-card" data-index="5" data-title="Tenista" data-desc="A premium tennis training platform and court booking system designed for coaching schedules, facility tours, and event management.">
+          <div class="proj-card-inner">
+            <img src="assets/showcase-6.png" alt="Tenista" class="proj-card-img" loading="lazy" />
+          </div>
+        </a>
+
+        <!-- Project Card 7 (FlexFly) -->
+        <a href="case-study-7.html" class="proj-card proj-card--last" data-index="6" data-title="FlexFly" data-desc="A premium flight booking and travel discovery platform designed to make finding, comparing, and booking flights feel simpler and more inspiring.">
+          <div class="proj-card-inner">
+            <img src="assets/showcase-7.png" alt="FlexFly" class="proj-card-img" loading="lazy" />
+          </div>
+        </a>
+
+        <!-- Standalone "See More" Slide -->
+        <div class="proj-see-more-wrap" data-index="7">
+          <a href="projects.html" class="see-more-projects-btn" id="see-more-projects-btn">
+            <span>See More</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Left Active Project Info -->
+    <div class="projects-info-wrap" id="projects-info-wrap">
+      <h2 class="projects-active-title" id="projects-active-title"><span class="proj-word">Project</span> <span class="proj-word">Title</span> <span class="proj-word">1</span></h2>
+      <p class="projects-active-desc" id="projects-active-desc">A complete clinic and healthcare intelligence platform — patient records, engagement analytics, risk intelligence, and automated scheduling designed for clinical workflows.</p>
+    </div>
+  </div>
+</section>
+
+</div> <!-- End of combined-process-projects-frame -->
+
+<!-- ══ SPACE SECTION (MASSIVE GLOWING CURVED LIGHT STRIPE + STARFIELD PARTICLES) ══ -->
+<section class="space-scroll-sec" id="space" aria-label="Space">
+  <div class="space-sticky-stage">
+    <!-- Starfield Particles Background -->
+    <canvas class="sec-starfield" aria-hidden="true"></canvas>
+
+    <!-- Full-Screen Massive Glowing Curved Planetary Horizon (Apex Reaches Top of Screen) -->
+    <div class="space-arc-wrap" id="space-arc-wrap">
+      <svg class="cosmic-horizon-svg space-horizon-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <!-- Core Arc Linear Gradient -->
+          <linearGradient id="spaceArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ff3d00" stop-opacity="0" />
+            <stop offset="5%" stop-color="#ff5722" stop-opacity="0.75" />
+            <stop offset="22%" stop-color="#ff7a38" stop-opacity="0.95" />
+            <stop offset="50%" stop-color="#fff5ed" stop-opacity="1" />
+            <stop offset="78%" stop-color="#ff7a38" stop-opacity="0.95" />
+            <stop offset="95%" stop-color="#ff5722" stop-opacity="0.75" />
+            <stop offset="100%" stop-color="#ff3d00" stop-opacity="0" />
+          </linearGradient>
+
+          <!-- Outer Corona Glow Linear Gradient -->
+          <linearGradient id="spaceCoronaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d84315" stop-opacity="0" />
+            <stop offset="10%" stop-color="#ff5722" stop-opacity="0.65" />
+            <stop offset="50%" stop-color="#ff8a50" stop-opacity="0.98" />
+            <stop offset="90%" stop-color="#ff5722" stop-opacity="0.65" />
+            <stop offset="100%" stop-color="#d84315" stop-opacity="0" />
+          </linearGradient>
+
+          <!-- 100% Symmetrical Radial Atmospheric Glow Gradient -->
+          <radialGradient id="spaceAtmosphereGlow" cx="50%" cy="45%" r="55%">
+            <stop offset="0%" stop-color="rgba(255, 87, 34, 0.58)" />
+            <stop offset="30%" stop-color="rgba(230, 74, 25, 0.28)" />
+            <stop offset="65%" stop-color="rgba(180, 40, 10, 0.08)" />
+            <stop offset="100%" stop-color="rgba(0, 0, 0, 0)" />
+          </radialGradient>
+
+          <!-- Symmetrical dispersion filters -->
+          <filter id="spaceCoronaBlur" x="-30%" y="-80%" width="160%" height="260%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="28" />
+          </filter>
+          <filter id="spaceAtmosphereBlur" x="-40%" y="-100%" width="180%" height="300%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="60" />
+          </filter>
+          <filter id="spaceCoreGlow" x="-20%" y="-50%" width="140%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="7" />
+          </filter>
+        </defs>
+
+        <!-- 1. Diffuse Outer Atmospheric Glow along the exact curve path -->
+        <path d="M -40 1060 Q 960 20 1960 1060" fill="none" stroke="url(#spaceCoronaGrad)" stroke-width="48" stroke-linecap="round" filter="url(#spaceCoronaBlur)" opacity="0.75" />
+
+        <!-- 2. Mid-Corona Glow along the exact curve path -->
+        <path d="M -40 1060 Q 960 20 1960 1060" fill="none" stroke="url(#spaceCoronaGrad)" stroke-width="20" stroke-linecap="round" filter="url(#spaceCoreGlow)" opacity="0.95" />
+
+        <!-- 3. Ultra-Crisp High-Energy White-Hot Core Solar Filament Arc -->
+        <path d="M -40 1060 Q 960 20 1960 1060" fill="none" stroke="url(#spaceArcGrad)" stroke-width="4.5" stroke-linecap="round" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT MY CLIENTS SAY (TESTIMONIALS) ═════════════════════ -->
+<!-- ══ COMBINED TESTIMONIALS & FAQ STICKY TRACK ═════════════════════ -->
+<section class="sec combined-testi-faq-sec" id="testimonials-faq-combined">
+  <!-- Invisible Navigation / Snapping Target Markers -->
+  <div id="testimonials" style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none;"></div>
+  <div id="faq" style="position: absolute; top: 50%; left: 0; width: 1px; height: 1px; pointer-events: none;"></div>
+
+  <div class="combined-sticky-stage">
+    <canvas class="sec-starfield" aria-hidden="true"></canvas>
+    
+    <div class="testimonials-layout">
+      <!-- Left Column: Headers + Shared 3D WebGL Glass Logo Stage -->
+      <div class="testi-left" id="combined-left-col">
+        
+        <!-- 1. Testimonial Header -->
+        <header class="testimonials-head" id="combined-testi-head">
+          <h2 class="testimonials-title"><span class="testi-word">What</span> <span class="testi-word">My</span> <span class="testi-word testi-word--orange">Clients</span> <span class="testi-word">Say</span></h2>
+          <p class="testimonials-subtitle" id="testimonials-subtitle">
+            <span class="testi-desc-word">Here's</span>
+            <span class="testi-desc-word">what</span>
+            <span class="testi-desc-word">my</span>
+            <span class="testi-desc-word">clients</span>
+            <span class="testi-desc-word">have</span>
+            <span class="testi-desc-word">shared</span>
+            <span class="testi-desc-word">about</span>
+            <span class="testi-desc-word">their</span>
+            <span class="testi-desc-word">experiences</span>
+            <span class="testi-desc-word">working</span>
+            <span class="testi-desc-word">with</span>
+            <span class="testi-desc-word">me.</span>
+            <span class="testi-desc-word">Their</span>
+            <span class="testi-desc-word">trust</span>
+            <span class="testi-desc-word">and</span>
+            <span class="testi-desc-word">satisfaction</span>
+            <span class="testi-desc-word">motivate</span>
+            <span class="testi-desc-word">me</span>
+            <span class="testi-desc-word">to</span>
+            <span class="testi-desc-word">continue</span>
+            <span class="testi-desc-word">delivering</span>
+            <span class="testi-desc-word">designs</span>
+            <span class="testi-desc-word">that</span>
+            <span class="testi-desc-word">make</span>
+            <span class="testi-desc-word">an</span>
+            <span class="testi-desc-word">impact.</span>
+          </p>
+        </header>
+
+        <!-- 2. FAQ Header (Positioned absolutely, crossfaded) -->
+        <header class="testimonials-head" id="combined-faq-head" style="position: absolute; top: 0; left: 0; width: 100%; opacity: 0; pointer-events: none;">
+          <h2 class="testimonials-title">
+            <span class="faq-word">Frequently</span> <span class="faq-word">Asked</span><br />
+            <span class="faq-word">Questions</span> <span class="faq-word" style="color: #ff5722 !important; font-weight: 700;">(FAQ)</span>
+          </h2>
+          <p class="testimonials-subtitle" id="faq-subtitle">
+            <span class="faq-desc-word">Here</span>
+            <span class="faq-desc-word">are</span>
+            <span class="faq-desc-word">answers</span>
+            <span class="faq-desc-word">to</span>
+            <span class="faq-desc-word">some</span>
+            <span class="faq-desc-word">of</span>
+            <span class="faq-desc-word">the</span>
+            <span class="faq-desc-word">most</span>
+            <span class="faq-desc-word">common</span>
+            <span class="faq-desc-word">questions</span>
+            <span class="faq-desc-word">I</span>
+            <span class="faq-desc-word">receive</span>
+            <span class="faq-desc-word">as</span>
+            <span class="faq-desc-word">a</span>
+            <span class="faq-desc-word">freelance</span>
+            <span class="faq-desc-word">designer.</span>
+            <span class="faq-desc-word">If</span>
+            <span class="faq-desc-word">you</span>
+            <span class="faq-desc-word">don't</span>
+            <span class="faq-desc-word">see</span>
+            <span class="faq-desc-word">your</span>
+            <span class="faq-desc-word">question</span>
+            <span class="faq-desc-word">here,</span>
+            <span class="faq-desc-word">feel</span>
+            <span class="faq-desc-word">free</span>
+            <span class="faq-desc-word">to</span>
+            <span class="faq-desc-word">reach</span>
+            <span class="faq-desc-word">out</span>
+            <span class="faq-desc-word">—</span>
+            <span class="faq-desc-word">I'm</span>
+            <span class="faq-desc-word">happy</span>
+            <span class="faq-desc-word">to</span>
+            <span class="faq-desc-word">help!</span>
+          </p>
+        </header>
+
+        <!-- 3. Shared 3D WebGL Glass Logo Stage (Persists and transitions between phases) -->
+        <div class="testi-3d-glass-stage" id="combined-3d-glass-stage" aria-label="Interactive 3D Glass Logo">
+          <div class="testi-3d-glass-canvas-wrap" id="combined-3d-glass-canvas-wrap"></div>
+        </div>
+      </div>
+      
+      <!-- Right Column: Staggered elements container -->
+      <div class="testi-right" style="position: relative; width: 100%; height: 100%;">
+        
+        <!-- Testimonials Grid (6 Cards) -->
+        <div class="testimonials-grid" id="combined-testi-grid">
+          <!-- Card 1: John Harris (Dark Card) -->
+          <article class="testi-card testi-card--dark" data-card-idx="0">
+            <div class="testi-stars" aria-label="5 stars">
+              <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            </div>
+            <blockquote class="testi-quote">
+              Duncan truly understood my vision and turned it into impactful designs. The results went beyond my expectations!
+            </blockquote>
+            <div class="testi-author">
+              <img src="assets/client-john.jpg" alt="John Harris" class="testi-avatar" />
+              <div class="testi-author-info">
+                <h4 class="testi-author-name">John Harris</h4>
+                <p class="testi-author-role">CEO</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Michael Lee (Dark Card) -->
+          <article class="testi-card testi-card--dark" data-card-idx="1">
+            <div class="testi-stars" aria-label="5 stars">
+              <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            </div>
+            <blockquote class="testi-quote">
+              He took the time to understand our goals and delivered a design that resonated perfectly with our audience.
+            </blockquote>
+            <div class="testi-author">
+              <img src="assets/client-michael.jpg" alt="Michael Lee" class="testi-avatar" />
+              <div class="testi-author-info">
+                <h4 class="testi-author-name">Michael Lee</h4>
+                <p class="testi-author-role">Product Manager</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: 99% Satisfaction Rate (White Card) -->
+          <article class="testi-card testi-card--white" data-card-idx="2">
+            <p class="testi-stat-sub">I've worked with 20+ happy clients</p>
+            <div class="testi-stat-wrap">
+              <div class="testi-stat-num" data-target="99" data-suffix="%">0%</div>
+              <p class="testi-stat-label">Satisfaction Rate</p>
+            </div>
+          </article>
+
+          <!-- Card 4: 200% Growth (Brand Primary Cosmic Orange Card) -->
+          <article class="testi-card testi-card--orange" data-card-idx="3">
+            <p class="testi-stat-sub">My work helped clients grow their conversions by 10x.</p>
+            <div class="testi-stat-wrap">
+              <div class="testi-stat-num" data-target="200" data-suffix="%">0%</div>
+              <p class="testi-stat-label">Growth</p>
+            </div>
+          </article>
+
+          <!-- Card 5: Sarah Johnson (Dark Card) -->
+          <article class="testi-card testi-card--dark" data-card-idx="4">
+            <div class="testi-stars" aria-label="5 stars">
+              <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            </div>
+            <blockquote class="testi-quote">
+              His design skills are unmatched. He transformed my ideas into a high-performing, visually striking website.
+            </blockquote>
+            <div class="testi-author">
+              <img src="assets/client-sarah.jpg" alt="Sarah Johnson" class="testi-avatar" />
+              <div class="testi-author-info">
+                <h4 class="testi-author-name">Sarah Johnson</h4>
+                <p class="testi-author-role">CEO</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Laura Bennett (Dark Card) -->
+          <article class="testi-card testi-card--dark" data-card-idx="5">
+            <div class="testi-stars" aria-label="5 stars">
+              <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            </div>
+            <blockquote class="testi-quote">
+              As a small business owner, I appreciated how stress-free Bappy Islam made the process.
+            </blockquote>
+            <div class="testi-author">
+              <img src="assets/client-laura.jpg" alt="Laura Bennett" class="testi-avatar" />
+              <div class="testi-author-info">
+                <h4 class="testi-author-name">Laura Bennett</h4>
+                <p class="testi-author-role">Manager</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- FAQ Accordion (6 Items) -->
+        <div class="faq-right-col" id="combined-faq-grid" style="position: absolute; display: none; opacity: 0; pointer-events: none;">
+          <!-- Item 1 -->
+          <div class="faq-accordion-item" role="button" aria-expanded="false">
+            <div class="faq-accordion-header">
+              <h3 class="faq-accordion-title">1. WHAT SERVICES DO YOU OFFER?</h3>
+              <div class="faq-accordion-icon" aria-hidden="true">
+                <span class="faq-icon-line faq-icon-line--h"></span>
+                <span class="faq-icon-line faq-icon-line--v"></span>
+              </div>
+            </div>
+            <div class="faq-accordion-body">
+              <p class="faq-accordion-text">I specialize in UI/UX design, branding, web design, and development. Whether you need a complete website, a visual identity, or design consultation, I'm here to help bring your ideas to life.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="faq-accordion-item" role="button" aria-expanded="false">
+            <div class="faq-accordion-header">
+              <h3 class="faq-accordion-title">2. HOW DOES THE DESIGN PROCESS WORK?</h3>
+              <div class="faq-accordion-icon" aria-hidden="true">
+                <span class="faq-icon-line faq-icon-line--h"></span>
+                <span class="faq-icon-line faq-icon-line--v"></span>
+              </div>
+            </div>
+            <div class="faq-accordion-body">
+              <p class="faq-accordion-text">My process begins with discovery and planning, where I understand your goals and audience. Then, I move on to concept creation, revisions based on your feedback, and finalize with testing and delivery. It's a collaborative process, and I keep you updated every step of the way.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="faq-accordion-item" role="button" aria-expanded="false">
+            <div class="faq-accordion-header">
+              <h3 class="faq-accordion-title">3. HOW LONG DOES A PROJECT USUALLY TAKE?</h3>
+              <div class="faq-accordion-icon" aria-hidden="true">
+                <span class="faq-icon-line faq-icon-line--h"></span>
+                <span class="faq-icon-line faq-icon-line--v"></span>
+              </div>
+            </div>
+            <div class="faq-accordion-body">
+              <p class="faq-accordion-text">The timeline depends on the scope of the project. Smaller projects, like logo design, may take 1-2 weeks, while larger projects, such as website design, can take 4-6 weeks. I'll provide a detailed timeline once we've discussed your needs.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="faq-accordion-item" role="button" aria-expanded="false">
+            <div class="faq-accordion-header">
+              <h3 class="faq-accordion-title">4. WHAT DO I NEED TO PROVIDE BEFORE STARTING A PROJECT?</h3>
+              <div class="faq-accordion-icon" aria-hidden="true">
+                <span class="faq-icon-line faq-icon-line--h"></span>
+                <span class="faq-icon-line faq-icon-line--v"></span>
+              </div>
+            </div>
+            <div class="faq-accordion-body">
+              <p class="faq-accordion-text">Typically, I'll need information about your business, your goals, and any branding assets you already have, like a logo or color palette. For web projects, content like text and images will also be required. Don't worry — I'll guide you through this step.</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="faq-accordion-item" role="button" aria-expanded="false">
+            <div class="faq-accordion-header">
+              <h3 class="faq-accordion-title">5. DO YOU OFFER REVISIONS?</h3>
+              <div class="faq-accordion-icon" aria-hidden="true">
+                <span class="faq-icon-line faq-icon-line--h"></span>
+                <span class="faq-icon-line faq-icon-line--v"></span>
+              </div>
+            </div>
+            <div class="faq-accordion-body">
+              <p class="faq-accordion-text">Yes, revisions are part of my process to ensure the final design meets your expectations. I usually include 2-3 rounds of revisions depending on the project. Additional revisions can be arranged if needed.</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="faq-accordion-item" role="button" aria-expanded="false">
+            <div class="faq-accordion-header">
+              <h3 class="faq-accordion-title">6. HOW DO I GET STARTED?</h3>
+              <div class="faq-accordion-icon" aria-hidden="true">
+                <span class="faq-icon-line faq-icon-line--h"></span>
+                <span class="faq-icon-line faq-icon-line--v"></span>
+              </div>
+            </div>
+            <div class="faq-accordion-body">
+              <p class="faq-accordion-text">Simply reach out through my contact page or email me directly. We'll schedule a consultation to discuss your project, goals, and timeline. From there, I'll provide a proposal to get things moving.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
+<div class="contact-footer-wrap">
+<section class="sec contact-sec" id="contacts">
+  <div class="contact-sticky-stage">
+    <!-- Interactive Wood Hover Reveal Element -->
+    <div class="contact-wood-interactive">
+      <div class="wood-img-base"></div>
+      <div class="wood-img-grass"></div>
+    </div>
+
+    <div class="contact-layout">
+      
+      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
+      <div class="contact-left-col">
+        <header class="contact-head">
+          <h2 class="testimonials-title contact-heading">
+            <span class="testi-word">Get</span>
+            <span class="testi-word">in</span>
+            <span class="testi-word testi-word--orange">touch</span>
+          </h2>
+          
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email:</span>
+              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Phone:</span>
+              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Address:</span>
+              <span class="contact-detail-value">Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <div class="contact-socials-wrap">
+            <span class="contact-socials-label">Follow us:</span>
+            <div class="contact-social-icons">
+              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
+                </svg>
+              </a>
+              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
+                </svg>
+              </a>
+              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Right Column: Interactive Form aligned to bottom-right -->
+      <div class="contact-right-col">
+        <form class="contact-form" id="contact-form">
+          <div class="contact-form-row">
+            <div class="contact-form-field">
+              <label for="contact-name" class="contact-form-label">Your Name</label>
+              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-email" class="contact-form-label">Email address</label>
+              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
+            </div>
+          </div>
+
+          <div class="contact-form-field">
+            <label for="contact-message" class="contact-form-label">Message</label>
+            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<footer class="footer-sec">
+  <div class="contact-bottom-footer">
+    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
+    <div class="contact-mid-wrap" data-reveal>
+      <div class="contact-mid-row">
+        <div class="contact-tagline">
+          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
+            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
+              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+            </svg>
+          </a>
+          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
+        </div>
+
+        <nav class="contact-links-nav" aria-label="Footer navigation">
+          <div class="contact-links-group">
+            <span class="contact-links-title">Links</span>
+            <a href="#home" class="contact-nav-link">Home</a>
+            <a href="#about" class="contact-nav-link">About Me</a>
+            <a href="#process" class="contact-nav-link">Process</a>
+          </div>
+          <div class="contact-links-group">
+            <span class="contact-links-title">Explore</span>
+            <a href="#work" class="contact-nav-link">Projects</a>
+            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
+            <a href="#contacts" class="contact-nav-link">Contacts</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
+    <div class="contact-copyright-wrap">
+      <div class="contact-copyright-row">
+        <span class="contact-copy-left">© 2026 Bappy Islam</span>
+        <span class="contact-copy-right">All rights reserved.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
+  <div class="contact-designer-banner">
+    <div class="contact-wordmark wordmark" aria-hidden="true">
+      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
+    </div>
+  </div>
+</footer>
+</div> <!-- End of contact-footer-wrap -->
+
+</main>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

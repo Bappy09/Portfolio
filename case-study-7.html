@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en" class="is-ready">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bappy — FlexFly Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --accent: #2979ff;
+      --accent-rgb: 41, 121, 255;
+      --case-bg: radial-gradient(circle at top, #0f1828 0%, #05080f 100%);
+    }
+    body.case-study-page {
+      background: var(--case-bg);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .case-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px var(--pad);
+      box-sizing: border-box;
+    }
+    
+    /* Hero Style */
+    .case-hero {
+      padding-top: 160px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+    .case-hero-tag {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .case-hero-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+    
+    /* Back Navigation */
+    .case-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-family: var(--font-mono), monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .case-back-link:hover {
+      transform: translateX(-4px);
+      opacity: 0.85;
+    }
+    
+    /* Image Showcase container */
+    .case-img-wrap {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
+      margin-bottom: 80px;
+      aspect-ratio: 16 / 9.4;
+    }
+    .case-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    
+    /* Info grid */
+    .case-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px 0;
+      margin-bottom: 80px;
+    }
+    .case-info-item span {
+      display: block;
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.40);
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+    .case-info-item p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--paper);
+      margin: 0;
+    }
+    
+    /* Overview Split (Image 1, 3, 5 style) */
+    .overview-sec {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+      align-items: start;
+    }
+    .overview-text h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: var(--paper);
+    }
+    .overview-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 20px;
+    }
+    
+    /* Meta tags card */
+    .meta-tags-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .meta-tags-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      color: #ffffff;
+      border-left: 2px solid var(--accent);
+      padding-left: 10px;
+    }
+    .meta-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .meta-tag-list:last-child {
+      margin-bottom: 0;
+    }
+    .meta-tag {
+      background: rgba(var(--accent-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-rgb), 0.15);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--paper);
+      font-family: var(--font-mono), monospace;
+    }
+    
+    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
+    .prob-sol-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0 80px 0;
+    }
+    .prob-card {
+      background: rgba(255, 77, 77, 0.01);
+      border: 1px solid rgba(255, 77, 77, 0.08);
+      border-left: 4px solid #ff4d4d;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .sol-card {
+      background: rgba(0, 230, 118, 0.01);
+      border: 1px solid rgba(0, 230, 118, 0.08);
+      border-left: 4px solid #00e676;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .prob-sol-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .prob-sol-list {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .prob-sol-list li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 12px;
+    }
+    
+    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
+    .process-timeline-wrap {
+      margin-bottom: 80px;
+    }
+    .process-timeline-wrap h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .process-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    .process-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.3);
+    }
+    .process-num {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .process-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #ffffff;
+      font-family: 'Clash Display', sans-serif;
+    }
+    .process-desc {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.50);
+    }
+    
+    /* General content sections */
+    .case-study-sec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 80px 0 24px 0;
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+    }
+    .case-study-subsec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 48px 0 18px 0;
+    }
+    .case-study-subsubsec-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 24px 0 12px 0;
+    }
+    .case-study-paragraph {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 24px;
+    }
+    .case-study-divider {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 60px 0;
+    }
+    .case-study-list {
+      margin: 0 0 24px 0;
+      padding-left: 20px;
+    }
+    .case-study-list li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 8px;
+    }
+    
+    /* Visual Design System Swatches (Image 4 style) */
+    .design-system-swatches {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .color-swatch {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 12px;
+      width: 130px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .swatch-preview {
+      width: 100%;
+      height: 50px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .swatch-hex {
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #ffffff;
+      display: block;
+    }
+    .swatch-name {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.40);
+      margin-top: 2px;
+      display: block;
+    }
+    
+    /* Features Grid */
+    .case-study-features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .case-study-feature-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px;
+      border-radius: 12px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .case-study-feature-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .case-study-feature-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 0 0 8px 0;
+    }
+    .case-study-feature-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.55);
+      margin: 0;
+    }
+    
+    @media (max-width: 960px) {
+      .overview-sec {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .prob-sol-split {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .case-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .case-study-features-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .case-img-wrap {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .case-info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body class="case-study-page">
+
+  <!-- ══ NAV ═══════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#home" aria-label="Bappy — home">
+      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+      </svg>
+    </a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#home" class="is-active">Home</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contacts">Contacts</a>
+    </nav>
+
+    <div class="nav__status-wrapper" id="nav-status">
+      <a class="status-pill" href="#contacts">
+        <span class="beacon" aria-hidden="true">
+          <span class="beacon__dot"></span>
+          <span class="beacon__ring"></span>
+        </span>
+        <span class="status-pill__text">Available to work</span>
+      </a>
+    </div>
+
+    <div class="nav__actions">
+      <a class="btn-talk" href="#contacts" id="btn-talk">
+        <span>Let's talk</span>
+      </a>
+
+      <button class="burger" id="burger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+<div class="menu" id="menu" inert>
+  <nav class="menu__list">
+    <a href="#home"><i>01</i>Home</a>
+    <a href="#about"><i>02</i>About</a>
+    <a href="#work"><i>03</i>Projects</a>
+    <a href="#testimonials"><i>04</i>Reviews</a>
+    <a href="#contacts"><i>05</i>Contacts</a>
+  </nav>
+  <div class="menu__foot">
+    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
+  </div>
+</div>
+
+  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
+  <main class="case-wrapper">
+    <div class="case-hero">
+      <a href="projects.html" class="case-back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Selected Works
+      </a>
+      <span class="case-hero-tag">UX Case Study</span>
+      <h1 class="case-hero-title">FlexFly</h1>
+    </div>
+    
+    <!-- Info Grid -->
+    <div class="case-info-grid">
+      <div class="case-info-item">
+        <span>Role</span>
+        <p>UX Architect</p>
+      </div>
+      <div class="case-info-item">
+        <span>Timeline</span>
+        <p>3 Months (2026)</p>
+      </div>
+      <div class="case-info-item">
+        <span>Deliverables</span>
+        <p>Booking Funnel, Flight Dashboard, Responsive Web</p>
+      </div>
+      <div class="case-info-item">
+        <span>Team</span>
+        <p>1 Designer, 3 Developers, 1 Travel Consultant</p>
+      </div>
+    </div>
+
+    <!-- Image Showcase -->
+    <div class="case-img-wrap">
+      <img src="assets/showcase-7.png" alt="FlexFly Showcase" class="case-img" />
+    </div>
+
+    <!-- Overview Split Section -->
+    <div class="overview-sec">
+      <div class="overview-text">
+        <h2>About FlexFly</h2>
+        <p>FlexFly is a modern flight booking and travel discovery platform designed to make the process of finding, comparing, and booking flights feel simpler and more inspiring.
+
+
+
+Rather than treating flight booking as a purely transactional experience, FlexFly combines:
+
+
+
+* Flight search
+
+* Destination discovery
+
+* Travel inspiration
+
+* Premium flight services
+
+* Private charter
+
+* Business class
+
+* Group & event travel
+
+* Customer reviews
+
+* Travel storytelling
+
+
+
+into one cohesive digital experience.
+
+
+
+The design is built around a simple idea:
+
+
+
+**Flight booking should not feel like filling out a form. It should feel like the beginning of a journey.**
+
+
+
+---</p>
+      </div>
+      <div class="meta-tags-card">
+        <div class="meta-tags-title">Project Context</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">UX Architecture</span>
+<span class="meta-tag">Booking Funnel Design</span>
+<span class="meta-tag">Customer Journey</span>
+<span class="meta-tag">UI Design</span>
+        </div>
+        <div class="meta-tags-title">Tools Used</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Figma</span>
+<span class="meta-tag">Google Workspace</span>
+<span class="meta-tag">Miro</span>
+<span class="meta-tag">Trello</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Problem vs Solution Visual Box -->
+    <div class="prob-sol-split">
+      <div class="prob-card">
+        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
+        <ul class="prob-sol-list">
+          <li>Flight booking engines are transactional and feel like filling taxes.</li>
+<li>Travelers looking for private charters or business seats are forced into generic grids.</li>
+<li>Exploratory travelers struggle to discover new travel ideas within booking sites.</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
+        <ul class="prob-sol-list">
+          <li>Created an inspirational landing page leading into a compact search widget.</li>
+<li>Segmented services (Economy, Business, Private Charter) into dedicated flows.</li>
+<li>Designed image-rich destination card grids to spark travel interest.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Process Flow Grid -->
+    <div class="process-timeline-wrap">
+      <h2>Design Process</h2>
+      <div class="process-timeline">
+        
+        <div class="process-card">
+          <span class="process-num">Step 01</span>
+          <div class="process-title">Empathize</div>
+          <div class="process-desc">Analyzing booking fatigue on traditional flight search engines.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 02</span>
+          <div class="process-title">Define</div>
+          <div class="process-desc">Determining that leisure and business travelers have different paths.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 03</span>
+          <div class="process-title">Ideate</div>
+          <div class="process-desc">Structuring flight parameters separate from flight inspiration.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 04</span>
+          <div class="process-title">Design</div>
+          <div class="process-desc">Designing rounded destination cards and premium service sliders.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 05</span>
+          <div class="process-title">Test</div>
+          <div class="process-desc">Running A/B testing on search fields to reduce input friction.</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Dynamic Content Area -->
+    <div class="case-content">
+      <h3 class='case-study-subsec-title'>Fly Smarter. Explore Further.</h3>
+<p class='case-study-paragraph'>FlexFly is a modern flight booking and travel discovery platform designed to make the process of finding, comparing, and booking flights feel simpler and more inspiring.</p>
+<p class='case-study-paragraph'>Rather than treating flight booking as a purely transactional experience, FlexFly combines:</p>
+<ul class='case-study-list'>
+  <li>Flight search</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Destination discovery</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Travel inspiration</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Premium flight services</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Private charter</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Business class</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Group & event travel</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Customer reviews</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Travel storytelling</li>
+</ul>
+<p class='case-study-paragraph'>into one cohesive digital experience.</p>
+<p class='case-study-paragraph'>The design is built around a simple idea:</p>
+<p class='case-study-paragraph'><strong>Flight booking should not feel like filling out a form. It should feel like the beginning of a journey.</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why FlexFly Exists</h2>
+<p class='case-study-paragraph'>Traditional flight booking experiences are often highly functional.</p>
+<p class='case-study-paragraph'>Users enter:</p>
+<p class='case-study-paragraph'><strong>Origin → Destination → Date → Passengers → Search</strong></p>
+<p class='case-study-paragraph'>and are immediately presented with a large amount of information.</p>
+<p class='case-study-paragraph'>While this approach is efficient, it can make the experience feel complicated, repetitive, and impersonal.</p>
+<p class='case-study-paragraph'>FlexFly takes a different approach.</p>
+<p class='case-study-paragraph'>The platform combines the functional side of flight booking with the emotional side of travel.</p>
+<p class='case-study-paragraph'>The user can:</p>
+<p class='case-study-paragraph'><strong>Search for a flight → Discover destinations → Explore travel options → Choose a service → Build confidence → Book</strong></p>
+<p class='case-study-paragraph'>This makes FlexFly feel less like a search engine and more like a complete travel experience.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>The Business Problem</h2>
+<p class='case-study-paragraph'>The primary business challenge was to create a flight-booking experience that could balance <strong>conversion, discovery, trust, and premium positioning</strong>.</p>
+<p class='case-study-paragraph'>A travel platform needs to solve several problems at the same time.</p>
+<h4 class='case-study-subsubsec-title'>01 — Flight Booking Can Feel Complicated</h4>
+<p class='case-study-paragraph'>Users need to provide multiple pieces of information before they can even begin searching.</p>
+<p class='case-study-paragraph'>The interface needs to make this process feel effortless.</p>
+<h4 class='case-study-subsubsec-title'>02 — Users Have Different Travel Intentions</h4>
+<p class='case-study-paragraph'>Not every traveler is looking for the same thing.</p>
+<p class='case-study-paragraph'>One user may need a standard flight.</p>
+<p class='case-study-paragraph'>Another may want business class.</p>
+<p class='case-study-paragraph'>Someone else may need a private charter or group travel.</p>
+<p class='case-study-paragraph'>The platform therefore needs to support different travel needs without creating a confusing experience.</p>
+<h4 class='case-study-subsubsec-title'>03 — Travel Is an Emotional Purchase</h4>
+<p class='case-study-paragraph'>Users don't only buy transportation.</p>
+<p class='case-study-paragraph'>They buy:</p>
+<ul class='case-study-list'>
+  <li>Experiences</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Destinations</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Convenience</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Comfort</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Time</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Memories</li>
+</ul>
+<p class='case-study-paragraph'>The website needs to communicate that emotional value.</p>
+<h4 class='case-study-subsubsec-title'>04 — Trust Is Critical</h4>
+<p class='case-study-paragraph'>Travel bookings involve money, dates, personal information, and important plans.</p>
+<p class='case-study-paragraph'>Users need confidence that the platform is reliable.</p>
+<h4 class='case-study-subsubsec-title'>05 — The Product Needs to Differentiate</h4>
+<p class='case-study-paragraph'>A generic flight-booking interface can look similar to dozens of competitors.</p>
+<p class='case-study-paragraph'>FlexFly needs a visual identity and experience that feels more premium and memorable.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Primary Audience</h3>
+<h4 class='case-study-subsubsec-title'>Leisure Travelers</h4>
+<p class='case-study-paragraph'>People looking for flights and destinations for holidays, vacations, and personal travel.</p>
+<p class='case-study-paragraph'>They need:</p>
+<ul class='case-study-list'>
+  <li>Easy flight search</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Destination inspiration</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Simple booking</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Clear travel information</li>
+</ul>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Business Travelers</h3>
+<p class='case-study-paragraph'>Users who prioritize:</p>
+<ul class='case-study-list'>
+  <li>Convenience</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Time</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Comfort</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Premium seating</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Reliable travel</li>
+</ul>
+<p class='case-study-paragraph'>The Business Class service directly addresses this audience.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Premium Travelers</h3>
+<p class='case-study-paragraph'>Travelers looking for a more personalized or luxurious travel experience.</p>
+<p class='case-study-paragraph'>They may be interested in:</p>
+<ul class='case-study-list'>
+  <li>Private charter</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Premium cabin experiences</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Personalized travel</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Exclusive destinations</li>
+</ul>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Groups & Event Travelers</h3>
+<p class='case-study-paragraph'>Organizations, families, or groups traveling together.</p>
+<p class='case-study-paragraph'>The Group & Events service creates a dedicated entry point for this audience.</p>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>01 — Too Much Information</h4>
+<p class='case-study-paragraph'>Flight booking websites can present users with large amounts of data before they understand what matters most.</p>
+<h4 class='case-study-subsubsec-title'>02 — Booking Feels Transactional</h4>
+<p class='case-study-paragraph'>Users often enter search parameters and immediately enter a highly functional interface.</p>
+<p class='case-study-paragraph'>There is little emotional connection to the journey.</p>
+<h4 class='case-study-subsubsec-title'>03 — Destination Discovery Is Separate</h4>
+<p class='case-study-paragraph'>Users may know where they want to go, but many travelers are still deciding where to travel.</p>
+<p class='case-study-paragraph'>A booking platform can therefore benefit from helping users discover destinations.</p>
+<h4 class='case-study-subsubsec-title'>04 — Premium Services Can Be Difficult to Discover</h4>
+<p class='case-study-paragraph'>Private charter and business-class services often exist separately from the standard booking experience.</p>
+<p class='case-study-paragraph'>FlexFly brings these options into the same ecosystem.</p>
+<h4 class='case-study-subsubsec-title'>05 — Lack of Trust</h4>
+<p class='case-study-paragraph'>Users need reassurance before making an expensive travel purchase.</p>
+<p class='case-study-paragraph'>Reviews and customer experiences therefore become important parts of the journey.</p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>The design focused on five primary goals:</p>
+<p class='case-study-paragraph'>1. <strong>Simplify flight discovery and booking</strong></p>
+<p class='case-study-paragraph'>2. <strong>Make travel feel inspiring rather than transactional</strong></p>
+<p class='case-study-paragraph'>3. <strong>Support different types of travelers</strong></p>
+<p class='case-study-paragraph'>4. <strong>Build credibility through reviews and social proof</strong></p>
+<p class='case-study-paragraph'>5. <strong>Create a premium and memorable travel brand</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>01 — Start With Inspiration, Then Introduce Booking</h3>
+<p class='case-study-paragraph'>The hero does not immediately overwhelm users with a large booking form.</p>
+<p class='case-study-paragraph'>Instead, it first establishes the brand message:</p>
+<p class='case-study-paragraph'><strong>FLIGHT BOOKING</strong></p>
+<p class='case-study-paragraph'><strong>Fly Smarter, Explore Further.</strong></p>
+<p class='case-study-paragraph'>The supporting statement communicates the broader promise of the product.</p>
+<p class='case-study-paragraph'>Only after establishing the brand does the interface introduce the actual flight search experience.</p>
+<p class='case-study-paragraph'>This creates a two-stage journey:</p>
+<p class='case-study-paragraph'><strong>Inspire → Search</strong></p>
+<p class='case-study-paragraph'>rather than:</p>
+<p class='case-study-paragraph'><strong>Form → Search</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Hero Experience</h2>
+<p class='case-study-paragraph'>The hero is the strongest visual statement of the website.</p>
+<p class='case-study-paragraph'>It combines:</p>
+<h4 class='case-study-subsubsec-title'>Brand</h4>
+<p class='case-study-paragraph'><strong>FlexFly</strong></p>
+<h4 class='case-study-subsubsec-title'>Category</h4>
+<p class='case-study-paragraph'><strong>Flight Booking</strong></p>
+<h4 class='case-study-subsubsec-title'>Main Value Proposition</h4>
+<p class='case-study-paragraph'><strong>Fly Smarter, Explore Further.</strong></p>
+<h4 class='case-study-subsubsec-title'>Supporting Message</h4>
+<p class='case-study-paragraph'>A promise around intelligent travel and discovering new destinations.</p>
+<h4 class='case-study-subsubsec-title'>Primary CTA</h4>
+<p class='case-study-paragraph'><strong>Get Ticket Now</strong></p>
+<h4 class='case-study-subsubsec-title'>Product Visual</h4>
+<p class='case-study-paragraph'>A large private aircraft flying through clouds.</p>
+<p class='case-study-paragraph'>The result immediately communicates:</p>
+<p class='case-study-paragraph'><strong>Travel + Freedom + Premium Experience</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why the Aircraft Is the Hero</h2>
+<p class='case-study-paragraph'>The aircraft image is not simply decorative.</p>
+<p class='case-study-paragraph'>It communicates the core product category without requiring explanation.</p>
+<p class='case-study-paragraph'>At the same time, the clouds and large open composition communicate:</p>
+<ul class='case-study-list'>
+  <li>Freedom</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Movement</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Exploration</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Premium travel</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Adventure</li>
+</ul>
+<p class='case-study-paragraph'>This supports the headline:</p>
+<p class='case-study-paragraph'><strong>Fly Smarter. Explore Further.</strong></p>
+<p class='case-study-paragraph'>The copy and image therefore reinforce each other.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Flight Search Experience</h2>
+<p class='case-study-paragraph'>Below the hero, the website introduces:</p>
+<p class='case-study-paragraph'><strong>Explore New Horizons.</strong></p>
+<p class='case-study-paragraph'>with the supporting message:</p>
+<p class='case-study-paragraph'><strong>One Destination at a Time.</strong></p>
+<p class='case-study-paragraph'>The booking interface then asks for the fundamental travel information:</p>
+<ul class='case-study-list'>
+  <li>Origin</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Destination</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Date</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Passengers</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Flight search</li>
+</ul>
+<p class='case-study-paragraph'>This creates a clear transition from emotional storytelling to functional interaction.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Search UX</h2>
+<p class='case-study-paragraph'>The flight search is intentionally compact.</p>
+<p class='case-study-paragraph'>Instead of occupying the entire hero with a complicated booking form, the design gives the search experience its own dedicated section.</p>
+<p class='case-study-paragraph'>This creates better hierarchy.</p>
+<h4 class='case-study-subsubsec-title'>Hero</h4>
+<p class='case-study-paragraph'><strong>Why should I care?</strong></p>
+<h4 class='case-study-subsubsec-title'>Search</h4>
+<p class='case-study-paragraph'><strong>Where do I want to go?</strong></p>
+<p class='case-study-paragraph'>This separation keeps both experiences focused.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Destination Discovery</h2>
+<p class='case-study-paragraph'>One of the strongest UX decisions is the inclusion of a destination discovery section.</p>
+<p class='case-study-paragraph'>The interface presents destinations such as:</p>
+<ul class='case-study-list'>
+  <li>Paris, France</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Berlin, Germany</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Sydney, Australia</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Toronto, Canada</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Taj Mahal, Bangladesh</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Cox's Bazar, Bangladesh</li>
+</ul>
+<ul class='case-study-list'>
+  <li>New York, USA</li>
+</ul>
+<ul class='case-study-list'>
+  <li>San Francisco, USA</li>
+</ul>
+<p class='case-study-paragraph'>This changes the user's mindset.</p>
+<p class='case-study-paragraph'>The platform is no longer only asking:</p>
+<p class='case-study-paragraph'><strong>“Where are you going?”</strong></p>
+<p class='case-study-paragraph'>It is also suggesting:</p>
+<p class='case-study-paragraph'><strong>“Where could you go?”</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Destination Cards</h2>
+<p class='case-study-paragraph'>Each destination is represented using a large image card.</p>
+<p class='case-study-paragraph'>The cards contain:</p>
+<ul class='case-study-list'>
+  <li>Destination name</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Country</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Supporting travel information</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Visual imagery</li>
+</ul>
+<ul class='case-study-list'>
+  <li>FlexFly badge</li>
+</ul>
+<p class='case-study-paragraph'>This creates an image-first discovery experience.</p>
+<p class='case-study-paragraph'>For travel products, this is particularly effective because destinations are inherently visual.</p>
+<p class='case-study-paragraph'>A strong photograph can generate desire before the user even knows the exact details of the trip.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Discovery vs. Booking</h2>
+<p class='case-study-paragraph'>FlexFly combines two different user intents.</p>
+<h4 class='case-study-subsubsec-title'>Intent 01 — I Know Where I Want to Go</h4>
+<p class='case-study-paragraph'>The user uses the flight search.</p>
+<h4 class='case-study-subsubsec-title'>Intent 02 — I Want Travel Inspiration</h4>
+<p class='case-study-paragraph'>The user browses destinations.</p>
+<p class='case-study-paragraph'>This makes the platform more flexible because it supports both:</p>
+<p class='case-study-paragraph'><strong>Goal-oriented users</strong></p>
+<p class='case-study-paragraph'>and</p>
+<p class='case-study-paragraph'><strong>Exploratory users.</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Social Proof</h2>
+<p class='case-study-paragraph'>The website presents several credibility metrics:</p>
+<p class='case-study-paragraph'><strong>50,000+</strong></p>
+<p class='case-study-paragraph'>Travel bookings</p>
+<p class='case-study-paragraph'><strong>4.9/5</strong></p>
+<p class='case-study-paragraph'>User rating</p>
+<p class='case-study-paragraph'><strong>1,200+</strong></p>
+<p class='case-study-paragraph'>Destinations</p>
+<p class='case-study-paragraph'><strong>50+</strong></p>
+<p class='case-study-paragraph'>Countries</p>
+<p class='case-study-paragraph'>These metrics create an immediate sense of scale.</p>
+<p class='case-study-paragraph'>For a travel platform, this is important because users want reassurance that the service is established and widely used.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why Metrics Matter in Travel UX</h2>
+<p class='case-study-paragraph'>Travel purchases involve uncertainty.</p>
+<p class='case-study-paragraph'>Users may ask:</p>
+<ul class='case-study-list'>
+  <li>Can I trust this platform?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Are other people using it?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>How many destinations are available?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Is the service reliable?</li>
+</ul>
+<p class='case-study-paragraph'>The metrics answer these questions quickly.</p>
+<p class='case-study-paragraph'>This creates a progression:</p>
+<p class='case-study-paragraph'><strong>Brand promise → Evidence → Exploration</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Premium Travel Services</h2>
+<p class='case-study-paragraph'>The section:</p>
+<p class='case-study-paragraph'><strong>Fly your way.</strong></p>
+<p class='case-study-paragraph'>introduces three service categories:</p>
+<h4 class='case-study-subsubsec-title'>Private Charter</h4>
+<p class='case-study-paragraph'>For travelers looking for personalized and exclusive travel.</p>
+<h4 class='case-study-subsubsec-title'>Business Class Cabin</h4>
+<p class='case-study-paragraph'>For users prioritizing comfort, productivity, and premium service.</p>
+<h4 class='case-study-subsubsec-title'>Group & Events</h4>
+<p class='case-study-paragraph'>For larger groups and organized travel.</p>
+<p class='case-study-paragraph'>This is an effective way to expand the product beyond standard economy flight booking.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Service Segmentation</h2>
+<p class='case-study-paragraph'>Instead of forcing every user through the same booking journey, FlexFly provides different entry points based on travel needs.</p>
+<h4 class='case-study-subsubsec-title'>Standard Traveler</h4>
+<p class='case-study-paragraph'><strong>Book a flight</strong></p>
+<h4 class='case-study-subsubsec-title'>Premium Traveler</h4>
+<p class='case-study-paragraph'><strong>Explore Business Class</strong></p>
+<h4 class='case-study-subsubsec-title'>High-End Traveler</h4>
+<p class='case-study-paragraph'><strong>Explore Private Charter</strong></p>
+<h4 class='case-study-subsubsec-title'>Group Traveler</h4>
+<p class='case-study-paragraph'><strong>Explore Group & Events</strong></p>
+<p class='case-study-paragraph'>This makes the platform feel more personalized.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Premium Positioning</h2>
+<p class='case-study-paragraph'>The Private Charter and Business Class sections help elevate the overall brand perception.</p>
+<p class='case-study-paragraph'>Even users who do not purchase these services are exposed to a more premium brand environment.</p>
+<p class='case-study-paragraph'>This creates a useful positioning effect:</p>
+<p class='case-study-paragraph'><strong>FlexFly isn't just about finding the cheapest flight.</strong></p>
+<p class='case-study-paragraph'>It presents itself as a broader travel service.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Customer Reviews</h2>
+<p class='case-study-paragraph'>The dark section:</p>
+<p class='case-study-paragraph'><strong>Fresh from the Road</strong></p>
+<p class='case-study-paragraph'>introduces real-looking customer stories and ratings.</p>
+<p class='case-study-paragraph'>The design includes:</p>
+<ul class='case-study-list'>
+  <li>Customer quote</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Customer name</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Travel/service context</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Star rating</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Review cards</li>
+</ul>
+<p class='case-study-paragraph'>The review cards show ratings such as:</p>
+<p class='case-study-paragraph'><strong>4.7</strong></p>
+<p class='case-study-paragraph'><strong>4.9</strong></p>
+<p class='case-study-paragraph'><strong>4.8</strong></p>
+<p class='case-study-paragraph'>This provides another layer of trust after users have already explored destinations and services.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why Testimonials Appear Here</h2>
+<p class='case-study-paragraph'>The testimonial section comes after the product/service explanation.</p>
+<p class='case-study-paragraph'>This is strategically useful.</p>
+<p class='case-study-paragraph'>The user has already seen:</p>
+<p class='case-study-paragraph'><strong>What FlexFly does</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>What they can book</strong></p>
+<p class='case-study-paragraph'>The next question becomes:</p>
+<p class='case-study-paragraph'><strong>“Can I trust them?”</strong></p>
+<p class='case-study-paragraph'>Customer stories answer that question.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Video Storytelling</h2>
+<p class='case-study-paragraph'>The large aircraft image with:</p>
+<p class='case-study-paragraph'><strong>Watch Our Video</strong></p>
+<p class='case-study-paragraph'>provides a cinematic brand moment.</p>
+<p class='case-study-paragraph'>This is important because travel is an experience-driven category.</p>
+<p class='case-study-paragraph'>Video can communicate:</p>
+<ul class='case-study-list'>
+  <li>Aircraft</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Destinations</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Comfort</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Atmosphere</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Movement</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Brand personality</li>
+</ul>
+<p class='case-study-paragraph'>more effectively than static UI alone.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Final Conversion Section</h2>
+<p class='case-study-paragraph'>The final section presents:</p>
+<p class='case-study-paragraph'><strong>Ready when you are.</strong></p>
+<p class='case-study-paragraph'>This is a strong emotional CTA because it removes pressure.</p>
+<p class='case-study-paragraph'>It communicates:</p>
+<p class='case-study-paragraph'><strong>Whenever you're ready to travel, FlexFly is ready.</strong></p>
+<p class='case-study-paragraph'>The section provides several actions:</p>
+<p class='case-study-paragraph'><strong>Book Flight</strong></p>
+<p class='case-study-paragraph'><strong>Find Places</strong></p>
+<p class='case-study-paragraph'>and a direct contact option.</p>
+<p class='case-study-paragraph'>This gives users multiple conversion paths depending on their intent.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Conversion Strategy</h2>
+<p class='case-study-paragraph'>The website creates several opportunities for conversion.</p>
+<h4 class='case-study-subsubsec-title'>Primary Conversion</h4>
+<p class='case-study-paragraph'><strong>Get Ticket Now</strong></p>
+<h4 class='case-study-subsubsec-title'>Search Conversion</h4>
+<p class='case-study-paragraph'><strong>Flight Search</strong></p>
+<h4 class='case-study-subsubsec-title'>Destination Conversion</h4>
+<p class='case-study-paragraph'>Explore a destination.</p>
+<h4 class='case-study-subsubsec-title'>Service Conversion</h4>
+<p class='case-study-paragraph'>Explore:</p>
+<ul class='case-study-list'>
+  <li>Private Charter</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Business Class</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Group & Events</li>
+</ul>
+<h4 class='case-study-subsubsec-title'>Final Conversion</h4>
+<p class='case-study-paragraph'><strong>Book Flight</strong></p>
+<h4 class='case-study-subsubsec-title'>Alternative Conversion</h4>
+<p class='case-study-paragraph'><strong>Find Places</strong></p>
+<p class='case-study-paragraph'>This is a strong multi-intent conversion structure.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Information Architecture</h2>
+<p class='case-study-paragraph'>The overall experience can be understood as:</p>
+<p class='case-study-paragraph'><strong>Hero</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Flight Search</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Trusted & Featured In</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Destination Discovery</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Social Proof</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Premium Services</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Customer Reviews</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Brand Video</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Final CTA</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Footer</strong></p>
+<p class='case-study-paragraph'>This structure creates a complete marketing funnel.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>From Discovery to Conversion</h2>
+<p class='case-study-paragraph'>The user journey is essentially:</p>
+<h4 class='case-study-subsubsec-title'>01 — Discover</h4>
+<p class='case-study-paragraph'><strong>Fly Smarter. Explore Further.</strong></p>
+<h4 class='case-study-subsubsec-title'>02 — Search</h4>
+<p class='case-study-paragraph'>Enter origin, destination, date, and passengers.</p>
+<h4 class='case-study-subsubsec-title'>03 — Explore</h4>
+<p class='case-study-paragraph'>Browse destinations and travel possibilities.</p>
+<h4 class='case-study-subsubsec-title'>04 — Evaluate</h4>
+<p class='case-study-paragraph'>Understand available services.</p>
+<h4 class='case-study-subsubsec-title'>05 — Trust</h4>
+<p class='case-study-paragraph'>Read customer reviews and see platform statistics.</p>
+<h4 class='case-study-subsubsec-title'>06 — Convert</h4>
+<p class='case-study-paragraph'>Book a flight or contact FlexFly.</p>
+<p class='case-study-paragraph'>This creates a natural progression from inspiration to action.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Visual Design Strategy</h2>
+<p class='case-study-paragraph'>The visual language combines:</p>
+<ul class='case-study-list'>
+  <li>Soft lavender/blue backgrounds</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Deep navy sections</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Bright blue accents</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Large editorial typography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Large aircraft photography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Rounded destination cards</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Premium travel imagery</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Minimal navigation</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Dark/light section contrast</li>
+</ul>
+<p class='case-study-paragraph'>The design uses color primarily to separate different parts of the journey.</p>
+<p class='case-study-paragraph'>The light sections communicate:</p>
+<p class='case-study-paragraph'><strong>Discovery + Exploration</strong></p>
+<p class='case-study-paragraph'>while the dark sections communicate:</p>
+<p class='case-study-paragraph'><strong>Trust + Premium Experience + Conversion</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Light vs. Dark Sections</h2>
+<p class='case-study-paragraph'>This contrast creates visual rhythm throughout the page.</p>
+<h4 class='case-study-subsubsec-title'>Light Sections</h4>
+<p class='case-study-paragraph'>Used for:</p>
+<ul class='case-study-list'>
+  <li>Flight search</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Destinations</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Services</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Information</li>
+</ul>
+<p class='case-study-paragraph'>These sections feel clean and functional.</p>
+<h4 class='case-study-subsubsec-title'>Dark Sections</h4>
+<p class='case-study-paragraph'>Used for:</p>
+<ul class='case-study-list'>
+  <li>Customer stories</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Video</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Final CTA</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Footer</li>
+</ul>
+<p class='case-study-paragraph'>These sections feel more emotional and premium.</p>
+<p class='case-study-paragraph'>This prevents a very long landing page from becoming visually repetitive.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Destination Imagery as a Conversion Tool</h2>
+<p class='case-study-paragraph'>Travel websites benefit heavily from visual storytelling.</p>
+<p class='case-study-paragraph'>The destination cards do more than provide information.</p>
+<p class='case-study-paragraph'>They create desire.</p>
+<p class='case-study-paragraph'>For example:</p>
+<p class='case-study-paragraph'>A user may not have planned to visit Sydney.</p>
+<p class='case-study-paragraph'>But seeing a strong Sydney image can create:</p>
+<p class='case-study-paragraph'><strong>“Maybe I should go there.”</strong></p>
+<p class='case-study-paragraph'>This creates a secondary conversion path:</p>
+<p class='case-study-paragraph'><strong>Inspiration → Destination → Flight Search</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Brand & Product Relationship</h2>
+<p class='case-study-paragraph'>The website successfully connects the FlexFly brand with the actual product.</p>
+<p class='case-study-paragraph'>The aircraft hero communicates:</p>
+<p class='case-study-paragraph'><strong>What the company is about.</strong></p>
+<p class='case-study-paragraph'>The booking interface communicates:</p>
+<p class='case-study-paragraph'><strong>What the product does.</strong></p>
+<p class='case-study-paragraph'>The destination cards communicate:</p>
+<p class='case-study-paragraph'><strong>Where the product can take you.</strong></p>
+<p class='case-study-paragraph'>The service cards communicate:</p>
+<p class='case-study-paragraph'><strong>How the product can serve different travelers.</strong></p>
+<p class='case-study-paragraph'>The testimonials communicate:</p>
+<p class='case-study-paragraph'><strong>Why users should trust it.</strong></p>
+<p class='case-study-paragraph'>This makes the page feel like a complete product story rather than a collection of sections.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>What I Focused on as a Product Designer</h2>
+<p class='case-study-paragraph'>The core challenge was balancing <strong>travel inspiration with booking functionality</strong>.</p>
+<p class='case-study-paragraph'>I focused on:</p>
+<h4 class='case-study-subsubsec-title'>Simplification</h4>
+<p class='case-study-paragraph'>Keeping the actual flight search clean and focused.</p>
+<h4 class='case-study-subsubsec-title'>Discovery</h4>
+<p class='case-study-paragraph'>Helping users discover destinations instead of requiring them to know exactly where they want to go.</p>
+<h4 class='case-study-subsubsec-title'>Personalization</h4>
+<p class='case-study-paragraph'>Providing different services for different travel needs.</p>
+<h4 class='case-study-subsubsec-title'>Trust</h4>
+<p class='case-study-paragraph'>Using statistics, featured partners, and customer reviews.</p>
+<h4 class='case-study-subsubsec-title'>Premium Positioning</h4>
+<p class='case-study-paragraph'>Using aircraft photography, cinematic imagery, dark sections, and strong typography.</p>
+<h4 class='case-study-subsubsec-title'>Conversion</h4>
+<p class='case-study-paragraph'>Providing clear booking actions throughout the experience.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Design Outcome</h2>
+<p class='case-study-paragraph'>The resulting experience transforms a traditional flight booking website into a broader travel discovery platform.</p>
+<p class='case-study-paragraph'>Instead of:</p>
+<p class='case-study-paragraph'><strong>Search → Results → Book</strong></p>
+<p class='case-study-paragraph'>the experience becomes:</p>
+<p class='case-study-paragraph'><strong>Inspire → Explore → Discover → Evaluate → Trust → Book</strong></p>
+<p class='case-study-paragraph'>This makes the product feel more human and experience-driven.</p>
+<p class='case-study-paragraph'>FlexFly is positioned not simply as a tool for purchasing flights, but as a digital companion for discovering and planning travel.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key UX Decisions</h2>
+<h3 class='case-study-subsec-title'>From Flight Search → Travel Discovery</h3>
+<p class='case-study-paragraph'>The product doesn't assume that every user knows where they want to go.</p>
+<p class='case-study-paragraph'>Destination cards create an exploratory path.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Transaction → Experience</h3>
+<p class='case-study-paragraph'>The aircraft hero, destination photography, video, and travel storytelling make the booking experience feel more emotional.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From One Service → Travel Ecosystem</h3>
+<p class='case-study-paragraph'>Private Charter, Business Class, and Group & Events expand the platform beyond standard flight booking.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Claims → Social Proof</h3>
+<p class='case-study-paragraph'>Usage metrics, ratings, featured partners, and testimonials work together to establish trust.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From One CTA → Multiple Intent Paths</h3>
+<p class='case-study-paragraph'>Users can:</p>
+<p class='case-study-paragraph'><strong>Get a Ticket</strong></p>
+<p class='case-study-paragraph'><strong>Search Flights</strong></p>
+<p class='case-study-paragraph'><strong>Explore Destinations</strong></p>
+<p class='case-study-paragraph'><strong>Explore Services</strong></p>
+<p class='case-study-paragraph'><strong>Book a Flight</strong></p>
+<p class='case-study-paragraph'><strong>Find Places</strong></p>
+<p class='case-study-paragraph'>This allows different types of users to convert in different ways.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Functional Interface → Premium Brand</h3>
+<p class='case-study-paragraph'>The interface uses typography, photography, spacing, dark/light contrast, and editorial composition to create a premium travel identity.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key Takeaways</h2>
+<h4 class='case-study-subsubsec-title'>Flight booking UX should support both intention and inspiration.</h4>
+<p class='case-study-paragraph'>Some users know exactly where they want to go. Others need help deciding.</p>
+<h4 class='case-study-subsubsec-title'>Visual storytelling is extremely powerful in travel.</h4>
+<p class='case-study-paragraph'>Destinations and aircraft are naturally visual products, so imagery can create desire faster than long-form copy.</p>
+<h4 class='case-study-subsubsec-title'>Trust should be distributed throughout the journey.</h4>
+<p class='case-study-paragraph'>Metrics, partner logos, ratings, and testimonials each reduce uncertainty at different stages.</p>
+<h4 class='case-study-subsubsec-title'>Premium services can elevate the entire brand.</h4>
+<p class='case-study-paragraph'>Private Charter and Business Class make FlexFly feel like a complete travel platform rather than a commodity flight search tool.</p>
+<h4 class='case-study-subsubsec-title'>Booking should never feel disconnected from the brand.</h4>
+<p class='case-study-paragraph'>The search experience should still feel like part of the same travel story.</p>
+<h4 class='case-study-subsubsec-title'>The best travel experiences sell the journey before selling the ticket.</h4>
+<p class='case-study-paragraph'>The user should first imagine the destination, then explore the options, and finally feel ready to book.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Case Study Page Structure for AI</h2>
+<h3 class='case-study-subsec-title'>Section 01 — Hero</h3>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Fly smarter. Explore further.”</strong></p>
+<p class='case-study-paragraph'>Supporting copy:</p>
+<p class='case-study-paragraph'>“A flight booking experience designed to combine effortless search with destination discovery and premium travel services.”</p>
+<p class='case-study-paragraph'>Metadata:</p>
+<ul class='case-study-list'>
+  <li>Product: FlexFly</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Category: Travel / Flight Booking</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Platform: Web</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Focus: Flight booking & travel discovery</li>
+</ul>
+<p class='case-study-paragraph'>The hero image should occupy a large portion of the screen.</p>
+<p class='case-study-paragraph'>Do not crop out the aircraft.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 02 — The Challenge</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“How do you make booking a flight feel like the beginning of a journey?”</strong></p>
+<p class='case-study-paragraph'>Use a split layout.</p>
+<p class='case-study-paragraph'><strong>Left:</strong> Explain the business/UX challenge.</p>
+<p class='case-study-paragraph'><strong>Right:</strong> Use a large crop of the aircraft hero.</p>
+<p class='case-study-paragraph'>Below it, show four challenge cards:</p>
+<ul class='case-study-list'>
+  <li>Complex booking</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Destination discovery</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Trust</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Multiple traveler needs</li>
+</ul>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 03 — User Journey</h2>
+<p class='case-study-paragraph'>Create a visual flow:</p>
+<p class='case-study-paragraph'><strong>Inspire → Search → Explore → Evaluate → Trust → Book</strong></p>
+<p class='case-study-paragraph'>Use minimal text beneath each step.</p>
+<p class='case-study-paragraph'>This section should communicate the entire UX strategy at a glance.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 04 — Flight Search</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Keep the booking process simple.”</strong></p>
+<p class='case-study-paragraph'>Highlight:</p>
+<ul class='case-study-list'>
+  <li>Origin</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Destination</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Date</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Passengers</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Search CTA</li>
+</ul>
+<p class='case-study-paragraph'>Use small annotation lines to explain the purpose of each field.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 05 — Destination Discovery</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“What if the user hasn't chosen a destination yet?”</strong></p>
+<p class='case-study-paragraph'>Explain how destination cards transform the platform from a pure booking tool into a travel discovery experience.</p>
+<p class='case-study-paragraph'>Show several destination cards at larger scale.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 06 — Trust</h2>
+<p class='case-study-paragraph'><strong>50,000+ / 4.9/5 / 1,200+ / 50+</strong></p>
+<p class='case-study-paragraph'>metrics.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Before asking users to book, give them a reason to trust.”</strong></p>
+<p class='case-study-paragraph'>Show each statistic as a large visual element.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 07 — Services</h2>
+<p class='case-study-paragraph'><strong>Fly your way.</strong></p>
+<p class='case-study-paragraph'>section.</p>
+<p class='case-study-paragraph'>Create three service cards:</p>
+<h4 class='case-study-subsubsec-title'>Private Charter</h4>
+<h4 class='case-study-subsubsec-title'>Business Class</h4>
+<h4 class='case-study-subsubsec-title'>Group & Events</h4>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“One platform. Different ways to travel.”</strong></p>
+<p class='case-study-paragraph'>Explain how service segmentation allows different users to find the experience that fits them.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 08 — Testimonials</h2>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Trust becomes stronger when it comes from other travelers.”</strong></p>
+<p class='case-study-paragraph'>Show the main testimonial large.</p>
+<p class='case-study-paragraph'>Then show the smaller review cards below it.</p>
+<p class='case-study-paragraph'>Do not make this section text-heavy.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 09 — Brand Story</h2>
+<p class='case-study-paragraph'><strong>Watch Our Video</strong></p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Travel is an experience, not just a transaction.”</strong></p>
+<p class='case-study-paragraph'>Let the image dominate the section.</p>
+<p class='case-study-paragraph'>Keep supporting text minimal.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 10 — Conversion</h2>
+<p class='case-study-paragraph'><strong>Ready when you are.</strong></p>
+<p class='case-study-paragraph'>section.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Turn travel intent into action.”</strong></p>
+<p class='case-study-paragraph'>Show:</p>
+<p class='case-study-paragraph'><strong>Book Flight</strong></p>
+<p class='case-study-paragraph'><strong>Find Places</strong></p>
+<p class='case-study-paragraph'>and the contact option.</p>
+<p class='case-study-paragraph'>Explain the multi-intent conversion strategy.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 11 — Visual Design</h2>
+<p class='case-study-paragraph'>Show the visual principles:</p>
+<ul class='case-study-list'>
+  <li>Large travel photography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Editorial typography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Soft light backgrounds</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Deep navy sections</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Bright blue accents</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Rounded destination cards</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Minimal navigation</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Premium aircraft imagery</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Strong CTA hierarchy</li>
+</ul>
+<p class='case-study-paragraph'>Keep this section visual rather than text-heavy.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 12 — Final Experience</h2>
+<p class='case-study-paragraph'>Create an editorial montage using:</p>
+<p class='case-study-paragraph'><strong>Hero → Flight Search → Destinations → Services → Testimonials → Final CTA</strong></p>
+<p class='case-study-paragraph'>Do not display all screenshots in equal-sized cards.</p>
+<p class='case-study-paragraph'>Use large and small crops to create visual rhythm.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Section 13 — Closing</h2>
+<p class='case-study-paragraph'>End with:</p>
+<p class='case-study-paragraph'><strong>“The journey starts before the flight.”</strong></p>
+<p class='case-study-paragraph'>Supporting copy:</p>
+<p class='case-study-paragraph'><strong>“A travel experience designed to help users discover where they want to go, choose how they want to travel, and book with confidence.”</strong></p>
+<p class='case-study-paragraph'>Then show the final:</p>
+<p class='case-study-paragraph'><strong>Book Flight</strong></p>
+<p class='case-study-paragraph'>CTA.</p>
+<hr class='case-study-divider' />
+    </div>
+
+    <!-- Visual Palette Showcase -->
+    <div class="case-study-divider"></div>
+    <div class="process-timeline-wrap">
+      <h2>Fonts & Colors Swatches</h2>
+      <div class="design-system-swatches">
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #2979ff;"></div>
+          <span class="swatch-hex">#2979ff</span>
+          <span class="swatch-name">Sky Blue</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #0f1828;"></div>
+          <span class="swatch-hex">#0f1828</span>
+          <span class="swatch-name">Horizon Navy</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #05080f;"></div>
+          <span class="swatch-hex">#05080f</span>
+          <span class="swatch-name">Dark Sky</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #ffffff;"></div>
+          <span class="swatch-hex">#ffffff</span>
+          <span class="swatch-name">Neutral White</span>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
+<div class="contact-footer-wrap">
+<section class="sec contact-sec" id="contacts">
+  <div class="contact-sticky-stage">
+    <!-- Interactive Wood Hover Reveal Element -->
+    <div class="contact-wood-interactive">
+      <div class="wood-img-base"></div>
+      <div class="wood-img-grass"></div>
+    </div>
+
+    <div class="contact-layout">
+      
+      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
+      <div class="contact-left-col">
+        <header class="contact-head">
+          <h2 class="testimonials-title contact-heading">
+            <span class="testi-word">Get</span>
+            <span class="testi-word">in</span>
+            <span class="testi-word testi-word--orange">touch</span>
+          </h2>
+          
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email:</span>
+              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Phone:</span>
+              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Address:</span>
+              <span class="contact-detail-value">Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <div class="contact-socials-wrap">
+            <span class="contact-socials-label">Follow us:</span>
+            <div class="contact-social-icons">
+              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
+                </svg>
+              </a>
+              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
+                </svg>
+              </a>
+              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Right Column: Interactive Form aligned to bottom-right -->
+      <div class="contact-right-col">
+        <form class="contact-form" id="contact-form">
+          <div class="contact-form-row">
+            <div class="contact-form-field">
+              <label for="contact-name" class="contact-form-label">Your Name</label>
+              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-email" class="contact-form-label">Email address</label>
+              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
+            </div>
+          </div>
+
+          <div class="contact-form-field">
+            <label for="contact-message" class="contact-form-label">Message</label>
+            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<footer class="footer-sec">
+  <div class="contact-bottom-footer">
+    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
+    <div class="contact-mid-wrap" data-reveal>
+      <div class="contact-mid-row">
+        <div class="contact-tagline">
+          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
+            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
+              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+            </svg>
+          </a>
+          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
+        </div>
+
+        <nav class="contact-links-nav" aria-label="Footer navigation">
+          <div class="contact-links-group">
+            <span class="contact-links-title">Links</span>
+            <a href="#home" class="contact-nav-link">Home</a>
+            <a href="#about" class="contact-nav-link">About Me</a>
+            <a href="#process" class="contact-nav-link">Process</a>
+          </div>
+          <div class="contact-links-group">
+            <span class="contact-links-title">Explore</span>
+            <a href="#work" class="contact-nav-link">Projects</a>
+            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
+            <a href="#contacts" class="contact-nav-link">Contacts</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
+    <div class="contact-copyright-wrap">
+      <div class="contact-copyright-row">
+        <span class="contact-copy-left">© 2026 Bappy Islam</span>
+        <span class="contact-copy-right">All rights reserved.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
+  <div class="contact-designer-banner">
+    <div class="contact-wordmark wordmark" aria-hidden="true">
+      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
+    </div>
+  </div>
+</footer>
+</div> </div> <!-- End of contact-footer-wrap -->
+  <script>
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+
+  function updateNavState() {
+    if (!nav) return;
+    const isScrolled = window.scrollY > 40;
+    nav.classList.toggle('is-scrolled', isScrolled);
+  }
+
+  updateNavState();
+  window.addEventListener('scroll', updateNavState, { passive: true });
+
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', !open);
+      burger.classList.toggle('is-open');
+      menu.classList.toggle('is-open');
+      if (!open) {
+        menu.removeAttribute('inert');
+        document.body.classList.add('no-scroll');
+      } else {
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.setAttribute('aria-expanded', 'false');
+        burger.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      });
+    });
+  }
+
+  // Redirect hash links on subpages to landing page sections
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#') && href !== '#') {
+      link.href = 'index.html' + href;
+    }
+  });
+
+  // Initialize interactive wood hover reveal effect in the footer
+  function initContactWoodHover() {
+    const stage = document.querySelector('.contact-sticky-stage');
+    if (!stage) return;
+
+    const grass = stage.querySelector('.wood-img-grass');
+    if (!grass) return;
+
+    stage.addEventListener('pointermove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      grass.style.setProperty('--mouse-x', `${x}px`);
+      grass.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    stage.addEventListener('pointerleave', () => {
+      grass.style.setProperty('--mouse-x', '-1000px');
+      grass.style.setProperty('--mouse-y', '-1000px');
+    });
+  }
+
+  // Contact Form AJAX Submission (FormSubmit.co)
+  function initContactFormSubmit() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('.contact-submit-btn');
+      if (!submitBtn) return;
+      
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending...</span>';
+      
+      const formData = {
+        name: document.getElementById('contact-name').value,
+        email: document.getElementById('contact-email').value,
+        message: document.getElementById('contact-message').value,
+        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
+      };
+      
+      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === 'true' || data.success === true) {
+          submitBtn.innerHTML = '<span>Message Sent!</span>';
+          submitBtn.style.background = '#2e7d32';
+          contactForm.reset();
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+          }, 4000);
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        submitBtn.innerHTML = '<span>Error! Try again</span>';
+        submitBtn.style.background = '#c62828';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+        }, 4000);
+      });
+    });
+  }
+
+  initContactWoodHover();
+  initContactFormSubmit();
+</script>
+</body>
+</html>

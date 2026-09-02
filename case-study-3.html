@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en" class="is-ready">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bappy — ScoreBall Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --accent: #00e676;
+      --accent-rgb: 0, 230, 118;
+      --case-bg: radial-gradient(circle at top, #011b0e 0%, #000704 100%);
+    }
+    body.case-study-page {
+      background: var(--case-bg);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .case-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px var(--pad);
+      box-sizing: border-box;
+    }
+    
+    /* Hero Style */
+    .case-hero {
+      padding-top: 160px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+    .case-hero-tag {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .case-hero-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+    
+    /* Back Navigation */
+    .case-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-family: var(--font-mono), monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .case-back-link:hover {
+      transform: translateX(-4px);
+      opacity: 0.85;
+    }
+    
+    /* Image Showcase container */
+    .case-img-wrap {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
+      margin-bottom: 80px;
+      aspect-ratio: 16 / 9.4;
+    }
+    .case-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    
+    /* Info grid */
+    .case-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px 0;
+      margin-bottom: 80px;
+    }
+    .case-info-item span {
+      display: block;
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.40);
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+    .case-info-item p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--paper);
+      margin: 0;
+    }
+    
+    /* Overview Split (Image 1, 3, 5 style) */
+    .overview-sec {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+      align-items: start;
+    }
+    .overview-text h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: var(--paper);
+    }
+    .overview-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 20px;
+    }
+    
+    /* Meta tags card */
+    .meta-tags-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .meta-tags-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      color: #ffffff;
+      border-left: 2px solid var(--accent);
+      padding-left: 10px;
+    }
+    .meta-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .meta-tag-list:last-child {
+      margin-bottom: 0;
+    }
+    .meta-tag {
+      background: rgba(var(--accent-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-rgb), 0.15);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--paper);
+      font-family: var(--font-mono), monospace;
+    }
+    
+    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
+    .prob-sol-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0 80px 0;
+    }
+    .prob-card {
+      background: rgba(255, 77, 77, 0.01);
+      border: 1px solid rgba(255, 77, 77, 0.08);
+      border-left: 4px solid #ff4d4d;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .sol-card {
+      background: rgba(0, 230, 118, 0.01);
+      border: 1px solid rgba(0, 230, 118, 0.08);
+      border-left: 4px solid #00e676;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .prob-sol-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .prob-sol-list {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .prob-sol-list li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 12px;
+    }
+    
+    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
+    .process-timeline-wrap {
+      margin-bottom: 80px;
+    }
+    .process-timeline-wrap h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .process-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    .process-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.3);
+    }
+    .process-num {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .process-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #ffffff;
+      font-family: 'Clash Display', sans-serif;
+    }
+    .process-desc {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.50);
+    }
+    
+    /* General content sections */
+    .case-study-sec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 80px 0 24px 0;
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+    }
+    .case-study-subsec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 48px 0 18px 0;
+    }
+    .case-study-subsubsec-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 24px 0 12px 0;
+    }
+    .case-study-paragraph {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 24px;
+    }
+    .case-study-divider {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 60px 0;
+    }
+    .case-study-list {
+      margin: 0 0 24px 0;
+      padding-left: 20px;
+    }
+    .case-study-list li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 8px;
+    }
+    
+    /* Visual Design System Swatches (Image 4 style) */
+    .design-system-swatches {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .color-swatch {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 12px;
+      width: 130px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .swatch-preview {
+      width: 100%;
+      height: 50px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .swatch-hex {
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #ffffff;
+      display: block;
+    }
+    .swatch-name {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.40);
+      margin-top: 2px;
+      display: block;
+    }
+    
+    /* Features Grid */
+    .case-study-features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .case-study-feature-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px;
+      border-radius: 12px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .case-study-feature-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .case-study-feature-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 0 0 8px 0;
+    }
+    .case-study-feature-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.55);
+      margin: 0;
+    }
+    
+    @media (max-width: 960px) {
+      .overview-sec {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .prob-sol-split {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .case-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .case-study-features-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .case-img-wrap {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .case-info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body class="case-study-page">
+
+  <!-- ══ NAV ═══════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#home" aria-label="Bappy — home">
+      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+      </svg>
+    </a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#home" class="is-active">Home</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contacts">Contacts</a>
+    </nav>
+
+    <div class="nav__status-wrapper" id="nav-status">
+      <a class="status-pill" href="#contacts">
+        <span class="beacon" aria-hidden="true">
+          <span class="beacon__dot"></span>
+          <span class="beacon__ring"></span>
+        </span>
+        <span class="status-pill__text">Available to work</span>
+      </a>
+    </div>
+
+    <div class="nav__actions">
+      <a class="btn-talk" href="#contacts" id="btn-talk">
+        <span>Let's talk</span>
+      </a>
+
+      <button class="burger" id="burger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+<div class="menu" id="menu" inert>
+  <nav class="menu__list">
+    <a href="#home"><i>01</i>Home</a>
+    <a href="#about"><i>02</i>About</a>
+    <a href="#work"><i>03</i>Projects</a>
+    <a href="#testimonials"><i>04</i>Reviews</a>
+    <a href="#contacts"><i>05</i>Contacts</a>
+  </nav>
+  <div class="menu__foot">
+    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
+  </div>
+</div>
+
+  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
+  <main class="case-wrapper">
+    <div class="case-hero">
+      <a href="projects.html" class="case-back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Selected Works
+      </a>
+      <span class="case-hero-tag">UX Case Study</span>
+      <h1 class="case-hero-title">ScoreBall</h1>
+    </div>
+    
+    <!-- Info Grid -->
+    <div class="case-info-grid">
+      <div class="case-info-item">
+        <span>Role</span>
+        <p>Mobile Product Designer</p>
+      </div>
+      <div class="case-info-item">
+        <span>Timeline</span>
+        <p>2 Months (2026)</p>
+      </div>
+      <div class="case-info-item">
+        <span>Deliverables</span>
+        <p>Mobile App UI, Visual Assets, Interactive Prototype</p>
+      </div>
+      <div class="case-info-item">
+        <span>Team</span>
+        <p>1 Designer, 2 Mobile Devs, 1 QA Engineer</p>
+      </div>
+    </div>
+
+    <!-- Image Showcase -->
+    <div class="case-img-wrap">
+      <img src="assets/showcase-3.jpg" alt="ScoreBall Showcase" class="case-img" />
+    </div>
+
+    <!-- Overview Split Section -->
+    <div class="overview-sec">
+      <div class="overview-text">
+        <h2>About ScoreBall</h2>
+        <p>ScoreBall is a mobile sports experience designed to help football fans discover matches, follow live scores, and quickly access the information surrounding a game.
+
+
+
+Instead of treating a match score as a single piece of information, the product expands the experience into a complete match journey:
+
+
+
+**Discover → Follow → Understand → Engage**
+
+
+
+Users can discover important matches, see live scores, open detailed match information, explore lineups, review statistics, follow events, and move between different areas of the sports experience from one mobile application.
+
+
+
+The design challenge was to make a large amount of fast-changing sports information feel exciting without becoming overwhelming.
+
+
+
+---</p>
+      </div>
+      <div class="meta-tags-card">
+        <div class="meta-tags-title">Project Context</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Mobile Design</span>
+<span class="meta-tag">Data Visualization</span>
+<span class="meta-tag">User Persona</span>
+<span class="meta-tag">Prototyping</span>
+        </div>
+        <div class="meta-tags-title">Tools Used</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Figma</span>
+<span class="meta-tag">Illustrator</span>
+<span class="meta-tag">Trello</span>
+<span class="meta-tag">Miro</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Problem vs Solution Visual Box -->
+    <div class="prob-sol-split">
+      <div class="prob-card">
+        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
+        <ul class="prob-sol-list">
+          <li>Users are overwhelmed by too much data when checking live matches.</li>
+<li>Text-heavy player listings fail to explain formations intuitively.</li>
+<li>Live score changes are difficult to spot instantly on small screens.</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
+        <ul class="prob-sol-list">
+          <li>Structured match screens into progressive tabs (Events, Lineup, Stats).</li>
+<li>Designed a spatial football pitch view to visualize player formations.</li>
+<li>Created bright glowing neon green indicators for active live events.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Process Flow Grid -->
+    <div class="process-timeline-wrap">
+      <h2>Design Process</h2>
+      <div class="process-timeline">
+        
+        <div class="process-card">
+          <span class="process-num">Step 01</span>
+          <div class="process-title">Empathize</div>
+          <div class="process-desc">Surveying sports fans on mobile score checking behaviors.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 02</span>
+          <div class="process-title">Define</div>
+          <div class="process-desc">Defining information overload during concurrent match days.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 03</span>
+          <div class="process-title">Ideate</div>
+          <div class="process-desc">Layering data into high-level scores and progressive tabs.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 04</span>
+          <div class="process-title">Design</div>
+          <div class="process-desc">Creating stadium-glowing dark interfaces and green badges.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 05</span>
+          <div class="process-title">Test</div>
+          <div class="process-desc">Testing rapid slot loads and animation speeds on mobile.</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Dynamic Content Area -->
+    <div class="case-content">
+      <h3 class='case-study-subsec-title'>Bringing live football closer to the fan</h3>
+<p class='case-study-paragraph'>ScoreBall is a mobile sports experience designed to help football fans discover matches, follow live scores, and quickly access the information surrounding a game.</p>
+<p class='case-study-paragraph'>Instead of treating a match score as a single piece of information, the product expands the experience into a complete match journey:</p>
+<p class='case-study-paragraph'><strong>Discover → Follow → Understand → Engage</strong></p>
+<p class='case-study-paragraph'>Users can discover important matches, see live scores, open detailed match information, explore lineups, review statistics, follow events, and move between different areas of the sports experience from one mobile application.</p>
+<p class='case-study-paragraph'>The design challenge was to make a large amount of fast-changing sports information feel exciting without becoming overwhelming.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why ScoreBall Exists</h2>
+<p class='case-study-paragraph'>Football fans do not only want to know who won.</p>
+<p class='case-study-paragraph'>During a match, they may want to know:</p>
+<ul class='case-study-list'>
+  <li>What is the current score?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>How much time is left?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Who scored?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Which players are starting?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>What is the lineup?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>What are the match statistics?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>What competitions are currently active?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Which matches are happening now?</li>
+</ul>
+<ul class='case-study-list'>
+  <li>What matches are coming next?</li>
+</ul>
+<p class='case-study-paragraph'>Traditional score interfaces often prioritize the score and leave the rest of the experience fragmented.</p>
+<p class='case-study-paragraph'>ScoreBall brings these pieces together into a focused mobile experience where live information is available within a few taps.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>The Business Problem</h2>
+<p class='case-study-paragraph'>The core product challenge is <strong>information overload in live sports</strong>.</p>
+<p class='case-study-paragraph'>Sports fans have access to enormous amounts of information, but the challenge is presenting the right information at the right moment.</p>
+<p class='case-study-paragraph'>A sports application needs to balance two competing needs:</p>
+<h4 class='case-study-subsubsec-title'>Speed</h4>
+<p class='case-study-paragraph'>Users want to understand the current match state immediately.</p>
+<h4 class='case-study-subsubsec-title'>Depth</h4>
+<p class='case-study-paragraph'>Users also want access to detailed information when they decide to explore further.</p>
+<p class='case-study-paragraph'>If an app shows too little information, it feels incomplete.</p>
+<p class='case-study-paragraph'>If it shows everything at once, it becomes difficult to scan.</p>
+<p class='case-study-paragraph'>ScoreBall solves this through a layered information architecture.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Primary Audience — Football Fans</h3>
+<p class='case-study-paragraph'>People who regularly follow football matches and want quick access to live information.</p>
+<p class='case-study-paragraph'>They may be:</p>
+<ul class='case-study-list'>
+  <li>Casual football viewers</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Dedicated club supporters</li>
+</ul>
+<ul class='case-study-list'>
+  <li>League followers</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Champions League fans</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Fans following multiple matches simultaneously</li>
+</ul>
+<h3 class='case-study-subsec-title'>Secondary Audience — Football Data Enthusiasts</h3>
+<p class='case-study-paragraph'>Users who want more than the final score.</p>
+<p class='case-study-paragraph'>They are interested in:</p>
+<ul class='case-study-list'>
+  <li>Lineups</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Match events</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Player information</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Statistics</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Commentary</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Match timing</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Competition information</li>
+</ul>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>01 — Finding the Right Match</h4>
+<p class='case-study-paragraph'>When many games are happening simultaneously, users need a fast way to identify the matches that matter to them.</p>
+<h4 class='case-study-subsubsec-title'>02 — Live Information Changes Quickly</h4>
+<p class='case-study-paragraph'>Scores, match times, goals, and events change continuously.</p>
+<p class='case-study-paragraph'>The interface needs to make the current state immediately visible.</p>
+<h4 class='case-study-subsubsec-title'>03 — Too Much Match Data</h4>
+<p class='case-study-paragraph'>A match can contain scores, goals, cards, players, formations, statistics, and commentary.</p>
+<p class='case-study-paragraph'>Presenting all of this simultaneously creates unnecessary cognitive load.</p>
+<h4 class='case-study-subsubsec-title'>04 — Switching Between Contexts</h4>
+<p class='case-study-paragraph'>Fans may want to move from the overall match score to lineups or statistics without losing the context of the game.</p>
+<h4 class='case-study-subsubsec-title'>05 — Mobile Screen Constraints</h4>
+<p class='case-study-paragraph'>A football application has a large amount of information but a relatively small screen.</p>
+<p class='case-study-paragraph'>The UX needs to prioritize information carefully.</p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>The product experience was designed around five major goals:</p>
+<p class='case-study-paragraph'>1. <strong>Make live scores immediately understandable</strong></p>
+<p class='case-study-paragraph'>2. <strong>Help users discover important matches quickly</strong></p>
+<p class='case-study-paragraph'>3. <strong>Organize deep match information into clear layers</strong></p>
+<p class='case-study-paragraph'>4. <strong>Create an engaging football-first visual identity</strong></p>
+<p class='case-study-paragraph'>5. <strong>Make the experience feel fast, energetic, and mobile-native</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>01 — Match First</h3>
+<p class='case-study-paragraph'>The match is always the primary object.</p>
+<p class='case-study-paragraph'>Rather than beginning with generic content, the home experience surfaces important football events and match cards.</p>
+<p class='case-study-paragraph'>The user immediately sees:</p>
+<ul class='case-study-list'>
+  <li>Teams</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Competition</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Score</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Match status</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Match time</li>
+</ul>
+<p class='case-study-paragraph'>This establishes context before presenting deeper information.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>02 — Progressive Match Details</h2>
+<p class='case-study-paragraph'>The match-detail screen demonstrates a strong progressive-disclosure approach.</p>
+<p class='case-study-paragraph'>At the top:</p>
+<p class='case-study-paragraph'><strong>Competition → Teams → Score → Match time</strong></p>
+<p class='case-study-paragraph'>Then:</p>
+<p class='case-study-paragraph'><strong>Events → Lineups → Stats → Commentary</strong></p>
+<p class='case-study-paragraph'>This creates layers of information.</p>
+<p class='case-study-paragraph'>Users who only want the score can stop at the top.</p>
+<p class='case-study-paragraph'>Users who want deeper analysis can continue into the tabs.</p>
+<p class='case-study-paragraph'>This is particularly important for sports UX because different users have different information needs.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>03 — Content Prioritization</h2>
+<p class='case-study-paragraph'>The interface establishes a clear priority hierarchy.</p>
+<h4 class='case-study-subsubsec-title'>Level 1 — Match State</h4>
+<p class='case-study-paragraph'>Score and live status.</p>
+<h4 class='case-study-subsubsec-title'>Level 2 — Match Context</h4>
+<p class='case-study-paragraph'>Teams, competition, and time.</p>
+<h4 class='case-study-subsubsec-title'>Level 3 — Match Events</h4>
+<p class='case-study-paragraph'>Goals and important moments.</p>
+<h4 class='case-study-subsubsec-title'>Level 4 — Detailed Information</h4>
+<p class='case-study-paragraph'>Lineups, statistics, and commentary.</p>
+<p class='case-study-paragraph'>This prevents secondary information from competing with the most important information.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>04 — Sport-Based Discovery</h2>
+<p class='case-study-paragraph'>The home screen includes a sport/category selector.</p>
+<p class='case-study-paragraph'>Football is presented as the primary selected category, while other sports are accessible through the same horizontal navigation pattern.</p>
+<p class='case-study-paragraph'>This creates an extensible structure.</p>
+<p class='case-study-paragraph'>The application can potentially support multiple sports without redesigning the entire information architecture.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Home Experience</h2>
+<p class='case-study-paragraph'>The home screen acts as the user's live sports hub.</p>
+<p class='case-study-paragraph'>The top area includes:</p>
+<ul class='case-study-list'>
+  <li>Personalized greeting</li>
+</ul>
+<ul class='case-study-list'>
+  <li>User profile</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Search</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Sport selector</li>
+</ul>
+<p class='case-study-paragraph'>Below that, the <strong>Top Event</strong> section highlights an important live match.</p>
+<p class='case-study-paragraph'>The match card communicates the essential information immediately:</p>
+<p class='case-study-paragraph'><strong>Chelsea — 3 : 3 — Manchester United</strong></p>
+<p class='case-study-paragraph'>along with live timing and match status.</p>
+<p class='case-study-paragraph'>This makes the most important event visually dominant.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Match Discovery</h2>
+<p class='case-study-paragraph'>Below the top event, the interface introduces competition-based content.</p>
+<p class='case-study-paragraph'>The <strong>UEFA Champions League</strong> section groups relevant matches under a recognizable competition context.</p>
+<p class='case-study-paragraph'>Each match card provides:</p>
+<ul class='case-study-list'>
+  <li>Team identity</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Date</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Kickoff time</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Match status / context</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Supporting match information</li>
+</ul>
+<p class='case-study-paragraph'>This allows users to browse upcoming or relevant games without opening every match individually.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Match Detail Experience</h2>
+<p class='case-study-paragraph'>The match-detail screen is the core deep-dive experience.</p>
+<p class='case-study-paragraph'>The header establishes:</p>
+<p class='case-study-paragraph'><strong>UEFA Champions League</strong></p>
+<p class='case-study-paragraph'>followed by:</p>
+<p class='case-study-paragraph'><strong>Aston Villa vs PSG</strong></p>
+<p class='case-study-paragraph'>The score is placed prominently in the center.</p>
+<p class='case-study-paragraph'>The live indicator makes the current match state immediately visible.</p>
+<p class='case-study-paragraph'>This follows an important sports UX principle:</p>
+<p class='case-study-paragraph'><strong>The user should never have to search for the score.</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Match Events</h2>
+<p class='case-study-paragraph'>Under the score, key events are shown with player names and timestamps.</p>
+<p class='case-study-paragraph'>For example:</p>
+<ul class='case-study-list'>
+  <li>Tielemans — 34'</li>
+</ul>
+<ul class='case-study-list'>
+  <li>McGinn — 55'</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Konsa — 87'</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Hakimi — 11'</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Nuno Mendes — 27'</li>
+</ul>
+<p class='case-study-paragraph'>This allows fans to understand how the current score developed without opening a separate timeline.</p>
+<p class='case-study-paragraph'>The event information is kept compact so it does not compete with the score.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Lineup Experience</h2>
+<p class='case-study-paragraph'>The <strong>Lineups</strong> tab transforms the match screen into a visual representation of the team formation.</p>
+<p class='case-study-paragraph'>Instead of using a traditional list, players are positioned on a football pitch.</p>
+<p class='case-study-paragraph'>This is a strong interaction decision because football formations are spatial by nature.</p>
+<p class='case-study-paragraph'>The user can understand:</p>
+<ul class='case-study-list'>
+  <li>Formation</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Player positions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Starting lineup</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Team structure</li>
+</ul>
+<p class='case-study-paragraph'>more intuitively than through a text-only list.</p>
+<p class='case-study-paragraph'>This is one of the strongest UX decisions in the showcased design.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Statistics</h2>
+<p class='case-study-paragraph'>The match-detail navigation also includes a dedicated <strong>Stats</strong> section.</p>
+<p class='case-study-paragraph'>This creates a scalable structure for deeper match analysis.</p>
+<p class='case-study-paragraph'>Instead of putting every statistic on the primary match screen, the interface allows users to access statistics when they need them.</p>
+<p class='case-study-paragraph'>This keeps the default experience clean while preserving analytical depth.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Commentary</h2>
+<p class='case-study-paragraph'>The <strong>Commentary</strong> tab provides another layer of match information.</p>
+<p class='case-study-paragraph'>This is useful for fans who want to follow the progression of a match in greater detail.</p>
+<p class='case-study-paragraph'>The tab-based architecture means:</p>
+<p class='case-study-paragraph'><strong>Score → Events → Lineups → Stats → Commentary</strong></p>
+<p class='case-study-paragraph'>can all exist inside the same match context without forcing the user into separate screens.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Visual Design Strategy</h2>
+<p class='case-study-paragraph'>The visual system is strongly influenced by football's energy and atmosphere.</p>
+<p class='case-study-paragraph'>The design uses:</p>
+<ul class='case-study-list'>
+  <li>Deep green backgrounds</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Neon green highlights</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Dark surfaces</li>
+</ul>
+<ul class='case-study-list'>
+  <li>High-contrast white typography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Team logos</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Player photography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Rounded cards</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Soft gradients</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Glowing active states</li>
+</ul>
+<p class='case-study-paragraph'>The dark interface creates an immersive sports environment.</p>
+<p class='case-study-paragraph'>The bright green accent acts as the primary interaction color and creates a clear visual connection to the football field.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Color as a Functional Element</h2>
+<p class='case-study-paragraph'>The bright green is not simply a brand color.</p>
+<p class='case-study-paragraph'>It also communicates:</p>
+<ul class='case-study-list'>
+  <li>Active state</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Live state</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Primary action</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Selected category</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Important information</li>
+</ul>
+<p class='case-study-paragraph'>This creates consistency between branding and interaction feedback.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Typography & Information Hierarchy</h2>
+<p class='case-study-paragraph'>Sports applications need strong numerical hierarchy.</p>
+<p class='case-study-paragraph'>The score must be visually stronger than supporting information.</p>
+<p class='case-study-paragraph'>The interface therefore gives visual prominence to:</p>
+<p class='case-study-paragraph'><strong>3 : 2</strong></p>
+<p class='case-study-paragraph'>while keeping:</p>
+<p class='case-study-paragraph'><strong>36:45</strong></p>
+<p class='case-study-paragraph'>and event information secondary.</p>
+<p class='case-study-paragraph'>Similarly, team names and competition titles provide context without competing with the live score.</p>
+<p class='case-study-paragraph'>This creates a clear hierarchy:</p>
+<p class='case-study-paragraph'><strong>Score → Status → Teams → Events → Supporting Data</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Onboarding Experience</h2>
+<p class='case-study-paragraph'>The first screen introduces the product through a visually immersive football image.</p>
+<p class='case-study-paragraph'>The headline:</p>
+<p class='case-study-paragraph'><strong>“Dive into the thrill of live football!”</strong></p>
+<p class='case-study-paragraph'>immediately communicates the emotional proposition.</p>
+<p class='case-study-paragraph'>Supporting copy explains the value:</p>
+<p class='case-study-paragraph'><strong>Live matches, highlights, and scores — all in one app.</strong></p>
+<p class='case-study-paragraph'>The onboarding CTA:</p>
+<p class='case-study-paragraph'><strong>Get Started</strong></p>
+<p class='case-study-paragraph'>creates a direct path into the product.</p>
+<p class='case-study-paragraph'>The <strong>Skip</strong> option gives returning or experienced users control over the introduction.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Personalization</h2>
+<p class='case-study-paragraph'>The home screen begins with a personalized greeting:</p>
+<p class='case-study-paragraph'>**Good Evening</p>
+<p class='case-study-paragraph'>John Williams**</p>
+<p class='case-study-paragraph'>This creates a more personal experience compared with an anonymous sports scoreboard.</p>
+<p class='case-study-paragraph'>The presence of:</p>
+<ul class='case-study-list'>
+  <li>Profile</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Favourites</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Search</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Sport preferences</li>
+</ul>
+<p class='case-study-paragraph'>suggests a product designed around recurring use rather than one-time score checking.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Navigation Architecture</h2>
+<p class='case-study-paragraph'>The bottom navigation includes:</p>
+<ul class='case-study-list'>
+  <li>Home</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Events</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Favourites</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Stats</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Profile</li>
+</ul>
+<p class='case-study-paragraph'>This creates five clear primary destinations.</p>
+<p class='case-study-paragraph'>The architecture separates:</p>
+<p class='case-study-paragraph'><strong>Discovery → Events → Personalization → Analysis → Account</strong></p>
+<p class='case-study-paragraph'>This keeps the primary navigation focused and avoids exposing every feature at the bottom level.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>What I Focused on as a Product Designer</h2>
+<p class='case-study-paragraph'>The biggest design challenge was not creating a visually attractive football app.</p>
+<p class='case-study-paragraph'>It was creating a system that could handle <strong>high-density, rapidly changing information</strong> without overwhelming the user.</p>
+<p class='case-study-paragraph'>I focused on:</p>
+<h4 class='case-study-subsubsec-title'>Speed of comprehension</h4>
+<p class='case-study-paragraph'>Users should understand the match state almost instantly.</p>
+<h4 class='case-study-subsubsec-title'>Information hierarchy</h4>
+<p class='case-study-paragraph'>The most important information receives the strongest visual emphasis.</p>
+<h4 class='case-study-subsubsec-title'>Progressive disclosure</h4>
+<p class='case-study-paragraph'>Detailed data is available without cluttering the primary screen.</p>
+<h4 class='case-study-subsubsec-title'>Football-native interaction</h4>
+<p class='case-study-paragraph'>The lineup screen uses a pitch rather than a generic player list.</p>
+<h4 class='case-study-subsubsec-title'>Emotional engagement</h4>
+<p class='case-study-paragraph'>Photography, dark surfaces, green highlights, and live indicators create the feeling of being inside the match experience.</p>
+<h4 class='case-study-subsubsec-title'>Scalability</h4>
+<p class='case-study-paragraph'>The navigation and content structure can support additional sports, competitions, matches, and data types.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Design Outcome</h2>
+<p class='case-study-paragraph'>The resulting experience creates a balance between <strong>live entertainment and structured sports data</strong>.</p>
+<p class='case-study-paragraph'>The home screen is optimized for discovery.</p>
+<p class='case-study-paragraph'>The match screen is optimized for immediate understanding.</p>
+<p class='case-study-paragraph'>The tabs are optimized for deeper exploration.</p>
+<p class='case-study-paragraph'>The lineup view transforms structured player data into an intuitive visual formation.</p>
+<p class='case-study-paragraph'>Together, these experiences create a complete football-following journey inside one mobile application.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key UX Decisions</h2>
+<h3 class='case-study-subsec-title'>From Scoreboard → Match Experience</h3>
+<p class='case-study-paragraph'>The product goes beyond showing the final score.</p>
+<p class='case-study-paragraph'>A match becomes a complete information object containing:</p>
+<p class='case-study-paragraph'><strong>Score + Events + Lineups + Stats + Commentary</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Data → Visual Understanding</h3>
+<p class='case-study-paragraph'>The lineup experience demonstrates how sports data can be transformed into something users intuitively understand.</p>
+<p class='case-study-paragraph'>Instead of reading:</p>
+<p class='case-study-paragraph'>**Martínez</p>
+<p class='case-study-paragraph'>Digne</p>
+<p class='case-study-paragraph'>Mings</p>
+<p class='case-study-paragraph'>Konsa</p>
+<p class='case-study-paragraph'>Cash**</p>
+<p class='case-study-paragraph'>the user sees the players positioned on a football pitch.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Information Overload → Progressive Exploration</h3>
+<p class='case-study-paragraph'>Only the most important information appears first.</p>
+<p class='case-study-paragraph'>Users can then explore deeper layers when needed.</p>
+<p class='case-study-paragraph'>This keeps the interface clean without sacrificing functionality.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Generic UI → Football Atmosphere</h3>
+<p class='case-study-paragraph'>The visual system uses imagery, dark surfaces, green accents, team logos, and live indicators to create a strong emotional connection to the sport.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key Takeaways</h2>
+<h4 class='case-study-subsubsec-title'>Live information needs instant hierarchy.</h4>
+<p class='case-study-paragraph'>When information changes every second, users should never have to search for the current state.</p>
+<h4 class='case-study-subsubsec-title'>Sports data should be visual whenever possible.</h4>
+<p class='case-study-paragraph'>A football formation is easier to understand on a pitch than in a list.</p>
+<h4 class='case-study-subsubsec-title'>Progressive disclosure is essential for high-density products.</h4>
+<p class='case-study-paragraph'>Users should see the most important information first and access deeper details only when needed.</p>
+<h4 class='case-study-subsubsec-title'>Emotion matters in sports products.</h4>
+<p class='case-study-paragraph'>Football is not only about data. The interface should also communicate energy, excitement, and the feeling of being part of the match.</p>
+<h4 class='case-study-subsubsec-title'>Good sports UX balances speed and depth.</h4>
+<p class='case-study-paragraph'>The best experience serves both users who want a two-second score check and users who want to analyze the entire match.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Case Study Page Structure for AI</h2>
+<h3 class='case-study-subsec-title'>Section 01 — Hero</h3>
+<p class='case-study-paragraph'>Hero content:</p>
+<p class='case-study-paragraph'><strong>ScoreBall</strong></p>
+<p class='case-study-paragraph'><strong>Live football. One glance away.</strong></p>
+<p class='case-study-paragraph'>Supporting text:</p>
+<p class='case-study-paragraph'>“A mobile football experience designed to make live scores, match events, lineups, and statistics easier to discover and understand.”</p>
+<p class='case-study-paragraph'>Place the showcase image large underneath or partially overlapping the hero content.</p>
+<p class='case-study-paragraph'>The first screen should immediately communicate:</p>
+<p class='case-study-paragraph'><strong>Football + Mobile + Live Experience</strong></p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>Use a clean two-column layout.</p>
+<h4 class='case-study-subsubsec-title'>Left</h4>
+<p class='case-study-paragraph'>Explain what ScoreBall is and why it exists.</p>
+<h4 class='case-study-subsubsec-title'>Right</h4>
+<p class='case-study-paragraph'>Project metadata:</p>
+<ul class='case-study-list'>
+  <li>Product: ScoreBall</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Category: Sports / Football</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Platform: Mobile App</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Focus: Live scores & match experience</li>
+</ul>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 03 — The Problem</h3>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Football fans don't need more data. They need the right data at the right moment.”</strong></p>
+<p class='case-study-paragraph'>Show four problem cards:</p>
+<ul class='case-study-list'>
+  <li>Finding relevant matches</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Understanding live match state</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Managing information overload</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Exploring deeper match data</li>
+</ul>
+<p class='case-study-paragraph'>Use cropped interface visuals alongside the cards.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 04 — Design Challenge</h3>
+<p class='case-study-paragraph'>Create a large editorial statement:</p>
+<p class='case-study-paragraph'><strong>“How might we make high-volume, real-time football data feel effortless on a mobile screen?”</strong></p>
+<p class='case-study-paragraph'>Follow with a short explanation.</p>
+<p class='case-study-paragraph'>Keep this section minimal and typography-focused.</p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>Use a five-step horizontal process:</p>
+<p class='case-study-paragraph'><strong>Discover → Prioritize → Follow → Explore → Analyze</strong></p>
+<p class='case-study-paragraph'>Explain each step briefly.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 06 — Home Experience</h3>
+<p class='case-study-paragraph'>Annotate:</p>
+<p class='case-study-paragraph'><strong>01 — Personalized greeting</strong></p>
+<p class='case-study-paragraph'><strong>02 — Sport selector</strong></p>
+<p class='case-study-paragraph'><strong>03 — Top live event</strong></p>
+<p class='case-study-paragraph'><strong>04 — Competition section</strong></p>
+<p class='case-study-paragraph'><strong>05 — Match card</strong></p>
+<p class='case-study-paragraph'><strong>06 — Primary navigation</strong></p>
+<p class='case-study-paragraph'>Show how the home screen works as the live football hub.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 07 — Live Match Experience</h3>
+<p class='case-study-paragraph'>Annotate:</p>
+<ul class='case-study-list'>
+  <li>Competition</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Live score</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Match timer</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Goal events</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Betting/data indicators if relevant to the intended product context</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Match tabs</li>
+</ul>
+<p class='case-study-paragraph'>The score should remain the dominant visual element.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 08 — From Score to Story</h3>
+<p class='case-study-paragraph'>Create a visual storytelling section.</p>
+<p class='case-study-paragraph'>Show the progression:</p>
+<p class='case-study-paragraph'><strong>Score → Events → Lineup → Stats → Commentary</strong></p>
+<p class='case-study-paragraph'>Use each tab/interface as a visual step.</p>
+<p class='case-study-paragraph'>The purpose is to demonstrate how the product gradually reveals more match context.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 09 — Lineup UX</h3>
+<p class='case-study-paragraph'>Make the <strong>football-pitch lineup screen</strong> the hero visual of this section.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Turn player data into something fans can see.”</strong></p>
+<p class='case-study-paragraph'>Explain why a spatial football formation is more intuitive than a text-only player list.</p>
+<p class='case-study-paragraph'>Use callouts for:</p>
+<ul class='case-study-list'>
+  <li>Goalkeeper</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Defense</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Midfield</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Attack</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Player positions</li>
+</ul>
+<p class='case-study-paragraph'>This should be one of the strongest sections of the case study.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 10 — Visual Language</h3>
+<p class='case-study-paragraph'>Show:</p>
+<ul class='case-study-list'>
+  <li>Dark surfaces</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Green accent</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Team logos</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Player imagery</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Live badges</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Match cards</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Navigation</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Active states</li>
+</ul>
+<p class='case-study-paragraph'>Explain how the visual system creates a football atmosphere while maintaining usability.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 11 — Onboarding</h3>
+<p class='case-study-paragraph'>Explain:</p>
+<ul class='case-study-list'>
+  <li>Emotional first impression</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Clear value proposition</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Skip option</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Strong CTA</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Football-focused imagery</li>
+</ul>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Start with the emotion of the game.”</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 12 — Navigation & Architecture</h3>
+<p class='case-study-paragraph'>Create a simple visual diagram:</p>
+<p class='case-study-paragraph'>**Home</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Events</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Favourites</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Stats</p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'>Profile**</p>
+<p class='case-study-paragraph'>Then explain how the navigation separates discovery, tracking, personalization, analysis, and account management.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 13 — Final Experience</h3>
+<p class='case-study-paragraph'>Create a large visual gallery using all three primary screens:</p>
+<p class='case-study-paragraph'><strong>Onboarding → Home → Match Detail</strong></p>
+<p class='case-study-paragraph'>Arrange them as a progressive story rather than a standard three-column grid.</p>
+<p class='case-study-paragraph'>The visual story should communicate:</p>
+<p class='case-study-paragraph'><strong>Enter → Discover → Follow</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 14 — Closing</h3>
+<p class='case-study-paragraph'>End with a large cropped football visual or the match-detail screen.</p>
+<p class='case-study-paragraph'><strong>“ScoreBall turns live football data into an experience fans can understand in seconds.”</strong></p>
+<p class='case-study-paragraph'>Optional final CTA:</p>
+<p class='case-study-paragraph'><strong>Explore the experience →</strong></p>
+<hr class='case-study-divider' />
+    </div>
+
+    <!-- Visual Palette Showcase -->
+    <div class="case-study-divider"></div>
+    <div class="process-timeline-wrap">
+      <h2>Fonts & Colors Swatches</h2>
+      <div class="design-system-swatches">
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #00e676;"></div>
+          <span class="swatch-hex">#00e676</span>
+          <span class="swatch-name">Neon Green</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #011b0e;"></div>
+          <span class="swatch-hex">#011b0e</span>
+          <span class="swatch-name">Pitch Green</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #000704;"></div>
+          <span class="swatch-hex">#000704</span>
+          <span class="swatch-name">Dark Stadium</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #ffffff;"></div>
+          <span class="swatch-hex">#ffffff</span>
+          <span class="swatch-name">Neutral White</span>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
+<div class="contact-footer-wrap">
+<section class="sec contact-sec" id="contacts">
+  <div class="contact-sticky-stage">
+    <!-- Interactive Wood Hover Reveal Element -->
+    <div class="contact-wood-interactive">
+      <div class="wood-img-base"></div>
+      <div class="wood-img-grass"></div>
+    </div>
+
+    <div class="contact-layout">
+      
+      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
+      <div class="contact-left-col">
+        <header class="contact-head">
+          <h2 class="testimonials-title contact-heading">
+            <span class="testi-word">Get</span>
+            <span class="testi-word">in</span>
+            <span class="testi-word testi-word--orange">touch</span>
+          </h2>
+          
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email:</span>
+              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Phone:</span>
+              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Address:</span>
+              <span class="contact-detail-value">Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <div class="contact-socials-wrap">
+            <span class="contact-socials-label">Follow us:</span>
+            <div class="contact-social-icons">
+              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
+                </svg>
+              </a>
+              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
+                </svg>
+              </a>
+              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Right Column: Interactive Form aligned to bottom-right -->
+      <div class="contact-right-col">
+        <form class="contact-form" id="contact-form">
+          <div class="contact-form-row">
+            <div class="contact-form-field">
+              <label for="contact-name" class="contact-form-label">Your Name</label>
+              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-email" class="contact-form-label">Email address</label>
+              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
+            </div>
+          </div>
+
+          <div class="contact-form-field">
+            <label for="contact-message" class="contact-form-label">Message</label>
+            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<footer class="footer-sec">
+  <div class="contact-bottom-footer">
+    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
+    <div class="contact-mid-wrap" data-reveal>
+      <div class="contact-mid-row">
+        <div class="contact-tagline">
+          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
+            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
+              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+            </svg>
+          </a>
+          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
+        </div>
+
+        <nav class="contact-links-nav" aria-label="Footer navigation">
+          <div class="contact-links-group">
+            <span class="contact-links-title">Links</span>
+            <a href="#home" class="contact-nav-link">Home</a>
+            <a href="#about" class="contact-nav-link">About Me</a>
+            <a href="#process" class="contact-nav-link">Process</a>
+          </div>
+          <div class="contact-links-group">
+            <span class="contact-links-title">Explore</span>
+            <a href="#work" class="contact-nav-link">Projects</a>
+            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
+            <a href="#contacts" class="contact-nav-link">Contacts</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
+    <div class="contact-copyright-wrap">
+      <div class="contact-copyright-row">
+        <span class="contact-copy-left">© 2026 Bappy Islam</span>
+        <span class="contact-copy-right">All rights reserved.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
+  <div class="contact-designer-banner">
+    <div class="contact-wordmark wordmark" aria-hidden="true">
+      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
+    </div>
+  </div>
+</footer>
+</div> </div> <!-- End of contact-footer-wrap -->
+  <script>
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+
+  function updateNavState() {
+    if (!nav) return;
+    const isScrolled = window.scrollY > 40;
+    nav.classList.toggle('is-scrolled', isScrolled);
+  }
+
+  updateNavState();
+  window.addEventListener('scroll', updateNavState, { passive: true });
+
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', !open);
+      burger.classList.toggle('is-open');
+      menu.classList.toggle('is-open');
+      if (!open) {
+        menu.removeAttribute('inert');
+        document.body.classList.add('no-scroll');
+      } else {
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.setAttribute('aria-expanded', 'false');
+        burger.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      });
+    });
+  }
+
+  // Redirect hash links on subpages to landing page sections
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#') && href !== '#') {
+      link.href = 'index.html' + href;
+    }
+  });
+
+  // Initialize interactive wood hover reveal effect in the footer
+  function initContactWoodHover() {
+    const stage = document.querySelector('.contact-sticky-stage');
+    if (!stage) return;
+
+    const grass = stage.querySelector('.wood-img-grass');
+    if (!grass) return;
+
+    stage.addEventListener('pointermove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      grass.style.setProperty('--mouse-x', `${x}px`);
+      grass.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    stage.addEventListener('pointerleave', () => {
+      grass.style.setProperty('--mouse-x', '-1000px');
+      grass.style.setProperty('--mouse-y', '-1000px');
+    });
+  }
+
+  // Contact Form AJAX Submission (FormSubmit.co)
+  function initContactFormSubmit() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('.contact-submit-btn');
+      if (!submitBtn) return;
+      
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending...</span>';
+      
+      const formData = {
+        name: document.getElementById('contact-name').value,
+        email: document.getElementById('contact-email').value,
+        message: document.getElementById('contact-message').value,
+        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
+      };
+      
+      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === 'true' || data.success === true) {
+          submitBtn.innerHTML = '<span>Message Sent!</span>';
+          submitBtn.style.background = '#2e7d32';
+          contactForm.reset();
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+          }, 4000);
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        submitBtn.innerHTML = '<span>Error! Try again</span>';
+        submitBtn.style.background = '#c62828';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+        }, 4000);
+      });
+    });
+  }
+
+  initContactWoodHover();
+  initContactFormSubmit();
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Development and backup folders
+assets_backup_originals/
+backup_stable_checkpoint/
+components/
+
+# Python scripts and bytecode
+*.py
+__pycache__/
+*.pyc
+
+# Local batch files and scratch notes
+*.bat
+*.txt
+
+# Vercel deployment cache
+.vercel

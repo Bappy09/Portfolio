@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en" class="is-ready">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bappy — Tenista Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --accent: #aeea00;
+      --accent-rgb: 174, 234, 0;
+      --case-bg: radial-gradient(circle at top, #0a1f12 0%, #020a06 100%);
+    }
+    body.case-study-page {
+      background: var(--case-bg);
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .case-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 80px var(--pad);
+      box-sizing: border-box;
+    }
+    
+    /* Hero Style */
+    .case-hero {
+      padding-top: 160px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+    .case-hero-tag {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .case-hero-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+    
+    /* Back Navigation */
+    .case-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-family: var(--font-mono), monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .case-back-link:hover {
+      transform: translateX(-4px);
+      opacity: 0.85;
+    }
+    
+    /* Image Showcase container */
+    .case-img-wrap {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
+      margin-bottom: 80px;
+      aspect-ratio: 16 / 9.4;
+    }
+    .case-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    
+    /* Info grid */
+    .case-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 30px 0;
+      margin-bottom: 80px;
+    }
+    .case-info-item span {
+      display: block;
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.40);
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+    .case-info-item p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--paper);
+      margin: 0;
+    }
+    
+    /* Overview Split (Image 1, 3, 5 style) */
+    .overview-sec {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+      align-items: start;
+    }
+    .overview-text h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      margin: 0 0 24px 0;
+      color: var(--paper);
+    }
+    .overview-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 20px;
+    }
+    
+    /* Meta tags card */
+    .meta-tags-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .meta-tags-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      color: #ffffff;
+      border-left: 2px solid var(--accent);
+      padding-left: 10px;
+    }
+    .meta-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .meta-tag-list:last-child {
+      margin-bottom: 0;
+    }
+    .meta-tag {
+      background: rgba(var(--accent-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-rgb), 0.15);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--paper);
+      font-family: var(--font-mono), monospace;
+    }
+    
+    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
+    .prob-sol-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0 80px 0;
+    }
+    .prob-card {
+      background: rgba(255, 77, 77, 0.01);
+      border: 1px solid rgba(255, 77, 77, 0.08);
+      border-left: 4px solid #ff4d4d;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .sol-card {
+      background: rgba(0, 230, 118, 0.01);
+      border: 1px solid rgba(0, 230, 118, 0.08);
+      border-left: 4px solid #00e676;
+      border-radius: 12px;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .prob-sol-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .prob-sol-list {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .prob-sol-list li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 12px;
+    }
+    
+    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
+    .process-timeline-wrap {
+      margin-bottom: 80px;
+    }
+    .process-timeline-wrap h2 {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .process-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    .process-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.3);
+    }
+    .process-num {
+      font-family: var(--font-mono), monospace;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .process-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #ffffff;
+      font-family: 'Clash Display', sans-serif;
+    }
+    .process-desc {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.50);
+    }
+    
+    /* General content sections */
+    .case-study-sec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 80px 0 24px 0;
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+    }
+    .case-study-subsec-title {
+      font-family: var(--font-disp), "Clash Display", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 48px 0 18px 0;
+    }
+    .case-study-subsubsec-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 24px 0 12px 0;
+    }
+    .case-study-paragraph {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.70);
+      margin-bottom: 24px;
+    }
+    .case-study-divider {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 60px 0;
+    }
+    .case-study-list {
+      margin: 0 0 24px 0;
+      padding-left: 20px;
+    }
+    .case-study-list li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 8px;
+    }
+    
+    /* Visual Design System Swatches (Image 4 style) */
+    .design-system-swatches {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .color-swatch {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 12px;
+      width: 130px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .swatch-preview {
+      width: 100%;
+      height: 50px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .swatch-hex {
+      font-family: var(--font-mono), monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #ffffff;
+      display: block;
+    }
+    .swatch-name {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.40);
+      margin-top: 2px;
+      display: block;
+    }
+    
+    /* Features Grid */
+    .case-study-features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .case-study-feature-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px;
+      border-radius: 12px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .case-study-feature-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .case-study-feature-title {
+      font-family: var(--font-disp), sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--paper);
+      margin: 0 0 8px 0;
+    }
+    .case-study-feature-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.55);
+      margin: 0;
+    }
+    
+    @media (max-width: 960px) {
+      .overview-sec {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .prob-sol-split {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .case-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .case-study-features-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .case-img-wrap {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .case-info-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body class="case-study-page">
+
+  <!-- ══ NAV ═══════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#home" aria-label="Bappy — home">
+      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+      </svg>
+    </a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#home" class="is-active">Home</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contacts">Contacts</a>
+    </nav>
+
+    <div class="nav__status-wrapper" id="nav-status">
+      <a class="status-pill" href="#contacts">
+        <span class="beacon" aria-hidden="true">
+          <span class="beacon__dot"></span>
+          <span class="beacon__ring"></span>
+        </span>
+        <span class="status-pill__text">Available to work</span>
+      </a>
+    </div>
+
+    <div class="nav__actions">
+      <a class="btn-talk" href="#contacts" id="btn-talk">
+        <span>Let's talk</span>
+      </a>
+
+      <button class="burger" id="burger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+<div class="menu" id="menu" inert>
+  <nav class="menu__list">
+    <a href="#home"><i>01</i>Home</a>
+    <a href="#about"><i>02</i>About</a>
+    <a href="#work"><i>03</i>Projects</a>
+    <a href="#testimonials"><i>04</i>Reviews</a>
+    <a href="#contacts"><i>05</i>Contacts</a>
+  </nav>
+  <div class="menu__foot">
+    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
+  </div>
+</div>
+
+  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
+  <main class="case-wrapper">
+    <div class="case-hero">
+      <a href="projects.html" class="case-back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Selected Works
+      </a>
+      <span class="case-hero-tag">UX Case Study</span>
+      <h1 class="case-hero-title">Tenista</h1>
+    </div>
+    
+    <!-- Info Grid -->
+    <div class="case-info-grid">
+      <div class="case-info-item">
+        <span>Role</span>
+        <p>Product Designer</p>
+      </div>
+      <div class="case-info-item">
+        <span>Timeline</span>
+        <p>3 Months (2026)</p>
+      </div>
+      <div class="case-info-item">
+        <span>Deliverables</span>
+        <p>Booking Platform, Schedule UI, Branding</p>
+      </div>
+      <div class="case-info-item">
+        <span>Team</span>
+        <p>1 Designer, 2 Web Developers</p>
+      </div>
+    </div>
+
+    <!-- Image Showcase -->
+    <div class="case-img-wrap">
+      <img src="assets/showcase-6.png" alt="Tenista Showcase" class="case-img" />
+    </div>
+
+    <!-- Overview Split Section -->
+    <div class="overview-sec">
+      <div class="overview-text">
+        <h2>About Tenista</h2>
+        <p>Tenista is a modern digital experience designed around the tennis lifestyle.
+
+
+
+The platform brings together tennis facilities, coaches, schedules, events, and court booking into one visually engaging experience.
+
+
+
+Rather than presenting tennis as a simple booking service, Tenista positions the sport as a complete lifestyle and community.
+
+
+
+The website allows users to move through a natural journey:
+
+
+
+**Discover → Explore → Find a Coach → Find a Court → Join an Event → Book**
+
+
+
+The design combines editorial sports photography, bold typography, structured content sections, coach profiles, event cards, facility information, partner brands, and strong booking CTAs to create an experience that feels both premium and energetic.
+
+
+
+---</p>
+      </div>
+      <div class="meta-tags-card">
+        <div class="meta-tags-title">Project Context</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Booking UX</span>
+<span class="meta-tag">Schedule UI Design</span>
+<span class="meta-tag">Visual Identity</span>
+<span class="meta-tag">Interaction Design</span>
+        </div>
+        <div class="meta-tags-title">Tools Used</div>
+        <div class="meta-tag-list">
+          <span class="meta-tag">Figma</span>
+<span class="meta-tag">Photoshop</span>
+<span class="meta-tag">Miro</span>
+<span class="meta-tag">Google Sheets</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Problem vs Solution Visual Box -->
+    <div class="prob-sol-split">
+      <div class="prob-card">
+        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
+        <ul class="prob-sol-list">
+          <li>Tennis players find it difficult to search and book professional coaches online.</li>
+<li>Court reservation tools look transactional and fail to capture sports energy.</li>
+<li>One-time booking platforms struggle to build recurring local club communities.</li>
+        </ul>
+      </div>
+      <div class="sol-card">
+        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
+        <ul class="prob-sol-list">
+          <li>Created visual coach profiles with calendar booking systems.</li>
+<li>Designed layout tour sections featuring high-res active court photography.</li>
+<li>Integrated dynamic event cards (e.g. Summer Open) to drive engagement.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Process Flow Grid -->
+    <div class="process-timeline-wrap">
+      <h2>Design Process</h2>
+      <div class="process-timeline">
+        
+        <div class="process-card">
+          <span class="process-num">Step 01</span>
+          <div class="process-title">Empathize</div>
+          <div class="process-desc">Speaking with tennis club players about court reservation hassles.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 02</span>
+          <div class="process-title">Define</div>
+          <div class="process-desc">Identifying that players choose coaches based on trust, not text slots.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 03</span>
+          <div class="process-title">Ideate</div>
+          <div class="process-desc">Visualizing coach schedules, court options, and community events.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 04</span>
+          <div class="process-title">Design</div>
+          <div class="process-desc">Creating a high-energy lime accent system and rounded visuals.</div>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-num">Step 05</span>
+          <div class="process-title">Test</div>
+          <div class="process-desc">Testing reservation slot clicks and form steps with players.</div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Dynamic Content Area -->
+    <div class="case-content">
+      <h3 class='case-study-subsec-title'>Game On. Play Hard.</h3>
+<p class='case-study-paragraph'>Tenista is a modern digital experience designed around the tennis lifestyle.</p>
+<p class='case-study-paragraph'>The platform brings together tennis facilities, coaches, schedules, events, and court booking into one visually engaging experience.</p>
+<p class='case-study-paragraph'>Rather than presenting tennis as a simple booking service, Tenista positions the sport as a complete lifestyle and community.</p>
+<p class='case-study-paragraph'>The website allows users to move through a natural journey:</p>
+<p class='case-study-paragraph'><strong>Discover → Explore → Find a Coach → Find a Court → Join an Event → Book</strong></p>
+<p class='case-study-paragraph'>The design combines editorial sports photography, bold typography, structured content sections, coach profiles, event cards, facility information, partner brands, and strong booking CTAs to create an experience that feels both premium and energetic.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Why Tenista Exists</h2>
+<p class='case-study-paragraph'>Finding a place to play tennis is only one part of the experience.</p>
+<p class='case-study-paragraph'>Players may also need to find:</p>
+<ul class='case-study-list'>
+  <li>A suitable court</li>
+</ul>
+<ul class='case-study-list'>
+  <li>A nearby facility</li>
+</ul>
+<ul class='case-study-list'>
+  <li>A coach</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Training sessions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Tennis events</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Community activities</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Playing opportunities</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Information about locations</li>
+</ul>
+<p class='case-study-paragraph'>A traditional sports website can easily become a directory of courts and schedules.</p>
+<p class='case-study-paragraph'>Tenista takes a broader approach.</p>
+<p class='case-study-paragraph'>The product is designed to help users discover the <strong>entire tennis experience</strong>, from learning and training to playing and participating in events.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>The Business Problem</h2>
+<p class='case-study-paragraph'>The main business challenge is <strong>turning a tennis service into a compelling digital destination</strong>.</p>
+<p class='case-study-paragraph'>A tennis platform needs to solve several problems simultaneously.</p>
+<h4 class='case-study-subsubsec-title'>Discovery</h4>
+<p class='case-study-paragraph'>Users need an easy way to discover facilities, coaches, events, and opportunities.</p>
+<h4 class='case-study-subsubsec-title'>Trust</h4>
+<p class='case-study-paragraph'>Users need confidence in the coaches, facilities, and overall quality of the service.</p>
+<h4 class='case-study-subsubsec-title'>Conversion</h4>
+<p class='case-study-paragraph'>The website needs to move users from browsing into an action such as booking a court, scheduling a session, or joining an event.</p>
+<h4 class='case-study-subsubsec-title'>Differentiation</h4>
+<p class='case-study-paragraph'>A standard booking website can feel functional and generic.</p>
+<p class='case-study-paragraph'>Tenista needs a distinctive identity that communicates the energy and lifestyle of tennis.</p>
+<h4 class='case-study-subsubsec-title'>Information Density</h4>
+<p class='case-study-paragraph'>The platform contains different types of information:</p>
+<ul class='case-study-list'>
+  <li>Coaches</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Facilities</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Events</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Locations</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Partners</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Schedules</li>
+</ul>
+<p class='case-study-paragraph'>The challenge is presenting all of this without making the experience feel like a directory.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Primary Audience — Tennis Players</h3>
+<p class='case-study-paragraph'>People who already play tennis and need convenient access to courts, coaches, and events.</p>
+<p class='case-study-paragraph'>They may be looking for:</p>
+<ul class='case-study-list'>
+  <li>A court</li>
+</ul>
+<ul class='case-study-list'>
+  <li>A coach</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Training</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Events</li>
+</ul>
+<ul class='case-study-list'>
+  <li>New places to play</li>
+</ul>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Secondary Audience — Beginners</h3>
+<p class='case-study-paragraph'>People interested in learning tennis.</p>
+<p class='case-study-paragraph'>They need an approachable way to discover:</p>
+<ul class='case-study-list'>
+  <li>Coaching</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Facilities</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Training opportunities</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Beginner-friendly sessions</li>
+</ul>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Competitive & Experienced Players</h3>
+<ul class='case-study-list'>
+  <li>Find quality facilities</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Follow events</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Train with experienced coaches</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Discover tournaments</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Maintain their playing schedule</li>
+</ul>
+<hr class='case-study-divider' />
+<h4 class='case-study-subsubsec-title'>01 — Finding the Right Facility</h4>
+<p class='case-study-paragraph'>Users need to understand what facilities are available and whether they fit their needs.</p>
+<h4 class='case-study-subsubsec-title'>02 — Finding the Right Coach</h4>
+<p class='case-study-paragraph'>Choosing a coach is highly personal.</p>
+<p class='case-study-paragraph'>Users want to see the coach's identity, experience, and specialization before making a decision.</p>
+<h4 class='case-study-subsubsec-title'>03 — Discovering Events</h4>
+<p class='case-study-paragraph'>Tennis players may be interested in tournaments, seasonal events, or special sessions, but these opportunities can be difficult to discover when they are buried inside a booking system.</p>
+<h4 class='case-study-subsubsec-title'>04 — Too Much Functional Information</h4>
+<p class='case-study-paragraph'>A purely functional booking interface can make tennis feel transactional.</p>
+<p class='case-study-paragraph'>The experience needs to preserve the excitement of the sport.</p>
+<h4 class='case-study-subsubsec-title'>05 — Moving From Inspiration to Action</h4>
+<p class='case-study-paragraph'>Beautiful tennis photography can create interest, but the interface must provide a clear next step.</p>
+<hr class='case-study-divider' />
+<p class='case-study-paragraph'>The design focuses on five major objectives:</p>
+<p class='case-study-paragraph'>1. <strong>Create an energetic tennis-first brand experience</strong></p>
+<p class='case-study-paragraph'>2. <strong>Make facilities and coaches easy to discover</strong></p>
+<p class='case-study-paragraph'>3. <strong>Connect discovery directly with booking</strong></p>
+<p class='case-study-paragraph'>4. <strong>Build trust through coaches, partners, and social proof</strong></p>
+<p class='case-study-paragraph'>5. <strong>Balance editorial storytelling with functional information</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>01 — Lead With Emotion</h3>
+<p class='case-study-paragraph'>The hero immediately communicates the energy of tennis.</p>
+<p class='case-study-paragraph'>The large action photograph shows a player actively moving across the court.</p>
+<p class='case-study-paragraph'>The headline:</p>
+<p class='case-study-paragraph'><strong>MOVE FASTER</strong></p>
+<p class='case-study-paragraph'>creates an immediate emotional connection with the sport.</p>
+<p class='case-study-paragraph'>The supporting statement:</p>
+<p class='case-study-paragraph'>**GAME ON.</p>
+<p class='case-study-paragraph'>PLAY HARD.**</p>
+<p class='case-study-paragraph'>reinforces the brand's personality.</p>
+<p class='case-study-paragraph'>Instead of opening with a list of services, the website first makes the visitor <strong>feel the sport</strong>.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>02 — Turn the Website Into a Tennis Journey</h2>
+<p class='case-study-paragraph'>The page follows a storytelling structure rather than a traditional directory.</p>
+<p class='case-study-paragraph'>The user moves through:</p>
+<p class='case-study-paragraph'><strong>Hero</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Why Tenista</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Facilities</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Coaches</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Events</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Partners</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Brand / Location</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Booking CTA</strong></p>
+<p class='case-study-paragraph'>This creates a narrative.</p>
+<p class='case-study-paragraph'>The visitor first understands the brand, then explores the ecosystem, and finally reaches the booking decision.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>03 — Build Trust Before Asking for a Booking</h2>
+<p class='case-study-paragraph'>The section containing:</p>
+<p class='case-study-paragraph'><strong>#01 It Is Also Highly Trusted</strong></p>
+<p class='case-study-paragraph'>introduces social proof early in the experience.</p>
+<p class='case-study-paragraph'>The copy reinforces the idea of trusted coaches and results.</p>
+<p class='case-study-paragraph'>The circular <strong>100%</strong> statistic provides another visual trust element.</p>
+<p class='case-study-paragraph'>These elements are strategically placed before users reach the deeper service sections.</p>
+<p class='case-study-paragraph'>This helps reduce uncertainty before the user is asked to book.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Hero Experience</h2>
+<p class='case-study-paragraph'>The hero contains several layers of communication.</p>
+<h4 class='case-study-subsubsec-title'>Brand</h4>
+<p class='case-study-paragraph'><strong>TENISTA</strong></p>
+<h4 class='case-study-subsubsec-title'>Main Message</h4>
+<p class='case-study-paragraph'><strong>MOVE FASTER</strong></p>
+<h4 class='case-study-subsubsec-title'>Emotional Positioning</h4>
+<p class='case-study-paragraph'><strong>GAME ON. PLAY HARD.</strong></p>
+<h4 class='case-study-subsubsec-title'>User Context</h4>
+<p class='case-study-paragraph'>The sports photography immediately communicates tennis.</p>
+<h4 class='case-study-subsubsec-title'>Supporting Information</h4>
+<p class='case-study-paragraph'>Small contextual labels and a live-looking interface element make the hero feel like a digital sports platform rather than a static marketing page.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Hero Visual Strategy</h2>
+<p class='case-study-paragraph'>The tennis player is shown in motion.</p>
+<p class='case-study-paragraph'>This is an important visual choice.</p>
+<p class='case-study-paragraph'>A static portrait would communicate the sport.</p>
+<p class='case-study-paragraph'>An action image communicates the <strong>energy of the sport</strong>.</p>
+<p class='case-study-paragraph'>The motion blur around the player reinforces:</p>
+<ul class='case-study-list'>
+  <li>Speed</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Movement</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Competition</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Athleticism</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Performance</li>
+</ul>
+<p class='case-study-paragraph'>The visual therefore supports the headline <strong>“MOVE FASTER.”</strong></p>
+<p class='case-study-paragraph'>This creates alignment between copy and imagery.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Brand Typography</h2>
+<p class='case-study-paragraph'>The hero uses extremely large typography.</p>
+<p class='case-study-paragraph'><strong>MOVE FASTER</strong></p>
+<p class='case-study-paragraph'>is almost treated as a graphic object rather than ordinary text.</p>
+<p class='case-study-paragraph'>This gives the brand a strong editorial and sports-magazine quality.</p>
+<p class='case-study-paragraph'>Large typography also creates a visual contrast with the smaller supporting navigation and UI elements.</p>
+<p class='case-study-paragraph'>The result feels contemporary and premium.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Trust Section</h2>
+<p class='case-study-paragraph'>Immediately after the hero, the website introduces trust signals.</p>
+<p class='case-study-paragraph'>The section contains:</p>
+<p class='case-study-paragraph'><strong>100%</strong></p>
+<p class='case-study-paragraph'>and:</p>
+<p class='case-study-paragraph'><strong>#01 It Is Also Highly Trusted</strong></p>
+<p class='case-study-paragraph'>This creates a transition from:</p>
+<p class='case-study-paragraph'><strong>Emotion → Credibility</strong></p>
+<p class='case-study-paragraph'>The hero gets the user's attention.</p>
+<p class='case-study-paragraph'>The trust section gives the user a reason to continue exploring.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Facility Discovery</h2>
+<p class='case-study-paragraph'>The section:</p>
+<p class='case-study-paragraph'><strong>Take A Tour Of Our Facilities</strong></p>
+<p class='case-study-paragraph'>moves the experience from brand storytelling into practical exploration.</p>
+<p class='case-study-paragraph'>The copy explains that users can reserve courts for:</p>
+<ul class='case-study-list'>
+  <li>Focused practice</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Team drills</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Private coaching</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Casual play</li>
+</ul>
+<p class='case-study-paragraph'>The <strong>Book a Court</strong> CTA creates a direct path to conversion.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Facility Cards</h2>
+<p class='case-study-paragraph'>The facility section uses large photographic cards.</p>
+<p class='case-study-paragraph'>Each card communicates the environment visually.</p>
+<p class='case-study-paragraph'>This is particularly effective for tennis facilities because users care about the physical experience.</p>
+<p class='case-study-paragraph'>A photograph can communicate:</p>
+<ul class='case-study-list'>
+  <li>Court quality</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Environment</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Atmosphere</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Lighting</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Surroundings</li>
+</ul>
+<p class='case-study-paragraph'>much faster than a paragraph of text.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Coach & Schedule</h2>
+<p class='case-study-paragraph'>The <strong>Coach And Schedule</strong> section introduces real people into the experience.</p>
+<p class='case-study-paragraph'>This is important because coaching is a trust-based service.</p>
+<p class='case-study-paragraph'>The coach cards provide:</p>
+<ul class='case-study-list'>
+  <li>Coach photograph</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Name</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Professional identity</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Supporting information</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Schedule-related information</li>
+</ul>
+<p class='case-study-paragraph'>This helps users move from:</p>
+<p class='case-study-paragraph'><strong>“I want to improve my tennis.”</strong></p>
+<p class='case-study-paragraph'>to:</p>
+<p class='case-study-paragraph'><strong>“I can see who can help me.”</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Human-Centered Design</h2>
+<p class='case-study-paragraph'>The coach section makes the platform feel more human.</p>
+<p class='case-study-paragraph'>Instead of presenting coaching as an anonymous service, the interface introduces actual individuals.</p>
+<p class='case-study-paragraph'>This reduces the psychological distance between the platform and the user.</p>
+<p class='case-study-paragraph'>The player is not simply booking:</p>
+<p class='case-study-paragraph'><strong>“Coaching — $XX”</strong></p>
+<p class='case-study-paragraph'>They are choosing a person.</p>
+<p class='case-study-paragraph'>That makes the service feel more personal and trustworthy.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Events</h2>
+<p class='case-study-paragraph'>The <strong>Current Events</strong> section creates another reason for users to return to the platform.</p>
+<p class='case-study-paragraph'>The cards communicate:</p>
+<ul class='case-study-list'>
+  <li>Event name</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Date</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Location</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Short description</li>
+</ul>
+<ul class='case-study-list'>
+  <li>CTA</li>
+</ul>
+<p class='case-study-paragraph'>Examples shown include:</p>
+<p class='case-study-paragraph'><strong>Summer Open 2026</strong></p>
+<p class='case-study-paragraph'>and</p>
+<p class='case-study-paragraph'><strong>Night Rally Series</strong></p>
+<p class='case-study-paragraph'>This creates a sense that Tenista is an active tennis community rather than simply a static booking platform.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Event Discovery as Retention</h2>
+<p class='case-study-paragraph'>Events serve an important product purpose.</p>
+<p class='case-study-paragraph'>Court booking may be an occasional activity.</p>
+<p class='case-study-paragraph'>Events can create recurring engagement.</p>
+<p class='case-study-paragraph'>A player may return because:</p>
+<ul class='case-study-list'>
+  <li>A tournament is coming</li>
+</ul>
+<ul class='case-study-list'>
+  <li>A seasonal event is available</li>
+</ul>
+<ul class='case-study-list'>
+  <li>A night session is happening</li>
+</ul>
+<ul class='case-study-list'>
+  <li>A community event is scheduled</li>
+</ul>
+<p class='case-study-paragraph'>This gives the platform a reason to become part of the user's regular tennis routine.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Partner Ecosystem</h2>
+<p class='case-study-paragraph'>The <strong>Our Partner</strong> section displays a large collection of sports brands.</p>
+<p class='case-study-paragraph'>This reinforces the professional positioning of the platform.</p>
+<p class='case-study-paragraph'>Partner logos can communicate:</p>
+<ul class='case-study-list'>
+  <li>Industry connection</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Credibility</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Sports ecosystem</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Product quality</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Brand legitimacy</li>
+</ul>
+<p class='case-study-paragraph'>The logos are deliberately kept visually quiet so they support credibility without competing with the main content.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Brand Story / Video</h2>
+<p class='case-study-paragraph'>The large tennis image with the:</p>
+<p class='case-study-paragraph'><strong>Watch Our Video</strong></p>
+<p class='case-study-paragraph'>CTA introduces a more emotional brand-story section.</p>
+<p class='case-study-paragraph'>This allows Tenista to communicate something that static interface elements cannot:</p>
+<p class='case-study-paragraph'><strong>What it feels like to be part of the experience.</strong></p>
+<p class='case-study-paragraph'>Video becomes an extension of the brand rather than merely a promotional asset.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Location Discovery</h2>
+<p class='case-study-paragraph'>The section:</p>
+<p class='case-study-paragraph'><strong>Tenista in every state.</strong></p>
+<p class='case-study-paragraph'>expands the product beyond a single location.</p>
+<p class='case-study-paragraph'>The state list suggests a broader geographic network.</p>
+<p class='case-study-paragraph'>This is important because it changes the user's perception of the platform.</p>
+<p class='case-study-paragraph'>Instead of:</p>
+<p class='case-study-paragraph'><strong>One tennis facility</strong></p>
+<p class='case-study-paragraph'>the product begins to feel like:</p>
+<p class='case-study-paragraph'><strong>A tennis network.</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Conversion Section</h2>
+<p class='case-study-paragraph'>The final CTA:</p>
+<p class='case-study-paragraph'><strong>Your Court is Waiting</strong></p>
+<p class='case-study-paragraph'>is a strong example of action-oriented copy.</p>
+<p class='case-study-paragraph'>It combines:</p>
+<p class='case-study-paragraph'><strong>Emotional motivation + clear action</strong></p>
+<p class='case-study-paragraph'>The supporting copy reinforces the service:</p>
+<p class='case-study-paragraph'><strong>Reserve a court for focused practice, team drills, or private coaching sessions, and elevate your game to the next level.</strong></p>
+<p class='case-study-paragraph'>Then the CTA:</p>
+<p class='case-study-paragraph'><strong>Book Your Court</strong></p>
+<p class='case-study-paragraph'>provides the concrete next step.</p>
+<p class='case-study-paragraph'>This creates a strong final conversion moment.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Conversion Journey</h2>
+<p class='case-study-paragraph'>The website follows a clear conversion funnel:</p>
+<h4 class='case-study-subsubsec-title'>01 — Emotion</h4>
+<p class='case-study-paragraph'><strong>Move Faster</strong></p>
+<h4 class='case-study-subsubsec-title'>02 — Trust</h4>
+<p class='case-study-paragraph'><strong>Highly Trusted</strong></p>
+<h4 class='case-study-subsubsec-title'>03 — Explore</h4>
+<p class='case-study-paragraph'><strong>Take a Tour of Our Facilities</strong></p>
+<h4 class='case-study-subsubsec-title'>04 — Personalize</h4>
+<p class='case-study-paragraph'><strong>Coach and Schedule</strong></p>
+<h4 class='case-study-subsubsec-title'>05 — Engage</h4>
+<p class='case-study-paragraph'><strong>Current Events</strong></p>
+<h4 class='case-study-subsubsec-title'>06 — Validate</h4>
+<p class='case-study-paragraph'><strong>Our Partners</strong></p>
+<h4 class='case-study-subsubsec-title'>07 — Expand</h4>
+<p class='case-study-paragraph'><strong>Tenista in every state</strong></p>
+<h4 class='case-study-subsubsec-title'>08 — Convert</h4>
+<p class='case-study-paragraph'><strong>Your Court is Waiting</strong></p>
+<p class='case-study-paragraph'>This is a strong marketing-to-conversion progression.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Visual Design Strategy</h2>
+<p class='case-study-paragraph'>The visual identity combines:</p>
+<ul class='case-study-list'>
+  <li>High-energy sports photography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Deep blue backgrounds</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Bright lime/green accent</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Large editorial typography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>White space</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Rounded image containers</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Minimal UI</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Sports imagery</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Small micro-interactions</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Strong CTA buttons</li>
+</ul>
+<p class='case-study-paragraph'>The bright lime accent is particularly useful because it creates immediate contrast against the blue and neutral backgrounds.</p>
+<p class='case-study-paragraph'>It is used selectively for:</p>
+<ul class='case-study-list'>
+  <li>CTAs</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Active states</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Navigation indicators</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Important highlights</li>
+</ul>
+<p class='case-study-paragraph'>This keeps the accent color meaningful.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Blue + Lime Visual Language</h2>
+<p class='case-study-paragraph'>The color relationship communicates two different qualities.</p>
+<h4 class='case-study-subsubsec-title'>Deep Blue</h4>
+<p class='case-study-paragraph'>Represents:</p>
+<ul class='case-study-list'>
+  <li>Performance</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Confidence</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Professionalism</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Sports environment</li>
+</ul>
+<h4 class='case-study-subsubsec-title'>Lime</h4>
+<p class='case-study-paragraph'>Represents:</p>
+<ul class='case-study-list'>
+  <li>Energy</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Movement</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Action</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Youthfulness</li>
+</ul>
+<p class='case-study-paragraph'>Together they create a strong tennis/sports identity without relying on generic green tennis-court imagery everywhere.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Image-Led Storytelling</h2>
+<p class='case-study-paragraph'>Photography does most of the emotional communication.</p>
+<p class='case-study-paragraph'>The page repeatedly uses:</p>
+<ul class='case-study-list'>
+  <li>Players in motion</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Coaches</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Courts</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Facilities</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Events</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Professional athletes</li>
+</ul>
+<p class='case-study-paragraph'>The product is effectively saying:</p>
+<p class='case-study-paragraph'>**This is not just a website for tennis.</p>
+<p class='case-study-paragraph'>This is where tennis happens.**</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Information Architecture</h2>
+<p class='case-study-paragraph'>The page structure can be understood as:</p>
+<p class='case-study-paragraph'><strong>Brand</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Trust</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Facilities</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Coaches</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Events</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Partners</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Locations</strong></p>
+<p class='case-study-paragraph'>↓</p>
+<p class='case-study-paragraph'><strong>Booking</strong></p>
+<p class='case-study-paragraph'>This is a strong architecture for a sports service because it answers the user's major questions in sequence.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>What I Focused on as a Product Designer</h2>
+<p class='case-study-paragraph'>The central design challenge was to balance <strong>sports emotion with booking functionality</strong>.</p>
+<p class='case-study-paragraph'>I focused on:</p>
+<h4 class='case-study-subsubsec-title'>Brand Experience</h4>
+<p class='case-study-paragraph'>Making Tenista feel like a tennis brand rather than a generic booking platform.</p>
+<h4 class='case-study-subsubsec-title'>Discovery</h4>
+<p class='case-study-paragraph'>Helping users find facilities, coaches, and events.</p>
+<h4 class='case-study-subsubsec-title'>Trust</h4>
+<p class='case-study-paragraph'>Introducing people, social proof, and partner brands.</p>
+<h4 class='case-study-subsubsec-title'>Conversion</h4>
+<p class='case-study-paragraph'>Keeping booking actions visible throughout the journey.</p>
+<h4 class='case-study-subsubsec-title'>Visual Storytelling</h4>
+<p class='case-study-paragraph'>Using action photography and video to communicate the energy of tennis.</p>
+<h4 class='case-study-subsubsec-title'>Scalability</h4>
+<p class='case-study-paragraph'>Creating a structure that can support multiple facilities, coaches, events, and locations.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Design Outcome</h2>
+<p class='case-study-paragraph'>The final experience transforms a traditional tennis booking concept into a broader digital tennis ecosystem.</p>
+<p class='case-study-paragraph'>Users can:</p>
+<p class='case-study-paragraph'><strong>Discover the sport</strong></p>
+<p class='case-study-paragraph'>→</p>
+<p class='case-study-paragraph'><strong>Explore facilities</strong></p>
+<p class='case-study-paragraph'>→</p>
+<p class='case-study-paragraph'><strong>Find coaches</strong></p>
+<p class='case-study-paragraph'>→</p>
+<p class='case-study-paragraph'><strong>Discover events</strong></p>
+<p class='case-study-paragraph'>→</p>
+<p class='case-study-paragraph'><strong>Understand the network</strong></p>
+<p class='case-study-paragraph'>→</p>
+<p class='case-study-paragraph'><strong>Book a court</strong></p>
+<p class='case-study-paragraph'>The website therefore works simultaneously as:</p>
+<p class='case-study-paragraph'><strong>Brand platform + discovery experience + community hub + booking funnel.</strong></p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key UX Decisions</h2>
+<h3 class='case-study-subsec-title'>From Booking Website → Tennis Lifestyle</h3>
+<p class='case-study-paragraph'>The product does not begin by asking:</p>
+<p class='case-study-paragraph'><strong>“Which court do you want to book?”</strong></p>
+<p class='case-study-paragraph'>It first creates desire and excitement around tennis.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Facilities → Experiences</h3>
+<p class='case-study-paragraph'>Facilities are presented through photography rather than technical specifications alone.</p>
+<p class='case-study-paragraph'>This helps users imagine the experience of playing there.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Anonymous Service → Human Coaches</h3>
+<p class='case-study-paragraph'>Coach cards introduce real people and make the coaching service more trustworthy.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From One-Time Booking → Community Engagement</h3>
+<p class='case-study-paragraph'>Events create recurring reasons for users to return.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From Local Facility → Tennis Network</h3>
+<p class='case-study-paragraph'>The <strong>“Tenista in every state”</strong> section expands the perceived scale of the product.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>From CTA → Motivation</h3>
+<p class='case-study-paragraph'><strong>“Your Court is Waiting”</strong> is more emotionally engaging than a generic “Book Now.”</p>
+<p class='case-study-paragraph'>It connects the booking action with the user's desire to play.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Key Takeaways</h2>
+<h4 class='case-study-subsubsec-title'>Great sports UX should create emotion before asking for action.</h4>
+<h4 class='case-study-subsubsec-title'>Photography can be part of the UX.</h4>
+<p class='case-study-paragraph'>Strong sports imagery helps users understand the product before they read the content.</p>
+<h4 class='case-study-subsubsec-title'>Trust is especially important for coaching services.</h4>
+<p class='case-study-paragraph'>Introducing real coaches makes the experience more human and credible.</p>
+<h4 class='case-study-subsubsec-title'>Events can turn a service into a community.</h4>
+<p class='case-study-paragraph'>Recurring events give users reasons to return beyond a single booking.</p>
+<h4 class='case-study-subsubsec-title'>Booking should be available throughout the journey.</h4>
+<p class='case-study-paragraph'>Users can become ready to book at different points, so relevant CTAs should appear naturally throughout the experience.</p>
+<h4 class='case-study-subsubsec-title'>Brand and conversion should work together.</h4>
+<p class='case-study-paragraph'>The strongest sports websites do not choose between beautiful branding and usability.</p>
+<p class='case-study-paragraph'>They use branding to create desire and UX to convert that desire into action.</p>
+<hr class='case-study-divider' />
+<h2 class='case-study-sec-title'>Case Study Page Structure for AI</h2>
+<h3 class='case-study-subsec-title'>Section 01 — Hero</h3>
+<p class='case-study-paragraph'>Hero content:</p>
+<p class='case-study-paragraph'><strong>TENISTA</strong></p>
+<p class='case-study-paragraph'><strong>Move Faster.</strong></p>
+<p class='case-study-paragraph'>Supporting message:</p>
+<p class='case-study-paragraph'><strong>Game on. Play hard.</strong></p>
+<p class='case-study-paragraph'>Short description:</p>
+<p class='case-study-paragraph'>“A modern tennis platform connecting players with courts, coaches, events, and the tennis community.”</p>
+<p class='case-study-paragraph'>Project metadata:</p>
+<ul class='case-study-list'>
+  <li>Product: Tenista</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Category: Sports / Tennis</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Platform: Web</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Focus: Tennis discovery, coaching & booking</li>
+</ul>
+<p class='case-study-paragraph'>The hero should be image-dominant.</p>
+<p class='case-study-paragraph'>Keep the oversized typography visible.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 02 — The Challenge</h3>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“How do you make booking a court feel like joining the game?”</strong></p>
+<p class='case-study-paragraph'>Explain that the challenge was to move beyond a functional booking website and create a tennis-first experience that combines emotion, discovery, trust, and conversion.</p>
+<p class='case-study-paragraph'>Use a large crop of the tennis player from the hero.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 03 — User Journey</h3>
+<p class='case-study-paragraph'>Create a horizontal flow:</p>
+<p class='case-study-paragraph'><strong>Discover → Explore → Train → Play → Connect → Book</strong></p>
+<p class='case-study-paragraph'>Under each step, explain the relevant part of the product.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 04 — Trust</h3>
+<p class='case-study-paragraph'>Make the statistics and trust card visually prominent.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Before asking users to book, give them a reason to trust.”</strong></p>
+<p class='case-study-paragraph'>Explain the role of social proof and credibility.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 05 — Facilities</h3>
+<p class='case-study-paragraph'>Make the facility photography large.</p>
+<p class='case-study-paragraph'>Add annotations:</p>
+<ul class='case-study-list'>
+  <li>Court experience</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Facility discovery</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Multiple locations</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Book a Court CTA</li>
+</ul>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Let users see where they'll play before they book.”</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 06 — Coaches</h3>
+<p class='case-study-paragraph'>Display the coach cards in a horizontal layout.</p>
+<p class='case-study-paragraph'>Add short descriptions about:</p>
+<ul class='case-study-list'>
+  <li>Human connection</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Coach discovery</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Experience</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Scheduling</li>
+</ul>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“The service becomes more personal when users can meet the people behind it.”</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 07 — Events</h3>
+<p class='case-study-paragraph'>Show:</p>
+<p class='case-study-paragraph'><strong>Summer Open 2026</strong></p>
+<p class='case-study-paragraph'>and</p>
+<p class='case-study-paragraph'><strong>Night Rally Series</strong></p>
+<p class='case-study-paragraph'>Explain how events transform the platform from a booking tool into a recurring tennis community.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 08 — Partner Ecosystem</h3>
+<p class='case-study-paragraph'>Keep it visually clean.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“A tennis ecosystem, not just a booking platform.”</strong></p>
+<p class='case-study-paragraph'>Explain how partner brands reinforce credibility and industry positioning.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 09 — Brand Story</h3>
+<p class='case-study-paragraph'>Make this section cinematic.</p>
+<p class='case-study-paragraph'>Use a large image with minimal text.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Show the feeling, don't just describe it.”</strong></p>
+<p class='case-study-paragraph'>Explain the role of video and sports photography in emotional storytelling.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 10 — Network</h3>
+<p class='case-study-paragraph'><strong>Tenista in every state.</strong></p>
+<p class='case-study-paragraph'>section.</p>
+<p class='case-study-paragraph'>Display the location list alongside the tennis visual.</p>
+<p class='case-study-paragraph'>Headline:</p>
+<p class='case-study-paragraph'><strong>“Built to scale beyond a single court.”</strong></p>
+<p class='case-study-paragraph'>Explain how the location architecture suggests a broader network.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 11 — Conversion</h3>
+<p class='case-study-paragraph'><strong>Your Court is Waiting</strong></p>
+<p class='case-study-paragraph'>section.</p>
+<p class='case-study-paragraph'>Make the headline very large.</p>
+<p class='case-study-paragraph'>Show the <strong>Book Your Court</strong> CTA prominently.</p>
+<p class='case-study-paragraph'>Explain the conversion journey:</p>
+<p class='case-study-paragraph'><strong>Interest → Confidence → Exploration → Booking</strong></p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 12 — Visual System</h3>
+<p class='case-study-paragraph'>Show the visual principles:</p>
+<ul class='case-study-list'>
+  <li>Deep blue</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Lime accent</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Large typography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Tennis photography</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Rounded image containers</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Minimal UI</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Strong CTA</li>
+</ul>
+<ul class='case-study-list'>
+  <li>Editorial composition</li>
+</ul>
+<p class='case-study-paragraph'>Do not overdo this section.</p>
+<p class='case-study-paragraph'>The visual identity is already demonstrated throughout the case study.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 13 — Final Experience</h3>
+<p class='case-study-paragraph'>Create a cinematic gallery using:</p>
+<p class='case-study-paragraph'><strong>Hero → Facility → Coach → Event → Final CTA</strong></p>
+<p class='case-study-paragraph'>Do not use a basic equal-sized grid.</p>
+<p class='case-study-paragraph'>Use different image scales to create rhythm.</p>
+<hr class='case-study-divider' />
+<h3 class='case-study-subsec-title'>Section 14 — Closing</h3>
+<p class='case-study-paragraph'>End with:</p>
+<p class='case-study-paragraph'><strong>“Your court is waiting.”</strong></p>
+<p class='case-study-paragraph'>Supporting line:</p>
+<p class='case-study-paragraph'><strong>A digital tennis experience designed to turn discovery into play.</strong></p>
+<p class='case-study-paragraph'>Then show the final <strong>Book Your Court</strong> CTA.</p>
+<hr class='case-study-divider' />
+    </div>
+
+    <!-- Visual Palette Showcase -->
+    <div class="case-study-divider"></div>
+    <div class="process-timeline-wrap">
+      <h2>Fonts & Colors Swatches</h2>
+      <div class="design-system-swatches">
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #aeea00;"></div>
+          <span class="swatch-hex">#aeea00</span>
+          <span class="swatch-name">Tennis Lime</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #0a1f12;"></div>
+          <span class="swatch-hex">#0a1f12</span>
+          <span class="swatch-name">Court Green</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #020a06;"></div>
+          <span class="swatch-hex">#020a06</span>
+          <span class="swatch-name">Deep Shadow</span>
+        </div>
+        
+        <div class="color-swatch">
+          <div class="swatch-preview" style="background: #ffffff;"></div>
+          <span class="swatch-hex">#ffffff</span>
+          <span class="swatch-name">Neutral White</span>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
+<div class="contact-footer-wrap">
+<section class="sec contact-sec" id="contacts">
+  <div class="contact-sticky-stage">
+    <!-- Interactive Wood Hover Reveal Element -->
+    <div class="contact-wood-interactive">
+      <div class="wood-img-base"></div>
+      <div class="wood-img-grass"></div>
+    </div>
+
+    <div class="contact-layout">
+      
+      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
+      <div class="contact-left-col">
+        <header class="contact-head">
+          <h2 class="testimonials-title contact-heading">
+            <span class="testi-word">Get</span>
+            <span class="testi-word">in</span>
+            <span class="testi-word testi-word--orange">touch</span>
+          </h2>
+          
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email:</span>
+              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Phone:</span>
+              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
+            </div>
+
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Address:</span>
+              <span class="contact-detail-value">Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <div class="contact-socials-wrap">
+            <span class="contact-socials-label">Follow us:</span>
+            <div class="contact-social-icons">
+              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
+                </svg>
+              </a>
+              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
+                </svg>
+              </a>
+              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Right Column: Interactive Form aligned to bottom-right -->
+      <div class="contact-right-col">
+        <form class="contact-form" id="contact-form">
+          <div class="contact-form-row">
+            <div class="contact-form-field">
+              <label for="contact-name" class="contact-form-label">Your Name</label>
+              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-email" class="contact-form-label">Email address</label>
+              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
+            </div>
+          </div>
+
+          <div class="contact-form-field">
+            <label for="contact-message" class="contact-form-label">Message</label>
+            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
+<footer class="footer-sec">
+  <div class="contact-bottom-footer">
+    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
+    <div class="contact-mid-wrap" data-reveal>
+      <div class="contact-mid-row">
+        <div class="contact-tagline">
+          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
+            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
+              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+            </svg>
+          </a>
+          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
+        </div>
+
+        <nav class="contact-links-nav" aria-label="Footer navigation">
+          <div class="contact-links-group">
+            <span class="contact-links-title">Links</span>
+            <a href="#home" class="contact-nav-link">Home</a>
+            <a href="#about" class="contact-nav-link">About Me</a>
+            <a href="#process" class="contact-nav-link">Process</a>
+          </div>
+          <div class="contact-links-group">
+            <span class="contact-links-title">Explore</span>
+            <a href="#work" class="contact-nav-link">Projects</a>
+            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
+            <a href="#contacts" class="contact-nav-link">Contacts</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
+    <div class="contact-copyright-wrap">
+      <div class="contact-copyright-row">
+        <span class="contact-copy-left">© 2026 Bappy Islam</span>
+        <span class="contact-copy-right">All rights reserved.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
+  <div class="contact-designer-banner">
+    <div class="contact-wordmark wordmark" aria-hidden="true">
+      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
+    </div>
+  </div>
+</footer>
+</div> </div> <!-- End of contact-footer-wrap -->
+  <script>
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+
+  function updateNavState() {
+    if (!nav) return;
+    const isScrolled = window.scrollY > 40;
+    nav.classList.toggle('is-scrolled', isScrolled);
+  }
+
+  updateNavState();
+  window.addEventListener('scroll', updateNavState, { passive: true });
+
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', !open);
+      burger.classList.toggle('is-open');
+      menu.classList.toggle('is-open');
+      if (!open) {
+        menu.removeAttribute('inert');
+        document.body.classList.add('no-scroll');
+      } else {
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.setAttribute('aria-expanded', 'false');
+        burger.classList.remove('is-open');
+        menu.classList.remove('is-open');
+        menu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      });
+    });
+  }
+
+  // Redirect hash links on subpages to landing page sections
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#') && href !== '#') {
+      link.href = 'index.html' + href;
+    }
+  });
+
+  // Initialize interactive wood hover reveal effect in the footer
+  function initContactWoodHover() {
+    const stage = document.querySelector('.contact-sticky-stage');
+    if (!stage) return;
+
+    const grass = stage.querySelector('.wood-img-grass');
+    if (!grass) return;
+
+    stage.addEventListener('pointermove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      grass.style.setProperty('--mouse-x', `${x}px`);
+      grass.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    stage.addEventListener('pointerleave', () => {
+      grass.style.setProperty('--mouse-x', '-1000px');
+      grass.style.setProperty('--mouse-y', '-1000px');
+    });
+  }
+
+  // Contact Form AJAX Submission (FormSubmit.co)
+  function initContactFormSubmit() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('.contact-submit-btn');
+      if (!submitBtn) return;
+      
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending...</span>';
+      
+      const formData = {
+        name: document.getElementById('contact-name').value,
+        email: document.getElementById('contact-email').value,
+        message: document.getElementById('contact-message').value,
+        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
+      };
+      
+      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === 'true' || data.success === true) {
+          submitBtn.innerHTML = '<span>Message Sent!</span>';
+          submitBtn.style.background = '#2e7d32';
+          contactForm.reset();
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+          }, 4000);
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        submitBtn.innerHTML = '<span>Error! Try again</span>';
+        submitBtn.style.background = '#c62828';
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+        }, 4000);
+      });
+    });
+  }
+
+  initContactWoodHover();
+  initContactFormSubmit();
+</script>
+</body>
+</html>
