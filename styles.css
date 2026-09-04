@@ -452,9 +452,15 @@ img, video, canvas { display: block; max-width: 100%; }
 
 /* Right Actions */
 .nav__actions {
-  display: flex;
+  position: relative;
+  display: grid;
   align-items: center;
-  gap: 12px;
+  justify-items: end;
+}
+
+.btn-talk,
+.burger {
+  grid-area: 1 / 1;
 }
 
 .btn-talk {
@@ -3722,7 +3728,8 @@ html:not(.is-ready) .wordmark span {
 @media (max-width: 860px) {
   /* no room for a row of links — the burger is on duty from the start */
   .nav__links { display: none; }
-  .burger, .nav.is-stuck .burger { display: grid; position: static; margin: 0; }
+  .btn-talk { display: none; }
+  .burger, .nav.is-stuck .burger { display: flex; opacity: 1; visibility: visible; pointer-events: auto; position: static; margin: 0; }
   .nav__inner { justify-content: space-between; }
   .nav.is-stuck .nav__actions { width: auto; justify-content: flex-end; }
 
