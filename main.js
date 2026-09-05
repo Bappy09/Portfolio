@@ -207,12 +207,13 @@ let targetMaskRadius = 0.0;
 let currentMaskRadius = 0.0;
 let targetMaskAlpha = 0.0;
 let currentMaskAlpha = 0.0;
-let targetSliderX = 0.0;          // Persistent slider position (stays where left)
-let currentSliderX = 0.0;
+let targetSliderX = 0.5;          // Persistent slider position (starts centered at 50%)
+let currentSliderX = 0.5;
 let targetSliderAlpha = 0.0;
 let currentSliderAlpha = 0.0;
 let isHoveringScreen = false;
 let lastScreenTouchTime = 0;
+let quoteSliderTimeOffset = 0;
 
 function createScreenMaterial() {
   // Using MeshBasicMaterial so phone screen behaves like a true emissive OLED display
@@ -629,6 +630,24 @@ function setupInteractions() {
 
   window.addEventListener('pointerup', onPointerRelease);
   window.addEventListener('pointercancel', onPointerRelease);
+
+  // Touch coordinates for mobile phone screen interactions (Hero spotlight mask & Quote comparison slider)
+  const updateTouchCoords = (e) => {
+    if (!e.touches || e.touches.length === 0 || !phoneCanvas) return;
+    const t = e.touches[0];
+    const rect = phoneCanvas.getBoundingClientRect();
+    mouseNDC.x = ((t.clientX - rect.left) / rect.width) * 2 - 1;
+    mouseNDC.y = -((t.clientY - rect.top) / rect.height) * 2 + 1;
+  };
+
+  window.addEventListener('touchstart', updateTouchCoords, { passive: true });
+  window.addEventListener('touchmove', updateTouchCoords, { passive: true });
+  window.addEventListener('touchend', () => {
+    setTimeout(() => {
+      mouseNDC.set(-999, -999);
+      isHoveringScreen = false;
+    }, 60);
+  }, { passive: true });
 }
 
 function startAutoReturn() {
@@ -816,8 +835,12 @@ function step3DInteractions(now) {
 
       if (quoteModeTarget > 0.4) {
         // Quote section: slider divider follows mouse/touch X directly
-        targetSliderX = screenHits[0].uv.x;
-        targetSliderAlpha = 1.0;
+        targetSliderX = Math.max(0.04, Math.min(0.96, screenHits[0].uv.x));
+        targetSliderAlpha = Math.min(1.0, Math.max(0.0, (quoteModeTarget - 0.25) * 2.5));
+        // Seamlessly sync auto-slide time offset so that when touch/hover ends, auto-slide starts smoothly right from this position
+        const normalizedX = (targetSliderX - 0.5) / 0.42;
+        const clampedNorm = Math.max(-0.999, Math.min(0.999, normalizedX));
+        quoteSliderTimeOffset = now - (Math.asin(clampedNorm) / 0.00065);
       } else {
         // Hero section: badge mask follows mouse/finger
         targetMaskAlpha = 1.0;
@@ -827,14 +850,15 @@ function step3DInteractions(now) {
       isHoveringScreen = false;
 
       if (quoteModeTarget > 0.4) {
-        // Persistent directional wipe:
-        // When leaving on the right, snap to 1.0 (Full Good UI/UX);
-        // when leaving on the left, snap to 0.0 (Full Bad UI/UX);
-        // otherwise persist at current position without snapping to center!
-        if (targetSliderX > 0.82) targetSliderX = 1.0;
-        else if (targetSliderX < 0.18) targetSliderX = 0.0;
+        // Quote section: divider line & circular handle stay visible for clear comparison
+        targetSliderAlpha = Math.min(1.0, Math.max(0.0, (quoteModeTarget - 0.25) * 2.5));
 
-        targetSliderAlpha = 0.0; // Hide divider line smoothly when outside
+        if (now - lastScreenTouchTime > 1600) {
+          // Automatic peaceful back-and-forth comparison slide showing the difference between Bad UI/UX & Good UI/UX
+          const autoPhase = (now - quoteSliderTimeOffset) * 0.00065;
+          targetSliderX = 0.5 + Math.sin(autoPhase) * 0.42;
+          targetCursorUV.y = 0.5;
+        }
       } else {
         targetSliderAlpha = 0.0;
         if (isMobile) {
