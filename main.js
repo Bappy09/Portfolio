@@ -1467,9 +1467,10 @@ function initSectionStarfields() {
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       W = canvas.offsetWidth || canvas.parentElement?.offsetWidth || window.innerWidth;
-      H = canvas.offsetHeight || canvas.parentElement?.offsetHeight || window.innerHeight;
+      const maxScreenH = Math.max(window.innerHeight, window.screen?.height || 0);
+      H = Math.max(canvas.offsetHeight || 0, canvas.parentElement?.offsetHeight || 0, maxScreenH);
       if (!W || W < 20) W = window.innerWidth;
-      if (!H || H < 20) H = window.innerHeight;
+      if (!H || H < 20) H = maxScreenH;
       canvas.width = W * dpr;
       canvas.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
