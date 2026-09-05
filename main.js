@@ -2216,10 +2216,11 @@ function initProcessStarMorphingNumbers() {
       const elapsed = (now - t0) / 1000;
       ctx.clearRect(0, 0, W, H);
 
-      let offsetX = isMobileProcess ? (W - numeralW) / 2 : Math.max(40, (W * 0.43 - numeralW) / 2);
-      let offsetY = isMobileProcess ? Math.max(70, H * 0.20) : (H - numeralH) / 2;
+      const isMobile = W <= 960;
+      let offsetX = isMobile ? (W - numeralW) / 2 : Math.max(40, (W * 0.43 - numeralW) / 2);
+      let offsetY = isMobile ? Math.max(140, Math.round(H * 0.28)) : (H - numeralH) / 2;
 
-      if (W > 960) {
+      if (!isMobile) {
         const spacer = section.querySelector('.process-left-spacer');
         const bodyLayout = section.querySelector('.process-body-layout');
         const stageEl = section.querySelector('.process-sticky-stage');
@@ -2231,6 +2232,24 @@ function initProcessStarMorphingNumbers() {
           
           offsetX = (spacerBox.left - stageBox.left) + (spacerBox.width - numeralW) / 2;
           offsetY = (bodyBox.top - stageBox.top) + (bodyBox.height - numeralH) / 2;
+        }
+      } else {
+        const headEl = section.querySelector('.process-head');
+        const trackEl = section.querySelector('.process-steps-track');
+        const stageEl = section.querySelector('.process-sticky-stage');
+        if (headEl && trackEl && stageEl) {
+          const headBox = headEl.getBoundingClientRect();
+          const trackBox = trackEl.getBoundingClientRect();
+          const stageBox = stageEl.getBoundingClientRect();
+          const headBottom = headBox.bottom - stageBox.top;
+          const trackCenter = (trackBox.top - stageBox.top) + (trackBox.height / 2);
+          const trackTopBound = trackCenter - 36;
+          const availableSpace = trackTopBound - headBottom;
+          if (availableSpace > numeralH) {
+            offsetY = Math.round(headBottom + (availableSpace - numeralH) * 0.55);
+          } else {
+            offsetY = Math.max(headBottom + 16, Math.round(H * 0.28));
+          }
         }
       }
 
