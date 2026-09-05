@@ -1194,15 +1194,35 @@ window.addEventListener('pagehide', () => {
   }
 });
 
+const isTouchOrMobile = () => {
+  if (typeof window === 'undefined') return false;
+  if (window.innerWidth <= 860) return true;
+  const isCoarse = window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(pointer: fine)').matches;
+  const noHover = window.matchMedia('(hover: none)').matches;
+  return isCoarse || (noHover && window.innerWidth <= 1024);
+};
+
 const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-const scroller = { target: 0, current: 0, on: fine && !reduced };
+const scroller = { target: 0, current: 0, on: fine && !reduced && !isTouchOrMobile() };
 let snapIdleTimer = null;
+
+window.addEventListener('resize', () => {
+  const mobile = isTouchOrMobile();
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  scroller.on = finePointer && !reduced && !mobile;
+  if (mobile) {
+    if (snapIdleTimer) clearTimeout(snapIdleTimer);
+    scroller.target = scroller.current = window.scrollY;
+  }
+}, { passive: true });
 
 function maxScroll() {
   return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
 }
 
 function getSnapTargets() {
+  if (!scroller.on || isTouchOrMobile()) return [];
+
   const quoteSecEl = document.getElementById('quote');
   const aboutSecEl = document.getElementById('about');
   const workSecEl = document.getElementById('work');
@@ -1274,7 +1294,7 @@ function getSnapTargets() {
 let lastScrollDir = 0; // 1 = down, -1 = up
 
 function checkMagneticSnap() {
-  if (isDragging || menuOpen) return;
+  if (!scroller.on || isTouchOrMobile() || isDragging || menuOpen) return;
   const targets = getSnapTargets();
   const current = scroller.target;
   let best = null;
@@ -1302,41 +1322,47 @@ function checkMagneticSnap() {
   }
 }
 
-if (scroller.on) {
-  window.addEventListener('wheel', (e) => {
-    if (menuOpen) return;
-    e.preventDefault();
+window.addEventListener('wheel', (e) => {
+  if (!scroller.on || isTouchOrMobile() || menuOpen) return;
+  e.preventDefault();
 
-    lastScrollDir = e.deltaY > 0 ? 1 : (e.deltaY < 0 ? -1 : 0);
-    scroller.target = Math.min(Math.max(0, scroller.target + e.deltaY), maxScroll());
+  lastScrollDir = e.deltaY > 0 ? 1 : (e.deltaY < 0 ? -1 : 0);
+  scroller.target = Math.min(Math.max(0, scroller.target + e.deltaY), maxScroll());
 
-    if (snapIdleTimer) clearTimeout(snapIdleTimer);
-    snapIdleTimer = setTimeout(checkMagneticSnap, 100);
-  }, { passive: false });
+  if (snapIdleTimer) clearTimeout(snapIdleTimer);
+  snapIdleTimer = setTimeout(checkMagneticSnap, 100);
+}, { passive: false });
 
-  window.addEventListener('scroll', () => {
-    const settled = Math.abs(scroller.target - scroller.current) < 1;
-    if (settled && Math.abs(window.scrollY - scroller.current) > 2) {
-      scroller.target = scroller.current = window.scrollY;
-    }
-  }, { passive: true });
+window.addEventListener('scroll', () => {
+  if (!scroller.on || isTouchOrMobile()) {
+    scroller.target = scroller.current = window.scrollY;
+    return;
+  }
+  const settled = Math.abs(scroller.target - scroller.current) < 1;
+  if (settled && Math.abs(window.scrollY - scroller.current) > 2) {
+    scroller.target = scroller.current = window.scrollY;
+  }
+}, { passive: true });
 
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    const href = a.getAttribute('href');
-    if (!href || href === '#') return;
-    const el = document.querySelector(href);
-    if (!el) return;
-    e.preventDefault();
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const href = a.getAttribute('href');
+  if (!href || href === '#') return;
+  const el = document.querySelector(href);
+  if (!el) return;
+  e.preventDefault();
+  if (scroller.on && !isTouchOrMobile()) {
     scroller.target = Math.min(Math.max(0, el.getBoundingClientRect().top + window.scrollY), maxScroll());
-  });
-}
+  } else {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+});
 
 function ease(rate, dt) { return 1 - Math.pow(1 - rate, dt * 60); }
 
 function stepScroll(dt) {
-  if (!scroller.on) return;
+  if (!scroller.on || isTouchOrMobile()) return;
   const gap = scroller.target - scroller.current;
 
   // Gentle magnetic attraction when user slows down near any project card or section sweet spot
