@@ -2900,6 +2900,11 @@ img, video, canvas { display: block; max-width: 100%; }
   white-space: nowrap;
 }
 
+.testi-title-br,
+.testi-sub-br {
+  display: none;
+}
+
 .testimonials-title .testi-word--orange,
 .testimonials-title span.testi-word--orange {
   color: #ff5722 !important;
@@ -3218,31 +3223,40 @@ img, video, canvas { display: block; max-width: 100%; }
 
 @media (max-width: 860px) {
   .combined-testi-faq-sec .combined-sticky-stage {
-    padding-inline: 20px !important;
-    padding-block: 44px 28px !important;
-    height: auto !important;
+    padding-inline: clamp(24px, 5.5vw, 80px) !important;
+    padding-block: clamp(20px, 3vh, 44px) !important;
+    height: 100vh !important;
+    height: 100dvh !important;
     min-height: 100vh !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
+    box-sizing: border-box !important;
   }
 
   .testimonials-layout {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: clamp(12px, 1.8vh, 18px) !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: 100% !important;
   }
 
   .testi-left {
     height: auto !important;
     width: 100% !important;
+    flex-shrink: 0 !important;
   }
 
   .testi-right {
     width: 100% !important;
     height: auto !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    justify-content: center !important;
   }
 
   /* Hide 3D logo on mobile so testimonials cards have full vertical room */
@@ -3250,17 +3264,23 @@ img, video, canvas { display: block; max-width: 100%; }
     display: none !important;
   }
 
-  /* Section Title and Subtitle with clean line breaks */
+  /* Section Title and Subtitle: PRESERVE EXACT SIZE & POSITION (Never reduced) */
   .testimonials-head {
     width: 100% !important;
     max-width: 100% !important;
+    margin: 0 !important;
   }
 
   .testimonials-title {
-    font-size: clamp(32px, 8.2vw, 42px) !important;
-    line-height: 1.12 !important;
+    font-family: 'Clash Display', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: clamp(40px, 4.5vw, 68px) !important; /* Preserves exact section title size */
+    line-height: 1.1 !important;
+    letter-spacing: -0.025em !important;
+    text-transform: none !important;
+    color: #ffffff !important;
     white-space: normal !important;
-    margin: 0 0 10px 0 !important;
+    margin: 0 0 clamp(8px, 1.2vh, 14px) 0 !important;
     word-break: normal !important;
     overflow-wrap: break-word !important;
   }
@@ -3270,11 +3290,13 @@ img, video, canvas { display: block; max-width: 100%; }
   }
 
   #testimonials-faq-combined .testimonials-subtitle {
-    font-size: clamp(13px, 3.5vw, 14.5px) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: clamp(13.5px, 1.22vw, 16px) !important;
     line-height: 1.5 !important;
-    color: rgba(255, 255, 255, 0.78) !important;
+    color: rgba(255, 255, 255, 0.80) !important;
     max-width: 100% !important;
-    margin: 0 0 16px 0 !important;
+    margin: 0 !important;
     word-break: normal !important;
     overflow-wrap: break-word !important;
   }
@@ -3283,157 +3305,143 @@ img, video, canvas { display: block; max-width: 100%; }
     display: block !important;
   }
 
-  /* Mobile Slider Stage */
-  .testimonials-slider-stage {
-    width: 100% !important;
-    overflow: hidden !important;
-    position: relative !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .testimonials-slider-track {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 12px !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scroll-snap-type: x mandatory !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    padding: 4px 0 8px 0 !important;
-    margin: 0 !important;
+  /* 2 Columns × 3 Rows Testimonials Grid with consistent gap */
+  .testimonials-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(3, auto) !important;
+    gap: clamp(10px, 2.5vw, 15px) !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    touch-action: pan-x pan-y !important;
   }
 
-  .testimonials-slider-track::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  /* 2 row 3 column layout: each column has 2 cards, 84-85% width so next column peeks in 10-15%! */
-  .testi-col {
-    flex: 0 0 84% !important;
-    min-width: 84% !important;
-    max-width: 84% !important;
-    scroll-snap-align: start !important;
-    scroll-snap-stop: always !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Compact / Small / Short Cards on Mobile */
+  /* Spacious, Taller Cards (Never cramped/busy, with consistent space) */
   .testi-card {
-    min-height: 124px !important;
-    padding: 12px 14px !important;
-    border-radius: 16px !important;
+    min-height: clamp(150px, 18.5vh, 195px) !important;
+    padding: clamp(12px, 3.0vw, 18px) clamp(11px, 2.6vw, 16px) !important;
+    border-radius: 18px !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    opacity: 1 !important;
-    filter: none !important;
-    transform: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    /* Opacity, filter, and transform driven by JS scroll reveal */
   }
 
   .testi-stars {
-    font-size: 11px !important;
-    margin-bottom: 4px !important;
-    letter-spacing: 1.5px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+    color: #ff5722 !important;
+    font-size: clamp(11px, 2.6vw, 13px) !important;
+    line-height: 1 !important;
+    margin-bottom: 6px !important;
   }
 
   .testi-quote {
-    font-size: 12px !important;
-    line-height: 1.34 !important;
-    margin: 0 0 6px 0 !important;
-    color: rgba(255, 255, 255, 0.88) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(11px, 2.5vw, 12.5px) !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.86) !important;
+    line-height: 1.4 !important;
+    margin: 0 0 8px 0 !important;
+    flex-grow: 1 !important;
     display: -webkit-box !important;
-    -webkit-line-clamp: 3 !important;
+    -webkit-line-clamp: 4 !important;
     -webkit-box-orient: vertical !important;
     overflow: hidden !important;
-    text-overflow: ellipsis !important;
   }
 
   .testi-author {
+    display: flex !important;
+    align-items: center !important;
     gap: 8px !important;
     margin-top: auto !important;
   }
 
   .testi-avatar {
-    width: 28px !important;
-    height: 28px !important;
+    width: 30px !important;
+    height: 30px !important;
     border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .testi-author-info {
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .testi-author-name {
-    font-size: 12px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(11px, 2.6vw, 12.5px) !important;
     font-weight: 600 !important;
-    margin: 0 !important;
+    margin: 0 0 1px 0 !important;
     line-height: 1.2 !important;
+    color: #ffffff !important;
   }
 
   .testi-author-role {
+    font-family: 'Inter', sans-serif !important;
     font-size: 10px !important;
+    font-weight: 400 !important;
     margin: 0 !important;
     color: rgba(255, 255, 255, 0.55) !important;
+    line-height: 1.2 !important;
   }
 
-  /* Compact Stat Cards */
-  .testi-card--white,
-  .testi-card--orange {
-    justify-content: center !important;
+  /* Stat Cards */
+  .testi-card--orange,
+  .testi-card--white {
+    justify-content: space-between !important;
   }
 
   .testi-card--orange .testi-stat-sub,
   .testi-card--white .testi-stat-sub {
-    font-size: 11px !important;
-    line-height: 1.3 !important;
-    margin: 0 0 4px 0 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(10.5px, 2.5vw, 12px) !important;
+    line-height: 1.35 !important;
+    margin: 0 0 6px 0 !important;
+  }
+
+  .testi-stat-wrap {
+    margin-top: auto !important;
   }
 
   .testi-card--orange .testi-stat-num,
   .testi-card--white .testi-stat-num {
-    font-size: 34px !important;
+    font-family: 'Clash Display', sans-serif !important;
+    font-size: clamp(36px, 8.2vw, 46px) !important;
     font-weight: 700 !important;
-    line-height: 0.95 !important;
+    line-height: 0.98 !important;
     margin: 0 0 2px 0 !important;
   }
 
   .testi-card--orange .testi-stat-label,
   .testi-card--white .testi-stat-label {
+    font-family: 'Inter', sans-serif !important;
     font-size: 11px !important;
     font-weight: 500 !important;
     margin: 0 !important;
   }
+}
 
-  /* Dots Navigation */
-  .testi-slider-dots {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 8px !important;
-    margin-top: 10px !important;
-    width: 100% !important;
+@media (max-height: 720px) and (max-width: 860px) {
+  .testi-card {
+    min-height: clamp(130px, 16vh, 155px) !important;
+    padding: 10px 11px !important;
   }
 
-  .testi-dot {
-    width: 6px !important;
-    height: 6px !important;
-    border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.25) !important;
-    border: none !important;
-    padding: 0 !important;
-    cursor: pointer !important;
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  .testi-quote {
+    -webkit-line-clamp: 3 !important;
+    margin-bottom: 4px !important;
   }
 
-  .testi-dot.is-active {
-    width: 22px !important;
-    border-radius: 10px !important;
-    background: #ff5722 !important;
+  .testi-card--orange .testi-stat-num,
+  .testi-card--white .testi-stat-num {
+    font-size: 32px !important;
   }
 }
 

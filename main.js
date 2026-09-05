@@ -2567,7 +2567,7 @@ function initCombinedTestiFaqSection() {
             faqHead.style.pointerEvents = 'none';
           }
           if (testiGrid) {
-            testiGrid.style.display = 'block';
+            testiGrid.style.display = 'grid';
             testiGrid.style.opacity = '1.0';
             testiGrid.style.transform = 'translateY(0px)';
             testiGrid.style.pointerEvents = 'auto';
@@ -2645,36 +2645,25 @@ function initCombinedTestiFaqSection() {
             stageEl.style.transform = `translateY(${yShift3.toFixed(1)}px) scale(${scale3.toFixed(3)})`;
           }
 
-          // 1D. 6 Cards Stagger reveal
+          // 1D. 6 Cards Stagger reveal (One by one on both desktop & mobile)
           if (cards.length) {
-            if (window.innerWidth <= 860) {
-              cards.forEach(card => {
-                card.style.opacity = '1.0';
-                card.style.filter = 'none';
-                card.style.transform = 'none';
-              });
-              if (!hasAnimatedStats) {
-                runStatsCounter();
-              }
-            } else {
-              const cardsProgress = Math.min(1, Math.max(0, (phase1Prog - 0.50) / 0.50));
-              cards.forEach((card, idx) => {
-                const cardStart = idx * 0.12;
-                const cardT = Math.min(1, Math.max(0, (cardsProgress - cardStart) / 0.40));
-                const easeCard = cardT * cardT * (3 - 2 * cardT);
-                const op = easeCard * 1.0;
-                const bl = (1 - easeCard) * 18;
-                const ys = (1 - easeCard) * 28;
+            const cardsProgress = Math.min(1, Math.max(0, (phase1Prog - 0.50) / 0.50));
+            cards.forEach((card, idx) => {
+              const cardStart = idx * 0.12;
+              const cardT = Math.min(1, Math.max(0, (cardsProgress - cardStart) / 0.40));
+              const easeCard = cardT * cardT * (3 - 2 * cardT);
+              const op = easeCard * 1.0;
+              const bl = (1 - easeCard) * 18;
+              const ys = (1 - easeCard) * 28;
 
-                card.style.opacity = `${op.toFixed(2)}`;
-                card.style.filter = `blur(${bl.toFixed(1)}px)`;
-                card.style.transform = `translateY(${ys.toFixed(1)}px)`;
-              });
+              card.style.opacity = `${op.toFixed(2)}`;
+              card.style.filter = `blur(${bl.toFixed(1)}px)`;
+              card.style.transform = `translateY(${ys.toFixed(1)}px)`;
+            });
 
-              // Trigger stats counter
-              if (cardsProgress > 0.40 && !hasAnimatedStats) {
-                runStatsCounter();
-              }
+            // Trigger stats counter
+            if (cardsProgress > 0.40 && !hasAnimatedStats) {
+              runStatsCounter();
             }
           }
 
@@ -2707,7 +2696,7 @@ function initCombinedTestiFaqSection() {
           if (testiGrid) {
             testiGrid.style.opacity = `${opTesti.toFixed(2)}`;
             testiGrid.style.transform = `translateY(${(tTrans * -35).toFixed(1)}px)`;
-            testiGrid.style.display = opTesti > 0 ? 'block' : 'none';
+            testiGrid.style.display = opTesti > 0 ? 'grid' : 'none';
             testiGrid.style.pointerEvents = 'none';
           }
 
