@@ -6,1587 +6,322 @@
   <title>Bappy — CaRide Case Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case-study.css" />
   <style>
     :root {
-      --accent: #ff1744;
-      --accent-rgb: 255, 23, 68;
-      --case-bg: radial-gradient(circle at top, #2b060d 0%, #0e0204 100%);
-    }
-    body.case-study-page {
-      background: var(--case-bg);
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .case-wrapper {
-      max-width: 1440px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 80px var(--pad);
-      box-sizing: border-box;
-    }
-    
-    /* Hero Style */
-    .case-hero {
-      padding-top: 160px;
-      padding-bottom: 60px;
-      text-align: center;
-    }
-    .case-hero-tag {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      margin-bottom: 16px;
-      display: block;
-    }
-    .case-hero-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(36px, 5.5vw, 72px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-      color: var(--paper);
-    }
-    
-    /* Back Navigation */
-    .case-back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      font-family: var(--font-mono), monospace;
-      font-size: 13px;
-      font-weight: 500;
-      text-decoration: none;
-      margin-bottom: 32px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .case-back-link:hover {
-      transform: translateX(-4px);
-      opacity: 0.85;
-    }
-    
-    /* Image Showcase container */
-    .case-img-wrap {
-      width: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
-      margin-bottom: 80px;
-      aspect-ratio: 16 / 9.4;
-    }
-    .case-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-    
-    /* Info grid */
-    .case-info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 30px 0;
-      margin-bottom: 80px;
-    }
-    .case-info-item span {
-      display: block;
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.40);
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-    }
-    .case-info-item p {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--paper);
-      margin: 0;
-    }
-    
-    /* Overview Split (Image 1, 3, 5 style) */
-    .overview-sec {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 60px;
-      margin-bottom: 80px;
-      align-items: start;
-    }
-    .overview-text h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(28px, 3.5vw, 42px);
-      font-weight: 600;
-      margin: 0 0 24px 0;
-      color: var(--paper);
-    }
-    .overview-text p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.75);
-      margin-bottom: 20px;
-    }
-    
-    /* Meta tags card */
-    .meta-tags-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .meta-tags-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-      color: #ffffff;
-      border-left: 2px solid var(--accent);
-      padding-left: 10px;
-    }
-    .meta-tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .meta-tag-list:last-child {
-      margin-bottom: 0;
-    }
-    .meta-tag {
-      background: rgba(var(--accent-rgb), 0.08);
-      border: 1px solid rgba(var(--accent-rgb), 0.15);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--paper);
-      font-family: var(--font-mono), monospace;
-    }
-    
-    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
-    .prob-sol-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin: 40px 0 80px 0;
-    }
-    .prob-card {
-      background: rgba(255, 77, 77, 0.01);
-      border: 1px solid rgba(255, 77, 77, 0.08);
-      border-left: 4px solid #ff4d4d;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .sol-card {
-      background: rgba(0, 230, 118, 0.01);
-      border: 1px solid rgba(0, 230, 118, 0.08);
-      border-left: 4px solid #00e676;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .prob-sol-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 16px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-    .prob-sol-list {
-      padding-left: 18px;
-      margin: 0;
-    }
-    .prob-sol-list li {
-      font-size: 14px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 12px;
-    }
-    
-    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
-    .process-timeline-wrap {
-      margin-bottom: 80px;
-    }
-    .process-timeline-wrap h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 30px;
-    }
-    .process-timeline {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-    }
-    .process-card {
-      background: rgba(255, 255, 255, 0.01);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 12px;
-      padding: 20px;
-      box-sizing: border-box;
-      transition: border-color 0.3s ease;
-    }
-    .process-card:hover {
-      border-color: rgba(var(--accent-rgb), 0.3);
-    }
-    .process-num {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .process-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #ffffff;
-      font-family: 'Clash Display', sans-serif;
-    }
-    .process-desc {
-      font-size: 12px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.50);
-    }
-    
-    /* General content sections */
-    .case-study-sec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 80px 0 24px 0;
-      border-left: 3px solid var(--accent);
-      padding-left: 16px;
-    }
-    .case-study-subsec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 48px 0 18px 0;
-    }
-    .case-study-subsubsec-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 24px 0 12px 0;
-    }
-    .case-study-paragraph {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 24px;
-    }
-    .case-study-divider {
-      border: 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      margin: 60px 0;
-    }
-    .case-study-list {
-      margin: 0 0 24px 0;
-      padding-left: 20px;
-    }
-    .case-study-list li {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 8px;
-    }
-    
-    /* Visual Design System Swatches (Image 4 style) */
-    .design-system-swatches {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    .color-swatch {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 12px;
-      width: 130px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-    .swatch-preview {
-      width: 100%;
-      height: 50px;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .swatch-hex {
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      font-weight: 500;
-      color: #ffffff;
-      display: block;
-    }
-    .swatch-name {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.40);
-      margin-top: 2px;
-      display: block;
-    }
-    
-    /* Features Grid */
-    .case-study-features-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-    }
-    .case-study-feature-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 24px;
-      border-radius: 12px;
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-    .case-study-feature-card:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-    .case-study-feature-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 0 0 8px 0;
-    }
-    .case-study-feature-desc {
-      font-size: 13px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.55);
-      margin: 0;
-    }
-    
-    @media (max-width: 960px) {
-      .overview-sec {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .prob-sol-split {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .process-timeline {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .case-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      .case-study-features-list {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .case-img-wrap {
-        aspect-ratio: 4 / 3;
-        margin-bottom: 60px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .case-info-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+      --accent: #0D5A7D;
+      --accent-rgb: 13, 90, 125;
     }
   </style>
 </head>
 <body class="case-study-page">
 
   <!-- ══ NAV ═══════════════════════════════════════════════════ -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="nav__brand" href="#home" aria-label="Bappy — home">
-      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
-        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-      </svg>
-    </a>
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="index.html#home" aria-label="Bappy — home">
+        <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+          <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+          <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+          <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+        </svg>
+      </a>
 
-    <nav class="nav__links" id="nav-links">
-      <a href="#home" class="is-active">Home</a>
-      <a href="#work">Projects</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contacts">Contacts</a>
+      <nav class="nav__links" id="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="projects.html" class="is-active">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#testimonials">Reviews</a>
+        <a href="index.html#contacts">Contacts</a>
+      </nav>
+
+      <div class="nav__status-wrapper" id="nav-status">
+        <a class="status-pill" href="index.html#contacts">
+          <span class="beacon" aria-hidden="true">
+            <span class="beacon__dot"></span>
+            <span class="beacon__ring"></span>
+          </span>
+          <span class="status-pill__text">Available to work</span>
+        </a>
+      </div>
+
+      <div class="nav__actions">
+        <a class="btn-talk" href="index.html#contacts" id="btn-talk">
+          <span>Let's talk</span>
+        </a>
+
+        <button class="burger" id="burger" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+  <div class="menu" id="menu" inert>
+    <nav class="menu__list">
+      <a href="index.html#home"><i>01</i>Home</a>
+      <a href="index.html#about"><i>02</i>About</a>
+      <a href="projects.html"><i>03</i>Projects</a>
+      <a href="index.html#testimonials"><i>04</i>Reviews</a>
+      <a href="index.html#contacts"><i>05</i>Contacts</a>
     </nav>
-
-    <div class="nav__status-wrapper" id="nav-status">
-      <a class="status-pill" href="#contacts">
-        <span class="beacon" aria-hidden="true">
-          <span class="beacon__dot"></span>
-          <span class="beacon__ring"></span>
-        </span>
-        <span class="status-pill__text">Available to work</span>
-      </a>
-    </div>
-
-    <div class="nav__actions">
-      <a class="btn-talk" href="#contacts" id="btn-talk">
-        <span>Let's talk</span>
-      </a>
-
-      <button class="burger" id="burger" type="button"
-              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
+    <div class="menu__foot">
+      <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+      <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
     </div>
   </div>
-</header>
 
-<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
-<div class="menu" id="menu" inert>
-  <nav class="menu__list">
-    <a href="#home"><i>01</i>Home</a>
-    <a href="#about"><i>02</i>About</a>
-    <a href="#work"><i>03</i>Projects</a>
-    <a href="#testimonials"><i>04</i>Reviews</a>
-    <a href="#contacts"><i>05</i>Contacts</a>
-  </nav>
-  <div class="menu__foot">
-    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
-    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
-  </div>
-</div>
+  <!-- ══ MAIN CONTENT WRAPPER ══════════════════════════════════ -->
+  <main class="cs-wrapper">
 
-  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
-  <main class="case-wrapper">
-    <div class="case-hero">
-      <a href="projects.html" class="case-back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        Back to Selected Works
-      </a>
-      <span class="case-hero-tag">UX Case Study</span>
-      <h1 class="case-hero-title">CaRide</h1>
-    </div>
-    
-    <!-- Info Grid -->
-    <div class="case-info-grid">
-      <div class="case-info-item">
-        <span>Role</span>
-        <p>Lead Mobile Designer</p>
+    <!-- HERO -->
+    <section class="cs-hero">
+      <div class="cs-hero__top">
+        <a href="projects.html" class="cs-hero__back">
+          <span aria-hidden="true">←</span> Back to projects
+        </a>
+        <span class="cs-hero__counter">12 / 13</span>
       </div>
-      <div class="case-info-item">
-        <span>Timeline</span>
-        <p>2 Months (2026)</p>
-      </div>
-      <div class="case-info-item">
-        <span>Deliverables</span>
-        <p>Car Rental UI, Spec Cards, Booking Flow</p>
-      </div>
-      <div class="case-info-item">
-        <span>Team</span>
-        <p>1 Designer, 2 Mobile Developers</p>
-      </div>
-    </div>
 
-    <!-- Image Showcase -->
-    <div class="case-img-wrap">
-      <img src="assets/showcase-12.jpg" alt="CaRide Showcase" class="case-img" />
-    </div>
+      <span class="cs-hero__kicker">Mobility · Car Rental</span>
+      <h1 class="cs-display cs-hero__title">A simpler path from car discovery to checkout</h1>
+      <p class="cs-hero__dek">CaRide is a car-rental mobile experience that guides users from finding a preferred vehicle through car details, driver information, and checkout. The interface prioritizes visual vehicle discovery while keeping the booking flow compact.</p>
 
-    <!-- Overview Split Section -->
-    <div class="overview-sec">
-      <div class="overview-text">
-        <h2>About CaRide</h2>
-        <p>Personal design portfolio showcase detailing the creative journey, layout experiments, component grids, and UX strategy.</p>
+      <!-- Primary Showcase Frame -->
+      <div class="cs-hero__image-wrap">
+        <img src="assets/cs12-hero.jpg" alt="CaRide primary showcase" loading="eager" />
       </div>
-      <div class="meta-tags-card">
-        <div class="meta-tags-title">Project Context</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Mobile UX Design</span>
-<span class="meta-tag">Search & Filters</span>
-<span class="meta-tag">Checkout Flow</span>
-<span class="meta-tag">Visual Design</span>
-        </div>
-        <div class="meta-tags-title">Tools Used</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Figma</span>
-<span class="meta-tag">Photoshop</span>
-<span class="meta-tag">Miro</span>
-<span class="meta-tag">Trello</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- Problem vs Solution Visual Box -->
-    <div class="prob-sol-split">
-      <div class="prob-card">
-        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
-        <ul class="prob-sol-list">
-          <li>Car rental apps are cluttered, making vehicle discovery tedious.</li>
-<li>Critical specifications like speed and range are buried in long lists.</li>
-<li>Multi-page booking forms introduce friction and transaction delays.</li>
-        </ul>
+      <!-- Metadata Grid -->
+      <div class="cs-meta-grid">
+        
+        <div class="cs-meta-item">
+          <label>Role</label>
+          <strong>Product Designer</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Platform</label>
+          <strong>Mobile App</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Focus</label>
+          <strong>Mobility · Car Rental</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Scope</label>
+          <strong>UX/UI · Mobile Flow · Interaction Design</strong>
+        </div>
       </div>
-      <div class="sol-card">
-        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
-        <ul class="prob-sol-list">
-          <li>Structured the home experience around search and direct brand filters.</li>
-<li>Placed four critical specification blocks directly on the details screen.</li>
-<li>Simplified checkout into a visual confirmation card and single continue button.</li>
-        </ul>
-      </div>
-    </div>
+    </section>
 
-    <!-- Process Flow Grid -->
-    <div class="process-timeline-wrap">
-      <h2>Design Process</h2>
-      <div class="process-timeline">
-        
-        <div class="process-card">
-          <span class="process-num">Step 01</span>
-          <div class="process-title">Empathize</div>
-          <div class="process-desc">Analyzing rental booking drop-off rates on mobile platforms.</div>
+    <!-- 01 / CONTEXT -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">01 / CONTEXT</div>
+        <h2 class="cs-display cs-sec-head__title">Why this product exists</h2>
+        <p class="cs-sec-head__dek">Rental flows often split discovery, vehicle details, and checkout across disconnected screens. CaRide needed to reduce decision friction and keep users oriented from vehicle selection to confirmation.</p>
+      </div>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Who it is for</h3>
+          <p>Travelers and everyday drivers who need to search rental vehicles, compare options, review details, provide driver information, and complete a booking on mobile.</p>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 02</span>
-          <div class="process-title">Define</div>
-          <div class="process-desc">Determining that users prioritize speed, range, battery, and pricing details.</div>
+        <div class="cs-panel accent-edge">
+          <h3>The design challenge</h3>
+          <p>CaRide is a car-rental mobile experience that guides users from finding a preferred vehicle through car details, driver information, and checkout. The interface prioritizes visual vehicle discovery while keeping the booking flow compact.</p>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 03</span>
-          <div class="process-title">Ideate</div>
-          <div class="process-desc">Structuring simple brand sorting and horizontal catalog swipes.</div>
+      </div>
+    </section>
+
+    <!-- 02 / PROBLEM -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">02 / PROBLEM</div>
+        <h2 class="cs-display cs-sec-head__title">What needed to change</h2>
+        <p class="cs-sec-head__dek">The design work starts by turning broad business friction into a small set of user-facing problems that can be prioritized and solved.</p>
+      </div>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Problem statement</h3>
+          <ul>
+            <li>Users need confidence that a vehicle matches their needs.</li>
+<li>Important rental details can be scattered across the flow.</li>
+<li>Checkout should not introduce unnecessary cognitive load.</li>
+<li>Mobile users need clear progress and predictable actions.</li>
+
+          </ul>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 04</span>
-          <div class="process-title">Design</div>
-          <div class="process-desc">Developing rounded cards, specs blocks, and high-contrast dark buttons.</div>
+        <div class="cs-panel accent-edge">
+          <h3>Design hypothesis</h3>
+          <p>Design a focused mobile funnel: discover the preferred ride, understand key vehicle details, confirm driver information, and complete checkout with minimal context switching.</p>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 05</span>
-          <div class="process-title">Test</div>
-          <div class="process-desc">Testing booking calendars and payment screens with active drivers.</div>
-        </div>
+      </div>
+    </section>
+
+    <!-- 03 / SCOPE -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">03 / SCOPE</div>
+        <h2 class="cs-display cs-sec-head__title">What the product needed to do</h2>
+        <p class="cs-sec-head__dek">A case study should make the product legible before showing every screen. These are the major capabilities that shaped the information architecture.</p>
+      </div>
+      <div class="cs-metric-row">
         
       </div>
-    </div>
+      <div class="cs-chips-wrap">
+        <span class="cs-chip">Vehicle discovery</span>
+<span class="cs-chip">Filters / preferences</span>
+<span class="cs-chip">Car detail</span>
+<span class="cs-chip">Driver details</span>
+<span class="cs-chip">Checkout</span>
+<span class="cs-chip">Booking confirmation</span>
 
-    <!-- Dynamic Content Area -->
-    <div class="case-content">
-      <p class='case-study-paragraph'>12. CaRide — Car Rental Mobile App</p>
-<p class='case-study-paragraph'>Find Your Perfect Ride. Book With Confidence.</p>
-<p class='case-study-paragraph'>CaRide is a modern car-rental mobile application designed to make discovering, comparing, and booking rental vehicles simple and intuitive.</p>
-<p class='case-study-paragraph'>The product focuses on the complete rental journey:</p>
-<p class='case-study-paragraph'>Discover → Filter → Compare → View Details → Enter Booking Information → Checkout</p>
-<p class='case-study-paragraph'>Instead of making users navigate through a complicated rental process, CaRide brings vehicle discovery, specifications, pricing, and booking into one streamlined mobile experience.</p>
-<p class='case-study-paragraph'>The showcased screens demonstrate three important stages of that journey:</p>
-<p class='case-study-paragraph'>Car Discovery</p>
-<p class='case-study-paragraph'>Car Details</p>
-<p class='case-study-paragraph'>Checkout</p>
-<p class='case-study-paragraph'>Why CaRide Exists</p>
-<p class='case-study-paragraph'>Renting a car can often involve too many decisions.</p>
-<p class='case-study-paragraph'>Users need to figure out:</p>
-<p class='case-study-paragraph'>Which car fits their needs?</p>
-<p class='case-study-paragraph'>Which brand do they prefer?</p>
-<p class='case-study-paragraph'>How much does it cost?</p>
-<p class='case-study-paragraph'>What is the car's range?</p>
-<p class='case-study-paragraph'>What features does it have?</p>
-<p class='case-study-paragraph'>Is the vehicle available?</p>
-<p class='case-study-paragraph'>How long do they want to rent it?</p>
-<p class='case-study-paragraph'>Where are they renting it?</p>
-<p class='case-study-paragraph'>How do they complete the booking?</p>
-<p class='case-study-paragraph'>Traditional rental experiences can make this process feel fragmented.</p>
-<p class='case-study-paragraph'>CaRide exists to make the experience more direct:</p>
-<p class='case-study-paragraph'>Find the right car, understand it quickly, and book it without unnecessary friction.</p>
-<p class='case-study-paragraph'>The Business Problem</p>
-<p class='case-study-paragraph'>01 — Too Many Vehicle Choices</p>
-<p class='case-study-paragraph'>Car-rental platforms can have a large inventory.</p>
-<p class='case-study-paragraph'>Showing every available vehicle equally can overwhelm users.</p>
-<p class='case-study-paragraph'>CaRide addresses this with:</p>
-<p class='case-study-paragraph'>Brand filters</p>
-<p class='case-study-paragraph'>Popular vehicles</p>
-<p class='case-study-paragraph'>Ratings</p>
-<p class='case-study-paragraph'>Pricing</p>
-<p class='case-study-paragraph'>Search</p>
-<p class='case-study-paragraph'>Category-based discovery</p>
-<p class='case-study-paragraph'>The interface helps users narrow the selection before they make a decision.</p>
-<p class='case-study-paragraph'>02 — Users Need Important Vehicle Information Quickly</p>
-<p class='case-study-paragraph'>A rental decision isn't based only on the appearance of a car.</p>
-<p class='case-study-paragraph'>Users may want to know:</p>
-<p class='case-study-paragraph'>Top speed</p>
-<p class='case-study-paragraph'>Estimated range</p>
-<p class='case-study-paragraph'>Battery level</p>
-<p class='case-study-paragraph'>Weather</p>
-<p class='case-study-paragraph'>Price</p>
-<p class='case-study-paragraph'>Rating</p>
-<p class='case-study-paragraph'>CaRide brings these attributes directly into the car-detail experience.</p>
-<p class='case-study-paragraph'>The result is a more informative product page without requiring the user to navigate through multiple sections.</p>
-<p class='case-study-paragraph'>03 — Rental Booking Can Feel Complicated</p>
-<p class='case-study-paragraph'>A booking process can become unnecessarily long when users have to repeatedly enter information or move between different screens.</p>
-<p class='case-study-paragraph'>CaRide simplifies the checkout experience into a clear sequence:</p>
-<p class='case-study-paragraph'>Selected Car → Driver Details → Rental Period → Continue</p>
-<p class='case-study-paragraph'>04 — Price Needs to Stay Visible</p>
-<p class='case-study-paragraph'>The design consistently surfaces the rental price.</p>
-<p class='case-study-paragraph'>For example:</p>
-<p class='case-study-paragraph'>$199 / Per Day</p>
-<p class='case-study-paragraph'>and:</p>
-<p class='case-study-paragraph'>$199 Trip Total</p>
-<p class='case-study-paragraph'>Keeping price visible throughout the journey helps users maintain a clear understanding of the financial commitment.</p>
-<p class='case-study-paragraph'>Primary Audience — Everyday Car Renters</p>
-<p class='case-study-paragraph'>People who need a vehicle temporarily for:</p>
-<p class='case-study-paragraph'>Travel</p>
-<p class='case-study-paragraph'>Business trips</p>
-<p class='case-study-paragraph'>Weekend trips</p>
-<p class='case-study-paragraph'>Events</p>
-<p class='case-study-paragraph'>Personal transportation</p>
-<p class='case-study-paragraph'>Temporary transportation needs</p>
-<p class='case-study-paragraph'>Travelers</p>
-<p class='case-study-paragraph'>Users arriving in a new city who want to quickly find and rent a vehicle.</p>
-<p class='case-study-paragraph'>The location shown during checkout, such as:</p>
-<p class='case-study-paragraph'>Los Angeles, CA</p>
-<p class='case-study-paragraph'>supports this use case.</p>
-<p class='case-study-paragraph'>Brand-Conscious Renters</p>
-<p class='case-study-paragraph'>Some users already know what type of car they want.</p>
-<p class='case-study-paragraph'>The brand filter allows them to browse manufacturers such as:</p>
-<p class='case-study-paragraph'>BMW</p>
-<p class='case-study-paragraph'>Toyota</p>
-<p class='case-study-paragraph'>Other available brands</p>
-<p class='case-study-paragraph'>This reduces unnecessary browsing.</p>
-<p class='case-study-paragraph'>Users Who Value Vehicle Specifications</p>
-<p class='case-study-paragraph'>Some renters care about more than price.</p>
-<p class='case-study-paragraph'>They may compare:</p>
-<p class='case-study-paragraph'>Performance</p>
-<p class='case-study-paragraph'>Range</p>
-<p class='case-study-paragraph'>Battery</p>
-<p class='case-study-paragraph'>Weather suitability</p>
-<p class='case-study-paragraph'>Vehicle type</p>
-<p class='case-study-paragraph'>The car-detail screen caters to these users.</p>
-<p class='case-study-paragraph'>“I don't know which car is right for me.”</p>
-<p class='case-study-paragraph'>“There are too many cars to browse.”</p>
-<p class='case-study-paragraph'>“I want to compare brands quickly.”</p>
-<p class='case-study-paragraph'>“I need to know the car's specifications before renting.”</p>
-<p class='case-study-paragraph'>“How much will this rental actually cost?”</p>
-<p class='case-study-paragraph'>“I don't want a complicated checkout.”</p>
-<p class='case-study-paragraph'>“I need to know the exact rental period.”</p>
-<p class='case-study-paragraph'>These pain points shaped the core information architecture.</p>
-<p class='case-study-paragraph'>The product was designed around five key goals:</p>
-<p class='case-study-paragraph'>Make vehicle discovery effortless</p>
-<p class='case-study-paragraph'>Reduce decision fatigue</p>
-<p class='case-study-paragraph'>Surface important vehicle information</p>
-<p class='case-study-paragraph'>Keep pricing transparent</p>
-<p class='case-study-paragraph'>Create a short, understandable booking flow</p>
-<p class='case-study-paragraph'>The central UX strategy is:</p>
-<p class='case-study-paragraph'>Discover → Narrow → Understand → Commit</p>
-<p class='case-study-paragraph'>Discover</p>
-<p class='case-study-paragraph'>Browse popular vehicles.</p>
-<p class='case-study-paragraph'>Narrow</p>
-<p class='case-study-paragraph'>Filter by brand and search.</p>
-<p class='case-study-paragraph'>Understand</p>
-<p class='case-study-paragraph'>Review vehicle specifications and price.</p>
-<p class='case-study-paragraph'>Commit</p>
-<p class='case-study-paragraph'>Enter booking details and continue.</p>
-<p class='case-study-paragraph'>This gives the product a straightforward decision journey.</p>
-<p class='case-study-paragraph'>Screen 01 — Car Discovery</p>
-<p class='case-study-paragraph'>The home screen begins with:</p>
-<p class='case-study-paragraph'>Hi welcome</p>
-<p class='case-study-paragraph'>followed by the primary message:</p>
-<p class='case-study-paragraph'>Find Your Perfect Ride</p>
-<p class='case-study-paragraph'>This is an effective opening because it focuses on the user's desired outcome rather than the product's technical functionality.</p>
-<p class='case-study-paragraph'>The screen then provides:</p>
-<p class='case-study-paragraph'>Search</p>
-<p class='case-study-paragraph'>Filter</p>
-<p class='case-study-paragraph'>Brand selection</p>
-<p class='case-study-paragraph'>Popular vehicles</p>
-<p class='case-study-paragraph'>Why “Find Your Perfect Ride” Works</p>
-<p class='case-study-paragraph'>The interface could have said:</p>
-<p class='case-study-paragraph'>“Browse Cars”</p>
-<p class='case-study-paragraph'>but that would describe an action.</p>
-<p class='case-study-paragraph'>Instead:</p>
-<p class='case-study-paragraph'>“Find Your Perfect Ride”</p>
-<p class='case-study-paragraph'>communicates the user's goal.</p>
-<p class='case-study-paragraph'>This makes the product feel more personalized.</p>
-<p class='case-study-paragraph'>Search</p>
-<p class='case-study-paragraph'>The search bar is placed near the top of the screen.</p>
-<p class='case-study-paragraph'>This supports users who already know what they want.</p>
-<p class='case-study-paragraph'>For example:</p>
-<p class='case-study-paragraph'>BMW X5</p>
-<p class='case-study-paragraph'>or a specific model.</p>
-<p class='case-study-paragraph'>The filter icon beside the search field provides a secondary discovery mechanism for users who don't have a specific vehicle in mind.</p>
-<p class='case-study-paragraph'>Brand Filtering</p>
-<p class='case-study-paragraph'>The brand section provides quick-access filters:</p>
-<p class='case-study-paragraph'>All Car</p>
-<p class='case-study-paragraph'>BMW</p>
-<p class='case-study-paragraph'>Toyota</p>
-<p class='case-study-paragraph'>and additional brands.</p>
-<p class='case-study-paragraph'>This is a useful UX pattern because users can make a high-level decision before browsing individual vehicles.</p>
-<p class='case-study-paragraph'>Why Brand Filtering Matters</p>
-<p class='case-study-paragraph'>Car rentals can be emotionally driven.</p>
-<p class='case-study-paragraph'>Some users may already have a preference:</p>
-<p class='case-study-paragraph'>“I want a BMW.”</p>
-<p class='case-study-paragraph'>Others may be more flexible:</p>
-<p class='case-study-paragraph'>“Show me everything.”</p>
-<p class='case-study-paragraph'>The interface supports both behaviors without requiring users to enter a complicated filter flow.</p>
-<p class='case-study-paragraph'>Popular Vehicles</p>
-<p class='case-study-paragraph'>The Popular section displays vehicles using large visual cards.</p>
-<p class='case-study-paragraph'>Each card communicates:</p>
-<p class='case-study-paragraph'>Rating</p>
-<p class='case-study-paragraph'>Vehicle image</p>
-<p class='case-study-paragraph'>Model</p>
-<p class='case-study-paragraph'>Price</p>
-<p class='case-study-paragraph'>View Details CTA</p>
-<p class='case-study-paragraph'>For example:</p>
-<p class='case-study-paragraph'>BMW X5</p>
-<p class='case-study-paragraph'>$199 / Per Day</p>
-<p class='case-study-paragraph'>4.99 rating</p>
-<p class='case-study-paragraph'>This allows users to scan multiple options quickly.</p>
-<p class='case-study-paragraph'>Product Card Design</p>
-<p class='case-study-paragraph'>The card gives visual priority to the car itself.</p>
-<p class='case-study-paragraph'>The user can recognize the vehicle before reading its details.</p>
-<p class='case-study-paragraph'>The information hierarchy becomes:</p>
-<p class='case-study-paragraph'>Vehicle → Rating → Model → Price → Action</p>
-<p class='case-study-paragraph'>Rating Visibility</p>
-<p class='case-study-paragraph'>The 4.99 rating appears directly on the vehicle card.</p>
-<p class='case-study-paragraph'>This allows users to assess quality without opening the detail page.</p>
-<p class='case-study-paragraph'>The rating therefore functions as a quick trust signal.</p>
-<p class='case-study-paragraph'>Screen 02 — Car Details</p>
-<p class='case-study-paragraph'>Selecting a vehicle takes the user to:</p>
-<p class='case-study-paragraph'>Car Detail</p>
-<p class='case-study-paragraph'>The screen introduces the vehicle through a large image followed by key specifications.</p>
-<p class='case-study-paragraph'>The layout is intentionally compact.</p>
-<p class='case-study-paragraph'>Vehicle Information Architecture</p>
-<p class='case-study-paragraph'>The car-detail page presents four major information blocks:</p>
-<p class='case-study-paragraph'>Top Speed</p>
-<p class='case-study-paragraph'>250 mph</p>
-<p class='case-study-paragraph'>Range</p>
-<p class='case-study-paragraph'>303 mi</p>
-<p class='case-study-paragraph'>Battery</p>
-<p class='case-study-paragraph'>85%</p>
-<p class='case-study-paragraph'>Weather</p>
-<p class='case-study-paragraph'>25°C</p>
-<p class='case-study-paragraph'>This creates a quick specification summary.</p>
-<p class='case-study-paragraph'>Why These Four Metrics?</p>
-<p class='case-study-paragraph'>The design avoids presenting a large technical specification list.</p>
-<p class='case-study-paragraph'>Instead, it highlights a small number of high-level attributes.</p>
-<p class='case-study-paragraph'>This is an example of progressive disclosure.</p>
-<p class='case-study-paragraph'>The user gets enough information to make an initial decision without being overwhelmed.</p>
-<p class='case-study-paragraph'>Performance Information</p>
-<p class='case-study-paragraph'>The:</p>
-<p class='case-study-paragraph'>250 mph</p>
-<p class='case-study-paragraph'>metric communicates vehicle performance.</p>
-<p class='case-study-paragraph'>This can appeal to users who care about driving experience.</p>
-<p class='case-study-paragraph'>Range Information</p>
-<p class='case-study-paragraph'>The:</p>
-<p class='case-study-paragraph'>303 mi</p>
-<p class='case-study-paragraph'>range gives users an indication of how far the vehicle can travel.</p>
-<p class='case-study-paragraph'>For an EV-oriented rental experience, this can be particularly important.</p>
-<p class='case-study-paragraph'>Battery Information</p>
-<p class='case-study-paragraph'>The:</p>
-<p class='case-study-paragraph'>85%</p>
-<p class='case-study-paragraph'>battery indicator provides an immediate status signal.</p>
-<p class='case-study-paragraph'>Instead of hiding battery information inside technical specifications, the design makes it visible.</p>
-<p class='case-study-paragraph'>Environmental Context</p>
-<p class='case-study-paragraph'>The:</p>
-<p class='case-study-paragraph'>25°C</p>
-<p class='case-study-paragraph'>weather indicator introduces contextual information into the vehicle detail experience.</p>
-<p class='case-study-paragraph'>This can help communicate that the rental experience considers the user's current environment.</p>
-<p class='case-study-paragraph'>It also creates an opportunity for the product to surface contextual recommendations in future iterations.</p>
-<p class='case-study-paragraph'>Price + Booking CTA</p>
-<p class='case-study-paragraph'>At the bottom of the screen:</p>
-<p class='case-study-paragraph'>$199 / Per Day</p>
-<p class='case-study-paragraph'>is paired directly with:</p>
-<p class='case-study-paragraph'>Book Rent</p>
-<p class='case-study-paragraph'>This is an important interaction decision.</p>
-<p class='case-study-paragraph'>The user doesn't have to scroll back to find the price or booking action.</p>
-<p class='case-study-paragraph'>The final decision point remains fixed near the bottom of the screen.</p>
-<p class='case-study-paragraph'>Favorite Action</p>
-<p class='case-study-paragraph'>The heart icon in the top-right corner allows users to save a vehicle.</p>
-<p class='case-study-paragraph'>This supports users who are still comparing options.</p>
-<p class='case-study-paragraph'>Instead of forcing an immediate booking decision, the product gives users a lightweight way to express interest.</p>
-<p class='case-study-paragraph'>Screen 03 — Checkout</p>
-<p class='case-study-paragraph'>After selecting:</p>
-<p class='case-study-paragraph'>Book Rent</p>
-<p class='case-study-paragraph'>the user enters the checkout experience.</p>
-<p class='case-study-paragraph'>The selected vehicle remains visible at the top.</p>
-<p class='case-study-paragraph'>The card includes:</p>
-<p class='case-study-paragraph'>Vehicle image</p>
-<p class='case-study-paragraph'>Model</p>
-<p class='case-study-paragraph'>Rating</p>
-<p class='case-study-paragraph'>Location</p>
-<p class='case-study-paragraph'>Trip price</p>
-<p class='case-study-paragraph'>Booking Confirmation</p>
-<p class='case-study-paragraph'>The checkout screen essentially answers:</p>
-<p class='case-study-paragraph'>What am I booking?</p>
-<p class='case-study-paragraph'>Where is it?</p>
-<p class='case-study-paragraph'>How much does it cost?</p>
-<p class='case-study-paragraph'>Who is booking it?</p>
-<p class='case-study-paragraph'>When am I renting it?</p>
-<p class='case-study-paragraph'>This creates a clear confirmation layer before the final action.</p>
-<p class='case-study-paragraph'>Driver Details</p>
-<p class='case-study-paragraph'>The form collects:</p>
-<p class='case-study-paragraph'>Name</p>
-<p class='case-study-paragraph'>Name</p>
-<p class='case-study-paragraph'>Email</p>
-<p class='case-study-paragraph'>Although the showcased version uses a simplified form, the structure establishes a clear distinction between:</p>
-<p class='case-study-paragraph'>Vehicle Information</p>
-<p class='case-study-paragraph'>and:</p>
-<p class='case-study-paragraph'>Driver Information</p>
-<p class='case-study-paragraph'>This keeps the checkout experience organized.</p>
-<p class='case-study-paragraph'>Rental Period</p>
-<p class='case-study-paragraph'>The checkout screen shows the rental period:</p>
-<p class='case-study-paragraph'>Sat, Jan 3, 2026, 10:00 AM</p>
-<p class='case-study-paragraph'>to</p>
-<p class='case-study-paragraph'>Tue, Jan 6, 2026, 10:00 AM</p>
-<p class='case-study-paragraph'>This is critical because time is one of the most important variables in a rental transaction.</p>
-<p class='case-study-paragraph'>Showing the complete date/time range prevents ambiguity.</p>
-<p class='case-study-paragraph'>Final CTA</p>
-<p class='case-study-paragraph'>The large:</p>
-<p class='case-study-paragraph'>Continue</p>
-<p class='case-study-paragraph'>button is positioned at the bottom.</p>
-<p class='case-study-paragraph'>This creates a strong visual endpoint.</p>
-<p class='case-study-paragraph'>The user's attention naturally moves:</p>
-<p class='case-study-paragraph'>Vehicle → Driver Details → Rental Period → Continue</p>
-<p class='case-study-paragraph'>Checkout UX Principle</p>
-<p class='case-study-paragraph'>The checkout screen follows a simple rule:</p>
-<p class='case-study-paragraph'>Show the user what they selected before asking them to continue.</p>
-<p class='case-study-paragraph'>This reduces accidental bookings and gives users confidence that the information is correct.</p>
-<p class='case-study-paragraph'>Complete User Journey</p>
-<p class='case-study-paragraph'>CaRide's core flow can be represented as:</p>
-<p class='case-study-paragraph'>Home</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Find Your Perfect Ride</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Search / Filter</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Select Brand / Vehicle</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Car Details</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Review Specifications + Price</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Book Rent</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Checkout</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Confirm Driver + Rental Period</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Continue</p>
-<p class='case-study-paragraph'>This is a compact and understandable rental journey.</p>
-<p class='case-study-paragraph'>Information Architecture</p>
-<p class='case-study-paragraph'>The product can be organized into three major layers.</p>
-<p class='case-study-paragraph'>Layer 01 — Discovery</p>
-<p class='case-study-paragraph'>Search</p>
-<p class='case-study-paragraph'>Brands</p>
-<p class='case-study-paragraph'>Popular vehicles</p>
-<p class='case-study-paragraph'>Layer 02 — Evaluation</p>
-<p class='case-study-paragraph'>Vehicle image</p>
-<p class='case-study-paragraph'>Rating</p>
-<p class='case-study-paragraph'>Performance</p>
-<p class='case-study-paragraph'>Range</p>
-<p class='case-study-paragraph'>Battery</p>
-<p class='case-study-paragraph'>Weather</p>
-<p class='case-study-paragraph'>Price</p>
-<p class='case-study-paragraph'>Layer 03 — Transaction</p>
-<p class='case-study-paragraph'>Selected vehicle</p>
-<p class='case-study-paragraph'>Driver details</p>
-<p class='case-study-paragraph'>Location</p>
-<p class='case-study-paragraph'>Rental period</p>
-<p class='case-study-paragraph'>Price</p>
-<p class='case-study-paragraph'>Continue</p>
-<p class='case-study-paragraph'>This creates a natural progression from exploration to transaction.</p>
-<p class='case-study-paragraph'>Visual Design Strategy</p>
-<p class='case-study-paragraph'>The visual design uses a soft, minimal aesthetic.</p>
-<p class='case-study-paragraph'>The interface combines:</p>
-<p class='case-study-paragraph'>Light grey backgrounds</p>
-<p class='case-study-paragraph'>Soft lavender/grey cards</p>
-<p class='case-study-paragraph'>Black typography</p>
-<p class='case-study-paragraph'>White surfaces</p>
-<p class='case-study-paragraph'>Black primary buttons</p>
-<p class='case-study-paragraph'>Thin line icons</p>
-<p class='case-study-paragraph'>Large rounded corners</p>
-<p class='case-study-paragraph'>High-quality vehicle photography</p>
-<p class='case-study-paragraph'>Generous spacing</p>
-<p class='case-study-paragraph'>The overall visual language feels premium without being overly decorative.</p>
-<p class='case-study-paragraph'>Why the Minimal UI Works</p>
-<p class='case-study-paragraph'>Car-rental apps contain a lot of information.</p>
-<p class='case-study-paragraph'>If the visual system were highly colorful or dense, the product could quickly become overwhelming.</p>
-<p class='case-study-paragraph'>The restrained interface allows the vehicle photography and important data to remain the visual focus.</p>
-<p class='case-study-paragraph'>Vehicle Photography as the Primary Visual</p>
-<p class='case-study-paragraph'>The car itself is the strongest visual asset.</p>
-<p class='case-study-paragraph'>The design gives vehicles substantial space on both:</p>
-<p class='case-study-paragraph'>Listing cards</p>
-<p class='case-study-paragraph'>Detail pages</p>
-<p class='case-study-paragraph'>The product treats the car as the hero rather than hiding it behind text.</p>
-<p class='case-study-paragraph'>Rounded Containers</p>
-<p class='case-study-paragraph'>Rounded cards are used throughout the experience:</p>
-<p class='case-study-paragraph'>Search</p>
-<p class='case-study-paragraph'>Brand filters</p>
-<p class='case-study-paragraph'>Vehicle cards</p>
-<p class='case-study-paragraph'>Specification blocks</p>
-<p class='case-study-paragraph'>Checkout card</p>
-<p class='case-study-paragraph'>Input fields</p>
-<p class='case-study-paragraph'>CTA elements</p>
-<p class='case-study-paragraph'>This creates a consistent component language.</p>
-<p class='case-study-paragraph'>Black CTA Strategy</p>
-<p class='case-study-paragraph'>The primary action is consistently represented by a dark/black button:</p>
-<p class='case-study-paragraph'>View Details</p>
-<p class='case-study-paragraph'>Book Rent</p>
-<p class='case-study-paragraph'>Continue</p>
-<p class='case-study-paragraph'>This creates a strong interaction hierarchy.</p>
-<p class='case-study-paragraph'>The user quickly understands:</p>
-<p class='case-study-paragraph'>Black = primary action</p>
-<p class='case-study-paragraph'>Component System</p>
-<p class='case-study-paragraph'>The screens demonstrate a reusable component structure.</p>
-<p class='case-study-paragraph'>Core components include:</p>
-<p class='case-study-paragraph'>Search field</p>
-<p class='case-study-paragraph'>Filter button</p>
-<p class='case-study-paragraph'>Brand chips</p>
-<p class='case-study-paragraph'>Vehicle cards</p>
-<p class='case-study-paragraph'>Rating badge</p>
-<p class='case-study-paragraph'>Specification cards</p>
-<p class='case-study-paragraph'>Input fields</p>
-<p class='case-study-paragraph'>Date/time selector</p>
-<p class='case-study-paragraph'>Primary CTA</p>
-<p class='case-study-paragraph'>Navigation controls</p>
-<p class='case-study-paragraph'>This allows the application to scale while maintaining consistency.</p>
-<p class='case-study-paragraph'>Business Value</p>
-<p class='case-study-paragraph'>A well-designed rental experience can improve the business by:</p>
-<p class='case-study-paragraph'>Increasing Vehicle Discovery</p>
-<p class='case-study-paragraph'>Users can browse and filter inventory more efficiently.</p>
-<p class='case-study-paragraph'>Reducing Drop-Off</p>
-<p class='case-study-paragraph'>A shorter, clearer booking flow reduces friction.</p>
-<p class='case-study-paragraph'>Increasing Booking Confidence</p>
-<p class='case-study-paragraph'>Vehicle information and ratings help users make decisions.</p>
-<p class='case-study-paragraph'>Improving Price Transparency</p>
-<p class='case-study-paragraph'>Pricing remains visible throughout the journey.</p>
-<p class='case-study-paragraph'>Supporting Repeat Users</p>
-<p class='case-study-paragraph'>Favorites can help users save preferred vehicles.</p>
-<p class='case-study-paragraph'>Creating Upsell Opportunities</p>
-<p class='case-study-paragraph'>The detail architecture can later support:</p>
-<p class='case-study-paragraph'>Insurance</p>
-<p class='case-study-paragraph'>Additional drivers</p>
-<p class='case-study-paragraph'>Premium vehicles</p>
-<p class='case-study-paragraph'>Accessories</p>
-<p class='case-study-paragraph'>Protection packages</p>
-<p class='case-study-paragraph'>Extended rentals</p>
-<p class='case-study-paragraph'>The Main Design Challenge</p>
-<p class='case-study-paragraph'>The central design challenge was:</p>
-<p class='case-study-paragraph'>How can a car-rental marketplace provide enough information for confident decisions without making the booking process feel complicated?</p>
-<p class='case-study-paragraph'>The solution was to distribute information across the journey.</p>
-<p class='case-study-paragraph'>Instead of putting everything on one screen:</p>
-<p class='case-study-paragraph'>Discovery</p>
-<p class='case-study-paragraph'>contains only what is needed to browse.</p>
-<p class='case-study-paragraph'>Details</p>
-<p class='case-study-paragraph'>contains what is needed to evaluate.</p>
-<p class='case-study-paragraph'>Checkout</p>
-<p class='case-study-paragraph'>contains what is needed to complete the transaction.</p>
-<p class='case-study-paragraph'>Progressive Disclosure</p>
-<p class='case-study-paragraph'>This is one of the strongest UX principles in the design.</p>
-<p class='case-study-paragraph'>Home</p>
-<p class='case-study-paragraph'>What cars are available?</p>
-<p class='case-study-paragraph'>Details</p>
-<p class='case-study-paragraph'>Is this car right for me?</p>
-<p class='case-study-paragraph'>Checkout</p>
-<p class='case-study-paragraph'>Am I ready to rent it?</p>
-<p class='case-study-paragraph'>Each screen answers a different question.</p>
-<p class='case-study-paragraph'>Before vs After</p>
-<p class='case-study-paragraph'>Traditional Rental Experience</p>
-<p class='case-study-paragraph'>Browse a large inventory</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Open multiple pages</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Search for specifications</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Calculate price</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Start checkout</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Re-enter information</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Complete booking</p>
-<p class='case-study-paragraph'>CaRide Experience</p>
-<p class='case-study-paragraph'>Find your ride</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Filter by brand</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Review vehicle</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>See key specifications</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>See price</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Book</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Enter details</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Continue</p>
-<p class='case-study-paragraph'>The journey becomes significantly easier to scan.</p>
-<p class='case-study-paragraph'>What I Focused on as a Product Designer</p>
-<p class='case-study-paragraph'>01 — Vehicle Discovery</p>
-<p class='case-study-paragraph'>Creating an intuitive browsing experience around visual vehicle cards.</p>
-<p class='case-study-paragraph'>02 — Search & Filtering</p>
-<p class='case-study-paragraph'>Allowing users to quickly narrow down their options.</p>
-<p class='case-study-paragraph'>03 — Decision Support</p>
-<p class='case-study-paragraph'>Surfacing rating, price, performance, range, and battery information.</p>
-<p class='case-study-paragraph'>04 — Transaction Clarity</p>
-<p class='case-study-paragraph'>Keeping the selected vehicle and rental information visible during checkout.</p>
-<p class='case-study-paragraph'>05 — Reduced Friction</p>
-<p class='case-study-paragraph'>Minimizing the number of steps required to move from discovery to booking.</p>
-<p class='case-study-paragraph'>06 — Visual Hierarchy</p>
-<p class='case-study-paragraph'>Using typography, spacing, card sizes, and contrast to guide attention.</p>
-<p class='case-study-paragraph'>07 — Component Consistency</p>
-<p class='case-study-paragraph'>Building a reusable visual language across the entire rental experience.</p>
-<p class='case-study-paragraph'>Design Outcome</p>
-<p class='case-study-paragraph'>The final experience turns car rental into a straightforward three-stage journey:</p>
-<p class='case-study-paragraph'>Discover</p>
-<p class='case-study-paragraph'>Find the right vehicle.</p>
-<p class='case-study-paragraph'>Evaluate</p>
-<p class='case-study-paragraph'>Understand whether it fits the user's needs.</p>
-<p class='case-study-paragraph'>Book</p>
-<p class='case-study-paragraph'>Complete the rental with clear pricing and timing.</p>
-<p class='case-study-paragraph'>The product therefore avoids trying to solve every rental problem on a single screen.</p>
-<p class='case-study-paragraph'>Instead, it gives each stage of the user's decision its own focused experience.</p>
-<p class='case-study-paragraph'>Key UX Decisions</p>
-<p class='case-study-paragraph'>From Inventory → Discovery</p>
-<p class='case-study-paragraph'>Instead of showing an overwhelming list of cars, the interface starts with:</p>
-<p class='case-study-paragraph'>Find Your Perfect Ride</p>
-<p class='case-study-paragraph'>and supports search, brands, and popular vehicles.</p>
-<p class='case-study-paragraph'>From Vehicle Image → Vehicle Decision</p>
-<p class='case-study-paragraph'>The car-detail page doesn't rely only on photography.</p>
-<p class='case-study-paragraph'>It adds:</p>
-<p class='case-study-paragraph'>Speed + Range + Battery + Weather + Price</p>
-<p class='case-study-paragraph'>so users can evaluate the vehicle.</p>
-<p class='case-study-paragraph'>From Hidden Price → Persistent Price</p>
-<p class='case-study-paragraph'>The rental price appears during both:</p>
-<p class='case-study-paragraph'>Car Details</p>
-<p class='case-study-paragraph'>and:</p>
-<p class='case-study-paragraph'>Checkout</p>
-<p class='case-study-paragraph'>This creates transparency.</p>
-<p class='case-study-paragraph'>From Long Checkout → Focused Checkout</p>
-<p class='case-study-paragraph'>The checkout only focuses on the information necessary to move forward.</p>
-<p class='case-study-paragraph'>From Generic Rental → Personalized Selection</p>
-<p class='case-study-paragraph'>The combination of:</p>
-<p class='case-study-paragraph'>Brand + Search + Favorites + Ratings</p>
-<p class='case-study-paragraph'>allows users to create their own path toward the right vehicle.</p>
-<p class='case-study-paragraph'>Key Takeaways</p>
-<p class='case-study-paragraph'>The best rental experience starts with discovery.</p>
-<p class='case-study-paragraph'>Users should quickly understand what is available.</p>
-<p class='case-study-paragraph'>Filters should reflect how people actually shop.</p>
-<p class='case-study-paragraph'>Brand selection is useful because users often begin with preferences.</p>
-<p class='case-study-paragraph'>Product details should answer decision-making questions.</p>
-<p class='case-study-paragraph'>The most useful information is not necessarily every specification—it is the information that helps users decide.</p>
-<p class='case-study-paragraph'>Price should remain visible.</p>
-<p class='case-study-paragraph'>Users shouldn't have to hunt for the total cost.</p>
-<p class='case-study-paragraph'>Checkout should confirm before it converts.</p>
-<p class='case-study-paragraph'>Showing the selected vehicle, location, price, and rental period builds confidence.</p>
-<p class='case-study-paragraph'>Visual products benefit from visual-first design.</p>
-<p class='case-study-paragraph'>The vehicle photography is treated as a primary part of the UX.</p>
-<p class='case-study-paragraph'>Progressive disclosure reduces cognitive load.</p>
-<p class='case-study-paragraph'>Each screen provides only the information necessary for that stage of the journey.</p>
-<p class='case-study-paragraph'>Section 01 — Hero</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Making car rental feel as simple as choosing a ride.”</p>
-<p class='case-study-paragraph'>Supporting copy:</p>
-<p class='case-study-paragraph'>“CaRide is a mobile car-rental experience designed to help users discover, evaluate, and book vehicles through a simple, visual, and low-friction journey.”</p>
-<p class='case-study-paragraph'>Project metadata:</p>
-<p class='case-study-paragraph'>Product: CaRide</p>
-<p class='case-study-paragraph'>Category: Car Rental / Mobility</p>
-<p class='case-study-paragraph'>Platform: Mobile App</p>
-<p class='case-study-paragraph'>Focus: Vehicle discovery, booking & checkout</p>
-<p class='case-study-paragraph'>Section 02 — The Challenge</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Too many cars. Too much information. Too much friction.”</p>
-<p class='case-study-paragraph'>Show the problem as:</p>
-<p class='case-study-paragraph'>Large Inventory</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Decision Overload</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Unclear Vehicle Information</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Booking Friction</p>
-<p class='case-study-paragraph'>Then explain the business problem.</p>
-<p class='case-study-paragraph'>Create a large three-stage diagram:</p>
-<p class='case-study-paragraph'>DISCOVER</p>
-<p class='case-study-paragraph'>Find your perfect ride.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>EVALUATE</p>
-<p class='case-study-paragraph'>Understand the vehicle.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>BOOK</p>
-<p class='case-study-paragraph'>Complete the rental.</p>
-<p class='case-study-paragraph'>Section 04 — Discovery</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Start with what the user actually wants.”</p>
-<p class='case-study-paragraph'>Highlight:</p>
-<p class='case-study-paragraph'>Search</p>
-<p class='case-study-paragraph'>Brand filters</p>
-<p class='case-study-paragraph'>Popular cars</p>
-<p class='case-study-paragraph'>Ratings</p>
-<p class='case-study-paragraph'>Price</p>
-<p class='case-study-paragraph'>Use annotation lines around the interface.</p>
-<p class='case-study-paragraph'>Section 05 — Decision Support</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Give users the information they need to say yes.”</p>
-<p class='case-study-paragraph'>Highlight:</p>
-<p class='case-study-paragraph'>250 mph</p>
-<p class='case-study-paragraph'>303 mi</p>
-<p class='case-study-paragraph'>85%</p>
-<p class='case-study-paragraph'>25°C</p>
-<p class='case-study-paragraph'>$199 / day</p>
-<p class='case-study-paragraph'>Explain how these metrics reduce uncertainty.</p>
-<p class='case-study-paragraph'>Section 06 — Vehicle Comparison</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Turn browsing into confident selection.”</p>
-<p class='case-study-paragraph'>Show:</p>
-<p class='case-study-paragraph'>Image + Rating + Model + Price + View Details</p>
-<p class='case-study-paragraph'>Explain why this information hierarchy works.</p>
-<p class='case-study-paragraph'>Section 07 — Checkout</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Make the final step feel predictable.”</p>
-<p class='case-study-paragraph'>Highlight:</p>
-<p class='case-study-paragraph'>Selected vehicle</p>
-<p class='case-study-paragraph'>Rating</p>
-<p class='case-study-paragraph'>Location</p>
-<p class='case-study-paragraph'>Trip total</p>
-<p class='case-study-paragraph'>Driver details</p>
-<p class='case-study-paragraph'>Rental period</p>
-<p class='case-study-paragraph'>Continue CTA</p>
-<p class='case-study-paragraph'>Use annotation lines.</p>
-<p class='case-study-paragraph'>Section 08 — Progressive Disclosure</p>
-<p class='case-study-paragraph'>Create a large visual:</p>
-<p class='case-study-paragraph'>Home</p>
-<p class='case-study-paragraph'>“What can I rent?”</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Car Detail</p>
-<p class='case-study-paragraph'>“Is this car right for me?”</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Checkout</p>
-<p class='case-study-paragraph'>“Am I ready to rent it?”</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Every screen answers one question.”</p>
-<p class='case-study-paragraph'>This should be a major UX section.</p>
-<p class='case-study-paragraph'>Section 09 — Visual System</p>
-<p class='case-study-paragraph'>Use close-up crops from the three screens.</p>
-<p class='case-study-paragraph'>Show:</p>
-<p class='case-study-paragraph'>Rounded cards</p>
-<p class='case-study-paragraph'>Black CTA</p>
-<p class='case-study-paragraph'>Soft grey surfaces</p>
-<p class='case-study-paragraph'>Line icons</p>
-<p class='case-study-paragraph'>Vehicle imagery</p>
-<p class='case-study-paragraph'>Rating badges</p>
-<p class='case-study-paragraph'>Form fields</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Minimal UI. Maximum focus.”</p>
-<p class='case-study-paragraph'>Section 10 — Component System</p>
-<p class='case-study-paragraph'>Show the individual UI components from the screens.</p>
-<p class='case-study-paragraph'>Create categories:</p>
-<p class='case-study-paragraph'>Navigation</p>
-<p class='case-study-paragraph'>Discovery</p>
-<p class='case-study-paragraph'>Vehicle Cards</p>
-<p class='case-study-paragraph'>Filters</p>
-<p class='case-study-paragraph'>Specifications</p>
-<p class='case-study-paragraph'>Forms</p>
-<p class='case-study-paragraph'>Actions</p>
-<p class='case-study-paragraph'>Explain how reusable components maintain consistency throughout the app.</p>
-<p class='case-study-paragraph'>Section 11 — Before / After</p>
-<p class='case-study-paragraph'>Before</p>
-<p class='case-study-paragraph'>Browse endlessly</p>
-<p class='case-study-paragraph'>Compare manually</p>
-<p class='case-study-paragraph'>Search specifications</p>
-<p class='case-study-paragraph'>Calculate costs</p>
-<p class='case-study-paragraph'>Start complicated checkout</p>
-<p class='case-study-paragraph'>After</p>
-<p class='case-study-paragraph'>Search</p>
-<p class='case-study-paragraph'>Filter</p>
-<p class='case-study-paragraph'>Evaluate</p>
-<p class='case-study-paragraph'>See price</p>
-<p class='case-study-paragraph'>Book</p>
-<p class='case-study-paragraph'>Continue</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“From browsing cars to booking one in a few focused steps.”</p>
-<p class='case-study-paragraph'>Section 12 — Product Outcome</p>
-<p class='case-study-paragraph'>Create:</p>
-<p class='case-study-paragraph'>DISCOVER → EVALUATE → BOOK</p>
-<p class='case-study-paragraph'>Underneath:</p>
-<p class='case-study-paragraph'>Less searching</p>
-<p class='case-study-paragraph'>Less uncertainty</p>
-<p class='case-study-paragraph'>Less friction</p>
-<p class='case-study-paragraph'>Then:</p>
-<p class='case-study-paragraph'>More confidence</p>
-<p class='case-study-paragraph'>Section 13 — Final Showcase</p>
-<p class='case-study-paragraph'>Recommended order:</p>
-<p class='case-study-paragraph'>Find Your Perfect Ride</p>
-<p class='case-study-paragraph'>→</p>
-<p class='case-study-paragraph'>Car Detail</p>
-<p class='case-study-paragraph'>→</p>
-<p class='case-study-paragraph'>Checkout</p>
-<p class='case-study-paragraph'>This visually tells the entire product story.</p>
-<p class='case-study-paragraph'>Section 14 — Closing</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Find the right car. Know what you're getting. Book with confidence.”</p>
-<p class='case-study-paragraph'>Supporting copy:</p>
-<p class='case-study-paragraph'>“CaRide transforms car rental into a simple, visual journey from discovery to checkout.”</p>
-<p class='case-study-paragraph'>Final CTA:</p>
-<p class='case-study-paragraph'>Book Your Ride</p>
-<p class='case-study-paragraph'>Hero</p>
-<p class='case-study-paragraph'>Problem</p>
-<p class='case-study-paragraph'>Discovery</p>
-<p class='case-study-paragraph'>Vehicle Evaluation</p>
-<p class='case-study-paragraph'>Specifications</p>
-<p class='case-study-paragraph'>Crop the four specification cards individually.</p>
-<p class='case-study-paragraph'>Pricing</p>
-<p class='case-study-paragraph'>Checkout</p>
-<p class='case-study-paragraph'>Booking Flow</p>
-<p class='case-study-paragraph'>Use all three screens in sequence.</p>
-<p class='case-study-paragraph'>Visual System</p>
-<p class='case-study-paragraph'>Use close-up crops of cards, buttons, filters, inputs, and specification components.</p>
-<p class='case-study-paragraph'>Final</p>
-<p class='case-study-paragraph'>Return to the full three-screen showcase as the closing visual.</p>
-<p class='case-study-paragraph'>The overall case study should position CaRide as a mobile-first car-rental experience focused on reducing decision fatigue, making vehicle information immediately understandable, keeping pricing transparent, and turning discovery into a simple booking journey.</p>
-    </div>
+      </div>
+    </section>
 
-    <!-- Visual Palette Showcase -->
-    <div class="case-study-divider"></div>
-    <div class="process-timeline-wrap">
-      <h2>Fonts & Colors Swatches</h2>
-      <div class="design-system-swatches">
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #ff1744;"></div>
-          <span class="swatch-hex">#ff1744</span>
-          <span class="swatch-name">Crimson Accent</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #2b060d;"></div>
-          <span class="swatch-hex">#2b060d</span>
-          <span class="swatch-name">Wine Void</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #0e0204;"></div>
-          <span class="swatch-hex">#0e0204</span>
-          <span class="swatch-name">Pure Black</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #ffffff;"></div>
-          <span class="swatch-hex">#ffffff</span>
-          <span class="swatch-name">Neutral White</span>
-        </div>
+    <!-- 04 / PROCESS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">04 / PROCESS</div>
+        <h2 class="cs-display cs-sec-head__title">How I approached the problem</h2>
+        <p class="cs-sec-head__dek">The process is shown as a decision-making loop rather than a decorative five-step diagram.</p>
+      </div>
+      <div class="cs-process">
         
       </div>
-    </div>
+    </section>
+
+    <!-- 05 / KEY DECISIONS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">05 / KEY DECISIONS</div>
+        <h2 class="cs-display cs-sec-head__title">Design decisions with a reason</h2>
+        <p class="cs-sec-head__dek">Instead of listing deliverables, connect the interface back to the user or business problem it was meant to solve.</p>
+      </div>
+      <div class="cs-decisions">
+        
+        <div class="cs-decision">
+          <div class="cs-decision__num">01</div>
+          <h3 class="cs-decision__title">Show the vehicle before the complexity</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">02</div>
+          <h3 class="cs-decision__title">Keep essential specs close to selection</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">03</div>
+          <h3 class="cs-decision__title">Use a focused checkout</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">04</div>
+          <h3 class="cs-decision__title">Make primary action persistent and obvious</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 / VISUAL STORY -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">06 / VISUAL STORY</div>
+        <h2 class="cs-display cs-sec-head__title">Let the interface do the talking</h2>
+        <p class="cs-sec-head__dek">Large visuals keep the case study grounded in the actual work. Supporting visuals are used where the original showcase does not expose enough detail.</p>
+      </div>
+      <div class="cs-gallery">
+        <!-- Row 1: Large primary + Tall vertical -->
+        <div class="cs-showcase-row">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot large">
+              <img src="assets/cs12-shot1.jpg" alt="Vehicle Detail View & 3D Interactive Telemetry Specifications" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>01</span> Vehicle Detail View & 3D Interactive Telemetry Specifications</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot tall">
+              <img src="assets/cs12-shot2.jpg" alt="Brand Discovery Catalog & Vehicle Fleet Filtering" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>02</span> Brand Discovery Catalog & Vehicle Fleet Filtering</div>
+          </div>
+        </div>
+
+        <!-- Row 2: Two supporting screens -->
+        <div class="cs-showcase-row split-equal">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs12-shot3.jpg" alt="Frictionless Driver Checkout & Booking Calendar Schedule" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>03</span> Frictionless Driver Checkout & Booking Calendar Schedule</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs12-shot4.jpg" alt="High-Resolution Vehicle Battery & Performance Diagnostics" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>04</span> High-Resolution Vehicle Battery & Performance Diagnostics</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 / OUTCOME -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">07 / OUTCOME</div>
+        <h2 class="cs-display cs-sec-head__title">What the design delivers</h2>
+        <p class="cs-sec-head__dek">Close the story by showing the product value created by the design work — not just the screens delivered.</p>
+      </div>
+      <div class="cs-outcomes">
+        
+      </div>
+    </section>
+
+    <!-- NEXT PROJECT -->
+    <section class="cs-next">
+      <div class="cs-next__eyebrow">Next Project</div>
+      <div class="cs-next__grid">
+        <div>
+          <h2 class="cs-display cs-next__title">
+            <a href="case-study-13.html" class="cs-next__link">
+              MyDoct <span class="cs-arrow">→</span>
+            </a>
+          </h2>
+          <p class="cs-next__sub">Helping patients find the right doctor</p>
+        </div>
+        <a href="projects.html" class="cs-next__all-btn">All projects <span>↗</span></a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="cs-footer">
+      <span>© BAPPY ISLAM</span>
+      <span class="cs-footer__brand">12 / 13 — CARIDE</span>
+      <span>DHAKA <span aria-hidden="true">→</span> WORLDWIDE</span>
+    </footer>
+
   </main>
 
-  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
-<div class="contact-footer-wrap">
-<section class="sec contact-sec" id="contacts">
-  <div class="contact-sticky-stage">
-    <!-- Interactive Wood Hover Reveal Element -->
-    <div class="contact-wood-interactive">
-      <div class="wood-img-base"></div>
-      <div class="wood-img-grass"></div>
-    </div>
-
-    <div class="contact-layout">
-      
-      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
-      <div class="contact-left-col">
-        <header class="contact-head">
-          <h2 class="testimonials-title contact-heading">
-            <span class="testi-word">Get</span>
-            <span class="testi-word">in</span>
-            <span class="testi-word testi-word--orange">touch</span>
-          </h2>
-          
-          <div class="contact-details-list">
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Email:</span>
-              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Phone:</span>
-              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Address:</span>
-              <span class="contact-detail-value">Dhaka, Bangladesh</span>
-            </div>
-          </div>
-
-          <div class="contact-socials-wrap">
-            <span class="contact-socials-label">Follow us:</span>
-            <div class="contact-social-icons">
-              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
-                </svg>
-              </a>
-              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
-                </svg>
-              </a>
-              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </header>
-      </div>
-
-      <!-- Right Column: Interactive Form aligned to bottom-right -->
-      <div class="contact-right-col">
-        <form class="contact-form" id="contact-form">
-          <div class="contact-form-row">
-            <div class="contact-form-field">
-              <label for="contact-name" class="contact-form-label">Your Name</label>
-              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
-            </div>
-            <div class="contact-form-field">
-              <label for="contact-email" class="contact-form-label">Email address</label>
-              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
-            </div>
-          </div>
-
-          <div class="contact-form-field">
-            <label for="contact-message" class="contact-form-label">Message</label>
-            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
-          </div>
-
-          <button type="submit" class="contact-submit-btn">
-            <span>Send Message</span>
-          </button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<footer class="footer-sec">
-  <div class="contact-bottom-footer">
-    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
-    <div class="contact-mid-wrap" data-reveal>
-      <div class="contact-mid-row">
-        <div class="contact-tagline">
-          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
-            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
-              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-            </svg>
-          </a>
-          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
-        </div>
-
-        <nav class="contact-links-nav" aria-label="Footer navigation">
-          <div class="contact-links-group">
-            <span class="contact-links-title">Links</span>
-            <a href="#home" class="contact-nav-link">Home</a>
-            <a href="#about" class="contact-nav-link">About Me</a>
-            <a href="#process" class="contact-nav-link">Process</a>
-          </div>
-          <div class="contact-links-group">
-            <span class="contact-links-title">Explore</span>
-            <a href="#work" class="contact-nav-link">Projects</a>
-            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
-            <a href="#contacts" class="contact-nav-link">Contacts</a>
-          </div>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
-    <div class="contact-copyright-wrap">
-      <div class="contact-copyright-row">
-        <span class="contact-copy-left">© 2026 Bappy Islam</span>
-        <span class="contact-copy-right">All rights reserved.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
-  <div class="contact-designer-banner">
-    <div class="contact-wordmark wordmark" aria-hidden="true">
-      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
-    </div>
-  </div>
-</footer>
-</div> </div> <!-- End of contact-footer-wrap -->
+  <!-- Burger Script -->
   <script>
-  const nav = document.getElementById('nav');
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-
-  function updateNavState() {
-    if (!nav) return;
-    const isScrolled = window.scrollY > 40;
-    nav.classList.toggle('is-scrolled', isScrolled);
-  }
-
-  updateNavState();
-  window.addEventListener('scroll', updateNavState, { passive: true });
-
-  if (burger && menu) {
-    burger.addEventListener('click', () => {
-      const open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', !open);
-      burger.classList.toggle('is-open');
-      menu.classList.toggle('is-open');
-      if (!open) {
-        menu.removeAttribute('inert');
-        document.body.classList.add('no-scroll');
-      } else {
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
-      }
-    });
-
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        burger.setAttribute('aria-expanded', 'false');
-        burger.classList.remove('is-open');
-        menu.classList.remove('is-open');
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        const expanded = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', !expanded);
+        menu.toggleAttribute('inert', expanded);
+        menu.classList.toggle('is-open', !expanded);
+        document.body.classList.toggle('menu-open', !expanded);
       });
-    });
-  }
-
-  // Redirect hash links on subpages to landing page sections
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('#') && href !== '#') {
-      link.href = 'index.html' + href;
     }
-  });
-
-  // Initialize interactive wood hover reveal effect in the footer
-  function initContactWoodHover() {
-    const stage = document.querySelector('.contact-sticky-stage');
-    if (!stage) return;
-
-    const grass = stage.querySelector('.wood-img-grass');
-    if (!grass) return;
-
-    stage.addEventListener('pointermove', (e) => {
-      const rect = stage.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      grass.style.setProperty('--mouse-x', `${x}px`);
-      grass.style.setProperty('--mouse-y', `${y}px`);
-    });
-
-    stage.addEventListener('pointerleave', () => {
-      grass.style.setProperty('--mouse-x', '-1000px');
-      grass.style.setProperty('--mouse-y', '-1000px');
-    });
-  }
-
-  // Contact Form AJAX Submission (FormSubmit.co)
-  function initContactFormSubmit() {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const submitBtn = contactForm.querySelector('.contact-submit-btn');
-      if (!submitBtn) return;
-      
-      const originalText = submitBtn.innerHTML;
-      
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Sending...</span>';
-      
-      const formData = {
-        name: document.getElementById('contact-name').value,
-        email: document.getElementById('contact-email').value,
-        message: document.getElementById('contact-message').value,
-        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
-      };
-      
-      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success === 'true' || data.success === true) {
-          submitBtn.innerHTML = '<span>Message Sent!</span>';
-          submitBtn.style.background = '#2e7d32';
-          contactForm.reset();
-          setTimeout(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-          }, 4000);
-        } else {
-          throw new Error('Submission failed');
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        submitBtn.innerHTML = '<span>Error! Try again</span>';
-        submitBtn.style.background = '#c62828';
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
-        }, 4000);
-      });
-    });
-  }
-
-  initContactWoodHover();
-  initContactFormSubmit();
-</script>
+  </script>
 </body>
 </html>

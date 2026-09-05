@@ -6,1682 +6,329 @@
   <title>Bappy — Paybot Case Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case-study.css" />
   <style>
     :root {
-      --accent: #2979ff;
-      --accent-rgb: 41, 121, 255;
-      --case-bg: radial-gradient(circle at top, #081735 0%, #020610 100%);
-    }
-    body.case-study-page {
-      background: var(--case-bg);
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .case-wrapper {
-      max-width: 1440px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 80px var(--pad);
-      box-sizing: border-box;
-    }
-    
-    /* Hero Style */
-    .case-hero {
-      padding-top: 160px;
-      padding-bottom: 60px;
-      text-align: center;
-    }
-    .case-hero-tag {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      margin-bottom: 16px;
-      display: block;
-    }
-    .case-hero-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(36px, 5.5vw, 72px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-      color: var(--paper);
-    }
-    
-    /* Back Navigation */
-    .case-back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      font-family: var(--font-mono), monospace;
-      font-size: 13px;
-      font-weight: 500;
-      text-decoration: none;
-      margin-bottom: 32px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .case-back-link:hover {
-      transform: translateX(-4px);
-      opacity: 0.85;
-    }
-    
-    /* Image Showcase container */
-    .case-img-wrap {
-      width: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
-      margin-bottom: 80px;
-      aspect-ratio: 16 / 9.4;
-    }
-    .case-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-    
-    /* Info grid */
-    .case-info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 30px 0;
-      margin-bottom: 80px;
-    }
-    .case-info-item span {
-      display: block;
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.40);
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-    }
-    .case-info-item p {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--paper);
-      margin: 0;
-    }
-    
-    /* Overview Split (Image 1, 3, 5 style) */
-    .overview-sec {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 60px;
-      margin-bottom: 80px;
-      align-items: start;
-    }
-    .overview-text h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(28px, 3.5vw, 42px);
-      font-weight: 600;
-      margin: 0 0 24px 0;
-      color: var(--paper);
-    }
-    .overview-text p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.75);
-      margin-bottom: 20px;
-    }
-    
-    /* Meta tags card */
-    .meta-tags-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .meta-tags-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-      color: #ffffff;
-      border-left: 2px solid var(--accent);
-      padding-left: 10px;
-    }
-    .meta-tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .meta-tag-list:last-child {
-      margin-bottom: 0;
-    }
-    .meta-tag {
-      background: rgba(var(--accent-rgb), 0.08);
-      border: 1px solid rgba(var(--accent-rgb), 0.15);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--paper);
-      font-family: var(--font-mono), monospace;
-    }
-    
-    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
-    .prob-sol-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin: 40px 0 80px 0;
-    }
-    .prob-card {
-      background: rgba(255, 77, 77, 0.01);
-      border: 1px solid rgba(255, 77, 77, 0.08);
-      border-left: 4px solid #ff4d4d;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .sol-card {
-      background: rgba(0, 230, 118, 0.01);
-      border: 1px solid rgba(0, 230, 118, 0.08);
-      border-left: 4px solid #00e676;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .prob-sol-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 16px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-    .prob-sol-list {
-      padding-left: 18px;
-      margin: 0;
-    }
-    .prob-sol-list li {
-      font-size: 14px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 12px;
-    }
-    
-    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
-    .process-timeline-wrap {
-      margin-bottom: 80px;
-    }
-    .process-timeline-wrap h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 30px;
-    }
-    .process-timeline {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-    }
-    .process-card {
-      background: rgba(255, 255, 255, 0.01);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 12px;
-      padding: 20px;
-      box-sizing: border-box;
-      transition: border-color 0.3s ease;
-    }
-    .process-card:hover {
-      border-color: rgba(var(--accent-rgb), 0.3);
-    }
-    .process-num {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .process-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #ffffff;
-      font-family: 'Clash Display', sans-serif;
-    }
-    .process-desc {
-      font-size: 12px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.50);
-    }
-    
-    /* General content sections */
-    .case-study-sec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 80px 0 24px 0;
-      border-left: 3px solid var(--accent);
-      padding-left: 16px;
-    }
-    .case-study-subsec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 48px 0 18px 0;
-    }
-    .case-study-subsubsec-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 24px 0 12px 0;
-    }
-    .case-study-paragraph {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 24px;
-    }
-    .case-study-divider {
-      border: 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      margin: 60px 0;
-    }
-    .case-study-list {
-      margin: 0 0 24px 0;
-      padding-left: 20px;
-    }
-    .case-study-list li {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 8px;
-    }
-    
-    /* Visual Design System Swatches (Image 4 style) */
-    .design-system-swatches {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    .color-swatch {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 12px;
-      width: 130px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-    .swatch-preview {
-      width: 100%;
-      height: 50px;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .swatch-hex {
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      font-weight: 500;
-      color: #ffffff;
-      display: block;
-    }
-    .swatch-name {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.40);
-      margin-top: 2px;
-      display: block;
-    }
-    
-    /* Features Grid */
-    .case-study-features-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-    }
-    .case-study-feature-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 24px;
-      border-radius: 12px;
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-    .case-study-feature-card:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-    .case-study-feature-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 0 0 8px 0;
-    }
-    .case-study-feature-desc {
-      font-size: 13px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.55);
-      margin: 0;
-    }
-    
-    @media (max-width: 960px) {
-      .overview-sec {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .prob-sol-split {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .process-timeline {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .case-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      .case-study-features-list {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .case-img-wrap {
-        aspect-ratio: 4 / 3;
-        margin-bottom: 60px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .case-info-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+      --accent: #7C3AED;
+      --accent-rgb: 124, 77, 255;
     }
   </style>
 </head>
 <body class="case-study-page">
 
   <!-- ══ NAV ═══════════════════════════════════════════════════ -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="nav__brand" href="#home" aria-label="Bappy — home">
-      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
-        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-      </svg>
-    </a>
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="index.html#home" aria-label="Bappy — home">
+        <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+          <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+          <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+          <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+        </svg>
+      </a>
 
-    <nav class="nav__links" id="nav-links">
-      <a href="#home" class="is-active">Home</a>
-      <a href="#work">Projects</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contacts">Contacts</a>
+      <nav class="nav__links" id="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="projects.html" class="is-active">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#testimonials">Reviews</a>
+        <a href="index.html#contacts">Contacts</a>
+      </nav>
+
+      <div class="nav__status-wrapper" id="nav-status">
+        <a class="status-pill" href="index.html#contacts">
+          <span class="beacon" aria-hidden="true">
+            <span class="beacon__dot"></span>
+            <span class="beacon__ring"></span>
+          </span>
+          <span class="status-pill__text">Available to work</span>
+        </a>
+      </div>
+
+      <div class="nav__actions">
+        <a class="btn-talk" href="index.html#contacts" id="btn-talk">
+          <span>Let's talk</span>
+        </a>
+
+        <button class="burger" id="burger" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+  <div class="menu" id="menu" inert>
+    <nav class="menu__list">
+      <a href="index.html#home"><i>01</i>Home</a>
+      <a href="index.html#about"><i>02</i>About</a>
+      <a href="projects.html"><i>03</i>Projects</a>
+      <a href="index.html#testimonials"><i>04</i>Reviews</a>
+      <a href="index.html#contacts"><i>05</i>Contacts</a>
     </nav>
-
-    <div class="nav__status-wrapper" id="nav-status">
-      <a class="status-pill" href="#contacts">
-        <span class="beacon" aria-hidden="true">
-          <span class="beacon__dot"></span>
-          <span class="beacon__ring"></span>
-        </span>
-        <span class="status-pill__text">Available to work</span>
-      </a>
-    </div>
-
-    <div class="nav__actions">
-      <a class="btn-talk" href="#contacts" id="btn-talk">
-        <span>Let's talk</span>
-      </a>
-
-      <button class="burger" id="burger" type="button"
-              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
+    <div class="menu__foot">
+      <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+      <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
     </div>
   </div>
-</header>
 
-<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
-<div class="menu" id="menu" inert>
-  <nav class="menu__list">
-    <a href="#home"><i>01</i>Home</a>
-    <a href="#about"><i>02</i>About</a>
-    <a href="#work"><i>03</i>Projects</a>
-    <a href="#testimonials"><i>04</i>Reviews</a>
-    <a href="#contacts"><i>05</i>Contacts</a>
-  </nav>
-  <div class="menu__foot">
-    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
-    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
-  </div>
-</div>
+  <!-- ══ MAIN CONTENT WRAPPER ══════════════════════════════════ -->
+  <main class="cs-wrapper">
 
-  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
-  <main class="case-wrapper">
-    <div class="case-hero">
-      <a href="projects.html" class="case-back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        Back to Selected Works
-      </a>
-      <span class="case-hero-tag">UX Case Study</span>
-      <h1 class="case-hero-title">Paybot</h1>
-    </div>
-    
-    <!-- Info Grid -->
-    <div class="case-info-grid">
-      <div class="case-info-item">
-        <span>Role</span>
-        <p>Senior FinTech Designer</p>
+    <!-- HERO -->
+    <section class="cs-hero">
+      <div class="cs-hero__top">
+        <a href="projects.html" class="cs-hero__back">
+          <span aria-hidden="true">←</span> Back to projects
+        </a>
+        <span class="cs-hero__counter">05 / 13</span>
       </div>
-      <div class="case-info-item">
-        <span>Timeline</span>
-        <p>4 Months (2026)</p>
+
+      <span class="cs-hero__kicker">Fintech · Payments</span>
+      <h1 class="cs-display cs-hero__title">Global payments, made easier to understand</h1>
+      <p class="cs-hero__dek">Paybot is a global payments product direction centered on transfers, a multi-currency wallet, card-based spending, and financial workflows for freelancers, businesses, and marketplaces. The design challenge is not only functional clarity but trust: users need to understand what they are doing, what it costs, and what happens next.</p>
+
+      <!-- Primary Showcase Frame -->
+      <div class="cs-hero__image-wrap">
+        <img src="assets/cs5-hero.jpg" alt="Paybot primary showcase" loading="eager" />
       </div>
-      <div class="case-info-item">
-        <span>Deliverables</span>
-        <p>FinTech Landing Page, Card Design, Branding</p>
-      </div>
-      <div class="case-info-item">
-        <span>Team</span>
-        <p>2 Designers, 3 Devs, 1 Financial Analyst</p>
-      </div>
-    </div>
 
-    <!-- Image Showcase -->
-    <div class="case-img-wrap">
-      <img src="assets/showcase-5.png" alt="Paybot Showcase" class="case-img" />
-    </div>
-
-    <!-- Overview Split Section -->
-    <div class="overview-sec">
-      <div class="overview-text">
-        <h2>About Paybot</h2>
-        <p>Paybot is a global payments platform designed to make sending, receiving, and managing money across borders simpler and more accessible.
-
-
-
-The platform brings several financial services into one ecosystem, including:
-
-
-
-* International money transfers
-
-* Multi-currency wallet
-
-* Paybot Card
-
-* Instant transfers
-
-* Global payments
-
-* Freelancer payments
-
-* Marketplace payments
-
-* Business payment solutions
-
-
-
-The product is positioned around a simple promise:
-
-
-
-**Make global payments fast, secure, seamless, and easy to understand.**
-
-
-
-The website experience is designed not only to explain what Paybot does, but also to build enough trust for users to feel comfortable moving money through the platform.
-
-
-
----</p>
-      </div>
-      <div class="meta-tags-card">
-        <div class="meta-tags-title">Project Context</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Fintech UX Strategy</span>
-<span class="meta-tag">Debit Card Design</span>
-<span class="meta-tag">Security Workflows</span>
-<span class="meta-tag">Iconography</span>
+      <!-- Metadata Grid -->
+      <div class="cs-meta-grid">
+        
+        <div class="cs-meta-item">
+          <label>Role</label>
+          <strong>Product Designer</strong>
         </div>
-        <div class="meta-tags-title">Tools Used</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Figma</span>
-<span class="meta-tag">Photoshop</span>
-<span class="meta-tag">Miro</span>
-<span class="meta-tag">Stripe API</span>
+        <div class="cs-meta-item">
+          <label>Platform</label>
+          <strong>Web Product</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Focus</label>
+          <strong>Fintech · Payments</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Scope</label>
+          <strong>UX/UI · Product Strategy · Fintech Flows</strong>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Problem vs Solution Visual Box -->
-    <div class="prob-sol-split">
-      <div class="prob-card">
-        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
-        <ul class="prob-sol-list">
-          <li>Freelancers face slow, complicated, and expensive international transfers.</li>
-<li>Financial products are often confusing and lack visible security signals.</li>
-<li>Pricing uncertainty and hidden fees decrease digital wallet trust.</li>
-        </ul>
+    <!-- 01 / CONTEXT -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">01 / CONTEXT</div>
+        <h2 class="cs-display cs-sec-head__title">Why this product exists</h2>
+        <p class="cs-sec-head__dek">Financial products carry a high burden of trust. Fees, currencies, transfer status, security, and payment methods can quickly create uncertainty. Paybot needed a product story that makes complex financial actions feel understandable and controlled.</p>
       </div>
-      <div class="sol-card">
-        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
-        <ul class="prob-sol-list">
-          <li>Designed a simplified 3-step 'Open. Verify. Get paid' registration funnel.</li>
-<li>Integrated bank-grade security indicators and detailed check accordions.</li>
-<li>Displayed transparent, simple Free vs. Pro comparison cards prominently.</li>
-        </ul>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Who it is for</h3>
+          <p>Freelancers receiving and sending money internationally, businesses managing payments, and marketplace users who need a simpler way to move and manage money across currencies.</p>
+        </div>
+        <div class="cs-panel accent-edge">
+          <h3>The design challenge</h3>
+          <p>Paybot is a global payments product direction centered on transfers, a multi-currency wallet, card-based spending, and financial workflows for freelancers, businesses, and marketplaces. The design challenge is not only functional clarity but trust: users need to understand what they are doing, what it costs, and what happens next.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Process Flow Grid -->
-    <div class="process-timeline-wrap">
-      <h2>Design Process</h2>
-      <div class="process-timeline">
-        
-        <div class="process-card">
-          <span class="process-num">Step 01</span>
-          <div class="process-title">Empathize</div>
-          <div class="process-desc">Interviewing freelancers on global invoice payment delays.</div>
+    <!-- 02 / PROBLEM -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">02 / PROBLEM</div>
+        <h2 class="cs-display cs-sec-head__title">What needed to change</h2>
+        <p class="cs-sec-head__dek">The design work starts by turning broad business friction into a small set of user-facing problems that can be prioritized and solved.</p>
+      </div>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Problem statement</h3>
+          <ul>
+            <li>International payments can be difficult to understand.</li>
+<li>Currency and fee information can be hidden in complex flows.</li>
+<li>Users need confidence before confirming a transaction.</li>
+<li>Different user types need different financial tasks from one product.</li>
+
+          </ul>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 02</span>
-          <div class="process-title">Define</div>
-          <div class="process-desc">Defining cross-border transaction anxiety and hidden fee worries.</div>
+        <div class="cs-panel accent-edge">
+          <h3>Design hypothesis</h3>
+          <p>Build the experience around transparency and control: make balances and currencies easy to understand, show costs before commitment, simplify transfer steps, and reinforce security and status throughout the journey.</p>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 03</span>
-          <div class="process-title">Ideate</div>
-          <div class="process-desc">Simplifying currency conversion and account registration paths.</div>
-        </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 04</span>
-          <div class="process-title">Design</div>
-          <div class="process-desc">Developing a custom parrot brand aesthetic and wallet layouts.</div>
-        </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 05</span>
-          <div class="process-title">Test</div>
-          <div class="process-desc">Verifying step security checks and checkout times.</div>
-        </div>
+      </div>
+    </section>
+
+    <!-- 03 / SCOPE -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">03 / SCOPE</div>
+        <h2 class="cs-display cs-sec-head__title">What the product needed to do</h2>
+        <p class="cs-sec-head__dek">A case study should make the product legible before showing every screen. These are the major capabilities that shaped the information architecture.</p>
+      </div>
+      <div class="cs-metric-row">
         
       </div>
-    </div>
+      <div class="cs-chips-wrap">
+        <span class="cs-chip">Multi-currency wallet</span>
+<span class="cs-chip">International transfers</span>
+<span class="cs-chip">Paybot card</span>
+<span class="cs-chip">Freelancer payments</span>
+<span class="cs-chip">Business payments</span>
+<span class="cs-chip">Marketplace payment flows</span>
+<span class="cs-chip">Pricing and fee visibility</span>
+<span class="cs-chip">Security and trust content</span>
 
-    <!-- Dynamic Content Area -->
-    <div class="case-content">
-      <h3 class='case-study-subsec-title'>Fast send. Fast receive.</h3>
-<p class='case-study-paragraph'>Paybot is a global payments platform designed to make sending, receiving, and managing money across borders simpler and more accessible.</p>
-<p class='case-study-paragraph'>The platform brings several financial services into one ecosystem, including:</p>
-<ul class='case-study-list'>
-  <li>International money transfers</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Multi-currency wallet</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Paybot Card</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Instant transfers</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Global payments</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Freelancer payments</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Marketplace payments</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Business payment solutions</li>
-</ul>
-<p class='case-study-paragraph'>The product is positioned around a simple promise:</p>
-<p class='case-study-paragraph'><strong>Make global payments fast, secure, seamless, and easy to understand.</strong></p>
-<p class='case-study-paragraph'>The website experience is designed not only to explain what Paybot does, but also to build enough trust for users to feel comfortable moving money through the platform.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Why Paybot Exists</h2>
-<p class='case-study-paragraph'>Sending or receiving money internationally can often feel complicated.</p>
-<p class='case-study-paragraph'>Users may have to think about:</p>
-<ul class='case-study-list'>
-  <li>Currency conversion</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Transfer fees</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Transfer speed</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Payment methods</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Security</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Bank-level protection</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Different currencies</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Receiving payments from international clients</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Managing money across different platforms</li>
-</ul>
-<p class='case-study-paragraph'>For freelancers, remote workers, online sellers, and international businesses, these problems can become part of everyday work.</p>
-<p class='case-study-paragraph'>Paybot brings these financial activities together into one platform.</p>
-<p class='case-study-paragraph'>The product is built around a simple idea:</p>
-<p class='case-study-paragraph'><strong>Global money movement should feel as easy as sending a message.</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>The Business Problem</h2>
-<p class='case-study-paragraph'>The core business challenge is <strong>making a complex financial service feel simple and trustworthy</strong>.</p>
-<p class='case-study-paragraph'>Financial products have a unique UX challenge.</p>
-<p class='case-study-paragraph'>They need to communicate sophisticated functionality while avoiding unnecessary complexity.</p>
-<p class='case-study-paragraph'>Paybot therefore needs to solve several problems simultaneously.</p>
-<h4 class='case-study-subsubsec-title'>Complexity</h4>
-<p class='case-study-paragraph'>International payments involve currencies, transfers, cards, fees, verification, and security.</p>
-<h4 class='case-study-subsubsec-title'>Trust</h4>
-<p class='case-study-paragraph'>Users need confidence before they allow a platform to handle their money.</p>
-<h4 class='case-study-subsubsec-title'>Differentiation</h4>
-<p class='case-study-paragraph'>The global payments market is crowded with banks, digital wallets, payment platforms, and remittance services.</p>
-<h4 class='case-study-subsubsec-title'>Multiple User Types</h4>
-<p class='case-study-paragraph'>A freelancer sending money has different needs from a business receiving payments.</p>
-<h4 class='case-study-subsubsec-title'>Conversion</h4>
-<p class='case-study-paragraph'>The website needs to move visitors from:</p>
-<p class='case-study-paragraph'><strong>“What is Paybot?”</strong></p>
-<p class='case-study-paragraph'>to:</p>
-<p class='case-study-paragraph'><strong>“I understand how it works.”</strong></p>
-<p class='case-study-paragraph'>to:</p>
-<p class='case-study-paragraph'><strong>“I want to create an account.”</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Primary Audience</h3>
-<h4 class='case-study-subsubsec-title'>Freelancers & Remote Workers</h4>
-<p class='case-study-paragraph'>People who receive international payments from clients or companies.</p>
-<p class='case-study-paragraph'>Their key needs include:</p>
-<ul class='case-study-list'>
-  <li>Receiving money globally</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Managing multiple currencies</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Fast access to funds</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Simple payment workflows</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Transparent pricing</li>
-</ul>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Secondary Audience</h3>
-<h4 class='case-study-subsubsec-title'>Online Marketplaces & Sellers</h4>
-<p class='case-study-paragraph'>Businesses or individuals receiving payments from customers across different regions.</p>
-<p class='case-study-paragraph'>They need:</p>
-<ul class='case-study-list'>
-  <li>Global payment acceptance</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Reliable transfers</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Currency flexibility</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Simple payment management</li>
-</ul>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Business Users</h3>
-<p class='case-study-paragraph'>Companies that need to send, receive, or manage international payments.</p>
-<p class='case-study-paragraph'>Their priorities are likely to include:</p>
-<ul class='case-study-list'>
-  <li>Security</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Reliability</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Scalability</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Payment visibility</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Transparent pricing</li>
-</ul>
-<hr class='case-study-divider' />
-<h4 class='case-study-subsubsec-title'>01 — International Payments Feel Complicated</h4>
-<p class='case-study-paragraph'>Users often associate cross-border payments with complicated financial processes.</p>
-<p class='case-study-paragraph'>Paybot needs to simplify that mental model.</p>
-<h4 class='case-study-subsubsec-title'>02 — Users Worry About Security</h4>
-<p class='case-study-paragraph'>Financial transactions require a significantly higher level of trust than ordinary digital products.</p>
-<p class='case-study-paragraph'>Users need to understand that their money and information are protected.</p>
-<h4 class='case-study-subsubsec-title'>03 — Currency Management</h4>
-<p class='case-study-paragraph'>People working internationally may receive and spend money in multiple currencies.</p>
-<p class='case-study-paragraph'>A multi-currency wallet can reduce the friction created by constantly switching between currencies or platforms.</p>
-<h4 class='case-study-subsubsec-title'>04 — Payment Speed</h4>
-<p class='case-study-paragraph'>Waiting for international payments can directly affect freelancers, businesses, and individuals.</p>
-<p class='case-study-paragraph'>The product therefore emphasizes <strong>Instant Transfers</strong> and fast payment experiences.</p>
-<h4 class='case-study-subsubsec-title'>05 — Pricing Uncertainty</h4>
-<p class='case-study-paragraph'>Financial platforms often lose user trust when fees are unclear.</p>
-<p class='case-study-paragraph'>Paybot addresses this through a dedicated pricing section with clear plans.</p>
-<hr class='case-study-divider' />
-<p class='case-study-paragraph'>The website experience focuses on five major goals:</p>
-<p class='case-study-paragraph'>1. <strong>Make global payments easy to understand</strong></p>
-<p class='case-study-paragraph'>2. <strong>Build trust immediately</strong></p>
-<p class='case-study-paragraph'>3. <strong>Communicate multiple financial services without overwhelming users</strong></p>
-<p class='case-study-paragraph'>4. <strong>Create clear paths for different customer types</strong></p>
-<p class='case-study-paragraph'>5. <strong>Move users naturally from discovery to account creation</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>01 — Lead With a Clear Value Proposition</h3>
-<p class='case-study-paragraph'>The hero immediately communicates the core benefit:</p>
-<p class='case-study-paragraph'><strong>FAST SEND, FAST RECEIVE</strong></p>
-<p class='case-study-paragraph'>This is supported by the larger positioning:</p>
-<p class='case-study-paragraph'><strong>Send and receive money worldwide with PAYBOT — fast, secure, seamless payments designed to make every transaction simple, reliable, and effortless.</strong></p>
-<p class='case-study-paragraph'>The message avoids explaining the entire financial ecosystem at the beginning.</p>
-<p class='case-study-paragraph'>Instead, it answers the most important question first:</p>
-<p class='case-study-paragraph'><strong>What can Paybot help me do?</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>02 — Show the Product in Action</h2>
-<p class='case-study-paragraph'>The hero does not rely entirely on text.</p>
-<p class='case-study-paragraph'>It visually demonstrates the product through:</p>
-<ul class='case-study-list'>
-  <li>Paybot Card</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Money transfer UI</li>
-</ul>
-<ul class='case-study-list'>
-  <li>User/payment indicators</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Global visual</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Financial statistics</li>
-</ul>
-<p class='case-study-paragraph'>This gives visitors an immediate mental model of the product.</p>
-<p class='case-study-paragraph'>The interface essentially communicates:</p>
-<p class='case-study-paragraph'><strong>This is a real financial platform, and here is what using it looks like.</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>03 — Build Trust With Numbers</h2>
-<p class='case-study-paragraph'>Immediately below the introduction, the website presents key metrics:</p>
-<ul class='case-study-list'>
-  <li><strong>90M+</strong> payments processed</li>
-</ul>
-<ul class='case-study-list'>
-  <li><strong>7M+</strong> active users</li>
-</ul>
-<ul class='case-study-list'>
-  <li><strong>140+</strong> countries supported</li>
-</ul>
-<ul class='case-study-list'>
-  <li><strong>0.5%</strong> average transaction fee</li>
-</ul>
-<ul class='case-study-list'>
-  <li><strong>4.7</strong> product rating</li>
-</ul>
-<p class='case-study-paragraph'>These statistics provide social proof and reduce uncertainty.</p>
-<p class='case-study-paragraph'>For a financial product, this is particularly valuable.</p>
-<p class='case-study-paragraph'>The user is not only being told that Paybot is useful.</p>
-<p class='case-study-paragraph'>They are being shown evidence that other people are already using it.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>04 — Explain the Ecosystem</h2>
-<p class='case-study-paragraph'>The section:</p>
-<p class='case-study-paragraph'><strong>Everything you need to get paid globally</strong></p>
-<p class='case-study-paragraph'>introduces the platform's core capabilities.</p>
-<p class='case-study-paragraph'>The design breaks the product into understandable services:</p>
-<h4 class='case-study-subsubsec-title'>Instant Transfers</h4>
-<p class='case-study-paragraph'>Send money across borders quickly.</p>
-<h4 class='case-study-subsubsec-title'>Multi-Currency Wallet</h4>
-<p class='case-study-paragraph'>Hold, convert, and manage money in different currencies.</p>
-<h4 class='case-study-subsubsec-title'>Paybot Card</h4>
-<p class='case-study-paragraph'>Use a physical or virtual card to access your balance.</p>
-<h4 class='case-study-subsubsec-title'>Bank-Level Security</h4>
-<p class='case-study-paragraph'>Protect financial information and transactions.</p>
-<p class='case-study-paragraph'>This approach turns a potentially complicated financial ecosystem into four simple concepts.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Service Architecture</h2>
-<h3 class='case-study-subsec-title'>Instant Transfers</h3>
-<p class='case-study-paragraph'>The platform emphasizes speed as one of its main competitive advantages.</p>
-<p class='case-study-paragraph'>The interface presents instant transfers as a dedicated feature rather than hiding them inside the broader product description.</p>
-<p class='case-study-paragraph'>This reinforces the main hero promise:</p>
-<p class='case-study-paragraph'><strong>Fast send. Fast receive.</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Multi-Currency Wallet</h3>
-<p class='case-study-paragraph'>The multi-currency wallet addresses a major pain point for international users.</p>
-<p class='case-study-paragraph'>Instead of treating every currency as a separate payment experience, Paybot creates a centralized wallet where users can manage multiple currencies.</p>
-<p class='case-study-paragraph'>This is particularly relevant for users who:</p>
-<ul class='case-study-list'>
-  <li>Work with international clients</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Receive payments from multiple countries</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Travel frequently</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Operate international businesses</li>
-</ul>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Paybot Card</h3>
-<p class='case-study-paragraph'>The Paybot Card extends the platform beyond digital transfers.</p>
-<p class='case-study-paragraph'>The website communicates that users can access their Paybot balance through a physical or virtual card.</p>
-<p class='case-study-paragraph'>This helps position Paybot as a broader financial ecosystem rather than a simple remittance service.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Bank-Level Security</h3>
-<p class='case-study-paragraph'>Security is presented as a dedicated product feature.</p>
-<p class='case-study-paragraph'>This is an important UX decision because financial trust should not be left implicit.</p>
-<p class='case-study-paragraph'>Users need explicit reassurance that their:</p>
-<ul class='case-study-list'>
-  <li>Money</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Account</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Transactions</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Personal information</li>
-</ul>
-<p class='case-study-paragraph'>are being protected.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>From Signup to Payment</h2>
-<p class='case-study-paragraph'>The section:</p>
-<p class='case-study-paragraph'><strong>Open. Verify. Get paid.</strong></p>
-<p class='case-study-paragraph'>reduces the product onboarding process into three steps:</p>
-<h4 class='case-study-subsubsec-title'>01 — Create your account</h4>
-<p class='case-study-paragraph'>Start the Paybot account setup.</p>
-<h4 class='case-study-subsubsec-title'>02 — Verify your identity</h4>
-<p class='case-study-paragraph'>Complete the required verification process.</p>
-<h4 class='case-study-subsubsec-title'>03 — Send & receive instantly</h4>
-<p class='case-study-paragraph'>Start using the platform for international payments.</p>
-<p class='case-study-paragraph'>This is strong UX because a potentially complex financial onboarding process is communicated as a simple three-step journey.</p>
-<p class='case-study-paragraph'>The user immediately understands:</p>
-<p class='case-study-paragraph'><strong>What do I need to do?</strong></p>
-<p class='case-study-paragraph'><strong>How many steps are there?</strong></p>
-<p class='case-study-paragraph'><strong>What happens afterward?</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Audience-Based Product Positioning</h2>
-<p class='case-study-paragraph'>The website does something particularly useful by creating a dedicated section:</p>
-<p class='case-study-paragraph'><strong>Freelancer, business or marketplace — Paybot fits</strong></p>
-<p class='case-study-paragraph'>Instead of assuming every customer has the same financial needs, the product separates its value proposition by audience.</p>
-<h4 class='case-study-subsubsec-title'>Freelancer</h4>
-<p class='case-study-paragraph'>For people receiving international payments for their work.</p>
-<h4 class='case-study-subsubsec-title'>Business</h4>
-<p class='case-study-paragraph'>For companies managing financial transactions.</p>
-<h4 class='case-study-subsubsec-title'>Marketplace</h4>
-<p class='case-study-paragraph'>For platforms facilitating payments between multiple parties.</p>
-<p class='case-study-paragraph'>This helps users recognize themselves within the product.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Pricing Strategy</h2>
-<p class='case-study-paragraph'>The pricing section communicates:</p>
-<p class='case-study-paragraph'><strong>Simple, honest pricing</strong></p>
-<p class='case-study-paragraph'>with three clear plans:</p>
-<h4 class='case-study-subsubsec-title'>Free</h4>
-<p class='case-study-paragraph'>For users who need basic payment functionality.</p>
-<h4 class='case-study-subsubsec-title'>Pro — $9/month</h4>
-<p class='case-study-paragraph'>For users requiring more advanced capabilities.</p>
-<h4 class='case-study-subsubsec-title'>Business — Custom</h4>
-<p class='case-study-paragraph'>For organizations with more complex requirements.</p>
-<p class='case-study-paragraph'>The three-column structure makes the pricing model easy to compare.</p>
-<p class='case-study-paragraph'>The design also avoids overwhelming users with a long pricing table.</p>
-<p class='case-study-paragraph'>The high-level plans appear first, allowing users to identify the appropriate tier quickly.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Security & Trust Experience</h2>
-<p class='case-study-paragraph'>The section:</p>
-<p class='case-study-paragraph'><strong>How we keep your payment safe.</strong></p>
-<p class='case-study-paragraph'>uses an accordion-style structure to explain security.</p>
-<p class='case-study-paragraph'>The four visible topics include:</p>
-<h4 class='case-study-subsubsec-title'>Payment Methodology</h4>
-<p class='case-study-paragraph'>How payment security is handled.</p>
-<h4 class='case-study-subsubsec-title'>Fee Methodology</h4>
-<p class='case-study-paragraph'>How fees and costs are managed.</p>
-<h4 class='case-study-subsubsec-title'>Review & Verification</h4>
-<p class='case-study-paragraph'>How transactions and users are verified.</p>
-<h4 class='case-study-subsubsec-title'>Scam Protection</h4>
-<p class='case-study-paragraph'>How users are protected from potential scams.</p>
-<p class='case-study-paragraph'>This is an effective UX pattern because security information can be detailed without making the page excessively long.</p>
-<p class='case-study-paragraph'>Users who need reassurance can expand the relevant section.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Visual Design Strategy</h2>
-<p class='case-study-paragraph'>The visual identity is strongly connected to financial technology.</p>
-<p class='case-study-paragraph'>The design combines:</p>
-<ul class='case-study-list'>
-  <li>Clean white surfaces</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Deep navy backgrounds</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Bright blue accents</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Large financial statistics</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Rounded cards</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Product mockups</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Bird/parrot imagery</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Soft illustrations</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Strong typography</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Minimal navigation</li>
-</ul>
-<p class='case-study-paragraph'>The blue palette communicates:</p>
-<p class='case-study-paragraph'><strong>Trust + Technology + Financial Security</strong></p>
-<p class='case-study-paragraph'>while the parrot imagery adds a more distinctive and approachable brand personality.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>The Parrot as a Brand Asset</h2>
-<p class='case-study-paragraph'>The parrot is one of the most distinctive elements of the Paybot visual identity.</p>
-<p class='case-study-paragraph'>Instead of using generic financial imagery such as:</p>
-<ul class='case-study-list'>
-  <li>Coins</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Banks</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Graphs</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Generic people</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Currency symbols</li>
-</ul>
-<p class='case-study-paragraph'>the product uses colorful bird imagery throughout the experience.</p>
-<p class='case-study-paragraph'>This creates a recognizable visual personality.</p>
-<p class='case-study-paragraph'>The parrot also appears in:</p>
-<ul class='case-study-list'>
-  <li>Hero section</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Freelancer/business/marketplace cards</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Pricing section</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Product imagery</li>
-</ul>
-<p class='case-study-paragraph'>This creates visual consistency across the page.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Hero Design</h2>
-<p class='case-study-paragraph'>The hero is built around a large parrot image combined with oversized typography.</p>
-<p class='case-study-paragraph'>The giant:</p>
-<p class='case-study-paragraph'><strong>PAYBOT</strong></p>
-<p class='case-study-paragraph'>wordmark establishes the brand immediately.</p>
-<p class='case-study-paragraph'>The bird provides the visual focal point.</p>
-<p class='case-study-paragraph'>The payment cards and transaction UI demonstrate the product.</p>
-<p class='case-study-paragraph'>The result is a hero that communicates three things simultaneously:</p>
-<p class='case-study-paragraph'><strong>Brand → Product → Emotion</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Product Visualization</h2>
-<p class='case-study-paragraph'>The payment card mockups are strategically placed around the hero.</p>
-<p class='case-study-paragraph'>This helps users understand that Paybot is not just a website.</p>
-<p class='case-study-paragraph'>It is a real financial product with tangible payment interfaces.</p>
-<p class='case-study-paragraph'>The cards also create visual depth and make the otherwise minimal hero more dynamic.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Statistics as Social Proof</h2>
-<p class='case-study-paragraph'>The statistics section acts as a bridge between marketing and credibility.</p>
-<p class='case-study-paragraph'>The sequence is:</p>
-<p class='case-study-paragraph'><strong>Hero promise</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Product explanation</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Usage statistics</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Feature ecosystem</strong></p>
-<p class='case-study-paragraph'>This is an effective trust-building sequence for a financial platform.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Information Architecture</h2>
-<p class='case-study-paragraph'>The overall website follows a logical progression:</p>
-<p class='case-study-paragraph'><strong>Hero</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Product Introduction</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Social Proof</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Core Features</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>How It Works</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Customer Segments</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Pricing</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Security</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Conversion CTA</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Footer</strong></p>
-<p class='case-study-paragraph'>This is essentially a conversion funnel.</p>
-<p class='case-study-paragraph'>The user moves from:</p>
-<p class='case-study-paragraph'><strong>Understand → Trust → Evaluate → Choose → Act</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Conversion Strategy</h2>
-<p class='case-study-paragraph'>The website contains multiple conversion opportunities.</p>
-<h4 class='case-study-subsubsec-title'>Primary CTA</h4>
-<p class='case-study-paragraph'><strong>Open Account</strong></p>
-<p class='case-study-paragraph'>Used for users ready to start.</p>
-<h4 class='case-study-subsubsec-title'>Secondary CTA</h4>
-<p class='case-study-paragraph'><strong>View Services</strong></p>
-<p class='case-study-paragraph'>For users who need more information first.</p>
-<h4 class='case-study-subsubsec-title'>Pricing CTA</h4>
-<p class='case-study-paragraph'><strong>Try Pro</strong></p>
-<p class='case-study-paragraph'>For users interested in the paid plan.</p>
-<h4 class='case-study-subsubsec-title'>Business CTA</h4>
-<p class='case-study-paragraph'><strong>Talk to sales</strong></p>
-<p class='case-study-paragraph'>For larger organizations.</p>
-<p class='case-study-paragraph'>This is good UX because different users can enter the conversion funnel at different levels of intent.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>What I Focused on as a Product Designer</h2>
-<p class='case-study-paragraph'>The biggest challenge was balancing <strong>financial complexity with simplicity and trust</strong>.</p>
-<p class='case-study-paragraph'>I focused on:</p>
-<h4 class='case-study-subsubsec-title'>Clarity</h4>
-<p class='case-study-paragraph'>Explaining a complex financial ecosystem through simple sections.</p>
-<h4 class='case-study-subsubsec-title'>Trust</h4>
-<p class='case-study-paragraph'>Using statistics, security information, and transparent pricing.</p>
-<h4 class='case-study-subsubsec-title'>Segmentation</h4>
-<p class='case-study-paragraph'>Creating clear experiences for freelancers, businesses, and marketplaces.</p>
-<h4 class='case-study-subsubsec-title'>Conversion</h4>
-<p class='case-study-paragraph'>Providing relevant CTAs based on the user's intent.</p>
-<h4 class='case-study-subsubsec-title'>Visual Identity</h4>
-<p class='case-study-paragraph'>Using the parrot and blue financial aesthetic to make Paybot recognizable.</p>
-<h4 class='case-study-subsubsec-title'>Product Storytelling</h4>
-<p class='case-study-paragraph'>Showing the actual payment experience instead of relying entirely on marketing copy.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Design Outcome</h2>
-<p class='case-study-paragraph'>The resulting experience positions Paybot as more than a money-transfer service.</p>
-<p class='case-study-paragraph'>It communicates a complete global payment ecosystem:</p>
-<p class='case-study-paragraph'><strong>Send money.</strong></p>
-<p class='case-study-paragraph'><strong>Receive money.</strong></p>
-<p class='case-study-paragraph'><strong>Manage currencies.</strong></p>
-<p class='case-study-paragraph'><strong>Use a card.</strong></p>
-<p class='case-study-paragraph'><strong>Get paid globally.</strong></p>
-<p class='case-study-paragraph'><strong>Protect your transactions.</strong></p>
-<p class='case-study-paragraph'>The website gradually transforms this broad product proposition into understandable features, audience-specific use cases, pricing, and security information.</p>
-<p class='case-study-paragraph'>The overall journey is:</p>
-<p class='case-study-paragraph'><strong>Discover → Understand → Trust → Choose → Convert</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Key UX Decisions</h2>
-<h3 class='case-study-subsec-title'>From Financial Complexity → Simple Modules</h3>
-<p class='case-study-paragraph'>Instead of explaining every capability at once, the product breaks the ecosystem into clear services:</p>
-<p class='case-study-paragraph'><strong>Transfers + Wallet + Card + Security</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Claims → Evidence</h3>
-<p class='case-study-paragraph'>The website supports its value proposition with visible product metrics and social proof.</p>
-<p class='case-study-paragraph'>This is particularly important in financial UX, where trust is part of the product itself.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From One Audience → Multiple Use Cases</h3>
-<p class='case-study-paragraph'>Freelancers, businesses, and marketplaces are given their own entry points.</p>
-<p class='case-study-paragraph'>This makes the product feel relevant to different customer types.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Generic Pricing → Clear Choices</h3>
-<p class='case-study-paragraph'>Free, Pro, and Business plans create an easy decision framework.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Security as a Footnote → Security as a Feature</h3>
-<p class='case-study-paragraph'>Security receives its own dedicated section because trust is fundamental to financial products.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Marketing Page → Product Story</h3>
-<p class='case-study-paragraph'>The website doesn't only describe Paybot.</p>
-<p class='case-study-paragraph'>It visually demonstrates:</p>
-<p class='case-study-paragraph'><strong>Cards → Wallet → Transfers → Payments → Security</strong></p>
-<p class='case-study-paragraph'>so users can form a mental model of the actual product.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Key Takeaways</h2>
-<h4 class='case-study-subsubsec-title'>Financial UX needs trust before conversion.</h4>
-<p class='case-study-paragraph'>Users are unlikely to use a payment platform if they do not trust it.</p>
-<h4 class='case-study-subsubsec-title'>Complexity should be progressively revealed.</h4>
-<p class='case-study-paragraph'>Show the core value first, then allow users to explore deeper functionality.</p>
-<h4 class='case-study-subsubsec-title'>Different users need different entry points.</h4>
-<h4 class='case-study-subsubsec-title'>Pricing should be easy to compare.</h4>
-<p class='case-study-paragraph'>Users should understand the major differences between plans without reading a huge pricing table.</p>
-<h4 class='case-study-subsubsec-title'>Security is part of the experience.</h4>
-<p class='case-study-paragraph'>Security should not be hidden in a footer or legal page.</p>
-<h4 class='case-study-subsubsec-title'>Strong branding can make fintech feel human.</h4>
-<p class='case-study-paragraph'>The parrot gives Paybot a personality that separates it from generic financial products.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Case Study Page Structure for AI</h2>
-<h3 class='case-study-subsec-title'>Section 01 — Hero</h3>
-<p class='case-study-paragraph'>Hero content:</p>
-<p class='case-study-paragraph'><strong>Paybot</strong></p>
-<p class='case-study-paragraph'><strong>Fast send. Fast receive.</strong></p>
-<p class='case-study-paragraph'>Supporting text:</p>
-<p class='case-study-paragraph'>“A global payments platform designed to make sending, receiving, and managing money worldwide simple, secure, and seamless.”</p>
-<p class='case-study-paragraph'>Project metadata:</p>
-<ul class='case-study-list'>
-  <li>Product: Paybot</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Category: Fintech / Global Payments</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Platform: Web Application</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Focus: International payments & financial management</li>
-</ul>
-<p class='case-study-paragraph'>The hero should be image-led.</p>
-<p class='case-study-paragraph'>The parrot and payment cards should remain highly visible.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 02 — The Problem</h2>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“Global payments shouldn't feel complicated.”</strong></p>
-<p class='case-study-paragraph'>Use a two-column layout.</p>
-<h4 class='case-study-subsubsec-title'>Left</h4>
-<p class='case-study-paragraph'>Explain the complexity of international payments.</p>
-<h4 class='case-study-subsubsec-title'>Right</h4>
-<p class='case-study-paragraph'>Use a crop from the hero showing:</p>
-<ul class='case-study-list'>
-  <li>Payment cards</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Global visual</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Transfer interface</li>
-</ul>
-<p class='case-study-paragraph'>Then show four pain-point cards:</p>
-<ul class='case-study-list'>
-  <li>Complex transfers</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Currency management</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Security concerns</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Unclear pricing</li>
-</ul>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 03 — Design Strategy</h2>
-<p class='case-study-paragraph'>Use a horizontal process:</p>
-<p class='case-study-paragraph'><strong>Simplify → Build Trust → Organize → Personalize → Convert</strong></p>
-<p class='case-study-paragraph'>Explain each briefly.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 04 — Product Ecosystem</h2>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“Everything you need to get paid globally.”</strong></p>
-<p class='case-study-paragraph'>Create four feature blocks:</p>
-<h4 class='case-study-subsubsec-title'>Instant Transfers</h4>
-<h4 class='case-study-subsubsec-title'>Multi-Currency Wallet</h4>
-<h4 class='case-study-subsubsec-title'>Paybot Card</h4>
-<h4 class='case-study-subsubsec-title'>Bank-Level Security</h4>
-<p class='case-study-paragraph'>Keep each block visually distinct.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 05 — Trust Through Data</h2>
-<p class='case-study-paragraph'>Display:</p>
-<p class='case-study-paragraph'><strong>90M+</strong></p>
-<p class='case-study-paragraph'>Payments processed</p>
-<p class='case-study-paragraph'><strong>7M+</strong></p>
-<p class='case-study-paragraph'>Active users</p>
-<p class='case-study-paragraph'><strong>140+</strong></p>
-<p class='case-study-paragraph'>Countries supported</p>
-<p class='case-study-paragraph'><strong>0.5%</strong></p>
-<p class='case-study-paragraph'>Average transaction fee</p>
-<p class='case-study-paragraph'><strong>4.7★</strong></p>
-<p class='case-study-paragraph'>Product rating</p>
-<p class='case-study-paragraph'>Do not over-explain the numbers.</p>
-<p class='case-study-paragraph'>Let them act as visual trust signals.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 06 — How It Works</h2>
-<p class='case-study-paragraph'>Create a three-step horizontal flow:</p>
-<p class='case-study-paragraph'><strong>01 Create your account</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>02 Verify your identity</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>03 Send & receive instantly</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 07 — Designed for Different Users</h2>
-<p class='case-study-paragraph'><strong>Freelancer</strong></p>
-<p class='case-study-paragraph'><strong>Business</strong></p>
-<p class='case-study-paragraph'><strong>Marketplace</strong></p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“One payment platform. Different ways to work.”</strong></p>
-<p class='case-study-paragraph'>Explain how each customer type benefits from Paybot.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 08 — Pricing</h2>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“Simple, honest pricing.”</strong></p>
-<p class='case-study-paragraph'>Show:</p>
-<p class='case-study-paragraph'><strong>Free → Pro → Business</strong></p>
-<p class='case-study-paragraph'>Do not turn this into a giant pricing comparison table.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 09 — Security</h2>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“How we keep your payment safe.”</strong></p>
-<p class='case-study-paragraph'>Show the four expandable topics:</p>
-<p class='case-study-paragraph'><strong>Payment Methodology</strong></p>
-<p class='case-study-paragraph'><strong>Fee Methodology</strong></p>
-<p class='case-study-paragraph'><strong>Review & Verification</strong></p>
-<p class='case-study-paragraph'><strong>Scam Protection</strong></p>
-<p class='case-study-paragraph'>Use a split layout with the security explanation on one side and the accordion interface on the other.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 10 — Brand & Visual Language</h2>
-<p class='case-study-paragraph'>Show the parrot imagery as a dedicated brand section.</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“Making fintech feel human.”</strong></p>
-<p class='case-study-paragraph'>Explain how the parrot becomes a recurring visual asset across the product.</p>
-<p class='case-study-paragraph'>Show:</p>
-<ul class='case-study-list'>
-  <li>Hero parrot</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Freelancer imagery</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Business imagery</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Marketplace imagery</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Pricing imagery</li>
-</ul>
-<p class='case-study-paragraph'>This section should demonstrate visual consistency rather than just display images.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 11 — Conversion Architecture</h2>
-<p class='case-study-paragraph'>Create a visual flow:</p>
-<p class='case-study-paragraph'><strong>Discover</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Understand</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Trust</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Choose</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Open Account</strong></p>
-<p class='case-study-paragraph'>Then explain how the website provides different CTAs for different intent levels:</p>
-<ul class='case-study-list'>
-  <li>Open Account</li>
-</ul>
-<ul class='case-study-list'>
-  <li>View Services</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Try Pro</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Talk to Sales</li>
-</ul>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 12 — Final Experience</h2>
-<p class='case-study-paragraph'>Create a large vertical composition using:</p>
-<p class='case-study-paragraph'><strong>Hero → Feature ecosystem → Pricing → Security</strong></p>
-<p class='case-study-paragraph'>Do not display every screenshot at the same scale.</p>
-<p class='case-study-paragraph'>Use different crops and sizes to create an editorial portfolio presentation.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Section 13 — Closing</h2>
-<p class='case-study-paragraph'>End with the main Paybot message:</p>
-<p class='case-study-paragraph'><strong>“Centralize your treasury, the modern way.”</strong></p>
-<p class='case-study-paragraph'>Then show the primary CTA:</p>
-<p class='case-study-paragraph'><strong>Schedule a demo</strong></p>
-<p class='case-study-paragraph'>Use a large clean section with generous whitespace.</p>
-<p class='case-study-paragraph'>The final visual should feel more like a confident fintech brand statement than another feature section.</p>
-<hr class='case-study-divider' />
-    </div>
+      </div>
+    </section>
 
-    <!-- Visual Palette Showcase -->
-    <div class="case-study-divider"></div>
-    <div class="process-timeline-wrap">
-      <h2>Fonts & Colors Swatches</h2>
-      <div class="design-system-swatches">
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #2979ff;"></div>
-          <span class="swatch-hex">#2979ff</span>
-          <span class="swatch-name">Paybot Blue</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #081735;"></div>
-          <span class="swatch-hex">#081735</span>
-          <span class="swatch-name">Navy Void</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #020610;"></div>
-          <span class="swatch-hex">#020610</span>
-          <span class="swatch-name">Dark Steel</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #ffffff;"></div>
-          <span class="swatch-hex">#ffffff</span>
-          <span class="swatch-name">Neutral White</span>
-        </div>
+    <!-- 04 / PROCESS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">04 / PROCESS</div>
+        <h2 class="cs-display cs-sec-head__title">How I approached the problem</h2>
+        <p class="cs-sec-head__dek">The process is shown as a decision-making loop rather than a decorative five-step diagram.</p>
+      </div>
+      <div class="cs-process">
         
       </div>
-    </div>
+    </section>
+
+    <!-- 05 / KEY DECISIONS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">05 / KEY DECISIONS</div>
+        <h2 class="cs-display cs-sec-head__title">Design decisions with a reason</h2>
+        <p class="cs-sec-head__dek">Instead of listing deliverables, connect the interface back to the user or business problem it was meant to solve.</p>
+      </div>
+      <div class="cs-decisions">
+        
+        <div class="cs-decision">
+          <div class="cs-decision__num">01</div>
+          <h3 class="cs-decision__title">Show value and fees early</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">02</div>
+          <h3 class="cs-decision__title">Make transaction status explicit</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">03</div>
+          <h3 class="cs-decision__title">Reduce unnecessary steps</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">04</div>
+          <h3 class="cs-decision__title">Use consistent trust signals</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">05</div>
+          <h3 class="cs-decision__title">Design for multiple financial user types</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 / VISUAL STORY -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">06 / VISUAL STORY</div>
+        <h2 class="cs-display cs-sec-head__title">Let the interface do the talking</h2>
+        <p class="cs-sec-head__dek">Large visuals keep the case study grounded in the actual work. Supporting visuals are used where the original showcase does not expose enough detail.</p>
+      </div>
+      <div class="cs-gallery">
+        <!-- Row 1: Large primary + Tall vertical -->
+        <div class="cs-showcase-row">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot large">
+              <img src="assets/cs5-shot1.jpg" alt="Global Transfer Hub & Multi-Currency Digital Wallet" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>01</span> Global Transfer Hub & Multi-Currency Digital Wallet</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot tall">
+              <img src="assets/cs5-shot2.jpg" alt="Freelance, Marketplace & Enterprise Persona Flows" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>02</span> Freelance, Marketplace & Enterprise Persona Flows</div>
+          </div>
+        </div>
+
+        <!-- Row 2: Two supporting screens -->
+        <div class="cs-showcase-row split-equal">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs5-shot3.jpg" alt="Transparent Pricing Matrix & Enterprise Security Safeguards" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>03</span> Transparent Pricing Matrix & Enterprise Security Safeguards</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs5-shot4.jpg" alt="Treasury Centralization Engine & Paybot Debit Cards" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>04</span> Treasury Centralization Engine & Paybot Debit Cards</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 / OUTCOME -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">07 / OUTCOME</div>
+        <h2 class="cs-display cs-sec-head__title">What the design delivers</h2>
+        <p class="cs-sec-head__dek">Close the story by showing the product value created by the design work — not just the screens delivered.</p>
+      </div>
+      <div class="cs-outcomes">
+        
+      </div>
+    </section>
+
+    <!-- NEXT PROJECT -->
+    <section class="cs-next">
+      <div class="cs-next__eyebrow">Next Project</div>
+      <div class="cs-next__grid">
+        <div>
+          <h2 class="cs-display cs-next__title">
+            <a href="case-study-6.html" class="cs-next__link">
+              Tenista <span class="cs-arrow">→</span>
+            </a>
+          </h2>
+          <p class="cs-next__sub">A sharper digital home for tennis</p>
+        </div>
+        <a href="projects.html" class="cs-next__all-btn">All projects <span>↗</span></a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="cs-footer">
+      <span>© BAPPY ISLAM</span>
+      <span class="cs-footer__brand">05 / 13 — PAYBOT</span>
+      <span>DHAKA <span aria-hidden="true">→</span> WORLDWIDE</span>
+    </footer>
+
   </main>
 
-  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
-<div class="contact-footer-wrap">
-<section class="sec contact-sec" id="contacts">
-  <div class="contact-sticky-stage">
-    <!-- Interactive Wood Hover Reveal Element -->
-    <div class="contact-wood-interactive">
-      <div class="wood-img-base"></div>
-      <div class="wood-img-grass"></div>
-    </div>
-
-    <div class="contact-layout">
-      
-      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
-      <div class="contact-left-col">
-        <header class="contact-head">
-          <h2 class="testimonials-title contact-heading">
-            <span class="testi-word">Get</span>
-            <span class="testi-word">in</span>
-            <span class="testi-word testi-word--orange">touch</span>
-          </h2>
-          
-          <div class="contact-details-list">
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Email:</span>
-              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Phone:</span>
-              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Address:</span>
-              <span class="contact-detail-value">Dhaka, Bangladesh</span>
-            </div>
-          </div>
-
-          <div class="contact-socials-wrap">
-            <span class="contact-socials-label">Follow us:</span>
-            <div class="contact-social-icons">
-              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
-                </svg>
-              </a>
-              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
-                </svg>
-              </a>
-              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </header>
-      </div>
-
-      <!-- Right Column: Interactive Form aligned to bottom-right -->
-      <div class="contact-right-col">
-        <form class="contact-form" id="contact-form">
-          <div class="contact-form-row">
-            <div class="contact-form-field">
-              <label for="contact-name" class="contact-form-label">Your Name</label>
-              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
-            </div>
-            <div class="contact-form-field">
-              <label for="contact-email" class="contact-form-label">Email address</label>
-              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
-            </div>
-          </div>
-
-          <div class="contact-form-field">
-            <label for="contact-message" class="contact-form-label">Message</label>
-            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
-          </div>
-
-          <button type="submit" class="contact-submit-btn">
-            <span>Send Message</span>
-          </button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<footer class="footer-sec">
-  <div class="contact-bottom-footer">
-    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
-    <div class="contact-mid-wrap" data-reveal>
-      <div class="contact-mid-row">
-        <div class="contact-tagline">
-          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
-            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
-              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-            </svg>
-          </a>
-          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
-        </div>
-
-        <nav class="contact-links-nav" aria-label="Footer navigation">
-          <div class="contact-links-group">
-            <span class="contact-links-title">Links</span>
-            <a href="#home" class="contact-nav-link">Home</a>
-            <a href="#about" class="contact-nav-link">About Me</a>
-            <a href="#process" class="contact-nav-link">Process</a>
-          </div>
-          <div class="contact-links-group">
-            <span class="contact-links-title">Explore</span>
-            <a href="#work" class="contact-nav-link">Projects</a>
-            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
-            <a href="#contacts" class="contact-nav-link">Contacts</a>
-          </div>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
-    <div class="contact-copyright-wrap">
-      <div class="contact-copyright-row">
-        <span class="contact-copy-left">© 2026 Bappy Islam</span>
-        <span class="contact-copy-right">All rights reserved.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
-  <div class="contact-designer-banner">
-    <div class="contact-wordmark wordmark" aria-hidden="true">
-      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
-    </div>
-  </div>
-</footer>
-</div> </div> <!-- End of contact-footer-wrap -->
+  <!-- Burger Script -->
   <script>
-  const nav = document.getElementById('nav');
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-
-  function updateNavState() {
-    if (!nav) return;
-    const isScrolled = window.scrollY > 40;
-    nav.classList.toggle('is-scrolled', isScrolled);
-  }
-
-  updateNavState();
-  window.addEventListener('scroll', updateNavState, { passive: true });
-
-  if (burger && menu) {
-    burger.addEventListener('click', () => {
-      const open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', !open);
-      burger.classList.toggle('is-open');
-      menu.classList.toggle('is-open');
-      if (!open) {
-        menu.removeAttribute('inert');
-        document.body.classList.add('no-scroll');
-      } else {
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
-      }
-    });
-
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        burger.setAttribute('aria-expanded', 'false');
-        burger.classList.remove('is-open');
-        menu.classList.remove('is-open');
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        const expanded = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', !expanded);
+        menu.toggleAttribute('inert', expanded);
+        menu.classList.toggle('is-open', !expanded);
+        document.body.classList.toggle('menu-open', !expanded);
       });
-    });
-  }
-
-  // Redirect hash links on subpages to landing page sections
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('#') && href !== '#') {
-      link.href = 'index.html' + href;
     }
-  });
-
-  // Initialize interactive wood hover reveal effect in the footer
-  function initContactWoodHover() {
-    const stage = document.querySelector('.contact-sticky-stage');
-    if (!stage) return;
-
-    const grass = stage.querySelector('.wood-img-grass');
-    if (!grass) return;
-
-    stage.addEventListener('pointermove', (e) => {
-      const rect = stage.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      grass.style.setProperty('--mouse-x', `${x}px`);
-      grass.style.setProperty('--mouse-y', `${y}px`);
-    });
-
-    stage.addEventListener('pointerleave', () => {
-      grass.style.setProperty('--mouse-x', '-1000px');
-      grass.style.setProperty('--mouse-y', '-1000px');
-    });
-  }
-
-  // Contact Form AJAX Submission (FormSubmit.co)
-  function initContactFormSubmit() {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const submitBtn = contactForm.querySelector('.contact-submit-btn');
-      if (!submitBtn) return;
-      
-      const originalText = submitBtn.innerHTML;
-      
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Sending...</span>';
-      
-      const formData = {
-        name: document.getElementById('contact-name').value,
-        email: document.getElementById('contact-email').value,
-        message: document.getElementById('contact-message').value,
-        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
-      };
-      
-      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success === 'true' || data.success === true) {
-          submitBtn.innerHTML = '<span>Message Sent!</span>';
-          submitBtn.style.background = '#2e7d32';
-          contactForm.reset();
-          setTimeout(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-          }, 4000);
-        } else {
-          throw new Error('Submission failed');
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        submitBtn.innerHTML = '<span>Error! Try again</span>';
-        submitBtn.style.background = '#c62828';
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
-        }, 4000);
-      });
-    });
-  }
-
-  initContactWoodHover();
-  initContactFormSubmit();
-</script>
+  </script>
 </body>
 </html>

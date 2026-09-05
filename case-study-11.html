@@ -6,1537 +6,332 @@
   <title>Bappy — Realize Case Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case-study.css" />
   <style>
     :root {
-      --accent: #00b0ff;
-      --accent-rgb: 0, 176, 255;
-      --case-bg: radial-gradient(circle at top, #051b2c 0%, #01080e 100%);
-    }
-    body.case-study-page {
-      background: var(--case-bg);
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .case-wrapper {
-      max-width: 1440px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 80px var(--pad);
-      box-sizing: border-box;
-    }
-    
-    /* Hero Style */
-    .case-hero {
-      padding-top: 160px;
-      padding-bottom: 60px;
-      text-align: center;
-    }
-    .case-hero-tag {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      margin-bottom: 16px;
-      display: block;
-    }
-    .case-hero-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(36px, 5.5vw, 72px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-      color: var(--paper);
-    }
-    
-    /* Back Navigation */
-    .case-back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      font-family: var(--font-mono), monospace;
-      font-size: 13px;
-      font-weight: 500;
-      text-decoration: none;
-      margin-bottom: 32px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .case-back-link:hover {
-      transform: translateX(-4px);
-      opacity: 0.85;
-    }
-    
-    /* Image Showcase container */
-    .case-img-wrap {
-      width: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
-      margin-bottom: 80px;
-      aspect-ratio: 16 / 9.4;
-    }
-    .case-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-    
-    /* Info grid */
-    .case-info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 30px 0;
-      margin-bottom: 80px;
-    }
-    .case-info-item span {
-      display: block;
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.40);
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-    }
-    .case-info-item p {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--paper);
-      margin: 0;
-    }
-    
-    /* Overview Split (Image 1, 3, 5 style) */
-    .overview-sec {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 60px;
-      margin-bottom: 80px;
-      align-items: start;
-    }
-    .overview-text h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(28px, 3.5vw, 42px);
-      font-weight: 600;
-      margin: 0 0 24px 0;
-      color: var(--paper);
-    }
-    .overview-text p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.75);
-      margin-bottom: 20px;
-    }
-    
-    /* Meta tags card */
-    .meta-tags-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .meta-tags-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-      color: #ffffff;
-      border-left: 2px solid var(--accent);
-      padding-left: 10px;
-    }
-    .meta-tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .meta-tag-list:last-child {
-      margin-bottom: 0;
-    }
-    .meta-tag {
-      background: rgba(var(--accent-rgb), 0.08);
-      border: 1px solid rgba(var(--accent-rgb), 0.15);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--paper);
-      font-family: var(--font-mono), monospace;
-    }
-    
-    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
-    .prob-sol-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin: 40px 0 80px 0;
-    }
-    .prob-card {
-      background: rgba(255, 77, 77, 0.01);
-      border: 1px solid rgba(255, 77, 77, 0.08);
-      border-left: 4px solid #ff4d4d;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .sol-card {
-      background: rgba(0, 230, 118, 0.01);
-      border: 1px solid rgba(0, 230, 118, 0.08);
-      border-left: 4px solid #00e676;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .prob-sol-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 16px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-    .prob-sol-list {
-      padding-left: 18px;
-      margin: 0;
-    }
-    .prob-sol-list li {
-      font-size: 14px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 12px;
-    }
-    
-    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
-    .process-timeline-wrap {
-      margin-bottom: 80px;
-    }
-    .process-timeline-wrap h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 30px;
-    }
-    .process-timeline {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-    }
-    .process-card {
-      background: rgba(255, 255, 255, 0.01);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 12px;
-      padding: 20px;
-      box-sizing: border-box;
-      transition: border-color 0.3s ease;
-    }
-    .process-card:hover {
-      border-color: rgba(var(--accent-rgb), 0.3);
-    }
-    .process-num {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .process-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #ffffff;
-      font-family: 'Clash Display', sans-serif;
-    }
-    .process-desc {
-      font-size: 12px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.50);
-    }
-    
-    /* General content sections */
-    .case-study-sec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 80px 0 24px 0;
-      border-left: 3px solid var(--accent);
-      padding-left: 16px;
-    }
-    .case-study-subsec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 48px 0 18px 0;
-    }
-    .case-study-subsubsec-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 24px 0 12px 0;
-    }
-    .case-study-paragraph {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 24px;
-    }
-    .case-study-divider {
-      border: 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      margin: 60px 0;
-    }
-    .case-study-list {
-      margin: 0 0 24px 0;
-      padding-left: 20px;
-    }
-    .case-study-list li {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 8px;
-    }
-    
-    /* Visual Design System Swatches (Image 4 style) */
-    .design-system-swatches {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    .color-swatch {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 12px;
-      width: 130px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-    .swatch-preview {
-      width: 100%;
-      height: 50px;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .swatch-hex {
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      font-weight: 500;
-      color: #ffffff;
-      display: block;
-    }
-    .swatch-name {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.40);
-      margin-top: 2px;
-      display: block;
-    }
-    
-    /* Features Grid */
-    .case-study-features-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-    }
-    .case-study-feature-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 24px;
-      border-radius: 12px;
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-    .case-study-feature-card:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-    .case-study-feature-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 0 0 8px 0;
-    }
-    .case-study-feature-desc {
-      font-size: 13px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.55);
-      margin: 0;
-    }
-    
-    @media (max-width: 960px) {
-      .overview-sec {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .prob-sol-split {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .process-timeline {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .case-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      .case-study-features-list {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .case-img-wrap {
-        aspect-ratio: 4 / 3;
-        margin-bottom: 60px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .case-info-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+      --accent: #168A73;
+      --accent-rgb: 22, 138, 115;
     }
   </style>
 </head>
 <body class="case-study-page">
 
   <!-- ══ NAV ═══════════════════════════════════════════════════ -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="nav__brand" href="#home" aria-label="Bappy — home">
-      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
-        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-      </svg>
-    </a>
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="index.html#home" aria-label="Bappy — home">
+        <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+          <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+          <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+          <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+        </svg>
+      </a>
 
-    <nav class="nav__links" id="nav-links">
-      <a href="#home" class="is-active">Home</a>
-      <a href="#work">Projects</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contacts">Contacts</a>
+      <nav class="nav__links" id="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="projects.html" class="is-active">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#testimonials">Reviews</a>
+        <a href="index.html#contacts">Contacts</a>
+      </nav>
+
+      <div class="nav__status-wrapper" id="nav-status">
+        <a class="status-pill" href="index.html#contacts">
+          <span class="beacon" aria-hidden="true">
+            <span class="beacon__dot"></span>
+            <span class="beacon__ring"></span>
+          </span>
+          <span class="status-pill__text">Available to work</span>
+        </a>
+      </div>
+
+      <div class="nav__actions">
+        <a class="btn-talk" href="index.html#contacts" id="btn-talk">
+          <span>Let's talk</span>
+        </a>
+
+        <button class="burger" id="burger" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+  <div class="menu" id="menu" inert>
+    <nav class="menu__list">
+      <a href="index.html#home"><i>01</i>Home</a>
+      <a href="index.html#about"><i>02</i>About</a>
+      <a href="projects.html"><i>03</i>Projects</a>
+      <a href="index.html#testimonials"><i>04</i>Reviews</a>
+      <a href="index.html#contacts"><i>05</i>Contacts</a>
     </nav>
-
-    <div class="nav__status-wrapper" id="nav-status">
-      <a class="status-pill" href="#contacts">
-        <span class="beacon" aria-hidden="true">
-          <span class="beacon__dot"></span>
-          <span class="beacon__ring"></span>
-        </span>
-        <span class="status-pill__text">Available to work</span>
-      </a>
-    </div>
-
-    <div class="nav__actions">
-      <a class="btn-talk" href="#contacts" id="btn-talk">
-        <span>Let's talk</span>
-      </a>
-
-      <button class="burger" id="burger" type="button"
-              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
+    <div class="menu__foot">
+      <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+      <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
     </div>
   </div>
-</header>
 
-<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
-<div class="menu" id="menu" inert>
-  <nav class="menu__list">
-    <a href="#home"><i>01</i>Home</a>
-    <a href="#about"><i>02</i>About</a>
-    <a href="#work"><i>03</i>Projects</a>
-    <a href="#testimonials"><i>04</i>Reviews</a>
-    <a href="#contacts"><i>05</i>Contacts</a>
-  </nav>
-  <div class="menu__foot">
-    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
-    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
-  </div>
-</div>
+  <!-- ══ MAIN CONTENT WRAPPER ══════════════════════════════════ -->
+  <main class="cs-wrapper">
 
-  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
-  <main class="case-wrapper">
-    <div class="case-hero">
-      <a href="projects.html" class="case-back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        Back to Selected Works
-      </a>
-      <span class="case-hero-tag">UX Case Study</span>
-      <h1 class="case-hero-title">Realize</h1>
-    </div>
-    
-    <!-- Info Grid -->
-    <div class="case-info-grid">
-      <div class="case-info-item">
-        <span>Role</span>
-        <p>Lead Healthcare UX Designer</p>
+    <!-- HERO -->
+    <section class="cs-hero">
+      <div class="cs-hero__top">
+        <a href="projects.html" class="cs-hero__back">
+          <span aria-hidden="true">←</span> Back to projects
+        </a>
+        <span class="cs-hero__counter">11 / 13</span>
       </div>
-      <div class="case-info-item">
-        <span>Timeline</span>
-        <p>4 Months (2026)</p>
-      </div>
-      <div class="case-info-item">
-        <span>Deliverables</span>
-        <p>Clinic Metrics, Engagement Scoreboard, Workflow Layouts</p>
-      </div>
-      <div class="case-info-item">
-        <span>Team</span>
-        <p>1 Designer, 4 Developers, 1 Data Scientist</p>
-      </div>
-    </div>
 
-    <!-- Image Showcase -->
-    <div class="case-img-wrap">
-      <img src="assets/showcase-11.jpg" alt="Realize Showcase" class="case-img" />
-    </div>
+      <span class="cs-hero__kicker">Healthcare · Clinic Intelligence</span>
+      <h1 class="cs-display cs-hero__title">Turning clinical activity into actionable insight</h1>
+      <p class="cs-hero__dek">Realize is a clinic management web application for clinicians and behavioral-health organizations, including SUD recovery and long-term therapy facilities. The product brings patients, engagement, attendance, insights, risk levels, programs, services, locations, imports, and settings into one operational system.</p>
 
-    <!-- Overview Split Section -->
-    <div class="overview-sec">
-      <div class="overview-text">
-        <h2>About Realize</h2>
-        <p>Personal design portfolio showcase detailing the creative journey, layout experiments, component grids, and UX strategy.</p>
+      <!-- Primary Showcase Frame -->
+      <div class="cs-hero__image-wrap">
+        <img src="assets/cs11-hero.jpg" alt="Realize primary showcase" loading="eager" />
       </div>
-      <div class="meta-tags-card">
-        <div class="meta-tags-title">Project Context</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Information Architecture</span>
-<span class="meta-tag">Data Visualization</span>
-<span class="meta-tag">Component Design</span>
-<span class="meta-tag">Decision Support</span>
-        </div>
-        <div class="meta-tags-title">Tools Used</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Figma</span>
-<span class="meta-tag">D3.js</span>
-<span class="meta-tag">Photoshop</span>
-<span class="meta-tag">Miro</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- Problem vs Solution Visual Box -->
-    <div class="prob-sol-split">
-      <div class="prob-card">
-        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
-        <ul class="prob-sol-list">
-          <li>Clinicians are overwhelmed by massive clinical data without actionable insights.</li>
-<li>Early indicators of patient risk and program drop-out are difficult to track.</li>
-<li>Caseloads and clinician tasks are scattered across disconnected systems.</li>
-        </ul>
+      <!-- Metadata Grid -->
+      <div class="cs-meta-grid">
+        
+        <div class="cs-meta-item">
+          <label>Role</label>
+          <strong>Product Designer</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Platform</label>
+          <strong>Web App</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Focus</label>
+          <strong>Healthcare · Clinic Intelligence</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Scope</label>
+          <strong>UX Research · Product Strategy · UX/UI · Design System</strong>
+        </div>
       </div>
-      <div class="sol-card">
-        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
-        <ul class="prob-sol-list">
-          <li>Created an intelligence layer dashboard highlighting risk and engagement.</li>
-<li>Designed a structured risk hierarchy from No Risk to Critical.</li>
-<li>Integrated interactive trend charts and caseload management tables.</li>
-        </ul>
-      </div>
-    </div>
+    </section>
 
-    <!-- Process Flow Grid -->
-    <div class="process-timeline-wrap">
-      <h2>Design Process</h2>
-      <div class="process-timeline">
-        
-        <div class="process-card">
-          <span class="process-num">Step 01</span>
-          <div class="process-title">Empathize</div>
-          <div class="process-desc">Observing clinicians processing patient metrics and spreadsheets.</div>
+    <!-- 01 / CONTEXT -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">01 / CONTEXT</div>
+        <h2 class="cs-display cs-sec-head__title">Why this product exists</h2>
+        <p class="cs-sec-head__dek">Clinic data can arrive from EHR systems and operational workflows in forms that are difficult to act on. Realize needed to simplify raw information into clear patient-level and program-level insight, while supporting future AI-driven summaries and risk prediction.</p>
+      </div>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Who it is for</h3>
+          <p>Clinicians, therapists, care managers, and clinic operators who need to understand patient engagement, attendance, risk, caseloads, and program performance.</p>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 02</span>
-          <div class="process-title">Define</div>
-          <div class="process-desc">Identifying the difficulty in spotting patient disengagement early.</div>
+        <div class="cs-panel accent-edge">
+          <h3>The design challenge</h3>
+          <p>Realize is a clinic management web application for clinicians and behavioral-health organizations, including SUD recovery and long-term therapy facilities. The product brings patients, engagement, attendance, insights, risk levels, programs, services, locations, imports, and settings into one operational system.</p>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 03</span>
-          <div class="process-title">Ideate</div>
-          <div class="process-desc">Designing risk-level hierarchies and engagement metrics indices.</div>
+      </div>
+    </section>
+
+    <!-- 02 / PROBLEM -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">02 / PROBLEM</div>
+        <h2 class="cs-display cs-sec-head__title">What needed to change</h2>
+        <p class="cs-sec-head__dek">The design work starts by turning broad business friction into a small set of user-facing problems that can be prioritized and solved.</p>
+      </div>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Problem statement</h3>
+          <ul>
+            <li>Clinical and EHR data can be dense and difficult to scan.</li>
+<li>Teams need to identify patients requiring attention quickly.</li>
+<li>Engagement and attendance data should support operational decisions.</li>
+<li>Managers need insight into program and therapist performance.</li>
+<li>The product needs a path toward AI summaries and future risk prediction.</li>
+
+          </ul>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 04</span>
-          <div class="process-title">Design</div>
-          <div class="process-desc">Creating cyan component layouts and metrics data visualization panels.</div>
+        <div class="cs-panel accent-edge">
+          <h3>Design hypothesis</h3>
+          <p>Create a role-aware clinic intelligence layer: simplify patient data, organize engagement by risk, surface attendance and insight dashboards, and make individual patient details more actionable with charts, history, communication context, and future AI-assisted summaries.</p>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 05</span>
-          <div class="process-title">Test</div>
-          <div class="process-desc">Testing caseload trackers and dashboard filters with clinical teams.</div>
-        </div>
+      </div>
+    </section>
+
+    <!-- 03 / SCOPE -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">03 / SCOPE</div>
+        <h2 class="cs-display cs-sec-head__title">What the product needed to do</h2>
+        <p class="cs-sec-head__dek">A case study should make the product legible before showing every screen. These are the major capabilities that shaped the information architecture.</p>
+      </div>
+      <div class="cs-metric-row">
         
       </div>
-    </div>
+      <div class="cs-chips-wrap">
+        <span class="cs-chip">Patients</span>
+<span class="cs-chip">Engagement by risk level</span>
+<span class="cs-chip">Attendance</span>
+<span class="cs-chip">Insights</span>
+<span class="cs-chip">Risk levels</span>
+<span class="cs-chip">Programs and services</span>
+<span class="cs-chip">Locations</span>
+<span class="cs-chip">Data import / EHR integration</span>
+<span class="cs-chip">Patient history</span>
+<span class="cs-chip">AI communication summary direction</span>
 
-    <!-- Dynamic Content Area -->
-    <div class="case-content">
-      <p class='case-study-paragraph'>11. Realize — Clinic Intelligence Platform</p>
-<p class='case-study-paragraph'>Turning Complex Clinical Data Into Actionable Patient Insights</p>
-<p class='case-study-paragraph'>Realize is a clinic intelligence and management platform designed for behavioral health and substance-use recovery programs.</p>
-<p class='case-study-paragraph'>The platform helps clinical teams move beyond simply storing patient information. It brings together patient data, engagement, attendance, risk, services, programs, and analytics so care teams can understand what is happening across their patients and take action earlier.</p>
-<p class='case-study-paragraph'>The product sits between a traditional clinical data system and an intelligence layer:</p>
-<p class='case-study-paragraph'>Collect → Organize → Understand → Identify Risk → Take Action</p>
-<p class='case-study-paragraph'>The broader RAE/Realize ecosystem is also built around using digital data to help treatment providers understand patient trends and provide more actionable, personalized support. Research on the related RAE system describes a clinician portal that aggregates patient data and provides actionable insights to treatment providers.</p>
-<p class='case-study-paragraph'>Why Realize Exists</p>
-<p class='case-study-paragraph'>Behavioral-health clinics manage a huge amount of patient information.</p>
-<p class='case-study-paragraph'>The challenge isn't OS necessarily a lack of data.</p>
-<p class='case-study-paragraph'>The challenge is turning that data into something clinicians can understand and act on quickly.</p>
-<p class='case-study-paragraph'>A clinician may need to understand:</p>
-<p class='case-study-paragraph'>Which patients are at risk?</p>
-<p class='case-study-paragraph'>Who is becoming less engaged?</p>
-<p class='case-study-paragraph'>Who is missing services?</p>
-<p class='case-study-paragraph'>Which patients need attention?</p>
-<p class='case-study-paragraph'>Which programs are performing well?</p>
-<p class='case-study-paragraph'>How are therapists performing?</p>
-<p class='case-study-paragraph'>Where are engagement problems happening?</p>
-<p class='case-study-paragraph'>What trends are developing over time?</p>
-<p class='case-study-paragraph'>When this information is scattered across different systems, spreadsheets, EHR data, and reports, clinical teams spend valuable time finding and interpreting information instead of acting on it.</p>
-<p class='case-study-paragraph'>Realize exists to create a single intelligence layer around this information.</p>
-<p class='case-study-paragraph'>The Business Problem</p>
-<p class='case-study-paragraph'>01 — Too Much Clinical Data, Not Enough Clarity</p>
-<p class='case-study-paragraph'>Healthcare organizations already generate significant amounts of patient data.</p>
-<p class='case-study-paragraph'>But raw data doesn't automatically produce insight.</p>
-<p class='case-study-paragraph'>Realize transforms information into:</p>
-<p class='case-study-paragraph'>Patient insights → Risk levels → Engagement patterns → Operational decisions</p>
-<p class='case-study-paragraph'>02 — Patient Risk Can Be Difficult to See Early</p>
-<p class='case-study-paragraph'>A patient may gradually become:</p>
-<p class='case-study-paragraph'>Less engaged</p>
-<p class='case-study-paragraph'>Less active in treatment</p>
-<p class='case-study-paragraph'>Less consistent with services</p>
-<p class='case-study-paragraph'>More likely to require intervention</p>
-<p class='case-study-paragraph'>Without a clear visual risk system, these changes can be difficult to identify quickly.</p>
-<p class='case-study-paragraph'>Realize introduces a structured risk-level framework to make those signals easier to see.</p>
-<p class='case-study-paragraph'>03 — Engagement Is Difficult to Track at Scale</p>
-<p class='case-study-paragraph'>A clinic may have dozens or hundreds of patients.</p>
-<p class='case-study-paragraph'>Clinicians need to understand not only whether someone attended treatment, but also:</p>
-<p class='case-study-paragraph'>How many hours they engaged</p>
-<p class='case-study-paragraph'>How frequently they participated</p>
-<p class='case-study-paragraph'>How their engagement changed</p>
-<p class='case-study-paragraph'>Whether they are becoming disengaged</p>
-<p class='case-study-paragraph'>Realize turns these patterns into measurable engagement data.</p>
-<p class='case-study-paragraph'>04 — Clinical Decisions Need Context</p>
-<p class='case-study-paragraph'>A number alone is not enough.</p>
-<p class='case-study-paragraph'>For example:</p>
-<p class='case-study-paragraph'>Weekly Engagement: 3 hours</p>
-<p class='case-study-paragraph'>doesn't tell the complete story.</p>
-<p class='case-study-paragraph'>The clinician also needs context around:</p>
-<p class='case-study-paragraph'>Risk</p>
-<p class='case-study-paragraph'>Program</p>
-<p class='case-study-paragraph'>Services</p>
-<p class='case-study-paragraph'>Attendance</p>
-<p class='case-study-paragraph'>Historical performance</p>
-<p class='case-study-paragraph'>Trends</p>
-<p class='case-study-paragraph'>Realize connects these data points.</p>
-<p class='case-study-paragraph'>Primary Users — Behavioral Health Clinicians</p>
-<p class='case-study-paragraph'>Clinicians need a fast way to understand their patient caseload and identify patients who may need attention.</p>
-<p class='case-study-paragraph'>Clinical Managers</p>
-<p class='case-study-paragraph'>Managers need a broader operational view.</p>
-<p class='case-study-paragraph'>They may need to understand:</p>
-<p class='case-study-paragraph'>Patient population</p>
-<p class='case-study-paragraph'>Program performance</p>
-<p class='case-study-paragraph'>Therapist performance</p>
-<p class='case-study-paragraph'>Engagement trends</p>
-<p class='case-study-paragraph'>Risk distribution</p>
-<p class='case-study-paragraph'>Service utilization</p>
-<p class='case-study-paragraph'>Treatment Program Administrators</p>
-<p class='case-study-paragraph'>Administrators need visibility across:</p>
-<p class='case-study-paragraph'>Programs</p>
-<p class='case-study-paragraph'>Locations</p>
-<p class='case-study-paragraph'>Services</p>
-<p class='case-study-paragraph'>Patient populations</p>
-<p class='case-study-paragraph'>Operational performance</p>
-<p class='case-study-paragraph'>Behavioral Health & SUD Organizations</p>
-<p class='case-study-paragraph'>The platform is particularly relevant to organizations managing behavioral-health and substance-use-disorder treatment programs.</p>
-<p class='case-study-paragraph'>Research into related digital-health systems shows that clinician-facing portals can aggregate patient information and visualize trends to help treatment providers better understand risk and tailor support.</p>
-<p class='case-study-paragraph'>“I have the data, but I don't know what matters most.”</p>
-<p class='case-study-paragraph'>“Which patient needs my attention first?”</p>
-<p class='case-study-paragraph'>“Who is becoming disengaged?”</p>
-<p class='case-study-paragraph'>“How is my caseload performing?”</p>
-<p class='case-study-paragraph'>“Which programs are working well?”</p>
-<p class='case-study-paragraph'>“How are my therapists performing?”</p>
-<p class='case-study-paragraph'>“I need the answer without opening multiple systems.”</p>
-<p class='case-study-paragraph'>These questions shaped the product experience.</p>
-<p class='case-study-paragraph'>The product was designed around five primary goals:</p>
-<p class='case-study-paragraph'>Make complex patient data easier to understand</p>
-<p class='case-study-paragraph'>Surface risk and engagement immediately</p>
-<p class='case-study-paragraph'>Reduce the time required to find important information</p>
-<p class='case-study-paragraph'>Connect patient-level data with organizational insights</p>
-<p class='case-study-paragraph'>Turn clinical data into actionable decisions</p>
-<p class='case-study-paragraph'>The central product strategy can be summarized as:</p>
-<p class='case-study-paragraph'>Overview → Prioritize → Investigate → Understand → Act</p>
-<p class='case-study-paragraph'>The dashboard gives the clinical team the overview.</p>
-<p class='case-study-paragraph'>Risk and engagement help them prioritize.</p>
-<p class='case-study-paragraph'>Patient details allow investigation.</p>
-<p class='case-study-paragraph'>Charts and history provide understanding.</p>
-<p class='case-study-paragraph'>The resulting insight supports action.</p>
-<p class='case-study-paragraph'>Dashboard Experience</p>
-<p class='case-study-paragraph'>The dashboard is designed as the central intelligence layer.</p>
-<p class='case-study-paragraph'>Instead of presenting a large table of raw information immediately, the interface surfaces visual summaries such as:</p>
-<p class='case-study-paragraph'>Patient metrics</p>
-<p class='case-study-paragraph'>Engagement trends</p>
-<p class='case-study-paragraph'>Risk distribution</p>
-<p class='case-study-paragraph'>Performance charts</p>
-<p class='case-study-paragraph'>Program data</p>
-<p class='case-study-paragraph'>Therapist data</p>
-<p class='case-study-paragraph'>This gives users a quick answer to:</p>
-<p class='case-study-paragraph'>“What is happening across my clinic?”</p>
-<p class='case-study-paragraph'>before asking them to investigate individual patients.</p>
-<p class='case-study-paragraph'>Why the Dashboard Matters</p>
-<p class='case-study-paragraph'>For a clinical management platform, the dashboard should not simply be a collection of charts.</p>
-<p class='case-study-paragraph'>Every visualization should help answer a decision-making question.</p>
-<p class='case-study-paragraph'>For example:</p>
-<p class='case-study-paragraph'>Risk Chart</p>
-<p class='case-study-paragraph'>Who needs attention?</p>
-<p class='case-study-paragraph'>Engagement Chart</p>
-<p class='case-study-paragraph'>Who is participating consistently?</p>
-<p class='case-study-paragraph'>Program Chart</p>
-<p class='case-study-paragraph'>Which programs are performing well?</p>
-<p class='case-study-paragraph'>Therapist Chart</p>
-<p class='case-study-paragraph'>How is each caseload performing?</p>
-<p class='case-study-paragraph'>This makes analytics actionable rather than decorative.</p>
-<p class='case-study-paragraph'>Patient Management</p>
-<p class='case-study-paragraph'>The patient-management experience organizes patients around meaningful clinical and operational attributes.</p>
-<p class='case-study-paragraph'>The interface can surface information such as:</p>
-<p class='case-study-paragraph'>Patient name</p>
-<p class='case-study-paragraph'>MRN</p>
-<p class='case-study-paragraph'>Program</p>
-<p class='case-study-paragraph'>Location</p>
-<p class='case-study-paragraph'>Engagement hours</p>
-<p class='case-study-paragraph'>Risk level</p>
-<p class='case-study-paragraph'>Engagement level</p>
-<p class='case-study-paragraph'>Average engagement score</p>
-<p class='case-study-paragraph'>Total hours completed</p>
-<p class='case-study-paragraph'>Total services completed</p>
-<p class='case-study-paragraph'>Admission date</p>
-<p class='case-study-paragraph'>Discharge date</p>
-<p class='case-study-paragraph'>Contact information</p>
-<p class='case-study-paragraph'>The key UX decision is that the patient table is not treated as a simple contact directory.</p>
-<p class='case-study-paragraph'>It becomes a decision-making surface.</p>
-<p class='case-study-paragraph'>Risk-Level System</p>
-<p class='case-study-paragraph'>One of the most important product concepts is the risk hierarchy:</p>
-<p class='case-study-paragraph'>No Risk → Low → Medium → High → Critical</p>
-<p class='case-study-paragraph'>This allows a clinician to quickly understand patient priority.</p>
-<p class='case-study-paragraph'>Instead of requiring the user to inspect dozens of individual records, the system creates a visual prioritization layer.</p>
-<p class='case-study-paragraph'>Why Risk Visualization Matters</p>
-<p class='case-study-paragraph'>Healthcare professionals often have limited time.</p>
-<p class='case-study-paragraph'>If 100 patients are shown with equal visual importance, the interface forces the clinician to manually identify priorities.</p>
-<p class='case-study-paragraph'>Risk categorization changes that.</p>
-<p class='case-study-paragraph'>The system effectively answers:</p>
-<p class='case-study-paragraph'>“Where should I look first?”</p>
-<p class='case-study-paragraph'>This is one of the strongest examples of the platform turning raw information into actionable intelligence.</p>
-<p class='case-study-paragraph'>Engagement Intelligence</p>
-<p class='case-study-paragraph'>Realize also organizes patients around engagement:</p>
-<p class='case-study-paragraph'>Low</p>
-<p class='case-study-paragraph'>Medium</p>
-<p class='case-study-paragraph'>High</p>
-<p class='case-study-paragraph'>Not Engaged</p>
-<p class='case-study-paragraph'>This creates a second dimension alongside risk.</p>
-<p class='case-study-paragraph'>A patient can therefore be understood not simply as:</p>
-<p class='case-study-paragraph'>Patient X</p>
-<p class='case-study-paragraph'>but as:</p>
-<p class='case-study-paragraph'>High Risk + Low Engagement</p>
-<p class='case-study-paragraph'>That combination is much more meaningful for a clinician.</p>
-<p class='case-study-paragraph'>Combining Risk + Engagement</p>
-<p class='case-study-paragraph'>This is where the product becomes more intelligent.</p>
-<p class='case-study-paragraph'>Consider:</p>
-<p class='case-study-paragraph'>High Risk + High Engagement</p>
-<p class='case-study-paragraph'>The patient is actively participating but may still require monitoring.</p>
-<p class='case-study-paragraph'>High Risk + Low Engagement</p>
-<p class='case-study-paragraph'>Potentially a high-priority patient.</p>
-<p class='case-study-paragraph'>Low Risk + High Engagement</p>
-<p class='case-study-paragraph'>A healthier engagement pattern.</p>
-<p class='case-study-paragraph'>No Risk + Not Engaged</p>
-<p class='case-study-paragraph'>May require a different type of outreach.</p>
-<p class='case-study-paragraph'>The interface therefore allows clinicians to interpret patient status using multiple dimensions rather than a single score.</p>
-<p class='case-study-paragraph'>Patient Detail Experience</p>
-<p class='case-study-paragraph'>The patient detail page is designed to move from:</p>
-<p class='case-study-paragraph'>Overview → Context → Trends → History</p>
-<p class='case-study-paragraph'>A clinician can understand the individual patient without losing the broader context.</p>
-<p class='case-study-paragraph'>Relevant information can include:</p>
-<p class='case-study-paragraph'>Risk</p>
-<p class='case-study-paragraph'>Engagement</p>
-<p class='case-study-paragraph'>Attendance</p>
-<p class='case-study-paragraph'>Services</p>
-<p class='case-study-paragraph'>Programs</p>
-<p class='case-study-paragraph'>Performance</p>
-<p class='case-study-paragraph'>Historical data</p>
-<p class='case-study-paragraph'>The design direction is therefore closer to a clinical intelligence profile than a conventional patient record.</p>
-<p class='case-study-paragraph'>Analytics & Insights</p>
-<p class='case-study-paragraph'>The Insights area expands the perspective from individual patients to the entire organization.</p>
-<p class='case-study-paragraph'>Important analytical views include:</p>
-<p class='case-study-paragraph'>Patient Caseload by Engagement</p>
-<p class='case-study-paragraph'>Shows how patients are distributed across engagement levels.</p>
-<p class='case-study-paragraph'>Therapist Caseload by Engagement Score</p>
-<p class='case-study-paragraph'>Helps managers understand caseload performance across therapists.</p>
-<p class='case-study-paragraph'>Average Weekly Engagement</p>
-<p class='case-study-paragraph'>Provides an overall view of patient engagement.</p>
-<p class='case-study-paragraph'>Weekly Engagement by Program</p>
-<p class='case-study-paragraph'>Allows comparison between programs.</p>
-<p class='case-study-paragraph'>Weekly Engagement by Therapist</p>
-<p class='case-study-paragraph'>Shows performance patterns across care teams.</p>
-<p class='case-study-paragraph'>Why Multiple Levels of Analytics Matter</p>
-<p class='case-study-paragraph'>The platform operates at three different levels:</p>
-<p class='case-study-paragraph'>Level 01 — Patient</p>
-<p class='case-study-paragraph'>What is happening with this patient?</p>
-<p class='case-study-paragraph'>Level 02 — Care Team</p>
-<p class='case-study-paragraph'>How is my therapist/team performing?</p>
-<p class='case-study-paragraph'>Level 03 — Organization</p>
-<p class='case-study-paragraph'>How is the clinic/program performing?</p>
-<p class='case-study-paragraph'>This creates a scalable information architecture.</p>
-<p class='case-study-paragraph'>From Patient Data to Organizational Intelligence</p>
-<p class='case-study-paragraph'>The product can be understood as a pyramid:</p>
-<p class='case-study-paragraph'>Organization</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Programs / Locations</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Therapists</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Patients</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Services / Engagement / Attendance</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Raw Data</p>
-<p class='case-study-paragraph'>Realize turns the lower-level data into higher-level insights.</p>
-<p class='case-study-paragraph'>Data Visualization Strategy</p>
-<p class='case-study-paragraph'>The interface uses visualizations to reduce cognitive load.</p>
-<p class='case-study-paragraph'>Instead of asking users to interpret long tables, charts provide patterns at a glance.</p>
-<p class='case-study-paragraph'>The design uses:</p>
-<p class='case-study-paragraph'>Bar charts</p>
-<p class='case-study-paragraph'>Line charts</p>
-<p class='case-study-paragraph'>Donut charts</p>
-<p class='case-study-paragraph'>Progress indicators</p>
-<p class='case-study-paragraph'>Status labels</p>
-<p class='case-study-paragraph'>Data tables</p>
-<p class='case-study-paragraph'>Each visualization represents a different analytical question.</p>
-<p class='case-study-paragraph'>Why Charts Are Important Here</p>
-<p class='case-study-paragraph'>In a clinical environment, users often need to identify change, not just a static value.</p>
-<p class='case-study-paragraph'>For example:</p>
-<p class='case-study-paragraph'>Weekly Engagement = 8 hours</p>
-<p class='case-study-paragraph'>is useful.</p>
-<p class='case-study-paragraph'>But:</p>
-<p class='case-study-paragraph'>8 → 7 → 5 → 3 hours over four weeks</p>
-<p class='case-study-paragraph'>is much more actionable.</p>
-<p class='case-study-paragraph'>Trend visualization therefore helps clinicians identify deterioration or improvement.</p>
-<p class='case-study-paragraph'>Information Hierarchy</p>
-<p class='case-study-paragraph'>The interface follows a clear hierarchy:</p>
-<p class='case-study-paragraph'>Primary</p>
-<p class='case-study-paragraph'>Patient status + risk + engagement</p>
-<p class='case-study-paragraph'>Secondary</p>
-<p class='case-study-paragraph'>Performance + trends</p>
-<p class='case-study-paragraph'>Tertiary</p>
-<p class='case-study-paragraph'>Detailed records + historical information</p>
-<p class='case-study-paragraph'>This prevents every data point from competing for attention.</p>
-<p class='case-study-paragraph'>Visual Design</p>
-<p class='case-study-paragraph'>The visual language shown in the project is deliberately clean and clinical.</p>
-<p class='case-study-paragraph'>The system uses:</p>
-<p class='case-study-paragraph'>White surfaces</p>
-<p class='case-study-paragraph'>Soft blue backgrounds</p>
-<p class='case-study-paragraph'>Cyan/teal accents</p>
-<p class='case-study-paragraph'>Dark navy typography</p>
-<p class='case-study-paragraph'>Rounded cards</p>
-<p class='case-study-paragraph'>Subtle gradients</p>
-<p class='case-study-paragraph'>Clear data visualization</p>
-<p class='case-study-paragraph'>Compact status indicators</p>
-<p class='case-study-paragraph'>The visual identity balances two opposing needs:</p>
-<p class='case-study-paragraph'>Clinical credibility</p>
-<p class='case-study-paragraph'>and</p>
-<p class='case-study-paragraph'>Modern technology.</p>
-<p class='case-study-paragraph'>Brand Identity</p>
-<p class='case-study-paragraph'>The Realize identity uses a recognizable blue/cyan visual language.</p>
-<p class='case-study-paragraph'>The logo combines:</p>
-<p class='case-study-paragraph'>A circular/abstract mark</p>
-<p class='case-study-paragraph'>Strong blue gradient</p>
-<p class='case-study-paragraph'>Clean wordmark</p>
-<p class='case-study-paragraph'>The identity feels appropriate for a healthcare intelligence platform without becoming visually heavy or overly institutional.</p>
-<p class='case-study-paragraph'>Why the Design Is Not Overly Clinical</p>
-<p class='case-study-paragraph'>A traditional healthcare product can easily become:</p>
-<p class='case-study-paragraph'>Dense</p>
-<p class='case-study-paragraph'>Grey</p>
-<p class='case-study-paragraph'>Form-heavy</p>
-<p class='case-study-paragraph'>Table-heavy</p>
-<p class='case-study-paragraph'>Difficult to scan</p>
-<p class='case-study-paragraph'>Realize instead uses:</p>
-<p class='case-study-paragraph'>Whitespace + Color Coding + Cards + Visualization</p>
-<p class='case-study-paragraph'>to make the experience feel more like a modern SaaS product.</p>
-<p class='case-study-paragraph'>Component System</p>
-<p class='case-study-paragraph'>The design showcase demonstrates a reusable component language.</p>
-<p class='case-study-paragraph'>Visible UI elements include:</p>
-<p class='case-study-paragraph'>Buttons</p>
-<p class='case-study-paragraph'>Inputs</p>
-<p class='case-study-paragraph'>Dropdowns</p>
-<p class='case-study-paragraph'>Tabs</p>
-<p class='case-study-paragraph'>Status badges</p>
-<p class='case-study-paragraph'>Toggles</p>
-<p class='case-study-paragraph'>Tables</p>
-<p class='case-study-paragraph'>Cards</p>
-<p class='case-study-paragraph'>Alerts</p>
-<p class='case-study-paragraph'>Navigation</p>
-<p class='case-study-paragraph'>Form elements</p>
-<p class='case-study-paragraph'>This suggests a scalable design system rather than isolated page designs.</p>
-<p class='case-study-paragraph'>Why the Component System Matters</p>
-<p class='case-study-paragraph'>Realize contains many complex workflows.</p>
-<p class='case-study-paragraph'>Without reusable components, the product can quickly become inconsistent.</p>
-<p class='case-study-paragraph'>A shared component system helps maintain:</p>
-<p class='case-study-paragraph'>Consistency → Speed → Scalability → Easier Development</p>
-<p class='case-study-paragraph'>This becomes especially important as more modules are added.</p>
-<p class='case-study-paragraph'>Responsive Product Presentation</p>
-<p class='case-study-paragraph'>The showcase demonstrates the product across multiple environments:</p>
-<p class='case-study-paragraph'>Laptop</p>
-<p class='case-study-paragraph'>Desktop monitor</p>
-<p class='case-study-paragraph'>Full-screen dashboard</p>
-<p class='case-study-paragraph'>Close-up UI compositions</p>
-<p class='case-study-paragraph'>This communicates that Realize is intended as a serious desktop clinical platform.</p>
-<p class='case-study-paragraph'>The hardware mockups also help transform abstract dashboard screens into a more tangible product experience.</p>
-<p class='case-study-paragraph'>Business Value</p>
-<p class='case-study-paragraph'>The platform can create business value by helping clinics:</p>
-<p class='case-study-paragraph'>Improve Visibility</p>
-<p class='case-study-paragraph'>Understand patient and program performance.</p>
-<p class='case-study-paragraph'>Identify Risk Earlier</p>
-<p class='case-study-paragraph'>Surface patients who require attention.</p>
-<p class='case-study-paragraph'>Improve Engagement</p>
-<p class='case-study-paragraph'>Recognize disengagement patterns.</p>
-<p class='case-study-paragraph'>Improve Operational Decisions</p>
-<p class='case-study-paragraph'>Compare programs, therapists, and locations.</p>
-<p class='case-study-paragraph'>Reduce Manual Analysis</p>
-<p class='case-study-paragraph'>Bring data into a centralized intelligence layer.</p>
-<p class='case-study-paragraph'>Support Revenue & Resource Decisions</p>
-<p class='case-study-paragraph'>Better visibility into engagement and service utilization can help organizations make more informed operational decisions.</p>
-<p class='case-study-paragraph'>Design Challenge</p>
-<p class='case-study-paragraph'>The biggest design challenge was:</p>
-<p class='case-study-paragraph'>How do you make a highly complex clinical data environment feel simple enough for a busy clinician to use every day?</p>
-<p class='case-study-paragraph'>The answer was not to remove complexity from the product.</p>
-<p class='case-study-paragraph'>It was to hide unnecessary complexity until it becomes relevant.</p>
-<p class='case-study-paragraph'>The UX Approach</p>
-<p class='case-study-paragraph'>Instead of:</p>
-<p class='case-study-paragraph'>Show everything → Let the user figure it out</p>
-<p class='case-study-paragraph'>the product follows:</p>
-<p class='case-study-paragraph'>Summarize → Highlight → Let the user investigate</p>
-<p class='case-study-paragraph'>This is a critical distinction.</p>
-<p class='case-study-paragraph'>Progressive Disclosure</p>
-<p class='case-study-paragraph'>The dashboard shows the summary.</p>
-<p class='case-study-paragraph'>The patient list shows the relevant records.</p>
-<p class='case-study-paragraph'>The patient detail page shows deeper context.</p>
-<p class='case-study-paragraph'>The analytics section provides organizational-level insights.</p>
-<p class='case-study-paragraph'>This creates progressive disclosure:</p>
-<p class='case-study-paragraph'>Overview → Detail → Deep Analysis</p>
-<p class='case-study-paragraph'>Before vs After</p>
-<p class='case-study-paragraph'>Before</p>
-<p class='case-study-paragraph'>Patient data scattered across systems.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Clinician searches for information.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Manually interprets patient status.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Uses multiple reports.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Difficult to identify priorities.</p>
-<p class='case-study-paragraph'>After</p>
-<p class='case-study-paragraph'>Centralized patient data.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Risk and engagement are surfaced.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Clinician sees priority patients.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Patient details provide context.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Analytics reveal trends.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Clinician can make a more informed decision.</p>
-<p class='case-study-paragraph'>Core Product Transformation</p>
-<p class='case-study-paragraph'>Realize transforms:</p>
-<p class='case-study-paragraph'>Data → Information</p>
-<p class='case-study-paragraph'>Information → Insight</p>
-<p class='case-study-paragraph'>Insight → Action</p>
-<p class='case-study-paragraph'>That is the core value of the product.</p>
-<p class='case-study-paragraph'>What I Focused on as a Product Designer</p>
-<p class='case-study-paragraph'>01 — Information Architecture</p>
-<p class='case-study-paragraph'>Organizing a complex healthcare ecosystem into understandable modules.</p>
-<p class='case-study-paragraph'>02 — Risk Prioritization</p>
-<p class='case-study-paragraph'>Making patient risk immediately visible.</p>
-<p class='case-study-paragraph'>03 — Engagement Tracking</p>
-<p class='case-study-paragraph'>Turning participation data into understandable signals.</p>
-<p class='case-study-paragraph'>04 — Data Visualization</p>
-<p class='case-study-paragraph'>Using charts to communicate trends instead of forcing users to interpret raw numbers.</p>
-<p class='case-study-paragraph'>05 — Clinical Workflows</p>
-<p class='case-study-paragraph'>Designing around the questions clinicians actually need answered.</p>
-<p class='case-study-paragraph'>06 — Scalable Design System</p>
-<p class='case-study-paragraph'>Creating reusable UI components for a growing healthcare platform.</p>
-<p class='case-study-paragraph'>07 — Decision Support</p>
-<p class='case-study-paragraph'>Making every major screen help the user answer a question or take an action.</p>
-<p class='case-study-paragraph'>Design Outcome</p>
-<p class='case-study-paragraph'>The result is a modern clinical intelligence experience that turns complex patient and operational data into a more understandable decision-making system.</p>
-<p class='case-study-paragraph'>Instead of forcing clinicians to navigate through disconnected information, Realize brings the most important signals forward:</p>
-<p class='case-study-paragraph'>Risk</p>
-<p class='case-study-paragraph'>Engagement</p>
-<p class='case-study-paragraph'>Performance</p>
-<p class='case-study-paragraph'>Trends</p>
-<p class='case-study-paragraph'>Patient Context</p>
-<p class='case-study-paragraph'>Program Insights</p>
-<p class='case-study-paragraph'>This allows the product to move from a traditional management system toward a more intelligent clinical workspace.</p>
-<p class='case-study-paragraph'>Key UX Decisions</p>
-<p class='case-study-paragraph'>From Data Storage → Data Intelligence</p>
-<p class='case-study-paragraph'>The platform isn't designed simply to store patient information.</p>
-<p class='case-study-paragraph'>It helps users interpret that information.</p>
-<p class='case-study-paragraph'>From Patient Lists → Patient Prioritization</p>
-<p class='case-study-paragraph'>A list tells the clinician who exists.</p>
-<p class='case-study-paragraph'>Risk and engagement help tell them who needs attention.</p>
-<p class='case-study-paragraph'>From Static Numbers → Trends</p>
-<p class='case-study-paragraph'>Charts allow users to understand change over time.</p>
-<p class='case-study-paragraph'>From Individual Patients → Organizational Insights</p>
-<p class='case-study-paragraph'>The system connects patient-level information with therapist, program, and organizational performance.</p>
-<p class='case-study-paragraph'>From Complex Healthcare Software → Modern SaaS Experience</p>
-<p class='case-study-paragraph'>A clean component system, visual hierarchy, whitespace, and modern data visualization make a complex clinical platform easier to navigate.</p>
-<p class='case-study-paragraph'>Final UX Journey</p>
-<p class='case-study-paragraph'>Dashboard</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Understand overall clinic performance</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Risk & Engagement</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Identify priority patients</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Patient Details</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Understand individual context</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Analytics</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Identify patterns and trends</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Action</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Make better-informed clinical and operational decisions</p>
-<p class='case-study-paragraph'>Key Takeaways</p>
-<p class='case-study-paragraph'>Complex healthcare data needs hierarchy.</p>
-<p class='case-study-paragraph'>Showing everything at once creates cognitive overload.</p>
-<p class='case-study-paragraph'>Risk should be visible, not buried.</p>
-<p class='case-study-paragraph'>A clinician should quickly understand who needs attention.</p>
-<p class='case-study-paragraph'>Engagement is a critical behavioral signal.</p>
-<p class='case-study-paragraph'>It becomes much more valuable when combined with risk and patient context.</p>
-<p class='case-study-paragraph'>Analytics should answer questions.</p>
-<p class='case-study-paragraph'>Every chart should help users understand something they need to act on.</p>
-<p class='case-study-paragraph'>Good dashboards prioritize decisions, not decoration.</p>
-<p class='case-study-paragraph'>The goal isn't to create impressive charts.</p>
-<p class='case-study-paragraph'>The goal is to help users make better decisions faster.</p>
-<p class='case-study-paragraph'>A healthcare product can still feel modern.</p>
-<p class='case-study-paragraph'>Clinical credibility doesn't require a dense or outdated interface.</p>
-<p class='case-study-paragraph'>Design systems are essential for complex healthcare products.</p>
-<p class='case-study-paragraph'>A reusable component architecture allows the product to grow without sacrificing consistency.</p>
-<p class='case-study-paragraph'>Section 01 — Hero</p>
-<p class='case-study-paragraph'>Keep the laptop/dashboard mockup large.</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Turning clinical data into actionable insight.”</p>
-<p class='case-study-paragraph'>Supporting copy:</p>
-<p class='case-study-paragraph'>“Realize is a clinical intelligence platform designed to help behavioral health teams understand patient risk, engagement, performance, and trends from one centralized workspace.”</p>
-<p class='case-study-paragraph'>Project metadata:</p>
-<p class='case-study-paragraph'>Product: Realize</p>
-<p class='case-study-paragraph'>Category: Healthcare / Clinical Intelligence</p>
-<p class='case-study-paragraph'>Platform: Web Application</p>
-<p class='case-study-paragraph'>Focus: Patient intelligence, analytics & clinical workflows</p>
-<p class='case-study-paragraph'>Section 02 — The Challenge</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“The problem wasn't a lack of data. It was a lack of clarity.”</p>
-<p class='case-study-paragraph'>On the other side show:</p>
-<p class='case-study-paragraph'>Scattered Data</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Manual Analysis</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Hidden Risk</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Slow Decisions</p>
-<p class='case-study-paragraph'>Then explain the business problem.</p>
-<p class='case-study-paragraph'>Section 03 — The Design Question</p>
-<p class='case-study-paragraph'>Make this a large statement:</p>
-<p class='case-study-paragraph'>“How might we help busy clinical teams understand which patients need attention—and why?”</p>
-<p class='case-study-paragraph'>Use a minimal composition.</p>
-<p class='case-study-paragraph'>This should become the conceptual centerpiece of the case study.</p>
-<p class='case-study-paragraph'>Create the primary framework:</p>
-<p class='case-study-paragraph'>Overview → Prioritize → Investigate → Understand → Act</p>
-<p class='case-study-paragraph'>Use five connected stages.</p>
-<p class='case-study-paragraph'>Under each stage, add one sentence.</p>
-<p class='case-study-paragraph'>Section 05 — Risk & Engagement</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Make the most important signals impossible to miss.”</p>
-<p class='case-study-paragraph'>Show:</p>
-<p class='case-study-paragraph'>Risk</p>
-<p class='case-study-paragraph'>No Risk / Low / Medium / High / Critical</p>
-<p class='case-study-paragraph'>and:</p>
-<p class='case-study-paragraph'>Engagement</p>
-<p class='case-study-paragraph'>Not Engaged / Low / Medium / High</p>
-<p class='case-study-paragraph'>Explain why these two dimensions are central to the product.</p>
-<p class='case-study-paragraph'>Section 06 — Patient Intelligence</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Turn the patient list into a decision-making surface.”</p>
-<p class='case-study-paragraph'>Highlight:</p>
-<p class='case-study-paragraph'>Risk</p>
-<p class='case-study-paragraph'>Engagement</p>
-<p class='case-study-paragraph'>Program</p>
-<p class='case-study-paragraph'>Location</p>
-<p class='case-study-paragraph'>Hours</p>
-<p class='case-study-paragraph'>Services</p>
-<p class='case-study-paragraph'>Admission</p>
-<p class='case-study-paragraph'>Discharge</p>
-<p class='case-study-paragraph'>Use annotation lines pointing to the relevant UI.</p>
-<p class='case-study-paragraph'>Section 07 — Patient Detail</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“From a patient record to a complete patient story.”</p>
-<p class='case-study-paragraph'>Show:</p>
-<p class='case-study-paragraph'>Status → Performance → Trends → History</p>
-<p class='case-study-paragraph'>Explain how the user can move from summary to context.</p>
-<p class='case-study-paragraph'>Section 08 — Analytics</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Help clinicians see patterns—not just numbers.”</p>
-<p class='case-study-paragraph'>Show the charts as individual crops.</p>
-<p class='case-study-paragraph'>Label them:</p>
-<p class='case-study-paragraph'>Engagement Trend</p>
-<p class='case-study-paragraph'>Program Performance</p>
-<p class='case-study-paragraph'>Therapist Performance</p>
-<p class='case-study-paragraph'>Patient Distribution</p>
-<p class='case-study-paragraph'>Risk Overview</p>
-<p class='case-study-paragraph'>Section 09 — Multi-Level Intelligence</p>
-<p class='case-study-paragraph'>Create a visual hierarchy:</p>
-<p class='case-study-paragraph'>Organization</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Programs</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Therapists</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Patients</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>Services / Engagement</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“One system. Multiple levels of insight.”</p>
-<p class='case-study-paragraph'>This visually explains the platform architecture.</p>
-<p class='case-study-paragraph'>Section 10 — Design System</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“A scalable system for a complex product.”</p>
-<p class='case-study-paragraph'>Show:</p>
-<p class='case-study-paragraph'>Inputs</p>
-<p class='case-study-paragraph'>Buttons</p>
-<p class='case-study-paragraph'>Tabs</p>
-<p class='case-study-paragraph'>Dropdowns</p>
-<p class='case-study-paragraph'>Badges</p>
-<p class='case-study-paragraph'>Toggles</p>
-<p class='case-study-paragraph'>Tables</p>
-<p class='case-study-paragraph'>Cards</p>
-<p class='case-study-paragraph'>Explain that reusable components create consistency across a growing healthcare platform.</p>
-<p class='case-study-paragraph'>Section 11 — Visual Language</p>
-<p class='case-study-paragraph'>Show:</p>
-<p class='case-study-paragraph'>Realize Logo + Typography + Colors + UI</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Clinical clarity with a modern SaaS language.”</p>
-<p class='case-study-paragraph'>Explain the balance between:</p>
-<p class='case-study-paragraph'>Healthcare credibility</p>
-<p class='case-study-paragraph'>and</p>
-<p class='case-study-paragraph'>Modern product usability</p>
-<p class='case-study-paragraph'>Section 12 — Product in Context</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Designed for the way clinical teams actually work.”</p>
-<p class='case-study-paragraph'>Show multiple device environments.</p>
-<p class='case-study-paragraph'>Avoid making this section purely decorative.</p>
-<p class='case-study-paragraph'>Add short captions explaining what each screen represents.</p>
-<p class='case-study-paragraph'>Section 13 — Before / After</p>
-<p class='case-study-paragraph'>Before</p>
-<p class='case-study-paragraph'>Scattered data</p>
-<p class='case-study-paragraph'>Manual analysis</p>
-<p class='case-study-paragraph'>Hidden risk</p>
-<p class='case-study-paragraph'>Multiple reports</p>
-<p class='case-study-paragraph'>Slow decisions</p>
-<p class='case-study-paragraph'>After</p>
-<p class='case-study-paragraph'>Centralized intelligence</p>
-<p class='case-study-paragraph'>Visual prioritization</p>
-<p class='case-study-paragraph'>Risk visibility</p>
-<p class='case-study-paragraph'>Connected analytics</p>
-<p class='case-study-paragraph'>Faster decisions</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“From managing data to understanding patients.”</p>
-<p class='case-study-paragraph'>Section 14 — UX Outcome</p>
-<p class='case-study-paragraph'>Create the transformation:</p>
-<p class='case-study-paragraph'>DATA</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>INFORMATION</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>INSIGHT</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'>ACTION</p>
-<p class='case-study-paragraph'>Use a large typographic composition.</p>
-<p class='case-study-paragraph'>Supporting text:</p>
-<p class='case-study-paragraph'>“Realize transforms complex clinical data into a clearer decision-making experience for care teams and clinic leaders.”</p>
-<p class='case-study-paragraph'>Section 15 — Final Showcase</p>
-<p class='case-study-paragraph'>Create a visual montage using:</p>
-<p class='case-study-paragraph'>Hero dashboard</p>
-<p class='case-study-paragraph'>Analytics dashboard</p>
-<p class='case-study-paragraph'>Patient UI</p>
-<p class='case-study-paragraph'>Component system</p>
-<p class='case-study-paragraph'>Desktop mockup</p>
-<p class='case-study-paragraph'>Patient insights</p>
-<p class='case-study-paragraph'>Data visualization</p>
-<p class='case-study-paragraph'>Use varied image sizes instead of a rigid grid.</p>
-<p class='case-study-paragraph'>Section 16 — Closing</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'>“Better visibility. Better decisions. Better care.”</p>
-<p class='case-study-paragraph'>Supporting copy:</p>
-<p class='case-study-paragraph'>“Realize brings patient intelligence, engagement, risk, and operational analytics into one modern clinical workspace.”</p>
-<p class='case-study-paragraph'>Hero</p>
-<p class='case-study-paragraph'>Problem</p>
-<p class='case-study-paragraph'>Risk & Engagement</p>
-<p class='case-study-paragraph'>Patient Intelligence</p>
-<p class='case-study-paragraph'>Patient Detail</p>
-<p class='case-study-paragraph'>Analytics</p>
-<p class='case-study-paragraph'>Design System</p>
-<p class='case-study-paragraph'>Branding</p>
-<p class='case-study-paragraph'>Product Context</p>
-<p class='case-study-paragraph'>Final Montage</p>
-<p class='case-study-paragraph'>Combine the strongest dashboard, patient, analytics, and component screenshots.</p>
-<p class='case-study-paragraph'>The overall case study should position Realize not as another healthcare dashboard, but as a clinical intelligence layer that transforms fragmented patient data into prioritized, understandable, and actionable insight.</p>
-    </div>
+      </div>
+    </section>
 
-    <!-- Visual Palette Showcase -->
-    <div class="case-study-divider"></div>
-    <div class="process-timeline-wrap">
-      <h2>Fonts & Colors Swatches</h2>
-      <div class="design-system-swatches">
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #00b0ff;"></div>
-          <span class="swatch-hex">#00b0ff</span>
-          <span class="swatch-name">Clinic Cyan</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #051b2c;"></div>
-          <span class="swatch-hex">#051b2c</span>
-          <span class="swatch-name">Deep Blue</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #01080e;"></div>
-          <span class="swatch-hex">#01080e</span>
-          <span class="swatch-name">Dark Sky</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #ffffff;"></div>
-          <span class="swatch-hex">#ffffff</span>
-          <span class="swatch-name">Neutral White</span>
-        </div>
+    <!-- 04 / PROCESS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">04 / PROCESS</div>
+        <h2 class="cs-display cs-sec-head__title">How I approached the problem</h2>
+        <p class="cs-sec-head__dek">The process is shown as a decision-making loop rather than a decorative five-step diagram.</p>
+      </div>
+      <div class="cs-process">
         
       </div>
-    </div>
+    </section>
+
+    <!-- 05 / KEY DECISIONS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">05 / KEY DECISIONS</div>
+        <h2 class="cs-display cs-sec-head__title">Design decisions with a reason</h2>
+        <p class="cs-sec-head__dek">Instead of listing deliverables, connect the interface back to the user or business problem it was meant to solve.</p>
+      </div>
+      <div class="cs-decisions">
+        
+        <div class="cs-decision">
+          <div class="cs-decision__num">01</div>
+          <h3 class="cs-decision__title">Put actionable risk near the patient list</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">02</div>
+          <h3 class="cs-decision__title">Separate overview from deeper insight</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">03</div>
+          <h3 class="cs-decision__title">Use charts to explain patient progress</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">04</div>
+          <h3 class="cs-decision__title">Keep data import understandable</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">05</div>
+          <h3 class="cs-decision__title">Design for future AI summaries without hiding source context</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 / VISUAL STORY -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">06 / VISUAL STORY</div>
+        <h2 class="cs-display cs-sec-head__title">Let the interface do the talking</h2>
+        <p class="cs-sec-head__dek">Large visuals keep the case study grounded in the actual work. Supporting visuals are used where the original showcase does not expose enough detail.</p>
+      </div>
+      <div class="cs-gallery">
+        <!-- Row 1: Large primary + Tall vertical -->
+        <div class="cs-showcase-row">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot large">
+              <img src="assets/cs11-shot1.jpg" alt="Clinical Analytics Dashboard & Real-Time Patient Donut Gauges" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>01</span> Clinical Analytics Dashboard & Real-Time Patient Donut Gauges</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot tall">
+              <img src="assets/cs11-shot2.jpg" alt="Healthcare Design System, Input Elements & Status Indicators" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>02</span> Healthcare Design System, Input Elements & Status Indicators</div>
+          </div>
+        </div>
+
+        <!-- Row 2: Two supporting screens -->
+        <div class="cs-showcase-row split-equal">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs11-shot3.jpg" alt="Clinical Workstation Environment & Patient Records Array" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>03</span> Clinical Workstation Environment & Patient Records Array</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs11-shot4.jpg" alt="Multi-Portal Clinical Screen Matrix & Telemetry Workflows" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>04</span> Multi-Portal Clinical Screen Matrix & Telemetry Workflows</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 / OUTCOME -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">07 / OUTCOME</div>
+        <h2 class="cs-display cs-sec-head__title">What the design delivers</h2>
+        <p class="cs-sec-head__dek">Close the story by showing the product value created by the design work — not just the screens delivered.</p>
+      </div>
+      <div class="cs-outcomes">
+        
+      </div>
+    </section>
+
+    <!-- NEXT PROJECT -->
+    <section class="cs-next">
+      <div class="cs-next__eyebrow">Next Project</div>
+      <div class="cs-next__grid">
+        <div>
+          <h2 class="cs-display cs-next__title">
+            <a href="case-study-12.html" class="cs-next__link">
+              CaRide <span class="cs-arrow">→</span>
+            </a>
+          </h2>
+          <p class="cs-next__sub">A simpler path from car discovery to checkout</p>
+        </div>
+        <a href="projects.html" class="cs-next__all-btn">All projects <span>↗</span></a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="cs-footer">
+      <span>© BAPPY ISLAM</span>
+      <span class="cs-footer__brand">11 / 13 — REALIZE</span>
+      <span>DHAKA <span aria-hidden="true">→</span> WORLDWIDE</span>
+    </footer>
+
   </main>
 
-  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
-<div class="contact-footer-wrap">
-<section class="sec contact-sec" id="contacts">
-  <div class="contact-sticky-stage">
-    <!-- Interactive Wood Hover Reveal Element -->
-    <div class="contact-wood-interactive">
-      <div class="wood-img-base"></div>
-      <div class="wood-img-grass"></div>
-    </div>
-
-    <div class="contact-layout">
-      
-      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
-      <div class="contact-left-col">
-        <header class="contact-head">
-          <h2 class="testimonials-title contact-heading">
-            <span class="testi-word">Get</span>
-            <span class="testi-word">in</span>
-            <span class="testi-word testi-word--orange">touch</span>
-          </h2>
-          
-          <div class="contact-details-list">
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Email:</span>
-              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Phone:</span>
-              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Address:</span>
-              <span class="contact-detail-value">Dhaka, Bangladesh</span>
-            </div>
-          </div>
-
-          <div class="contact-socials-wrap">
-            <span class="contact-socials-label">Follow us:</span>
-            <div class="contact-social-icons">
-              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
-                </svg>
-              </a>
-              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
-                </svg>
-              </a>
-              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </header>
-      </div>
-
-      <!-- Right Column: Interactive Form aligned to bottom-right -->
-      <div class="contact-right-col">
-        <form class="contact-form" id="contact-form">
-          <div class="contact-form-row">
-            <div class="contact-form-field">
-              <label for="contact-name" class="contact-form-label">Your Name</label>
-              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
-            </div>
-            <div class="contact-form-field">
-              <label for="contact-email" class="contact-form-label">Email address</label>
-              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
-            </div>
-          </div>
-
-          <div class="contact-form-field">
-            <label for="contact-message" class="contact-form-label">Message</label>
-            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
-          </div>
-
-          <button type="submit" class="contact-submit-btn">
-            <span>Send Message</span>
-          </button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<footer class="footer-sec">
-  <div class="contact-bottom-footer">
-    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
-    <div class="contact-mid-wrap" data-reveal>
-      <div class="contact-mid-row">
-        <div class="contact-tagline">
-          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
-            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
-              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-            </svg>
-          </a>
-          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
-        </div>
-
-        <nav class="contact-links-nav" aria-label="Footer navigation">
-          <div class="contact-links-group">
-            <span class="contact-links-title">Links</span>
-            <a href="#home" class="contact-nav-link">Home</a>
-            <a href="#about" class="contact-nav-link">About Me</a>
-            <a href="#process" class="contact-nav-link">Process</a>
-          </div>
-          <div class="contact-links-group">
-            <span class="contact-links-title">Explore</span>
-            <a href="#work" class="contact-nav-link">Projects</a>
-            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
-            <a href="#contacts" class="contact-nav-link">Contacts</a>
-          </div>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
-    <div class="contact-copyright-wrap">
-      <div class="contact-copyright-row">
-        <span class="contact-copy-left">© 2026 Bappy Islam</span>
-        <span class="contact-copy-right">All rights reserved.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
-  <div class="contact-designer-banner">
-    <div class="contact-wordmark wordmark" aria-hidden="true">
-      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
-    </div>
-  </div>
-</footer>
-</div> </div> <!-- End of contact-footer-wrap -->
+  <!-- Burger Script -->
   <script>
-  const nav = document.getElementById('nav');
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-
-  function updateNavState() {
-    if (!nav) return;
-    const isScrolled = window.scrollY > 40;
-    nav.classList.toggle('is-scrolled', isScrolled);
-  }
-
-  updateNavState();
-  window.addEventListener('scroll', updateNavState, { passive: true });
-
-  if (burger && menu) {
-    burger.addEventListener('click', () => {
-      const open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', !open);
-      burger.classList.toggle('is-open');
-      menu.classList.toggle('is-open');
-      if (!open) {
-        menu.removeAttribute('inert');
-        document.body.classList.add('no-scroll');
-      } else {
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
-      }
-    });
-
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        burger.setAttribute('aria-expanded', 'false');
-        burger.classList.remove('is-open');
-        menu.classList.remove('is-open');
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        const expanded = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', !expanded);
+        menu.toggleAttribute('inert', expanded);
+        menu.classList.toggle('is-open', !expanded);
+        document.body.classList.toggle('menu-open', !expanded);
       });
-    });
-  }
-
-  // Redirect hash links on subpages to landing page sections
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('#') && href !== '#') {
-      link.href = 'index.html' + href;
     }
-  });
-
-  // Initialize interactive wood hover reveal effect in the footer
-  function initContactWoodHover() {
-    const stage = document.querySelector('.contact-sticky-stage');
-    if (!stage) return;
-
-    const grass = stage.querySelector('.wood-img-grass');
-    if (!grass) return;
-
-    stage.addEventListener('pointermove', (e) => {
-      const rect = stage.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      grass.style.setProperty('--mouse-x', `${x}px`);
-      grass.style.setProperty('--mouse-y', `${y}px`);
-    });
-
-    stage.addEventListener('pointerleave', () => {
-      grass.style.setProperty('--mouse-x', '-1000px');
-      grass.style.setProperty('--mouse-y', '-1000px');
-    });
-  }
-
-  // Contact Form AJAX Submission (FormSubmit.co)
-  function initContactFormSubmit() {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const submitBtn = contactForm.querySelector('.contact-submit-btn');
-      if (!submitBtn) return;
-      
-      const originalText = submitBtn.innerHTML;
-      
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Sending...</span>';
-      
-      const formData = {
-        name: document.getElementById('contact-name').value,
-        email: document.getElementById('contact-email').value,
-        message: document.getElementById('contact-message').value,
-        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
-      };
-      
-      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success === 'true' || data.success === true) {
-          submitBtn.innerHTML = '<span>Message Sent!</span>';
-          submitBtn.style.background = '#2e7d32';
-          contactForm.reset();
-          setTimeout(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-          }, 4000);
-        } else {
-          throw new Error('Submission failed');
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        submitBtn.innerHTML = '<span>Error! Try again</span>';
-        submitBtn.style.background = '#c62828';
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
-        }, 4000);
-      });
-    });
-  }
-
-  initContactWoodHover();
-  initContactFormSubmit();
-</script>
+  </script>
 </body>
 </html>

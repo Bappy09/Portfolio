@@ -6,1550 +6,322 @@
   <title>Bappy — Sonder House Case Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case-study.css" />
   <style>
     :root {
-      --accent: #00b0ff;
-      --accent-rgb: 0, 176, 255;
-      --case-bg: radial-gradient(circle at top, #081a2b 0%, #02070c 100%);
-    }
-    body.case-study-page {
-      background: var(--case-bg);
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .case-wrapper {
-      max-width: 1440px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 80px var(--pad);
-      box-sizing: border-box;
-    }
-    
-    /* Hero Style */
-    .case-hero {
-      padding-top: 160px;
-      padding-bottom: 60px;
-      text-align: center;
-    }
-    .case-hero-tag {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      margin-bottom: 16px;
-      display: block;
-    }
-    .case-hero-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(36px, 5.5vw, 72px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-      color: var(--paper);
-    }
-    
-    /* Back Navigation */
-    .case-back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      font-family: var(--font-mono), monospace;
-      font-size: 13px;
-      font-weight: 500;
-      text-decoration: none;
-      margin-bottom: 32px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .case-back-link:hover {
-      transform: translateX(-4px);
-      opacity: 0.85;
-    }
-    
-    /* Image Showcase container */
-    .case-img-wrap {
-      width: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
-      margin-bottom: 80px;
-      aspect-ratio: 16 / 9.4;
-    }
-    .case-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-    
-    /* Info grid */
-    .case-info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 30px 0;
-      margin-bottom: 80px;
-    }
-    .case-info-item span {
-      display: block;
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.40);
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-    }
-    .case-info-item p {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--paper);
-      margin: 0;
-    }
-    
-    /* Overview Split (Image 1, 3, 5 style) */
-    .overview-sec {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 60px;
-      margin-bottom: 80px;
-      align-items: start;
-    }
-    .overview-text h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(28px, 3.5vw, 42px);
-      font-weight: 600;
-      margin: 0 0 24px 0;
-      color: var(--paper);
-    }
-    .overview-text p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.75);
-      margin-bottom: 20px;
-    }
-    
-    /* Meta tags card */
-    .meta-tags-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .meta-tags-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-      color: #ffffff;
-      border-left: 2px solid var(--accent);
-      padding-left: 10px;
-    }
-    .meta-tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .meta-tag-list:last-child {
-      margin-bottom: 0;
-    }
-    .meta-tag {
-      background: rgba(var(--accent-rgb), 0.08);
-      border: 1px solid rgba(var(--accent-rgb), 0.15);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--paper);
-      font-family: var(--font-mono), monospace;
-    }
-    
-    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
-    .prob-sol-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin: 40px 0 80px 0;
-    }
-    .prob-card {
-      background: rgba(255, 77, 77, 0.01);
-      border: 1px solid rgba(255, 77, 77, 0.08);
-      border-left: 4px solid #ff4d4d;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .sol-card {
-      background: rgba(0, 230, 118, 0.01);
-      border: 1px solid rgba(0, 230, 118, 0.08);
-      border-left: 4px solid #00e676;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .prob-sol-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 16px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-    .prob-sol-list {
-      padding-left: 18px;
-      margin: 0;
-    }
-    .prob-sol-list li {
-      font-size: 14px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 12px;
-    }
-    
-    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
-    .process-timeline-wrap {
-      margin-bottom: 80px;
-    }
-    .process-timeline-wrap h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 30px;
-    }
-    .process-timeline {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-    }
-    .process-card {
-      background: rgba(255, 255, 255, 0.01);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 12px;
-      padding: 20px;
-      box-sizing: border-box;
-      transition: border-color 0.3s ease;
-    }
-    .process-card:hover {
-      border-color: rgba(var(--accent-rgb), 0.3);
-    }
-    .process-num {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .process-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #ffffff;
-      font-family: 'Clash Display', sans-serif;
-    }
-    .process-desc {
-      font-size: 12px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.50);
-    }
-    
-    /* General content sections */
-    .case-study-sec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 80px 0 24px 0;
-      border-left: 3px solid var(--accent);
-      padding-left: 16px;
-    }
-    .case-study-subsec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 48px 0 18px 0;
-    }
-    .case-study-subsubsec-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 24px 0 12px 0;
-    }
-    .case-study-paragraph {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 24px;
-    }
-    .case-study-divider {
-      border: 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      margin: 60px 0;
-    }
-    .case-study-list {
-      margin: 0 0 24px 0;
-      padding-left: 20px;
-    }
-    .case-study-list li {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 8px;
-    }
-    
-    /* Visual Design System Swatches (Image 4 style) */
-    .design-system-swatches {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    .color-swatch {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 12px;
-      width: 130px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-    .swatch-preview {
-      width: 100%;
-      height: 50px;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .swatch-hex {
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      font-weight: 500;
-      color: #ffffff;
-      display: block;
-    }
-    .swatch-name {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.40);
-      margin-top: 2px;
-      display: block;
-    }
-    
-    /* Features Grid */
-    .case-study-features-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-    }
-    .case-study-feature-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 24px;
-      border-radius: 12px;
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-    .case-study-feature-card:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-    .case-study-feature-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 0 0 8px 0;
-    }
-    .case-study-feature-desc {
-      font-size: 13px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.55);
-      margin: 0;
-    }
-    
-    @media (max-width: 960px) {
-      .overview-sec {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .prob-sol-split {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .process-timeline {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .case-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      .case-study-features-list {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .case-img-wrap {
-        aspect-ratio: 4 / 3;
-        margin-bottom: 60px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .case-info-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+      --accent: #6D7E9A;
+      --accent-rgb: 109, 126, 154;
     }
   </style>
 </head>
 <body class="case-study-page">
 
   <!-- ══ NAV ═══════════════════════════════════════════════════ -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="nav__brand" href="#home" aria-label="Bappy — home">
-      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
-        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-      </svg>
-    </a>
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="index.html#home" aria-label="Bappy — home">
+        <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+          <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+          <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+          <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+        </svg>
+      </a>
 
-    <nav class="nav__links" id="nav-links">
-      <a href="#home" class="is-active">Home</a>
-      <a href="#work">Projects</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contacts">Contacts</a>
+      <nav class="nav__links" id="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="projects.html" class="is-active">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#testimonials">Reviews</a>
+        <a href="index.html#contacts">Contacts</a>
+      </nav>
+
+      <div class="nav__status-wrapper" id="nav-status">
+        <a class="status-pill" href="index.html#contacts">
+          <span class="beacon" aria-hidden="true">
+            <span class="beacon__dot"></span>
+            <span class="beacon__ring"></span>
+          </span>
+          <span class="status-pill__text">Available to work</span>
+        </a>
+      </div>
+
+      <div class="nav__actions">
+        <a class="btn-talk" href="index.html#contacts" id="btn-talk">
+          <span>Let's talk</span>
+        </a>
+
+        <button class="burger" id="burger" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+  <div class="menu" id="menu" inert>
+    <nav class="menu__list">
+      <a href="index.html#home"><i>01</i>Home</a>
+      <a href="index.html#about"><i>02</i>About</a>
+      <a href="projects.html"><i>03</i>Projects</a>
+      <a href="index.html#testimonials"><i>04</i>Reviews</a>
+      <a href="index.html#contacts"><i>05</i>Contacts</a>
     </nav>
-
-    <div class="nav__status-wrapper" id="nav-status">
-      <a class="status-pill" href="#contacts">
-        <span class="beacon" aria-hidden="true">
-          <span class="beacon__dot"></span>
-          <span class="beacon__ring"></span>
-        </span>
-        <span class="status-pill__text">Available to work</span>
-      </a>
-    </div>
-
-    <div class="nav__actions">
-      <a class="btn-talk" href="#contacts" id="btn-talk">
-        <span>Let's talk</span>
-      </a>
-
-      <button class="burger" id="burger" type="button"
-              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
+    <div class="menu__foot">
+      <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+      <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
     </div>
   </div>
-</header>
 
-<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
-<div class="menu" id="menu" inert>
-  <nav class="menu__list">
-    <a href="#home"><i>01</i>Home</a>
-    <a href="#about"><i>02</i>About</a>
-    <a href="#work"><i>03</i>Projects</a>
-    <a href="#testimonials"><i>04</i>Reviews</a>
-    <a href="#contacts"><i>05</i>Contacts</a>
-  </nav>
-  <div class="menu__foot">
-    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
-    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
-  </div>
-</div>
+  <!-- ══ MAIN CONTENT WRAPPER ══════════════════════════════════ -->
+  <main class="cs-wrapper">
 
-  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
-  <main class="case-wrapper">
-    <div class="case-hero">
-      <a href="projects.html" class="case-back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        Back to Selected Works
-      </a>
-      <span class="case-hero-tag">UX Case Study</span>
-      <h1 class="case-hero-title">Sonder House</h1>
-    </div>
-    
-    <!-- Info Grid -->
-    <div class="case-info-grid">
-      <div class="case-info-item">
-        <span>Role</span>
-        <p>Visual & Brand Designer</p>
+    <!-- HERO -->
+    <section class="cs-hero">
+      <div class="cs-hero__top">
+        <a href="projects.html" class="cs-hero__back">
+          <span aria-hidden="true">←</span> Back to projects
+        </a>
+        <span class="cs-hero__counter">04 / 13</span>
       </div>
-      <div class="case-info-item">
-        <span>Timeline</span>
-        <p>2 Months (2026)</p>
+
+      <span class="cs-hero__kicker">Real Estate · Web Experience</span>
+      <h1 class="cs-display cs-hero__title">Modern living, presented with confidence</h1>
+      <p class="cs-hero__dek">Sonder House is a modern real-estate web experience built around property discovery and the emotional appeal of contemporary living. The design uses editorial composition, large imagery, and clear calls to action to make the property story feel premium without becoming difficult to navigate.</p>
+
+      <!-- Primary Showcase Frame -->
+      <div class="cs-hero__image-wrap">
+        <img src="assets/cs4-hero.jpg" alt="Sonder House primary showcase" loading="eager" />
       </div>
-      <div class="case-info-item">
-        <span>Deliverables</span>
-        <p>Editorial Web UI, Custom Layouts, Visual Assets</p>
-      </div>
-      <div class="case-info-item">
-        <span>Team</span>
-        <p>1 Designer, 1 Web Developer</p>
-      </div>
-    </div>
 
-    <!-- Image Showcase -->
-    <div class="case-img-wrap">
-      <img src="assets/showcase-4.png" alt="Sonder House Showcase" class="case-img" />
-    </div>
-
-    <!-- Overview Split Section -->
-    <div class="overview-sec">
-      <div class="overview-text">
-        <h2>About Sonder House</h2>
-        <p>Sonder House is a modern residential property experience designed to showcase contemporary homes and apartments while turning property browsing into an aspirational lifestyle experience.
-
-
-
-The website is not designed simply as a property listing platform.
-
-
-
-Its primary role is to communicate three things immediately:
-
-
-
-**What the property looks like.**
-
-**What kind of lifestyle it offers.**
-
-**Why someone should explore it further.**
-
-
-
-The experience combines high-impact architectural imagery, minimal navigation, strong typography, property information, layouts, location details, and social proof to create a premium first impression.
-
-
-
----</p>
-      </div>
-      <div class="meta-tags-card">
-        <div class="meta-tags-title">Project Context</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Creative Direction</span>
-<span class="meta-tag">Editorial Design</span>
-<span class="meta-tag">Layout Systems</span>
-<span class="meta-tag">Brand Strategy</span>
+      <!-- Metadata Grid -->
+      <div class="cs-meta-grid">
+        
+        <div class="cs-meta-item">
+          <label>Role</label>
+          <strong>Product Designer</strong>
         </div>
-        <div class="meta-tags-title">Tools Used</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Figma</span>
-<span class="meta-tag">Photoshop</span>
-<span class="meta-tag">InDesign</span>
-<span class="meta-tag">Slack</span>
+        <div class="cs-meta-item">
+          <label>Platform</label>
+          <strong>Responsive Web</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Focus</label>
+          <strong>Real Estate · Web Experience</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Scope</label>
+          <strong>UX/UI · Visual Design · Responsive Layout</strong>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Problem vs Solution Visual Box -->
-    <div class="prob-sol-split">
-      <div class="prob-card">
-        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
-        <ul class="prob-sol-list">
-          <li>Real estate listings look like generic databases and lack premium appeal.</li>
-<li>Standard floor plans make it difficult to visualize the lifestyle of a home.</li>
-<li>Asking for direct sales info early reduces premium buyer trust.</li>
-        </ul>
+    <!-- 01 / CONTEXT -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">01 / CONTEXT</div>
+        <h2 class="cs-display cs-sec-head__title">Why this product exists</h2>
+        <p class="cs-sec-head__dek">Real-estate websites often overload users with listings and specifications. Sonder House needed a more focused story that creates desire while keeping property discovery and conversion paths obvious.</p>
       </div>
-      <div class="sol-card">
-        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
-        <ul class="prob-sol-list">
-          <li>Designed an image-first editorial layout letting architecture tell the story.</li>
-<li>Connected emotional content directly to 'View Layouts' interaction paths.</li>
-<li>Integrated minimal social proof reviews subtly to establish credibility early.</li>
-        </ul>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Who it is for</h3>
+          <p>Prospective buyers and renters exploring modern residential properties, especially users who want to understand the feeling, features, and practical details of a place before taking the next step.</p>
+        </div>
+        <div class="cs-panel accent-edge">
+          <h3>The design challenge</h3>
+          <p>Sonder House is a modern real-estate web experience built around property discovery and the emotional appeal of contemporary living. The design uses editorial composition, large imagery, and clear calls to action to make the property story feel premium without becoming difficult to navigate.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Process Flow Grid -->
-    <div class="process-timeline-wrap">
-      <h2>Design Process</h2>
-      <div class="process-timeline">
-        
-        <div class="process-card">
-          <span class="process-num">Step 01</span>
-          <div class="process-title">Empathize</div>
-          <div class="process-desc">Interviewing premium home buyers on real estate website fatigue.</div>
+    <!-- 02 / PROBLEM -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">02 / PROBLEM</div>
+        <h2 class="cs-display cs-sec-head__title">What needed to change</h2>
+        <p class="cs-sec-head__dek">The design work starts by turning broad business friction into a small set of user-facing problems that can be prioritized and solved.</p>
+      </div>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Problem statement</h3>
+          <ul>
+            <li>Property value can be lost in generic listing layouts.</li>
+<li>Users need both emotional and practical information.</li>
+<li>Large imagery can dominate if hierarchy is not controlled.</li>
+<li>The path from discovery to inquiry should remain obvious.</li>
+
+          </ul>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 02</span>
-          <div class="process-title">Define</div>
-          <div class="process-desc">Understanding that luxury purchases require emotional connection, not just lists.</div>
+        <div class="cs-panel accent-edge">
+          <h3>Design hypothesis</h3>
+          <p>Use an editorial landing experience that combines cinematic property imagery with concise copy, strong section hierarchy, and focused calls to action. The interface tells the story of the home first, then supports exploration with practical detail.</p>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 03</span>
-          <div class="process-title">Ideate</div>
-          <div class="process-desc">Placing full-bleed architectural photography at the core.</div>
-        </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 04</span>
-          <div class="process-title">Design</div>
-          <div class="process-desc">Designing editorial asymmetric grids and overlay brand typography.</div>
-        </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 05</span>
-          <div class="process-title">Test</div>
-          <div class="process-desc">Iterating with real estate developers on social proof signals.</div>
-        </div>
+      </div>
+    </section>
+
+    <!-- 03 / SCOPE -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">03 / SCOPE</div>
+        <h2 class="cs-display cs-sec-head__title">What the product needed to do</h2>
+        <p class="cs-sec-head__dek">A case study should make the product legible before showing every screen. These are the major capabilities that shaped the information architecture.</p>
+      </div>
+      <div class="cs-metric-row">
         
       </div>
-    </div>
+      <div class="cs-chips-wrap">
+        <span class="cs-chip">Property hero</span>
+<span class="cs-chip">Lifestyle storytelling</span>
+<span class="cs-chip">Property highlights</span>
+<span class="cs-chip">Gallery / media</span>
+<span class="cs-chip">Location context</span>
+<span class="cs-chip">Inquiry / CTA flow</span>
 
-    <!-- Dynamic Content Area -->
-    <div class="case-content">
-      <h3 class='case-study-subsec-title'>Where tranquility meets modern living</h3>
-<p class='case-study-paragraph'>Sonder House is a modern residential property experience designed to showcase contemporary homes and apartments while turning property browsing into an aspirational lifestyle experience.</p>
-<p class='case-study-paragraph'>The website is not designed simply as a property listing platform.</p>
-<p class='case-study-paragraph'>Its primary role is to communicate three things immediately:</p>
-<p class='case-study-paragraph'><strong>What the property looks like.</strong></p>
-<p class='case-study-paragraph'><strong>What kind of lifestyle it offers.</strong></p>
-<p class='case-study-paragraph'><strong>Why someone should explore it further.</strong></p>
-<p class='case-study-paragraph'>The experience combines high-impact architectural imagery, minimal navigation, strong typography, property information, layouts, location details, and social proof to create a premium first impression.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Why Sonder House Exists</h2>
-<p class='case-study-paragraph'>Buying or exploring a premium property is rarely based on specifications alone.</p>
-<p class='case-study-paragraph'>Potential buyers want to imagine:</p>
-<ul class='case-study-list'>
-  <li>What their home could look like</li>
-</ul>
-<ul class='case-study-list'>
-  <li>What the surrounding environment feels like</li>
-</ul>
-<ul class='case-study-list'>
-  <li>How peaceful the location is</li>
-</ul>
-<ul class='case-study-list'>
-  <li>How close the property is to the city</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Whether the architecture matches their lifestyle</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Whether the developer feels trustworthy</li>
-</ul>
-<p class='case-study-paragraph'>Traditional real-estate websites often focus heavily on listings, specifications, and functional information.</p>
-<p class='case-study-paragraph'>Sonder House takes a more emotional approach.</p>
-<p class='case-study-paragraph'>The website first sells the <strong>feeling of living there</strong>, and then gives users the information they need to explore the property.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>The Business Problem</h2>
-<p class='case-study-paragraph'>The core business challenge is <strong>turning a property into a compelling digital proposition</strong>.</p>
-<p class='case-study-paragraph'>A residential developer needs more than a beautiful building.</p>
-<p class='case-study-paragraph'>The website has to communicate:</p>
-<h4 class='case-study-subsubsec-title'>Trust</h4>
-<p class='case-study-paragraph'>Potential buyers need confidence that they are dealing with a credible property developer.</p>
-<h4 class='case-study-subsubsec-title'>Differentiation</h4>
-<p class='case-study-paragraph'>Modern residential properties can look similar when presented through standard listing layouts.</p>
-<h4 class='case-study-subsubsec-title'>Emotional Value</h4>
-<p class='case-study-paragraph'>A home is a lifestyle purchase. The website needs to communicate how the property feels, not only what it contains.</p>
-<h4 class='case-study-subsubsec-title'>Information Accessibility</h4>
-<p class='case-study-paragraph'>Once users become interested, they need easy access to:</p>
-<ul class='case-study-list'>
-  <li>Apartment information</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Layouts</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Gallery</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Location</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Contact information</li>
-</ul>
-<h4 class='case-study-subsubsec-title'>Conversion</h4>
-<p class='case-study-paragraph'>The final goal is to move visitors from:</p>
-<p class='case-study-paragraph'><strong>“This looks beautiful.”</strong></p>
-<p class='case-study-paragraph'>to:</p>
-<p class='case-study-paragraph'><strong>“I want to explore this property.”</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Primary Audience</h3>
-<h4 class='case-study-subsubsec-title'>Modern Home Buyers</h4>
-<p class='case-study-paragraph'>People looking for contemporary private homes or premium residential properties.</p>
-<p class='case-study-paragraph'>They are likely to care about:</p>
-<ul class='case-study-list'>
-  <li>Architecture</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Privacy</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Location</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Nature</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Interior/exterior quality</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Lifestyle</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Long-term property value</li>
-</ul>
-<h3 class='case-study-subsec-title'>Secondary Audience</h3>
-<h4 class='case-study-subsubsec-title'>Property Investors</h4>
-<p class='case-study-paragraph'>Users who may evaluate the property based on:</p>
-<ul class='case-study-list'>
-  <li>Location</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Development quality</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Market positioning</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Property type</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Developer credibility</li>
-</ul>
-<h3 class='case-study-subsec-title'>Additional Audience</h3>
-<p class='case-study-paragraph'>People researching premium residential developments before contacting a sales representative.</p>
-<hr class='case-study-divider' />
-<h4 class='case-study-subsubsec-title'>01 — Real Estate Websites Can Feel Generic</h4>
-<p class='case-study-paragraph'>Many property websites present homes as a collection of specifications.</p>
-<p class='case-study-paragraph'>This makes it difficult for premium properties to establish a distinct identity.</p>
-<h4 class='case-study-subsubsec-title'>02 — Buyers Need to Visualize the Lifestyle</h4>
-<p class='case-study-paragraph'>A floor plan tells users the structure of a home.</p>
-<p class='case-study-paragraph'>It does not necessarily communicate what it feels like to live there.</p>
-<h4 class='case-study-subsubsec-title'>03 — Information Can Become Fragmented</h4>
-<p class='case-study-paragraph'>Property information may be distributed across:</p>
-<ul class='case-study-list'>
-  <li>Gallery</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Layouts</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Location</li>
-</ul>
-<ul class='case-study-list'>
-  <li>About</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Contact</li>
-</ul>
-<p class='case-study-paragraph'>The navigation needs to make these destinations easy to find.</p>
-<h4 class='case-study-subsubsec-title'>04 — Trust Must Be Established Quickly</h4>
-<p class='case-study-paragraph'>Property purchases involve significant consideration.</p>
-<p class='case-study-paragraph'>The first screen needs to create confidence before asking the user to explore deeper.</p>
-<h4 class='case-study-subsubsec-title'>05 — Too Much Information Can Reduce Premium Perception</h4>
-<p class='case-study-paragraph'>A luxury-oriented property experience can lose its visual impact when the interface becomes crowded with excessive text and UI elements.</p>
-<hr class='case-study-divider' />
-<p class='case-study-paragraph'>The design focused on five major goals:</p>
-<p class='case-study-paragraph'>1. <strong>Create a premium first impression</strong></p>
-<p class='case-study-paragraph'>2. <strong>Sell the lifestyle before the specifications</strong></p>
-<p class='case-study-paragraph'>3. <strong>Make architectural imagery the primary storytelling tool</strong></p>
-<p class='case-study-paragraph'>4. <strong>Keep property exploration simple</strong></p>
-<p class='case-study-paragraph'>5. <strong>Build trust through social proof and clear information architecture</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>01 — Lead With the Property</h3>
-<p class='case-study-paragraph'>The hero section immediately places the house at the center of the experience.</p>
-<p class='case-study-paragraph'>Instead of starting with a traditional property listing, the interface uses a large architectural image as the primary visual.</p>
-<p class='case-study-paragraph'>This immediately answers the user's first question:</p>
-<p class='case-study-paragraph'><strong>“What does this place look like?”</strong></p>
-<p class='case-study-paragraph'>The building occupies most of the visual space, making the property itself the hero.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>02 — Sell the Feeling Before the Details</h2>
-<p class='case-study-paragraph'>The headline:</p>
-<p class='case-study-paragraph'><strong>“Where Tranquility Meets Modern Living”</strong></p>
-<p class='case-study-paragraph'>does not describe a technical property feature.</p>
-<p class='case-study-paragraph'>It describes an emotional benefit.</p>
-<p class='case-study-paragraph'>This is an intentional UX and marketing decision.</p>
-<p class='case-study-paragraph'>The website first communicates:</p>
-<p class='case-study-paragraph'><strong>peace + modern architecture + lifestyle</strong></p>
-<p class='case-study-paragraph'>and then provides the functional path:</p>
-<p class='case-study-paragraph'><strong>View Layouts</strong></p>
-<p class='case-study-paragraph'>This creates a natural transition from emotion to action.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>03 — Minimal Navigation</h2>
-<p class='case-study-paragraph'>The top navigation contains a small number of high-value destinations:</p>
-<ul class='case-study-list'>
-  <li>Gallery</li>
-</ul>
-<ul class='case-study-list'>
-  <li>About Us</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Apartments</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Contacts</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Location</li>
-</ul>
-<p class='case-study-paragraph'>This is an effective information architecture for a property website because it mirrors the questions users naturally have.</p>
-<h4 class='case-study-subsubsec-title'>Gallery</h4>
-<p class='case-study-paragraph'>“What does it look like?”</p>
-<h4 class='case-study-subsubsec-title'>About Us</h4>
-<p class='case-study-paragraph'>“Who is behind it?”</p>
-<h4 class='case-study-subsubsec-title'>Apartments</h4>
-<p class='case-study-paragraph'>“What can I buy?”</p>
-<h4 class='case-study-subsubsec-title'>Contacts</h4>
-<p class='case-study-paragraph'>“How do I reach them?”</p>
-<h4 class='case-study-subsubsec-title'>Location</h4>
-<p class='case-study-paragraph'>“Where is it?”</p>
-<p class='case-study-paragraph'>The navigation therefore follows the user's discovery journey.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>04 — Visual Storytelling First</h2>
-<p class='case-study-paragraph'>The property image does most of the communication.</p>
-<p class='case-study-paragraph'>Instead of filling the hero with paragraphs, the design uses:</p>
-<ul class='case-study-list'>
-  <li>Large architectural photography</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Oversized typography</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Short supporting copy</li>
-</ul>
-<ul class='case-study-list'>
-  <li>One primary CTA</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Social proof</li>
-</ul>
-<p class='case-study-paragraph'>This creates a strong visual hierarchy.</p>
-<p class='case-study-paragraph'>The user can understand the product within seconds.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Hero Experience</h2>
-<p class='case-study-paragraph'>The hero is the strongest part of the website.</p>
-<p class='case-study-paragraph'>It combines:</p>
-<h4 class='case-study-subsubsec-title'>Brand</h4>
-<p class='case-study-paragraph'><strong>SONDER HOUSE</strong></p>
-<h4 class='case-study-subsubsec-title'>Positioning</h4>
-<p class='case-study-paragraph'><strong>Your · Dream · Property · Awaits</strong></p>
-<h4 class='case-study-subsubsec-title'>Emotional Value Proposition</h4>
-<p class='case-study-paragraph'><strong>Where Tranquility Meets Modern Living</strong></p>
-<h4 class='case-study-subsubsec-title'>CTA</h4>
-<p class='case-study-paragraph'><strong>View Layouts</strong></p>
-<h4 class='case-study-subsubsec-title'>Supporting Context</h4>
-<p class='case-study-paragraph'><strong>Private homes surrounded by nature, 20 minutes from the city center</strong></p>
-<h4 class='case-study-subsubsec-title'>Social Proof</h4>
-<p class='case-study-paragraph'><strong>+300 clients have left positive reviews about our work</strong></p>
-<p class='case-study-paragraph'>This creates a complete conversion-oriented hero without requiring a long explanation.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Typography as a Visual Element</h2>
-<p class='case-study-paragraph'>One of the strongest design decisions is the use of oversized typography.</p>
-<p class='case-study-paragraph'>The words:</p>
-<p class='case-study-paragraph'><strong>SONDER</strong></p>
-<p class='case-study-paragraph'>and</p>
-<p class='case-study-paragraph'><strong>HOUSE</strong></p>
-<p class='case-study-paragraph'>become part of the architecture of the hero itself.</p>
-<p class='case-study-paragraph'>Rather than treating typography as supporting content, the design uses it as a visual layer over the property image.</p>
-<p class='case-study-paragraph'>This creates:</p>
-<ul class='case-study-list'>
-  <li>Strong brand recognition</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Editorial character</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Premium positioning</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Visual depth</li>
-</ul>
-<ul class='case-study-list'>
-  <li>A distinctive first impression</li>
-</ul>
-<p class='case-study-paragraph'>The typography also creates a relationship between the digital brand and the architectural form.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>CTA Strategy</h2>
-<p class='case-study-paragraph'>The primary CTA is:</p>
-<p class='case-study-paragraph'><strong>VIEW LAYOUTS</strong></p>
-<p class='case-study-paragraph'>This is an intelligent choice for a property website.</p>
-<p class='case-study-paragraph'>A generic CTA such as:</p>
-<p class='case-study-paragraph'><strong>Learn More</strong></p>
-<p class='case-study-paragraph'>is vague.</p>
-<p class='case-study-paragraph'>“View Layouts” communicates exactly what the user will get after clicking.</p>
-<p class='case-study-paragraph'>The CTA therefore creates this journey:</p>
-<p class='case-study-paragraph'><strong>See the property → Become interested → Explore the layout</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Property Information Hierarchy</h2>
-<p class='case-study-paragraph'>The hero does not attempt to show every property specification.</p>
-<p class='case-study-paragraph'>Instead, it provides a small amount of supporting information:</p>
-<p class='case-study-paragraph'><strong>Private homes</strong></p>
-<p class='case-study-paragraph'><strong>Surrounded by nature</strong></p>
-<p class='case-study-paragraph'><strong>20 minutes from the city center</strong></p>
-<p class='case-study-paragraph'>They communicate:</p>
-<p class='case-study-paragraph'><strong>Privacy + Nature + Accessibility</strong></p>
-<p class='case-study-paragraph'>without overwhelming the user.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Social Proof</h2>
-<p class='case-study-paragraph'>The <strong>+300 clients</strong> card provides immediate social validation.</p>
-<p class='case-study-paragraph'>The card is visually separated from the main content and placed in the lower-right corner of the hero.</p>
-<p class='case-study-paragraph'>This placement is effective because it does not compete with the headline or CTA.</p>
-<p class='case-study-paragraph'>The small profile images humanize the statistic.</p>
-<p class='case-study-paragraph'>Instead of simply saying:</p>
-<p class='case-study-paragraph'><strong>300+ reviews</strong></p>
-<p class='case-study-paragraph'>the visual presence of people makes the claim feel more personal.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Location Positioning</h2>
-<p class='case-study-paragraph'>The text:</p>
-<p class='case-study-paragraph'><strong>20 minutes from the city center</strong></p>
-<p class='case-study-paragraph'>is particularly important from a UX perspective.</p>
-<p class='case-study-paragraph'>Location is one of the most important considerations in residential property decisions.</p>
-<p class='case-study-paragraph'>Instead of forcing the user to visit the Location page immediately, the hero communicates one key location benefit upfront.</p>
-<p class='case-study-paragraph'>This answers a critical buyer question before the user even scrolls.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Brand Positioning</h2>
-<p class='case-study-paragraph'>The top-right statement:</p>
-<p class='case-study-paragraph'><strong>WE BUILD MODERN HOUSES IN UKRAINE</strong></p>
-<p class='case-study-paragraph'>acts as a concise brand positioning statement.</p>
-<p class='case-study-paragraph'>It immediately clarifies:</p>
-<p class='case-study-paragraph'><strong>What they do + where they operate.</strong></p>
-<p class='case-study-paragraph'>The positioning statement provides the rational context.</p>
-<p class='case-study-paragraph'>Together:</p>
-<p class='case-study-paragraph'><strong>Emotional message → What the brand actually does</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Information Architecture</h2>
-<p class='case-study-paragraph'>The website follows a simple discovery structure:</p>
-<p class='case-study-paragraph'><strong>Home</strong></p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Gallery</strong></p>
-<p class='case-study-paragraph'>See the property.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Apartments</strong></p>
-<p class='case-study-paragraph'>Explore available residential options and layouts.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Location</strong></p>
-<p class='case-study-paragraph'>Understand the surrounding area.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>About Us</strong></p>
-<p class='case-study-paragraph'>Build confidence in the developer.</p>
-<p class='case-study-paragraph'>↓</p>
-<p class='case-study-paragraph'><strong>Contacts</strong></p>
-<p class='case-study-paragraph'>Move toward inquiry or sales conversation.</p>
-<p class='case-study-paragraph'>This creates a straightforward path from discovery to conversion.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Visual Design Strategy</h2>
-<p class='case-study-paragraph'>The design language communicates modern architecture through restraint.</p>
-<p class='case-study-paragraph'>The visual system relies heavily on:</p>
-<ul class='case-study-list'>
-  <li>White typography</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Soft blue/grey environmental tones</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Architectural photography</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Minimal UI</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Large typography</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Rounded CTA</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Soft card surfaces</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Generous spacing</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Minimal navigation</li>
-</ul>
-<p class='case-study-paragraph'>This is an important principle:</p>
-<p class='case-study-paragraph'><strong>When the product is visually strong, the interface should support it rather than compete with it.</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Image-First Design</h2>
-<p class='case-study-paragraph'>The house image is treated as a product asset rather than a background decoration.</p>
-<p class='case-study-paragraph'>The architecture communicates:</p>
-<ul class='case-study-list'>
-  <li>Scale</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Material</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Lighting</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Landscaping</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Privacy</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Modernity</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Premium quality</li>
-</ul>
-<p class='case-study-paragraph'>This reduces the amount of explanatory copy required.</p>
-<p class='case-study-paragraph'>The visual itself performs part of the sales communication.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Conversion Journey</h2>
-<p class='case-study-paragraph'>The hero creates a simple conversion funnel:</p>
-<h4 class='case-study-subsubsec-title'>Step 01 — Capture Attention</h4>
-<p class='case-study-paragraph'>Large architectural image + oversized brand typography.</p>
-<h4 class='case-study-subsubsec-title'>Step 02 — Establish Desire</h4>
-<p class='case-study-paragraph'>“Where Tranquility Meets Modern Living.”</p>
-<h4 class='case-study-subsubsec-title'>Step 03 — Provide Context</h4>
-<p class='case-study-paragraph'>Private homes + nature + proximity to city.</p>
-<h4 class='case-study-subsubsec-title'>Step 04 — Establish Trust</h4>
-<p class='case-study-paragraph'>+300 positive client reviews.</p>
-<h4 class='case-study-subsubsec-title'>Step 05 — Provide Action</h4>
-<p class='case-study-paragraph'>View Layouts.</p>
-<p class='case-study-paragraph'>This makes the hero more than an aesthetic landing screen.</p>
-<p class='case-study-paragraph'>It becomes the beginning of the sales journey.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>What I Focused on as a Product Designer</h2>
-<p class='case-study-paragraph'>The primary challenge was to balance <strong>luxury storytelling with practical usability</strong>.</p>
-<p class='case-study-paragraph'>I focused on:</p>
-<h4 class='case-study-subsubsec-title'>Emotional First Impression</h4>
-<p class='case-study-paragraph'>Creating an immediate sense of place and lifestyle.</p>
-<h4 class='case-study-subsubsec-title'>Strong Visual Hierarchy</h4>
-<p class='case-study-paragraph'>Ensuring the property image and main message dominate the screen.</p>
-<h4 class='case-study-subsubsec-title'>Minimal Navigation</h4>
-<p class='case-study-paragraph'>Giving users only the destinations they need.</p>
-<h4 class='case-study-subsubsec-title'>Clear Conversion</h4>
-<p class='case-study-paragraph'>Using a specific CTA that matches the user's likely next step.</p>
-<h4 class='case-study-subsubsec-title'>Trust</h4>
-<p class='case-study-paragraph'>Introducing social proof without interrupting the visual experience.</p>
-<h4 class='case-study-subsubsec-title'>Information Balance</h4>
-<p class='case-study-paragraph'>Providing enough context to create interest without turning the hero into a property specification sheet.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Design Outcome</h2>
-<p class='case-study-paragraph'>The resulting experience positions Sonder House as more than a collection of properties.</p>
-<p class='case-study-paragraph'>It presents the development as a <strong>lifestyle proposition</strong>.</p>
-<p class='case-study-paragraph'>The user first sees the architecture.</p>
-<p class='case-study-paragraph'>Then they understand the lifestyle.</p>
-<p class='case-study-paragraph'>Then they receive practical information.</p>
-<p class='case-study-paragraph'>Finally, they are encouraged to explore the property layouts.</p>
-<p class='case-study-paragraph'>This creates a natural progression:</p>
-<p class='case-study-paragraph'><strong>Emotion → Context → Trust → Exploration</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Key UX Decisions</h2>
-<h3 class='case-study-subsec-title'>From Property Listing → Lifestyle Experience</h3>
-<p class='case-study-paragraph'>Instead of immediately showing specifications, the website first communicates what living at the property could feel like.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Information Density → Visual Confidence</h3>
-<p class='case-study-paragraph'>The design intentionally leaves space around the content.</p>
-<p class='case-study-paragraph'>This gives the property imagery and architecture room to communicate quality.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Generic CTA → Intent-Based CTA</h3>
-<p class='case-study-paragraph'>“View Layouts” tells users exactly what they can do next.</p>
-<p class='case-study-paragraph'>This is more meaningful than a generic “Learn More” action.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Claims → Social Proof</h3>
-<p class='case-study-paragraph'>The +300 client card provides an early trust signal without requiring a dedicated testimonial section in the hero.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Navigation → Discovery Journey</h3>
-<p class='case-study-paragraph'>The navigation labels map naturally to the questions a potential buyer has:</p>
-<p class='case-study-paragraph'><strong>See → Understand → Explore → Locate → Contact</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Key Takeaways</h2>
-<h4 class='case-study-subsubsec-title'>Premium products need breathing room.</h4>
-<p class='case-study-paragraph'>Luxury property experiences can lose their perceived value when the interface becomes unnecessarily dense.</p>
-<h4 class='case-study-subsubsec-title'>Sell the outcome, not just the specification.</h4>
-<p class='case-study-paragraph'>“Modern living” communicates an emotional benefit that a list of property features cannot.</p>
-<h4 class='case-study-subsubsec-title'>Images can carry information.</h4>
-<p class='case-study-paragraph'>Strong architectural photography can communicate quality, lifestyle, location, and design simultaneously.</p>
-<h4 class='case-study-subsubsec-title'>CTA language should match user intent.</h4>
-<p class='case-study-paragraph'>“View Layouts” provides a much clearer next step than a generic CTA.</p>
-<h4 class='case-study-subsubsec-title'>Trust should appear early.</h4>
-<p class='case-study-paragraph'>A property website benefits from establishing credibility before asking users to invest time in deeper exploration.</p>
-<h4 class='case-study-subsubsec-title'>Good real-estate UX connects emotion with action.</h4>
-<p class='case-study-paragraph'>The user should move naturally from:</p>
-<p class='case-study-paragraph'><strong>“I like this.”</strong></p>
-<p class='case-study-paragraph'>to:</p>
-<p class='case-study-paragraph'><strong>“I want to see the layout.”</strong></p>
-<p class='case-study-paragraph'>to:</p>
-<p class='case-study-paragraph'><strong>“I want to know more.”</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Case Study Page Structure for AI</h2>
-<h3 class='case-study-subsec-title'>Section 01 — Hero</h3>
-<p class='case-study-paragraph'>Hero content:</p>
-<p class='case-study-paragraph'><strong>Sonder House</strong></p>
-<p class='case-study-paragraph'><strong>Where tranquility meets modern living.</strong></p>
-<p class='case-study-paragraph'>Supporting text:</p>
-<p class='case-study-paragraph'>“A premium residential property experience designed to turn modern architecture into a compelling lifestyle story.”</p>
-<p class='case-study-paragraph'>Project metadata can appear below the hero:</p>
-<ul class='case-study-list'>
-  <li>Product: Sonder House</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Category: Real Estate / Property</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Platform: Web</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Focus: Property discovery & conversion</li>
-</ul>
-<p class='case-study-paragraph'>The house image should occupy most of the viewport.</p>
-<p class='case-study-paragraph'>Do not add unnecessary UI around it.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 02 — The Challenge</h3>
-<p class='case-study-paragraph'>Use a large editorial headline:</p>
-<p class='case-study-paragraph'><strong>“How do you sell a home before someone steps inside?”</strong></p>
-<p class='case-study-paragraph'>Then explain the challenge of communicating architecture, lifestyle, trust, and property information through a digital experience.</p>
-<p class='case-study-paragraph'>Use a split layout:</p>
-<p class='case-study-paragraph'><strong>Left:</strong> Challenge narrative</p>
-<p class='case-study-paragraph'><strong>Right:</strong> Cropped hero image</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 03 — The User</h3>
-<p class='case-study-paragraph'>Create three audience cards:</p>
-<h4 class='case-study-subsubsec-title'>Modern Home Buyers</h4>
-<p class='case-study-paragraph'>Looking for contemporary living and privacy.</p>
-<h4 class='case-study-subsubsec-title'>Property Investors</h4>
-<p class='case-study-paragraph'>Evaluating location, quality, and development credibility.</p>
-<h4 class='case-study-subsubsec-title'>Property Researchers</h4>
-<p class='case-study-paragraph'>Exploring options before contacting a developer.</p>
-<p class='case-study-paragraph'>Keep the section visually minimal.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 04 — Design Strategy</h3>
-<p class='case-study-paragraph'>Use a horizontal process:</p>
-<p class='case-study-paragraph'><strong>Attract → Inspire → Inform → Build Trust → Convert</strong></p>
-<p class='case-study-paragraph'>Each step gets one short explanation.</p>
-<p class='case-study-paragraph'>This section should visually communicate the entire UX strategy.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 05 — Hero Anatomy</h3>
-<p class='case-study-paragraph'>Add numbered annotations:</p>
-<p class='case-study-paragraph'><strong>01 — Brand identity</strong></p>
-<p class='case-study-paragraph'><strong>02 — Lifestyle headline</strong></p>
-<p class='case-study-paragraph'><strong>03 — Property photography</strong></p>
-<p class='case-study-paragraph'><strong>04 — Primary CTA</strong></p>
-<p class='case-study-paragraph'><strong>05 — Location benefit</strong></p>
-<p class='case-study-paragraph'><strong>06 — Social proof</strong></p>
-<p class='case-study-paragraph'><strong>07 — Developer positioning</strong></p>
-<p class='case-study-paragraph'>This should be one of the main case-study sections.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 06 — Selling the Lifestyle</h3>
-<p class='case-study-paragraph'>Use a large crop of the house and landscape.</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“The property is the story.”</strong></p>
-<p class='case-study-paragraph'>Explain how the architectural image communicates modernity, privacy, nature, and premium living without requiring excessive copy.</p>
-<p class='case-study-paragraph'>Let the image dominate the section.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 07 — Information Architecture</h3>
-<p class='case-study-paragraph'>Create a visual journey:</p>
-<p class='case-study-paragraph'><strong>Gallery → Apartments → Location → About → Contact</strong></p>
-<p class='case-study-paragraph'>Under each item, explain the user question it answers.</p>
-<p class='case-study-paragraph'>For example:</p>
-<p class='case-study-paragraph'><strong>Gallery</strong></p>
-<p class='case-study-paragraph'>“What does it look like?”</p>
-<p class='case-study-paragraph'><strong>Apartments</strong></p>
-<p class='case-study-paragraph'>“What can I choose?”</p>
-<p class='case-study-paragraph'><strong>Location</strong></p>
-<p class='case-study-paragraph'>“Where is it?”</p>
-<p class='case-study-paragraph'><strong>About</strong></p>
-<p class='case-study-paragraph'>“Who is behind it?”</p>
-<p class='case-study-paragraph'><strong>Contact</strong></p>
-<p class='case-study-paragraph'>“How do I move forward?”</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 08 — Conversion Design</h3>
-<p class='case-study-paragraph'>Large text:</p>
-<p class='case-study-paragraph'><strong>“View Layouts”</strong></p>
-<p class='case-study-paragraph'>Then explain why a specific CTA is more effective than a generic action.</p>
-<p class='case-study-paragraph'>Show the CTA alongside a crop of the hero.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 09 — Trust & Social Proof</h3>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“Trust should appear before the conversation starts.”</strong></p>
-<p class='case-study-paragraph'>Explain the role of social proof in reducing uncertainty around a high-consideration purchase.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 10 — Location & Context</h3>
-<p class='case-study-paragraph'><strong>Private homes surrounded by nature, 20 minutes from the city center.</strong></p>
-<p class='case-study-paragraph'>Present this as a location-value section.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 11 — Visual Design</h3>
-<p class='case-study-paragraph'>Show the visual principles:</p>
-<ul class='case-study-list'>
-  <li>Oversized typography</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Architectural photography</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Minimal navigation</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Soft blue/grey atmosphere</li>
-</ul>
-<ul class='case-study-list'>
-  <li>White type</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Rounded CTA</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Minimal UI</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Spacious composition</li>
-</ul>
-<p class='case-study-paragraph'>Do not create a generic design-system section if there are not enough screens to support it.</p>
-<p class='case-study-paragraph'>Focus on <strong>visual storytelling principles</strong> instead.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 12 — Final Experience</h3>
-<p class='case-study-paragraph'>Create a large full-width composition using the original hero image.</p>
-<p class='case-study-paragraph'>Overlay three concise statements:</p>
-<p class='case-study-paragraph'><strong>Modern architecture.</strong></p>
-<p class='case-study-paragraph'><strong>Quiet surroundings.</strong></p>
-<p class='case-study-paragraph'><strong>A simpler way to discover your next home.</strong></p>
-<p class='case-study-paragraph'>This should feel like a premium editorial ending rather than another UI gallery.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 13 — Closing</h3>
-<p class='case-study-paragraph'>End with:</p>
-<p class='case-study-paragraph'><strong>“From architecture to aspiration — every element of the experience is designed to make the property feel worth exploring.”</strong></p>
-<p class='case-study-paragraph'>Then show the <strong>View Layouts</strong> CTA again.</p>
-<hr class='case-study-divider' />
-    </div>
+      </div>
+    </section>
 
-    <!-- Visual Palette Showcase -->
-    <div class="case-study-divider"></div>
-    <div class="process-timeline-wrap">
-      <h2>Fonts & Colors Swatches</h2>
-      <div class="design-system-swatches">
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #00b0ff;"></div>
-          <span class="swatch-hex">#00b0ff</span>
-          <span class="swatch-name">Tranquil Blue</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #081a2b;"></div>
-          <span class="swatch-hex">#081a2b</span>
-          <span class="swatch-name">Slate Blue</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #02070c;"></div>
-          <span class="swatch-hex">#02070c</span>
-          <span class="swatch-name">Deep Ink</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #ffffff;"></div>
-          <span class="swatch-hex">#ffffff</span>
-          <span class="swatch-name">Neutral White</span>
-        </div>
+    <!-- 04 / PROCESS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">04 / PROCESS</div>
+        <h2 class="cs-display cs-sec-head__title">How I approached the problem</h2>
+        <p class="cs-sec-head__dek">The process is shown as a decision-making loop rather than a decorative five-step diagram.</p>
+      </div>
+      <div class="cs-process">
         
       </div>
-    </div>
+    </section>
+
+    <!-- 05 / KEY DECISIONS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">05 / KEY DECISIONS</div>
+        <h2 class="cs-display cs-sec-head__title">Design decisions with a reason</h2>
+        <p class="cs-sec-head__dek">Instead of listing deliverables, connect the interface back to the user or business problem it was meant to solve.</p>
+      </div>
+      <div class="cs-decisions">
+        
+        <div class="cs-decision">
+          <div class="cs-decision__num">01</div>
+          <h3 class="cs-decision__title">Lead with the property story</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">02</div>
+          <h3 class="cs-decision__title">Balance emotional imagery with useful detail</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">03</div>
+          <h3 class="cs-decision__title">Keep CTA visibility consistent</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">04</div>
+          <h3 class="cs-decision__title">Use whitespace as part of the premium experience</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 / VISUAL STORY -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">06 / VISUAL STORY</div>
+        <h2 class="cs-display cs-sec-head__title">Let the interface do the talking</h2>
+        <p class="cs-sec-head__dek">Large visuals keep the case study grounded in the actual work. Supporting visuals are used where the original showcase does not expose enough detail.</p>
+      </div>
+      <div class="cs-gallery">
+        <!-- Row 1: Large primary + Tall vertical -->
+        <div class="cs-showcase-row">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot large">
+              <img src="assets/cs4-shot1.jpg" alt="Architectural Villa Hero & Typographic Layout" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>01</span> Architectural Villa Hero & Typographic Layout</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot tall">
+              <img src="assets/cs4-shot2.jpg" alt="Interactive Floorplan Schematics & 3D Axonometric Model" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>02</span> Interactive Floorplan Schematics & 3D Axonometric Model</div>
+          </div>
+        </div>
+
+        <!-- Row 2: Two supporting screens -->
+        <div class="cs-showcase-row split-equal">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs4-shot3.jpg" alt="Material Finishes Selector & Interior Living Gallery" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>03</span> Material Finishes Selector & Interior Living Gallery</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs4-shot4.jpg" alt="Verified Client Testimonials & Estate Inquiry Callout" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>04</span> Verified Client Testimonials & Estate Inquiry Callout</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 / OUTCOME -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">07 / OUTCOME</div>
+        <h2 class="cs-display cs-sec-head__title">What the design delivers</h2>
+        <p class="cs-sec-head__dek">Close the story by showing the product value created by the design work — not just the screens delivered.</p>
+      </div>
+      <div class="cs-outcomes">
+        
+      </div>
+    </section>
+
+    <!-- NEXT PROJECT -->
+    <section class="cs-next">
+      <div class="cs-next__eyebrow">Next Project</div>
+      <div class="cs-next__grid">
+        <div>
+          <h2 class="cs-display cs-next__title">
+            <a href="case-study-5.html" class="cs-next__link">
+              Paybot <span class="cs-arrow">→</span>
+            </a>
+          </h2>
+          <p class="cs-next__sub">Global payments, made easier to understand</p>
+        </div>
+        <a href="projects.html" class="cs-next__all-btn">All projects <span>↗</span></a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="cs-footer">
+      <span>© BAPPY ISLAM</span>
+      <span class="cs-footer__brand">04 / 13 — SONDER HOUSE</span>
+      <span>DHAKA <span aria-hidden="true">→</span> WORLDWIDE</span>
+    </footer>
+
   </main>
 
-  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
-<div class="contact-footer-wrap">
-<section class="sec contact-sec" id="contacts">
-  <div class="contact-sticky-stage">
-    <!-- Interactive Wood Hover Reveal Element -->
-    <div class="contact-wood-interactive">
-      <div class="wood-img-base"></div>
-      <div class="wood-img-grass"></div>
-    </div>
-
-    <div class="contact-layout">
-      
-      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
-      <div class="contact-left-col">
-        <header class="contact-head">
-          <h2 class="testimonials-title contact-heading">
-            <span class="testi-word">Get</span>
-            <span class="testi-word">in</span>
-            <span class="testi-word testi-word--orange">touch</span>
-          </h2>
-          
-          <div class="contact-details-list">
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Email:</span>
-              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Phone:</span>
-              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Address:</span>
-              <span class="contact-detail-value">Dhaka, Bangladesh</span>
-            </div>
-          </div>
-
-          <div class="contact-socials-wrap">
-            <span class="contact-socials-label">Follow us:</span>
-            <div class="contact-social-icons">
-              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
-                </svg>
-              </a>
-              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
-                </svg>
-              </a>
-              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </header>
-      </div>
-
-      <!-- Right Column: Interactive Form aligned to bottom-right -->
-      <div class="contact-right-col">
-        <form class="contact-form" id="contact-form">
-          <div class="contact-form-row">
-            <div class="contact-form-field">
-              <label for="contact-name" class="contact-form-label">Your Name</label>
-              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
-            </div>
-            <div class="contact-form-field">
-              <label for="contact-email" class="contact-form-label">Email address</label>
-              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
-            </div>
-          </div>
-
-          <div class="contact-form-field">
-            <label for="contact-message" class="contact-form-label">Message</label>
-            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
-          </div>
-
-          <button type="submit" class="contact-submit-btn">
-            <span>Send Message</span>
-          </button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<footer class="footer-sec">
-  <div class="contact-bottom-footer">
-    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
-    <div class="contact-mid-wrap" data-reveal>
-      <div class="contact-mid-row">
-        <div class="contact-tagline">
-          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
-            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
-              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-            </svg>
-          </a>
-          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
-        </div>
-
-        <nav class="contact-links-nav" aria-label="Footer navigation">
-          <div class="contact-links-group">
-            <span class="contact-links-title">Links</span>
-            <a href="#home" class="contact-nav-link">Home</a>
-            <a href="#about" class="contact-nav-link">About Me</a>
-            <a href="#process" class="contact-nav-link">Process</a>
-          </div>
-          <div class="contact-links-group">
-            <span class="contact-links-title">Explore</span>
-            <a href="#work" class="contact-nav-link">Projects</a>
-            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
-            <a href="#contacts" class="contact-nav-link">Contacts</a>
-          </div>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
-    <div class="contact-copyright-wrap">
-      <div class="contact-copyright-row">
-        <span class="contact-copy-left">© 2026 Bappy Islam</span>
-        <span class="contact-copy-right">All rights reserved.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
-  <div class="contact-designer-banner">
-    <div class="contact-wordmark wordmark" aria-hidden="true">
-      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
-    </div>
-  </div>
-</footer>
-</div> </div> <!-- End of contact-footer-wrap -->
+  <!-- Burger Script -->
   <script>
-  const nav = document.getElementById('nav');
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-
-  function updateNavState() {
-    if (!nav) return;
-    const isScrolled = window.scrollY > 40;
-    nav.classList.toggle('is-scrolled', isScrolled);
-  }
-
-  updateNavState();
-  window.addEventListener('scroll', updateNavState, { passive: true });
-
-  if (burger && menu) {
-    burger.addEventListener('click', () => {
-      const open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', !open);
-      burger.classList.toggle('is-open');
-      menu.classList.toggle('is-open');
-      if (!open) {
-        menu.removeAttribute('inert');
-        document.body.classList.add('no-scroll');
-      } else {
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
-      }
-    });
-
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        burger.setAttribute('aria-expanded', 'false');
-        burger.classList.remove('is-open');
-        menu.classList.remove('is-open');
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        const expanded = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', !expanded);
+        menu.toggleAttribute('inert', expanded);
+        menu.classList.toggle('is-open', !expanded);
+        document.body.classList.toggle('menu-open', !expanded);
       });
-    });
-  }
-
-  // Redirect hash links on subpages to landing page sections
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('#') && href !== '#') {
-      link.href = 'index.html' + href;
     }
-  });
-
-  // Initialize interactive wood hover reveal effect in the footer
-  function initContactWoodHover() {
-    const stage = document.querySelector('.contact-sticky-stage');
-    if (!stage) return;
-
-    const grass = stage.querySelector('.wood-img-grass');
-    if (!grass) return;
-
-    stage.addEventListener('pointermove', (e) => {
-      const rect = stage.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      grass.style.setProperty('--mouse-x', `${x}px`);
-      grass.style.setProperty('--mouse-y', `${y}px`);
-    });
-
-    stage.addEventListener('pointerleave', () => {
-      grass.style.setProperty('--mouse-x', '-1000px');
-      grass.style.setProperty('--mouse-y', '-1000px');
-    });
-  }
-
-  // Contact Form AJAX Submission (FormSubmit.co)
-  function initContactFormSubmit() {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const submitBtn = contactForm.querySelector('.contact-submit-btn');
-      if (!submitBtn) return;
-      
-      const originalText = submitBtn.innerHTML;
-      
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Sending...</span>';
-      
-      const formData = {
-        name: document.getElementById('contact-name').value,
-        email: document.getElementById('contact-email').value,
-        message: document.getElementById('contact-message').value,
-        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
-      };
-      
-      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success === 'true' || data.success === true) {
-          submitBtn.innerHTML = '<span>Message Sent!</span>';
-          submitBtn.style.background = '#2e7d32';
-          contactForm.reset();
-          setTimeout(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-          }, 4000);
-        } else {
-          throw new Error('Submission failed');
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        submitBtn.innerHTML = '<span>Error! Try again</span>';
-        submitBtn.style.background = '#c62828';
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
-        }, 4000);
-      });
-    });
-  }
-
-  initContactWoodHover();
-  initContactFormSubmit();
-</script>
+  </script>
 </body>
 </html>

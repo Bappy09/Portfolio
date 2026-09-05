@@ -6,1642 +6,322 @@
   <title>Bappy — Momentum Case Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case-study.css" />
   <style>
     :root {
-      --accent: #ff6d00;
-      --accent-rgb: 255, 109, 0;
-      --case-bg: radial-gradient(circle at top, #210d02 0%, #070301 100%);
-    }
-    body.case-study-page {
-      background: var(--case-bg);
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .case-wrapper {
-      max-width: 1440px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 80px var(--pad);
-      box-sizing: border-box;
-    }
-    
-    /* Hero Style */
-    .case-hero {
-      padding-top: 160px;
-      padding-bottom: 60px;
-      text-align: center;
-    }
-    .case-hero-tag {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      margin-bottom: 16px;
-      display: block;
-    }
-    .case-hero-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(36px, 5.5vw, 72px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-      color: var(--paper);
-    }
-    
-    /* Back Navigation */
-    .case-back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      font-family: var(--font-mono), monospace;
-      font-size: 13px;
-      font-weight: 500;
-      text-decoration: none;
-      margin-bottom: 32px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .case-back-link:hover {
-      transform: translateX(-4px);
-      opacity: 0.85;
-    }
-    
-    /* Image Showcase container */
-    .case-img-wrap {
-      width: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.70);
-      margin-bottom: 80px;
-      aspect-ratio: 16 / 9.4;
-    }
-    .case-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-    
-    /* Info grid */
-    .case-info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 30px 0;
-      margin-bottom: 80px;
-    }
-    .case-info-item span {
-      display: block;
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.40);
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-    }
-    .case-info-item p {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--paper);
-      margin: 0;
-    }
-    
-    /* Overview Split (Image 1, 3, 5 style) */
-    .overview-sec {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 60px;
-      margin-bottom: 80px;
-      align-items: start;
-    }
-    .overview-text h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: clamp(28px, 3.5vw, 42px);
-      font-weight: 600;
-      margin: 0 0 24px 0;
-      color: var(--paper);
-    }
-    .overview-text p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.75);
-      margin-bottom: 20px;
-    }
-    
-    /* Meta tags card */
-    .meta-tags-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .meta-tags-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-      color: #ffffff;
-      border-left: 2px solid var(--accent);
-      padding-left: 10px;
-    }
-    .meta-tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .meta-tag-list:last-child {
-      margin-bottom: 0;
-    }
-    .meta-tag {
-      background: rgba(var(--accent-rgb), 0.08);
-      border: 1px solid rgba(var(--accent-rgb), 0.15);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--paper);
-      font-family: var(--font-mono), monospace;
-    }
-    
-    /* Problem Statement & Solution Visual Split (Image 1, 3, 5 style) */
-    .prob-sol-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin: 40px 0 80px 0;
-    }
-    .prob-card {
-      background: rgba(255, 77, 77, 0.01);
-      border: 1px solid rgba(255, 77, 77, 0.08);
-      border-left: 4px solid #ff4d4d;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .sol-card {
-      background: rgba(0, 230, 118, 0.01);
-      border: 1px solid rgba(0, 230, 118, 0.08);
-      border-left: 4px solid #00e676;
-      border-radius: 12px;
-      padding: 30px;
-      box-sizing: border-box;
-    }
-    .prob-sol-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 16px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-    .prob-sol-list {
-      padding-left: 18px;
-      margin: 0;
-    }
-    .prob-sol-list li {
-      font-size: 14px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 12px;
-    }
-    
-    /* Process timeline horizontal grid (Image 1, 3, 5 style) */
-    .process-timeline-wrap {
-      margin-bottom: 80px;
-    }
-    .process-timeline-wrap h2 {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 30px;
-    }
-    .process-timeline {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-    }
-    .process-card {
-      background: rgba(255, 255, 255, 0.01);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 12px;
-      padding: 20px;
-      box-sizing: border-box;
-      transition: border-color 0.3s ease;
-    }
-    .process-card:hover {
-      border-color: rgba(var(--accent-rgb), 0.3);
-    }
-    .process-num {
-      font-family: var(--font-mono), monospace;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .process-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #ffffff;
-      font-family: 'Clash Display', sans-serif;
-    }
-    .process-desc {
-      font-size: 12px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.50);
-    }
-    
-    /* General content sections */
-    .case-study-sec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 80px 0 24px 0;
-      border-left: 3px solid var(--accent);
-      padding-left: 16px;
-    }
-    .case-study-subsec-title {
-      font-family: var(--font-disp), "Clash Display", sans-serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 48px 0 18px 0;
-    }
-    .case-study-subsubsec-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 24px 0 12px 0;
-    }
-    .case-study-paragraph {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.70);
-      margin-bottom: 24px;
-    }
-    .case-study-divider {
-      border: 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      margin: 60px 0;
-    }
-    .case-study-list {
-      margin: 0 0 24px 0;
-      padding-left: 20px;
-    }
-    .case-study-list li {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 8px;
-    }
-    
-    /* Visual Design System Swatches (Image 4 style) */
-    .design-system-swatches {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    .color-swatch {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 12px;
-      width: 130px;
-      box-sizing: border-box;
-      text-align: center;
-    }
-    .swatch-preview {
-      width: 100%;
-      height: 50px;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .swatch-hex {
-      font-family: var(--font-mono), monospace;
-      font-size: 11px;
-      font-weight: 500;
-      color: #ffffff;
-      display: block;
-    }
-    .swatch-name {
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.40);
-      margin-top: 2px;
-      display: block;
-    }
-    
-    /* Features Grid */
-    .case-study-features-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-    }
-    .case-study-feature-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 24px;
-      border-radius: 12px;
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-    .case-study-feature-card:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-    .case-study-feature-title {
-      font-family: var(--font-disp), sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--paper);
-      margin: 0 0 8px 0;
-    }
-    .case-study-feature-desc {
-      font-size: 13px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.55);
-      margin: 0;
-    }
-    
-    @media (max-width: 960px) {
-      .overview-sec {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .prob-sol-split {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .process-timeline {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .case-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      .case-study-features-list {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .case-img-wrap {
-        aspect-ratio: 4 / 3;
-        margin-bottom: 60px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .case-info-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+      --accent: #F06A18;
+      --accent-rgb: 240, 106, 24;
     }
   </style>
 </head>
 <body class="case-study-page">
 
   <!-- ══ NAV ═══════════════════════════════════════════════════ -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="nav__brand" href="#home" aria-label="Bappy — home">
-      <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
-        <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-        <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-        <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-      </svg>
-    </a>
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="index.html#home" aria-label="Bappy — home">
+        <svg viewBox="0 0 24 27" width="22" height="25" aria-hidden="true">
+          <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
+          <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
+          <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
+        </svg>
+      </a>
 
-    <nav class="nav__links" id="nav-links">
-      <a href="#home" class="is-active">Home</a>
-      <a href="#work">Projects</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contacts">Contacts</a>
+      <nav class="nav__links" id="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="projects.html" class="is-active">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#testimonials">Reviews</a>
+        <a href="index.html#contacts">Contacts</a>
+      </nav>
+
+      <div class="nav__status-wrapper" id="nav-status">
+        <a class="status-pill" href="index.html#contacts">
+          <span class="beacon" aria-hidden="true">
+            <span class="beacon__dot"></span>
+            <span class="beacon__ring"></span>
+          </span>
+          <span class="status-pill__text">Available to work</span>
+        </a>
+      </div>
+
+      <div class="nav__actions">
+        <a class="btn-talk" href="index.html#contacts" id="btn-talk">
+          <span>Let's talk</span>
+        </a>
+
+        <button class="burger" id="burger" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
+  <div class="menu" id="menu" inert>
+    <nav class="menu__list">
+      <a href="index.html#home"><i>01</i>Home</a>
+      <a href="index.html#about"><i>02</i>About</a>
+      <a href="projects.html"><i>03</i>Projects</a>
+      <a href="index.html#testimonials"><i>04</i>Reviews</a>
+      <a href="index.html#contacts"><i>05</i>Contacts</a>
     </nav>
-
-    <div class="nav__status-wrapper" id="nav-status">
-      <a class="status-pill" href="#contacts">
-        <span class="beacon" aria-hidden="true">
-          <span class="beacon__dot"></span>
-          <span class="beacon__ring"></span>
-        </span>
-        <span class="status-pill__text">Available to work</span>
-      </a>
-    </div>
-
-    <div class="nav__actions">
-      <a class="btn-talk" href="#contacts" id="btn-talk">
-        <span>Let's talk</span>
-      </a>
-
-      <button class="burger" id="burger" type="button"
-              aria-label="Open menu" aria-expanded="false" aria-controls="menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
+    <div class="menu__foot">
+      <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
+      <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
     </div>
   </div>
-</header>
 
-<!-- ══ FULL-SCREEN MENU ══════════════════════════════════════ -->
-<div class="menu" id="menu" inert>
-  <nav class="menu__list">
-    <a href="#home"><i>01</i>Home</a>
-    <a href="#about"><i>02</i>About</a>
-    <a href="#work"><i>03</i>Projects</a>
-    <a href="#testimonials"><i>04</i>Reviews</a>
-    <a href="#contacts"><i>05</i>Contacts</a>
-  </nav>
-  <div class="menu__foot">
-    <span>Dhaka <i aria-hidden="true">→</i> Worldwide</span>
-    <a href="mailto:bappiyslam@gmail.com">bappiyslam@gmail.com</a>
-  </div>
-</div>
+  <!-- ══ MAIN CONTENT WRAPPER ══════════════════════════════════ -->
+  <main class="cs-wrapper">
 
-  <!-- ══ PORTFOLIO HERO ═══════════════════════════════════════ -->
-  <main class="case-wrapper">
-    <div class="case-hero">
-      <a href="projects.html" class="case-back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        Back to Selected Works
-      </a>
-      <span class="case-hero-tag">UX Case Study</span>
-      <h1 class="case-hero-title">Momentum</h1>
-    </div>
-    
-    <!-- Info Grid -->
-    <div class="case-info-grid">
-      <div class="case-info-item">
-        <span>Role</span>
-        <p>Lead Product Designer</p>
+    <!-- HERO -->
+    <section class="cs-hero">
+      <div class="cs-hero__top">
+        <a href="projects.html" class="cs-hero__back">
+          <span aria-hidden="true">←</span> Back to projects
+        </a>
+        <span class="cs-hero__counter">02 / 13</span>
       </div>
-      <div class="case-info-item">
-        <span>Timeline</span>
-        <p>3 Months (2026)</p>
+
+      <span class="cs-hero__kicker">SaaS · Workspace Analytics</span>
+      <h1 class="cs-display cs-hero__title">A clearer view of team performance</h1>
+      <p class="cs-hero__dek">Momentum is a workspace analytics experience that brings activity, performance signals, and team context into a single dashboard. The visual direction emphasizes quick scanning while still allowing users to move into deeper operational detail.</p>
+
+      <!-- Primary Showcase Frame -->
+      <div class="cs-hero__image-wrap">
+        <img src="assets/cs2-hero.jpg" alt="Momentum primary showcase" loading="eager" />
       </div>
-      <div class="case-info-item">
-        <span>Deliverables</span>
-        <p>Interactive Wireframes, Visual System, Web Layouts</p>
-      </div>
-      <div class="case-info-item">
-        <span>Team</span>
-        <p>1 Designer, 3 Developers, 1 Product Manager</p>
-      </div>
-    </div>
 
-    <!-- Image Showcase -->
-    <div class="case-img-wrap">
-      <img src="assets/showcase-2.png" alt="Momentum Showcase" class="case-img" />
-    </div>
-
-    <!-- Overview Split Section -->
-    <div class="overview-sec">
-      <div class="overview-text">
-        <h2>About Momentum</h2>
-        <p>Momentum is a team productivity and workspace platform designed to bring projects, communication, documentation, tasks, meetings, performance metrics, and AI assistance into one connected workspace.
-
-
-
-Modern teams often use separate tools for project management, communication, documentation, scheduling, analytics, and productivity. While each tool solves a specific problem, moving between them creates friction and makes it harder to understand the bigger picture.
-
-
-
-Momentum takes a different approach.
-
-
-
-Instead of making teams manage multiple disconnected systems, the platform brings the most important parts of daily work into a unified workspace.
-
-
-
-The design focuses on one core idea:
-
-
-
-**Help teams understand what is happening, what needs attention, and what should happen next — from one place.**
-
-
-
----</p>
-      </div>
-      <div class="meta-tags-card">
-        <div class="meta-tags-title">Project Context</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Product Strategy</span>
-<span class="meta-tag">Wireframing</span>
-<span class="meta-tag">Component Systems</span>
-<span class="meta-tag">UI Design</span>
+      <!-- Metadata Grid -->
+      <div class="cs-meta-grid">
+        
+        <div class="cs-meta-item">
+          <label>Role</label>
+          <strong>Product Designer</strong>
         </div>
-        <div class="meta-tags-title">Tools Used</div>
-        <div class="meta-tag-list">
-          <span class="meta-tag">Figma</span>
-<span class="meta-tag">Miro</span>
-<span class="meta-tag">Notion</span>
-<span class="meta-tag">Slack</span>
+        <div class="cs-meta-item">
+          <label>Platform</label>
+          <strong>Web App</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Focus</label>
+          <strong>SaaS · Workspace Analytics</strong>
+        </div>
+        <div class="cs-meta-item">
+          <label>Scope</label>
+          <strong>UX/UI · Dashboard Design · Information Architecture</strong>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Problem vs Solution Visual Box -->
-    <div class="prob-sol-split">
-      <div class="prob-card">
-        <h3 class="prob-sol-title" style="color: #ff4d4d;">Problem Statement</h3>
-        <ul class="prob-sol-list">
-          <li>Teams waste hours switching between disconnected project tools.</li>
-<li>Lack of visibility into teammates' capacity causes uneven workloads.</li>
-<li>Critical project communications are separated from the work context.</li>
-        </ul>
+    <!-- 01 / CONTEXT -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">01 / CONTEXT</div>
+        <h2 class="cs-display cs-sec-head__title">Why this product exists</h2>
+        <p class="cs-sec-head__dek">Operational dashboards can become noisy when every metric receives equal visual weight. Momentum needed a hierarchy that makes the important signal visible first and turns a large amount of activity data into an understandable story.</p>
       </div>
-      <div class="sol-card">
-        <h3 class="prob-sol-title" style="color: #00e676;">Proposed Solution</h3>
-        <ul class="prob-sol-list">
-          <li>Created a unified command center combining docs, messages, and timeline.</li>
-<li>Designed a weekly workload chart visualizing capacity at a glance.</li>
-<li>Integrated team profiles and message bubbles directly beside tasks.</li>
-        </ul>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Who it is for</h3>
+          <p>Managers, team leads, and operators who need a high-level pulse of workspace activity and performance without manually assembling information from multiple places.</p>
+        </div>
+        <div class="cs-panel accent-edge">
+          <h3>The design challenge</h3>
+          <p>Momentum is a workspace analytics experience that brings activity, performance signals, and team context into a single dashboard. The visual direction emphasizes quick scanning while still allowing users to move into deeper operational detail.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Process Flow Grid -->
-    <div class="process-timeline-wrap">
-      <h2>Design Process</h2>
-      <div class="process-timeline">
-        
-        <div class="process-card">
-          <span class="process-num">Step 01</span>
-          <div class="process-title">Empathize</div>
-          <div class="process-desc">Observing context switching between multiple productivity apps.</div>
+    <!-- 02 / PROBLEM -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">02 / PROBLEM</div>
+        <h2 class="cs-display cs-sec-head__title">What needed to change</h2>
+        <p class="cs-sec-head__dek">The design work starts by turning broad business friction into a small set of user-facing problems that can be prioritized and solved.</p>
+      </div>
+      <div class="cs-two-col">
+        <div class="cs-panel">
+          <h3>Problem statement</h3>
+          <ul>
+            <li>Too many metrics compete for attention.</li>
+<li>Users need a fast understanding of what changed and why.</li>
+<li>Performance information can be difficult to compare over time.</li>
+<li>A dashboard must support both quick scanning and deeper investigation.</li>
+
+          </ul>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 02</span>
-          <div class="process-title">Define</div>
-          <div class="process-desc">Defining workspace fragmentation and communication drop-off.</div>
+        <div class="cs-panel accent-edge">
+          <h3>Design hypothesis</h3>
+          <p>Build a dashboard around hierarchy: summary metrics first, contextual trends next, and detailed activity after that. Use focused cards, visual patterns, and consistent filters so users can move from “what is happening?” to “where should I look?” quickly.</p>
         </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 03</span>
-          <div class="process-title">Ideate</div>
-          <div class="process-desc">Consolidating tasks, documents, and calendar schedules.</div>
-        </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 04</span>
-          <div class="process-title">Design</div>
-          <div class="process-desc">Designing high-contrast orange accent panels and card states.</div>
-        </div>
-        
-        <div class="process-card">
-          <span class="process-num">Step 05</span>
-          <div class="process-title">Test</div>
-          <div class="process-desc">Running feedback iterations with remote product teams.</div>
-        </div>
+      </div>
+    </section>
+
+    <!-- 03 / SCOPE -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">03 / SCOPE</div>
+        <h2 class="cs-display cs-sec-head__title">What the product needed to do</h2>
+        <p class="cs-sec-head__dek">A case study should make the product legible before showing every screen. These are the major capabilities that shaped the information architecture.</p>
+      </div>
+      <div class="cs-metric-row">
         
       </div>
-    </div>
+      <div class="cs-chips-wrap">
+        <span class="cs-chip">Workspace overview</span>
+<span class="cs-chip">Performance metrics</span>
+<span class="cs-chip">Activity trends</span>
+<span class="cs-chip">Team/member context</span>
+<span class="cs-chip">Visual data summaries</span>
+<span class="cs-chip">Navigation for deeper views</span>
 
-    <!-- Dynamic Content Area -->
-    <div class="case-content">
-      <h3 class='case-study-subsec-title'>One workspace to keep teams moving</h3>
-<p class='case-study-paragraph'>Momentum is a team productivity and workspace platform designed to bring projects, communication, documentation, tasks, meetings, performance metrics, and AI assistance into one connected workspace.</p>
-<p class='case-study-paragraph'>Modern teams often use separate tools for project management, communication, documentation, scheduling, analytics, and productivity. While each tool solves a specific problem, moving between them creates friction and makes it harder to understand the bigger picture.</p>
-<p class='case-study-paragraph'>Momentum takes a different approach.</p>
-<p class='case-study-paragraph'>Instead of making teams manage multiple disconnected systems, the platform brings the most important parts of daily work into a unified workspace.</p>
-<p class='case-study-paragraph'>The design focuses on one core idea:</p>
-<p class='case-study-paragraph'><strong>Help teams understand what is happening, what needs attention, and what should happen next — from one place.</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Why Momentum Exists</h2>
-<p class='case-study-paragraph'>As teams grow, work becomes distributed across more tools, projects, conversations, documents, meetings, and deadlines.</p>
-<p class='case-study-paragraph'>A typical workday may require someone to:</p>
-<ul class='case-study-list'>
-  <li>Check project updates</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Review documents</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Follow up on messages</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Track tasks</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Attend meetings</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Review KPIs</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Check team availability</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Schedule upcoming work</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Search through previous information</li>
-</ul>
-<p class='case-study-paragraph'>The problem is not necessarily the lack of productivity tools.</p>
-<p class='case-study-paragraph'>The problem is that the tools are often disconnected.</p>
-<p class='case-study-paragraph'>Momentum was designed to reduce this fragmentation by creating a centralized workspace where teams can see their work, progress, workload, and communication in context.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>The Business Problem</h2>
-<p class='case-study-paragraph'>The core business problem is <strong>fragmented team productivity</strong>.</p>
-<p class='case-study-paragraph'>When important work is spread across multiple systems, organizations can face:</p>
-<h4 class='case-study-subsubsec-title'>Context Switching</h4>
-<p class='case-study-paragraph'>People constantly move between different applications to complete related tasks.</p>
-<h4 class='case-study-subsubsec-title'>Information Fragmentation</h4>
-<p class='case-study-paragraph'>Project updates may live in one place, documents in another, conversations somewhere else, and schedules in another system.</p>
-<h4 class='case-study-subsubsec-title'>Limited Visibility</h4>
-<p class='case-study-paragraph'>Managers and team members may struggle to quickly understand project progress, workload, and overall productivity.</p>
-<h4 class='case-study-subsubsec-title'>Poor Prioritization</h4>
-<p class='case-study-paragraph'>When everything is presented as a separate task or notification, it becomes difficult to understand what actually requires attention.</p>
-<h4 class='case-study-subsubsec-title'>Manual Coordination</h4>
-<p class='case-study-paragraph'>Meetings, tasks, project updates, and team availability often require repetitive coordination.</p>
-<p class='case-study-paragraph'>Momentum addresses these problems by creating a single operational layer for team productivity.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Primary Audience</h3>
-<h4 class='case-study-subsubsec-title'>Product & Project Teams</h4>
-<p class='case-study-paragraph'>Teams responsible for planning, building, managing, and delivering projects.</p>
-<p class='case-study-paragraph'>They need to:</p>
-<ul class='case-study-list'>
-  <li>Track project progress</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Organize tasks</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Manage documentation</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Coordinate meetings</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Communicate with teammates</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Monitor workload</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Understand performance</li>
-</ul>
-<h3 class='case-study-subsec-title'>Secondary Audience</h3>
-<h4 class='case-study-subsubsec-title'>Team Leads & Managers</h4>
-<p class='case-study-paragraph'>Managers need a higher-level view of:</p>
-<ul class='case-study-list'>
-  <li>Team workload</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Project progress</li>
-</ul>
-<ul class='case-study-list'>
-  <li>KPIs</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Upcoming work</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Meetings</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Team availability</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Potential bottlenecks</li>
-</ul>
-<h3 class='case-study-subsec-title'>Additional Users</h3>
-<hr class='case-study-divider' />
-<h4 class='case-study-subsubsec-title'>Too Many Tools</h4>
-<p class='case-study-paragraph'>Teams often depend on several applications for different parts of their workflow.</p>
-<h4 class='case-study-subsubsec-title'>Too Much Information</h4>
-<p class='case-study-paragraph'>Large amounts of project information can make it difficult to identify what matters now.</p>
-<h4 class='case-study-subsubsec-title'>Lack of Visibility</h4>
-<p class='case-study-paragraph'>A task list alone does not provide enough context about team capacity, progress, or project health.</p>
-<h4 class='case-study-subsubsec-title'>Scattered Communication</h4>
-<p class='case-study-paragraph'>Important messages and project information can become separated from the actual work.</p>
-<h4 class='case-study-subsubsec-title'>Difficult Workload Management</h4>
-<p class='case-study-paragraph'>Knowing what everyone is working on is different from understanding whether the team is overloaded or underutilized.</p>
-<h4 class='case-study-subsubsec-title'>Repetitive Work</h4>
-<p class='case-study-paragraph'>Routine coordination and information retrieval can consume time that could otherwise be spent on productive work.</p>
-<hr class='case-study-divider' />
-<p class='case-study-paragraph'>The product experience was designed around five major goals:</p>
-<p class='case-study-paragraph'>1. <strong>Create a single source of truth for team work</strong></p>
-<p class='case-study-paragraph'>2. <strong>Reduce cognitive load</strong></p>
-<p class='case-study-paragraph'>3. <strong>Make productivity data understandable at a glance</strong></p>
-<p class='case-study-paragraph'>4. <strong>Connect daily tasks with broader team context</strong></p>
-<p class='case-study-paragraph'>5. <strong>Introduce AI assistance without making the interface feel overwhelming</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>01 — Dashboard as the Command Center</h3>
-<p class='case-study-paragraph'>The dashboard is the heart of the experience.</p>
-<p class='case-study-paragraph'>Instead of showing a generic collection of widgets, the interface creates a snapshot of the user's current workspace.</p>
-<p class='case-study-paragraph'>The dashboard brings together:</p>
-<ul class='case-study-list'>
-  <li>Updates</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Iterations</li>
-</ul>
-<ul class='case-study-list'>
-  <li>KPI</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Meetings</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Completion</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Weekly workload</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Calendar</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Important project activity</li>
-</ul>
-<p class='case-study-paragraph'>This allows users to answer several questions immediately:</p>
-<p class='case-study-paragraph'><strong>What is happening?</strong></p>
-<p class='case-study-paragraph'><strong>How is the team performing?</strong></p>
-<p class='case-study-paragraph'><strong>What needs attention?</strong></p>
-<p class='case-study-paragraph'><strong>What is scheduled next?</strong></p>
-<p class='case-study-paragraph'><strong>How busy is the team?</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>02 — Information Hierarchy</h2>
-<p class='case-study-paragraph'>The dashboard uses different levels of visual importance.</p>
-<p class='case-study-paragraph'>Large metrics communicate important numbers.</p>
-<p class='case-study-paragraph'>Medium-sized cards provide supporting information.</p>
-<p class='case-study-paragraph'>Charts and visual patterns communicate trends.</p>
-<p class='case-study-paragraph'>The calendar provides time-based context.</p>
-<p class='case-study-paragraph'>This creates a hierarchy where users can scan the page rather than reading every element.</p>
-<p class='case-study-paragraph'>The design is particularly effective because not every piece of information competes for attention.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>03 — Modular Workspace</h2>
-<p class='case-study-paragraph'>The product is structured as a modular workspace.</p>
-<p class='case-study-paragraph'>The sidebar separates functionality into clear groups:</p>
-<h4 class='case-study-subsubsec-title'>General</h4>
-<ul class='case-study-list'>
-  <li>Dashboard</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Templates</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Products</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Docs</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Messages</li>
-</ul>
-<h4 class='case-study-subsubsec-title'>More</h4>
-<ul class='case-study-list'>
-  <li>To-do lists</li>
-</ul>
-<ul class='case-study-list'>
-  <li>AI Assistants</li>
-</ul>
-<h4 class='case-study-subsubsec-title'>Interactions</h4>
-<ul class='case-study-list'>
-  <li>Team members and collaborators</li>
-</ul>
-<p class='case-study-paragraph'>This creates a predictable navigation model while allowing the platform to expand with additional functionality.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>04 — Contextual Productivity</h2>
-<p class='case-study-paragraph'>A major strength of the design is that productivity is not represented only through tasks.</p>
-<p class='case-study-paragraph'>The interface connects multiple dimensions of work:</p>
-<p class='case-study-paragraph'><strong>Work → People → Time → Performance → Capacity</strong></p>
-<p class='case-study-paragraph'>For example, the weekly workload visualization shows how busy different team members are across a period of time.</p>
-<p class='case-study-paragraph'>The KPI card shows performance.</p>
-<p class='case-study-paragraph'>The calendar provides scheduling context.</p>
-<p class='case-study-paragraph'>Meetings show time consumption.</p>
-<p class='case-study-paragraph'>Together, these provide a more complete picture of productivity.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>05 — AI as Part of the Workspace</h2>
-<p class='case-study-paragraph'>The inclusion of <strong>AI Assistants</strong> directly inside the primary navigation is an important product decision.</p>
-<p class='case-study-paragraph'>Instead of treating AI as a separate product, the design positions it as another layer of the workspace.</p>
-<p class='case-study-paragraph'>This suggests a workflow where AI can potentially assist with:</p>
-<ul class='case-study-list'>
-  <li>Information retrieval</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Project analysis</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Task support</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Documentation</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Communication</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Planning</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Productivity workflows</li>
-</ul>
-<p class='case-study-paragraph'>The key UX principle is:</p>
-<p class='case-study-paragraph'><strong>AI should support the existing workflow rather than force users into a separate AI experience.</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Dashboard Design</h2>
-<p class='case-study-paragraph'>The dashboard is structured around a three-part visual composition.</p>
-<h4 class='case-study-subsubsec-title'>Left — Workspace Navigation</h4>
-<p class='case-study-paragraph'>The sidebar provides access to the main product areas.</p>
-<h4 class='case-study-subsubsec-title'>Center — Productivity Overview</h4>
-<p class='case-study-paragraph'>The central area contains the most important workspace information:</p>
-<ul class='case-study-list'>
-  <li>Updates</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Product/project progress</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Iterations</li>
-</ul>
-<ul class='case-study-list'>
-  <li>KPI</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Meetings</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Completion</li>
-</ul>
-<h4 class='case-study-subsubsec-title'>Right — Time & Schedule</h4>
-<p class='case-study-paragraph'>The calendar provides immediate visibility into upcoming work and appointments.</p>
-<p class='case-study-paragraph'>This structure follows a natural information hierarchy:</p>
-<p class='case-study-paragraph'><strong>Navigate → Understand → Act → Schedule</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Productivity Metrics</h2>
-<p class='case-study-paragraph'>The dashboard introduces several high-level metrics.</p>
-<h4 class='case-study-subsubsec-title'>Updates</h4>
-<p class='case-study-paragraph'>Shows the volume of project updates.</p>
-<h4 class='case-study-subsubsec-title'>Iterations</h4>
-<p class='case-study-paragraph'>Provides visibility into ongoing work cycles.</p>
-<h4 class='case-study-subsubsec-title'>KPI</h4>
-<p class='case-study-paragraph'>Provides a high-level performance indicator.</p>
-<h4 class='case-study-subsubsec-title'>Meetings</h4>
-<p class='case-study-paragraph'>Shows the amount of time being spent in meetings.</p>
-<h4 class='case-study-subsubsec-title'>Finished</h4>
-<p class='case-study-paragraph'>Communicates overall completion.</p>
-<p class='case-study-paragraph'>These metrics allow users to quickly understand the current state of their workspace without opening individual projects.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Weekly Workload Visualization</h2>
-<p class='case-study-paragraph'>The weekly workload section is one of the strongest UX decisions in the interface.</p>
-<p class='case-study-paragraph'>Instead of showing workload as a simple percentage, the design visualizes team capacity across multiple days.</p>
-<p class='case-study-paragraph'>Different levels communicate:</p>
-<ul class='case-study-list'>
-  <li>Low</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Medium</li>
-</ul>
-<ul class='case-study-list'>
-  <li>High</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Fully Occupied</li>
-</ul>
-<p class='case-study-paragraph'>This makes workload patterns easier to recognize visually.</p>
-<p class='case-study-paragraph'>A manager can potentially identify:</p>
-<ul class='case-study-list'>
-  <li>Overloaded periods</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Available capacity</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Busy team members</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Potential scheduling conflicts</li>
-</ul>
-<p class='case-study-paragraph'>The visualization therefore turns raw workload information into something that can support planning decisions.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Calendar Integration</h2>
-<p class='case-study-paragraph'>The calendar is integrated directly into the dashboard rather than isolated inside a separate scheduling section.</p>
-<p class='case-study-paragraph'>This is important because time is a major part of productivity.</p>
-<p class='case-study-paragraph'>The calendar shows:</p>
-<ul class='case-study-list'>
-  <li>Current date</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Upcoming events</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Project-related activities</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Participants</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Scheduled times</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Quick appointment creation</li>
-</ul>
-<p class='case-study-paragraph'>The <strong>"Make an appointment"</strong> CTA provides a direct action from the overview screen.</p>
-<p class='case-study-paragraph'>This reduces the number of steps required to move from seeing a schedule to acting on it.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Team Collaboration</h2>
-<p class='case-study-paragraph'>Momentum also treats collaboration as part of the workspace rather than a separate communication layer.</p>
-<p class='case-study-paragraph'>The sidebar provides visibility into people and interactions.</p>
-<p class='case-study-paragraph'>This creates a relationship between:</p>
-<p class='case-study-paragraph'><strong>People → Projects → Communication → Work</strong></p>
-<p class='case-study-paragraph'>Users can understand not only what is happening, but also who is involved.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Visual Design Strategy</h2>
-<p class='case-study-paragraph'>The interface uses a soft, spacious visual system with strong contrast for important actions.</p>
-<p class='case-study-paragraph'>The overall aesthetic combines:</p>
-<ul class='case-study-list'>
-  <li>Large rounded cards</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Generous whitespace</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Soft surfaces</li>
-</ul>
-<ul class='case-study-list'>
-  <li>High-contrast typography</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Black/white interface elements</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Bright orange as the primary action color</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Subtle gradients</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Abstract visual artwork</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Compact data visualization</li>
-</ul>
-<p class='case-study-paragraph'>The orange brand color is particularly effective for actions and emphasis.</p>
-<p class='case-study-paragraph'>Instead of using orange everywhere, the interface reserves it for:</p>
-<ul class='case-study-list'>
-  <li>Primary CTAs</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Active states</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Important highlights</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Data emphasis</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Brand moments</li>
-</ul>
-<p class='case-study-paragraph'>This keeps the interface visually controlled.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Hero Experience</h2>
-<p class='case-study-paragraph'>The central hero card introduces the product's core proposition:</p>
-<p class='case-study-paragraph'><strong>“Maximize human productivity.”</strong></p>
-<p class='case-study-paragraph'>This is supported by an abstract orange visual that creates a strong visual focal point.</p>
-<p class='case-study-paragraph'>The hero is not simply decorative.</p>
-<p class='case-study-paragraph'>It communicates the product's positioning while breaking up an otherwise information-heavy dashboard.</p>
-<p class='case-study-paragraph'>This creates an important balance:</p>
-<p class='case-study-paragraph'><strong>Functional data + emotional brand expression</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Component Strategy</h2>
-<p class='case-study-paragraph'>The product uses a consistent card-based system.</p>
-<p class='case-study-paragraph'>Cards are used for:</p>
-<ul class='case-study-list'>
-  <li>Metrics</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Updates</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Calendar</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Workload</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Meetings</li>
-</ul>
-<ul class='case-study-list'>
-  <li>KPI</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Completion</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Hero messaging</li>
-</ul>
-<p class='case-study-paragraph'>This consistency makes the interface easier to scan and creates a scalable component system.</p>
-<p class='case-study-paragraph'>Each card follows a familiar structure:</p>
-<p class='case-study-paragraph'><strong>Context → Value → Supporting information → Action</strong></p>
-<p class='case-study-paragraph'>For example:</p>
-<p class='case-study-paragraph'><strong>KPI → 3.78 → change from previous weeks → View all</strong></p>
-<p class='case-study-paragraph'>This predictable pattern improves comprehension.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Responsive Product Thinking</h2>
-<p class='case-study-paragraph'>Although the provided showcase primarily demonstrates the desktop experience, the layout establishes a component system that can be adapted to smaller screens.</p>
-<p class='case-study-paragraph'>The desktop dashboard is intentionally modular.</p>
-<p class='case-study-paragraph'>Each major section can become a responsive block:</p>
-<ul class='case-study-list'>
-  <li>Sidebar → mobile navigation</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Metric grid → stacked cards</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Workload visualization → horizontally scrollable chart</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Calendar → focused schedule view</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Hero → simplified mobile feature card</li>
-</ul>
-<p class='case-study-paragraph'>This modularity makes the product more scalable across devices.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>What I Focused on as a Product Designer</h2>
-<p class='case-study-paragraph'>The design challenge was not simply to create another project-management dashboard.</p>
-<p class='case-study-paragraph'>The focus was to answer a bigger question:</p>
-<p class='case-study-paragraph'><strong>How can a workspace help people understand their entire work environment without overwhelming them?</strong></p>
-<p class='case-study-paragraph'>The design therefore focused on:</p>
-<h4 class='case-study-subsubsec-title'>Information Hierarchy</h4>
-<p class='case-study-paragraph'>Showing the right information at the right level of importance.</p>
-<h4 class='case-study-subsubsec-title'>Context</h4>
-<p class='case-study-paragraph'>Connecting metrics with people, projects, time, and workload.</p>
-<h4 class='case-study-subsubsec-title'>Scanability</h4>
-<p class='case-study-paragraph'>Allowing users to understand the dashboard within seconds.</p>
-<h4 class='case-study-subsubsec-title'>Actionability</h4>
-<p class='case-study-paragraph'>Making important actions immediately accessible.</p>
-<h4 class='case-study-subsubsec-title'>Scalability</h4>
-<p class='case-study-paragraph'>Creating reusable components that can support more workflows and features.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Design Outcome</h2>
-<p class='case-study-paragraph'>The resulting interface transforms a complex collection of productivity functions into a unified workspace.</p>
-<p class='case-study-paragraph'>Instead of forcing users to navigate through separate sections to understand their work, the dashboard provides a high-level overview first and allows users to progressively explore deeper information.</p>
-<p class='case-study-paragraph'>The design creates a balance between:</p>
-<p class='case-study-paragraph'><strong>Data and simplicity</strong></p>
-<p class='case-study-paragraph'><strong>Productivity and human focus</strong></p>
-<p class='case-study-paragraph'><strong>Density and whitespace</strong></p>
-<p class='case-study-paragraph'><strong>Automation and user control</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Key UX Decisions</h2>
-<h3 class='case-study-subsec-title'>From Task Management → Work Management</h3>
-<p class='case-study-paragraph'>The product does not stop at managing individual tasks.</p>
-<p class='case-study-paragraph'>It connects tasks with:</p>
-<ul class='case-study-list'>
-  <li>Team capacity</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Meetings</li>
-</ul>
-<ul class='case-study-list'>
-  <li>KPIs</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Project updates</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Documentation</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Communication</li>
-</ul>
-<p class='case-study-paragraph'>This gives users a broader understanding of how work is progressing.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Data → Insight</h3>
-<p class='case-study-paragraph'>Instead of simply presenting numbers, the interface visualizes patterns through:</p>
-<ul class='case-study-list'>
-  <li>Workload charts</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Progress indicators</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Trend percentages</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Calendar context</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Status states</li>
-</ul>
-<p class='case-study-paragraph'>The goal is to make information actionable.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>From Separate Tools → Unified Workspace</h3>
-<p class='case-study-paragraph'>The navigation combines traditionally separate functions:</p>
-<p class='case-study-paragraph'><strong>Docs + Messages + Tasks + Projects + AI + Calendar + Analytics</strong></p>
-<p class='case-study-paragraph'>This unified structure is the central product idea.</p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Key Takeaways</h2>
-<h4 class='case-study-subsubsec-title'>A dashboard should answer questions, not just display data.</h4>
-<p class='case-study-paragraph'>Every major section should help users understand something about their current situation.</p>
-<h4 class='case-study-subsubsec-title'>Productivity is multidimensional.</h4>
-<p class='case-study-paragraph'>Tasks alone do not define productivity. Time, workload, meetings, collaboration, and outcomes all contribute to the picture.</p>
-<h4 class='case-study-subsubsec-title'>Visual hierarchy reduces cognitive load.</h4>
-<p class='case-study-paragraph'>When every element has the same importance, dashboards become difficult to use.</p>
-<h4 class='case-study-subsubsec-title'>AI works best when it is contextual.</h4>
-<p class='case-study-paragraph'>Integrating AI into an existing workspace can make assistance feel like part of the workflow rather than another destination.</p>
-<h4 class='case-study-subsubsec-title'>Great productivity software should create momentum.</h4>
-<p class='case-study-paragraph'>The best experience does not simply show users what has happened.</p>
-<p class='case-study-paragraph'>It helps them understand:</p>
-<p class='case-study-paragraph'><strong>What is happening → What needs attention → What should happen next.</strong></p>
-<hr class='case-study-divider' />
-<h2 class='case-study-sec-title'>Case Study Page Structure for AI</h2>
-<h3 class='case-study-subsec-title'>Section 01 — Hero</h3>
-<p class='case-study-paragraph'>Hero content:</p>
-<p class='case-study-paragraph'><strong>Momentum</strong></p>
-<p class='case-study-paragraph'><strong>One workspace to keep teams moving.</strong></p>
-<p class='case-study-paragraph'>Short description:</p>
-<p class='case-study-paragraph'>“An integrated productivity workspace connecting projects, communication, documentation, scheduling, analytics, and AI assistance in one place.”</p>
-<p class='case-study-paragraph'>Place the dashboard image immediately below or partially overlapping the hero content.</p>
-<p class='case-study-paragraph'>The dashboard should be the visual centerpiece.</p>
-<hr class='case-study-divider' />
-<p class='case-study-paragraph'>Use a clean two-column layout.</p>
-<h4 class='case-study-subsubsec-title'>Left</h4>
-<p class='case-study-paragraph'>Explain what Momentum is and why it exists.</p>
-<h4 class='case-study-subsubsec-title'>Right</h4>
-<p class='case-study-paragraph'>Show project metadata:</p>
-<ul class='case-study-list'>
-  <li>Product: Momentum</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Category: Productivity / SaaS</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Platform: Web Application</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Focus: Team collaboration & productivity</li>
-</ul>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 03 — The Problem</h3>
-<p class='case-study-paragraph'>Create a large editorial section.</p>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“Work was everywhere. Productivity needed one place.”</strong></p>
-<p class='case-study-paragraph'>Then show 4 problem cards:</p>
-<ul class='case-study-list'>
-  <li>Fragmented tools</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Information overload</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Limited visibility</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Manual coordination</li>
-</ul>
-<p class='case-study-paragraph'>Use small UI crops from the showcase beside each problem where possible.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 04 — Design Challenge</h3>
-<p class='case-study-paragraph'>Create a large statement:</p>
-<p class='case-study-paragraph'><strong>“How might we turn a collection of productivity tools into one understandable workspace?”</strong></p>
-<p class='case-study-paragraph'>Follow with a short explanation of the UX challenge.</p>
-<p class='case-study-paragraph'>Keep this section visually minimal.</p>
-<hr class='case-study-divider' />
-<p class='case-study-paragraph'>Use a horizontal process:</p>
-<p class='case-study-paragraph'><strong>Centralize → Prioritize → Visualize → Connect → Assist</strong></p>
-<p class='case-study-paragraph'>Each step should have a short explanation.</p>
-<p class='case-study-paragraph'>Use small cropped interface elements underneath each step.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 06 — Dashboard Anatomy</h3>
-<p class='case-study-paragraph'>Add numbered annotations:</p>
-<p class='case-study-paragraph'><strong>01 — Workspace navigation</strong></p>
-<p class='case-study-paragraph'><strong>02 — Productivity metrics</strong></p>
-<p class='case-study-paragraph'><strong>03 — Project updates</strong></p>
-<p class='case-study-paragraph'><strong>04 — Calendar</strong></p>
-<p class='case-study-paragraph'><strong>05 — Weekly workload</strong></p>
-<p class='case-study-paragraph'><strong>06 — AI Assistants</strong></p>
-<p class='case-study-paragraph'><strong>07 — Team interactions</strong></p>
-<p class='case-study-paragraph'>This should be one of the most visually important sections of the case study.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 07 — From Data to Insight</h3>
-<p class='case-study-paragraph'>Explain how the dashboard converts raw activity into quick insights.</p>
-<p class='case-study-paragraph'>Use a split layout:</p>
-<p class='case-study-paragraph'><strong>Left:</strong> UI visual</p>
-<p class='case-study-paragraph'><strong>Right:</strong> Explanation</p>
-<p class='case-study-paragraph'>Repeat for 2–3 key examples.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 08 — Workload Management</h3>
-<p class='case-study-paragraph'>Make the chart large.</p>
-<p class='case-study-paragraph'>Add short annotations explaining:</p>
-<ul class='case-study-list'>
-  <li>Capacity</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Workload levels</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Team availability</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Scheduling patterns</li>
-</ul>
-<p class='case-study-paragraph'><strong>“See the team's capacity before assigning the next task.”</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 09 — Time & Collaboration</h3>
-<p class='case-study-paragraph'>Explain how scheduling and collaboration are connected directly to the workspace.</p>
-<p class='case-study-paragraph'>Layout:</p>
-<p class='case-study-paragraph'><strong>Calendar visual → explanation → collaboration visual</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 10 — AI Layer</h3>
-<p class='case-study-paragraph'>Headline:</p>
-<p class='case-study-paragraph'><strong>“AI shouldn't be another tool. It should be part of the workflow.”</strong></p>
-<p class='case-study-paragraph'>Explain the concept of contextual AI assistance.</p>
-<p class='case-study-paragraph'>Do not invent specific AI features that are not shown in the design.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 11 — Visual System</h3>
-<p class='case-study-paragraph'>Show:</p>
-<ul class='case-study-list'>
-  <li>Cards</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Buttons</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Navigation</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Typography hierarchy</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Orange brand color</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Data visualization</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Status indicators</li>
-</ul>
-<ul class='case-study-list'>
-  <li>Abstract visual language</li>
-</ul>
-<p class='case-study-paragraph'>Present these as a compact design-system showcase.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 12 — Product Experience</h3>
-<p class='case-study-paragraph'>Create a large collage of the interface.</p>
-<p class='case-study-paragraph'>The purpose is to demonstrate how the individual components work together as one product.</p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 13 — Design Impact</h3>
-<p class='case-study-paragraph'>Do not add fake percentages or fabricated business metrics.</p>
-<p class='case-study-paragraph'>Instead, communicate the design impact qualitatively:</p>
-<p class='case-study-paragraph'><strong>One workspace.</strong></p>
-<p class='case-study-paragraph'><strong>Clearer context.</strong></p>
-<p class='case-study-paragraph'><strong>Faster understanding.</strong></p>
-<p class='case-study-paragraph'><strong>Better visibility.</strong></p>
-<p class='case-study-paragraph'><strong>More actionable information.</strong></p>
-<hr class='case-study-divider' />
-<h3 class='case-study-subsec-title'>Section 14 — Closing</h3>
-<p class='case-study-paragraph'>End with the main dashboard visual again, but crop it differently from the hero.</p>
-<p class='case-study-paragraph'><strong>“Momentum turns scattered work into a workspace people can move through with clarity.”</strong></p>
-<p class='case-study-paragraph'>Then add a simple final CTA such as:</p>
-<p class='case-study-paragraph'><strong>Explore the experience →</strong></p>
-<hr class='case-study-divider' />
-    </div>
+      </div>
+    </section>
 
-    <!-- Visual Palette Showcase -->
-    <div class="case-study-divider"></div>
-    <div class="process-timeline-wrap">
-      <h2>Fonts & Colors Swatches</h2>
-      <div class="design-system-swatches">
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #ff6d00;"></div>
-          <span class="swatch-hex">#ff6d00</span>
-          <span class="swatch-name">Accent Orange</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #210d02;"></div>
-          <span class="swatch-hex">#210d02</span>
-          <span class="swatch-name">Warm Void</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #070301;"></div>
-          <span class="swatch-hex">#070301</span>
-          <span class="swatch-name">Dark Ink</span>
-        </div>
-        
-        <div class="color-swatch">
-          <div class="swatch-preview" style="background: #ffffff;"></div>
-          <span class="swatch-hex">#ffffff</span>
-          <span class="swatch-name">Neutral White</span>
-        </div>
+    <!-- 04 / PROCESS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">04 / PROCESS</div>
+        <h2 class="cs-display cs-sec-head__title">How I approached the problem</h2>
+        <p class="cs-sec-head__dek">The process is shown as a decision-making loop rather than a decorative five-step diagram.</p>
+      </div>
+      <div class="cs-process">
         
       </div>
-    </div>
+    </section>
+
+    <!-- 05 / KEY DECISIONS -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">05 / KEY DECISIONS</div>
+        <h2 class="cs-display cs-sec-head__title">Design decisions with a reason</h2>
+        <p class="cs-sec-head__dek">Instead of listing deliverables, connect the interface back to the user or business problem it was meant to solve.</p>
+      </div>
+      <div class="cs-decisions">
+        
+        <div class="cs-decision">
+          <div class="cs-decision__num">01</div>
+          <h3 class="cs-decision__title">Prioritize signal over decoration</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">02</div>
+          <h3 class="cs-decision__title">Use consistent card anatomy</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">03</div>
+          <h3 class="cs-decision__title">Make trends contextual, not isolated</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+        <div class="cs-decision">
+          <div class="cs-decision__num">04</div>
+          <h3 class="cs-decision__title">Keep navigation predictable</h3>
+          <p class="cs-decision__desc">Translate the insight into a visible interface behavior, clearer hierarchy, or more predictable flow. The goal is to reduce friction without removing useful context.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 / VISUAL STORY -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">06 / VISUAL STORY</div>
+        <h2 class="cs-display cs-sec-head__title">Let the interface do the talking</h2>
+        <p class="cs-sec-head__dek">Large visuals keep the case study grounded in the actual work. Supporting visuals are used where the original showcase does not expose enough detail.</p>
+      </div>
+      <div class="cs-gallery">
+        <!-- Row 1: Large primary + Tall vertical -->
+        <div class="cs-showcase-row">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot large">
+              <img src="assets/cs2-shot1.jpg" alt="Unified Workspace & Productivity Command Center" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>01</span> Unified Workspace & Productivity Command Center</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot tall">
+              <img src="assets/cs2-shot2.jpg" alt="Calendar Integration & Task Execution Workflow" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>02</span> Calendar Integration & Task Execution Workflow</div>
+          </div>
+        </div>
+
+        <!-- Row 2: Two supporting screens -->
+        <div class="cs-showcase-row split-equal">
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs2-shot3.jpg" alt="Team Workload Distribution Heatmap & Sprint Metrics" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>03</span> Team Workload Distribution Heatmap & Sprint Metrics</div>
+          </div>
+          <div class="cs-shot-wrap">
+            <div class="cs-shot medium">
+              <img src="assets/cs2-shot4.jpg" alt="Iteration Tracking & KPI Growth Telemetry" loading="lazy" />
+            </div>
+            <div class="cs-caption"><span>04</span> Iteration Tracking & KPI Growth Telemetry</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 / OUTCOME -->
+    <section class="cs-section">
+      <div class="cs-sec-head">
+        <div class="cs-sec-head__num">07 / OUTCOME</div>
+        <h2 class="cs-display cs-sec-head__title">What the design delivers</h2>
+        <p class="cs-sec-head__dek">Close the story by showing the product value created by the design work — not just the screens delivered.</p>
+      </div>
+      <div class="cs-outcomes">
+        
+      </div>
+    </section>
+
+    <!-- NEXT PROJECT -->
+    <section class="cs-next">
+      <div class="cs-next__eyebrow">Next Project</div>
+      <div class="cs-next__grid">
+        <div>
+          <h2 class="cs-display cs-next__title">
+            <a href="case-study-3.html" class="cs-next__link">
+              ScoreBall <span class="cs-arrow">→</span>
+            </a>
+          </h2>
+          <p class="cs-next__sub">Live scores and match intelligence</p>
+        </div>
+        <a href="projects.html" class="cs-next__all-btn">All projects <span>↗</span></a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="cs-footer">
+      <span>© BAPPY ISLAM</span>
+      <span class="cs-footer__brand">02 / 13 — MOMENTUM</span>
+      <span>DHAKA <span aria-hidden="true">→</span> WORLDWIDE</span>
+    </footer>
+
   </main>
 
-  <!-- ══ COMBINED CONTACT & FOOTER WRAPPER ════════════ -->
-<div class="contact-footer-wrap">
-<section class="sec contact-sec" id="contacts">
-  <div class="contact-sticky-stage">
-    <!-- Interactive Wood Hover Reveal Element -->
-    <div class="contact-wood-interactive">
-      <div class="wood-img-base"></div>
-      <div class="wood-img-grass"></div>
-    </div>
-
-    <div class="contact-layout">
-      
-      <!-- Left Column: Heading, Subtext & Social Icons on top-left -->
-      <div class="contact-left-col">
-        <header class="contact-head">
-          <h2 class="testimonials-title contact-heading">
-            <span class="testi-word">Get</span>
-            <span class="testi-word">in</span>
-            <span class="testi-word testi-word--orange">touch</span>
-          </h2>
-          
-          <div class="contact-details-list">
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Email:</span>
-              <a href="mailto:bappiyslam@gmail.com" class="contact-detail-value">bappiyslam@gmail.com</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Phone:</span>
-              <a href="tel:+8801575597382" class="contact-detail-value">+880 1575-597382</a>
-            </div>
-
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Address:</span>
-              <span class="contact-detail-value">Dhaka, Bangladesh</span>
-            </div>
-          </div>
-
-          <div class="contact-socials-wrap">
-            <span class="contact-socials-label">Follow us:</span>
-            <div class="contact-social-icons">
-              <a href="https://www.linkedin.com/in/bappy-islam-433389201/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.07v8.37h2.78z"/>
-                </svg>
-              </a>
-              <a href="https://x.com/BappyIslm" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X (Twitter)">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a href="https://www.behance.net/bappyislam11" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Behance">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.045 0-5.918-2.853-5.918-5.748 0-3.328 2.296-5.836 5.867-5.836 4.316 0 5.484 3.42 5.093 6.009h-8.082c.119 1.583 1.328 2.871 3.297 2.871 1.641 0 2.531-.762 2.883-1.605l1.961 1.309zm-7.98-4.238h5.391c-.125-1.395-1.07-2.203-2.617-2.203-1.688 0-2.637.898-2.774 2.203zm-11.746-4.762h5.168c1.395 0 2.457.391 3.094 1.094.523.57.773 1.312.773 2.141 0 1.07-.461 1.953-1.367 2.43 1.25.547 1.836 1.609 1.836 2.93 0 1.023-.336 1.922-.984 2.578-.781.797-2.039 1.227-3.664 1.227h-4.856v-12.4zm2.766 2.156v2.859h2.156c1.172 0 1.859-.516 1.859-1.43 0-.898-.672-1.429-1.859-1.429h-2.156zm0 5.023v3.078h2.367c1.344 0 2.109-.594 2.109-1.547 0-.969-.766-1.531-2.109-1.531h-2.367z"/>
-                </svg>
-              </a>
-              <a href="https://dribbble.com/bappy09" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Dribbble">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.42 6.55a8.04 8.04 0 0 1 1.97 4.96c-.36-.08-2.6-.54-5.26-.06-.11-.27-.23-.55-.36-.82 2.77-1.7 3.51-3.86 3.65-4.08zM12 3.96c2.25 0 4.3.93 5.78 2.44-.14.22-.84 2.19-3.52 3.82-1.46-2.58-3.08-4.81-3.32-5.14.35-.08.7-.12 1.06-.12zm-3.03.88c.24.32 1.83 2.5 3.29 5.03-3.67 1.07-7.25 1.06-7.7.1.84-2.15 2.5-3.88 4.41-5.13zm-5.01 6.58c.45.02 3.75.05 7.42-.98.3 0.63.57 1.28.81 1.93-3.57 1.15-7.05 4.31-7.85 5.12a8.01 8.01 0 0 1-.38-6.07zm3.17 7.72c.7-.72 3.86-3.6 7.4-4.8.96 2.51 1.37 4.88 1.49 5.66a8.03 8.03 0 0 1-8.89-.86zm10.74-.29c-.11-.7-.5-2.88-1.41-5.26 2.45-.48 4.6.02 4.93.11a8.04 8.04 0 0 1-3.52 5.15z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </header>
-      </div>
-
-      <!-- Right Column: Interactive Form aligned to bottom-right -->
-      <div class="contact-right-col">
-        <form class="contact-form" id="contact-form">
-          <div class="contact-form-row">
-            <div class="contact-form-field">
-              <label for="contact-name" class="contact-form-label">Your Name</label>
-              <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Enter your full name" required />
-            </div>
-            <div class="contact-form-field">
-              <label for="contact-email" class="contact-form-label">Email address</label>
-              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="Enter your email address" required />
-            </div>
-          </div>
-
-          <div class="contact-form-field">
-            <label for="contact-message" class="contact-form-label">Message</label>
-            <textarea id="contact-message" name="message" class="contact-textarea" placeholder="Write something..." rows="4" required></textarea>
-          </div>
-
-          <button type="submit" class="contact-submit-btn">
-            <span>Send Message</span>
-          </button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<!-- Footer (Tagline, Navigation, Giant Hero Wordmark & Copyright) -->
-<footer class="footer-sec">
-  <div class="contact-bottom-footer">
-    <!-- Middle Navigation & Tagline Bar (Keeps 80px left/right padding) -->
-    <div class="contact-mid-wrap" data-reveal>
-      <div class="contact-mid-row">
-        <div class="contact-tagline">
-          <a href="#home" class="contact-footer-logo" aria-label="Bappy — home">
-            <svg viewBox="0 0 24 27" width="28" height="32" fill="#ffffff" aria-hidden="true">
-              <path d="M0 0H14.3974C17.8052 0 20.5678 2.76255 20.5678 6.17033C20.5678 9.5781 17.8052 12.3407 14.3974 12.3407H0V0Z"/>
-              <path d="M11.6593 13.7081H17.8297C21.2375 13.7081 24 16.4706 24 19.8784C24 23.2862 21.2375 26.0487 17.8297 26.0487H11.6593V13.7081Z"/>
-              <path d="M0 19.8784C0 17.0989 2.2532 14.8457 5.03267 14.8457C7.81214 14.8457 10.0653 17.0989 10.0653 19.8784C10.0653 22.6579 7.81214 24.9111 5.03267 24.9111C2.2532 24.9111 0 22.6579 0 19.8784Z"/>
-            </svg>
-          </a>
-          <p>Easily adapt to changes and scale your operations with modern, user-centered digital product design.</p>
-        </div>
-
-        <nav class="contact-links-nav" aria-label="Footer navigation">
-          <div class="contact-links-group">
-            <span class="contact-links-title">Links</span>
-            <a href="#home" class="contact-nav-link">Home</a>
-            <a href="#about" class="contact-nav-link">About Me</a>
-            <a href="#process" class="contact-nav-link">Process</a>
-          </div>
-          <div class="contact-links-group">
-            <span class="contact-links-title">Explore</span>
-            <a href="#work" class="contact-nav-link">Projects</a>
-            <a href="#testimonials" class="contact-nav-link">Testimonials</a>
-            <a href="#contacts" class="contact-nav-link">Contacts</a>
-          </div>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Copyright Row (Keeps 80px left/right padding and 18px bottom padding) -->
-    <div class="contact-copyright-wrap">
-      <div class="contact-copyright-row">
-        <span class="contact-copy-left">© 2026 Bappy Islam</span>
-        <span class="contact-copy-right">All rights reserved.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Giant Typography: DESIGNER (Full Bleed Edge-to-Edge, positioned next to the card) -->
-  <div class="contact-designer-banner">
-    <div class="contact-wordmark wordmark" aria-hidden="true">
-      <span>D</span><span>E</span><span>S</span><span>I</span><span>G</span><span>N</span><span>E</span><span>R</span>
-    </div>
-  </div>
-</footer>
-</div> </div> <!-- End of contact-footer-wrap -->
+  <!-- Burger Script -->
   <script>
-  const nav = document.getElementById('nav');
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-
-  function updateNavState() {
-    if (!nav) return;
-    const isScrolled = window.scrollY > 40;
-    nav.classList.toggle('is-scrolled', isScrolled);
-  }
-
-  updateNavState();
-  window.addEventListener('scroll', updateNavState, { passive: true });
-
-  if (burger && menu) {
-    burger.addEventListener('click', () => {
-      const open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', !open);
-      burger.classList.toggle('is-open');
-      menu.classList.toggle('is-open');
-      if (!open) {
-        menu.removeAttribute('inert');
-        document.body.classList.add('no-scroll');
-      } else {
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
-      }
-    });
-
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        burger.setAttribute('aria-expanded', 'false');
-        burger.classList.remove('is-open');
-        menu.classList.remove('is-open');
-        menu.setAttribute('inert', '');
-        document.body.classList.remove('no-scroll');
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        const expanded = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', !expanded);
+        menu.toggleAttribute('inert', expanded);
+        menu.classList.toggle('is-open', !expanded);
+        document.body.classList.toggle('menu-open', !expanded);
       });
-    });
-  }
-
-  // Redirect hash links on subpages to landing page sections
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('#') && href !== '#') {
-      link.href = 'index.html' + href;
     }
-  });
-
-  // Initialize interactive wood hover reveal effect in the footer
-  function initContactWoodHover() {
-    const stage = document.querySelector('.contact-sticky-stage');
-    if (!stage) return;
-
-    const grass = stage.querySelector('.wood-img-grass');
-    if (!grass) return;
-
-    stage.addEventListener('pointermove', (e) => {
-      const rect = stage.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      grass.style.setProperty('--mouse-x', `${x}px`);
-      grass.style.setProperty('--mouse-y', `${y}px`);
-    });
-
-    stage.addEventListener('pointerleave', () => {
-      grass.style.setProperty('--mouse-x', '-1000px');
-      grass.style.setProperty('--mouse-y', '-1000px');
-    });
-  }
-
-  // Contact Form AJAX Submission (FormSubmit.co)
-  function initContactFormSubmit() {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const submitBtn = contactForm.querySelector('.contact-submit-btn');
-      if (!submitBtn) return;
-      
-      const originalText = submitBtn.innerHTML;
-      
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Sending...</span>';
-      
-      const formData = {
-        name: document.getElementById('contact-name').value,
-        email: document.getElementById('contact-email').value,
-        message: document.getElementById('contact-message').value,
-        _subject: 'New Portfolio Inquiry from ' + document.getElementById('contact-name').value
-      };
-      
-      fetch('https://formsubmit.co/ajax/bappiyslam@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success === 'true' || data.success === true) {
-          submitBtn.innerHTML = '<span>Message Sent!</span>';
-          submitBtn.style.background = '#2e7d32';
-          contactForm.reset();
-          setTimeout(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-          }, 4000);
-        } else {
-          throw new Error('Submission failed');
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        submitBtn.innerHTML = '<span>Error! Try again</span>';
-        submitBtn.style.background = '#c62828';
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
-        }, 4000);
-      });
-    });
-  }
-
-  initContactWoodHover();
-  initContactFormSubmit();
-</script>
+  </script>
 </body>
 </html>
