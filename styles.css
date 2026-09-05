@@ -1547,7 +1547,7 @@ img, video, canvas { display: block; max-width: 100%; }
     display: contents;
   }
 
-  /* 1. Portrait Photo Card (Top Full Width with Smooth Rounded Corners) */
+  /* 1. Portrait Photo Card (Zoomed Out with Ambient Blurred Glow on Sides) */
   .about-portrait-wrapper {
     grid-column: 1 / -1;
     order: 1;
@@ -1558,24 +1558,42 @@ img, video, canvas { display: block; max-width: 100%; }
   }
 
   .about-portrait-card {
+    position: relative;
     width: 100%;
     max-width: 100%;
     margin: 0 !important;
-    aspect-ratio: 1.38 / 1;
+    aspect-ratio: 1.22 / 1;
     border-radius: clamp(20px, 5.5vw, 28px);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.95), 0 0 32px rgba(255, 87, 34, 0.12);
+    background: #140904;
     transform-style: preserve-3d;
     transition: transform 0.25s ease-out;
   }
 
+  /* Lush ambient blur filling the empty sides with the photo's warm orange tones */
+  .about-portrait-card::before {
+    content: "";
+    position: absolute;
+    inset: -30px;
+    background: url("assets/portrait.png") center 35% / cover no-repeat;
+    filter: blur(28px) saturate(180%) brightness(0.72);
+    transform: scale(1.2);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Foreground portrait: Zoomed out, full face, head, beard and turtleneck clearly framed */
   .about-portrait-img {
+    position: relative;
+    z-index: 2;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center 25%;
+    object-fit: contain;
+    object-position: center center;
     display: block;
+    filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.65));
   }
 
   /* 2. "ABOUT ME" Section Label */
