@@ -4036,8 +4036,20 @@ html:not(.is-ready) .wordmark span {
   .nav__inner { justify-content: space-between; }
   .nav.is-stuck .nav__actions { width: auto; justify-content: flex-end; }
 
-  .pill { height: 38px; padding: 0 16px; font-size: 13px; }
-  .pill__b { font-size: 12.5px; }
+  /* Hide "Available to work" status pill on mobile */
+  .nav__status-wrapper,
+  .status-pill,
+  .pill {
+    display: none !important;
+  }
+
+  /* Keep brand logo visible on mobile even when scrolled */
+  .nav.is-scrolled .nav__brand {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
 
   /* 3D stage remains fixed on mobile so the phone smoothly transitions into the Quote section */
   .hero__stage {
