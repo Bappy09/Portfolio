@@ -3778,40 +3778,37 @@ html:not(.is-ready) .wordmark span {
     z-index: 10;
   }
 
-  /* Both text blocks neatly stacked together at the very top */
   .hero-copy-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: contents;
+  }
+
+  .hero-copy {
     position: absolute;
-    top: clamp(64px, 8.5vh, 80px);
     left: var(--pad);
-    right: var(--pad);
-    gap: 8px;
+    white-space: normal;
+    text-align: left;
+    margin: 0;
     z-index: 15;
     pointer-events: auto;
   }
 
-  .hero-copy {
-    position: static !important;
-    white-space: normal !important;
-    text-align: center !important;
-    margin: 0 !important;
-    width: 100% !important;
-    max-width: 360px !important;
-  }
-
   .hero-copy--left {
+    top: clamp(68px, 9vh, 85px);
+    bottom: auto;
     font-size: clamp(13px, 3.6vw, 15px);
-    line-height: 1.42;
+    line-height: 1.45;
     color: #ffffff;
     font-weight: 500;
+    max-width: 320px;
   }
 
   .hero-copy--right {
-    font-size: clamp(11.5px, 3.1vw, 12.5px);
+    top: auto;
+    bottom: clamp(60px, 8.5vh, 82px);
+    font-size: clamp(11.5px, 3.1vw, 12.8px);
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 310px;
   }
 
   .hero-copy br { display: inline; }

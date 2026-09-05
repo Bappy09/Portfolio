@@ -478,10 +478,10 @@ function updateResponsiveFraming() {
     targetYOffset = -0.005;
   } else if (w > 540) {
     targetScale = 0.82;
-    targetYOffset = -0.015;
+    targetYOffset = 0.005;
   } else {
     targetScale = 0.72;
-    targetYOffset = -0.020;
+    targetYOffset = 0.008;
   }
 
   stageGroup.scale.setScalar(targetScale);
