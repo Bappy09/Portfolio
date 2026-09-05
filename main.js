@@ -726,8 +726,8 @@ function step3DInteractions(now) {
   const floatY = Math.sin(now * 0.0016) * 0.0025;
 
   const isDesktop = window.innerWidth > 860;
-  const targetX = isDesktop ? 0.135 : 0.0;
-  const targetY = isDesktop ? 0.0 : 0.075; // comfortably above quote text on mobile
+  const targetX = isDesktop ? 0.135 : (window.innerWidth <= 540 ? 0.024 : 0.032);
+  const targetY = isDesktop ? 0.0 : (window.innerWidth <= 540 ? 0.040 : 0.045); // lowered and shifted right for balanced mobile composition
   const transitionRange = quoteTop + quoteScrollRange * 0.35;
   const globalTransitionProg = Math.max(0, Math.min(1, scrollY / Math.max(1, transitionRange)));
   const moveT = 1 - Math.pow(1 - globalTransitionProg, 3);
