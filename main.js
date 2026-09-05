@@ -477,11 +477,11 @@ function updateResponsiveFraming() {
     targetScale = 0.92;
     targetYOffset = -0.005;
   } else if (w > 540) {
-    targetScale = 0.94;
-    targetYOffset = -0.008;
+    targetScale = 0.90;
+    targetYOffset = -0.022;
   } else {
-    targetScale = 0.88;
-    targetYOffset = -0.010;
+    targetScale = 0.85;
+    targetYOffset = -0.034;
   }
 
   stageGroup.scale.setScalar(targetScale);
@@ -841,9 +841,10 @@ function step3DInteractions(now) {
           // On mobile: Mask is ALWAYS active and automatically slides smoothly to showcase Hi-Fi design!
           targetMaskAlpha = 1.0;
           targetMaskRadius = 0.54;
-          if (now - lastScreenTouchTime > 1000) {
-            const autoX = 0.5 + Math.sin(now * 0.0014) * 0.28;
-            const autoY = 0.5 + Math.cos(now * 0.0018) * 0.24;
+          if (now - lastScreenTouchTime > 1200) {
+            // Ultra-gentle, slow luxury breathing glide
+            const autoX = 0.5 + Math.sin(now * 0.00045) * 0.28;
+            const autoY = 0.5 + Math.cos(now * 0.00055) * 0.22;
             targetCursorUV.set(autoX, autoY);
           }
         } else {
@@ -855,7 +856,7 @@ function step3DInteractions(now) {
   }
 
   // Smooth easing for spotlight mask position, radius & alpha
-  currentCursorUV.lerp(targetCursorUV, 0.16);
+  currentCursorUV.lerp(targetCursorUV, isMobile ? 0.05 : 0.16);
   currentMaskRadius += (targetMaskRadius - currentMaskRadius) * 0.12;
   currentMaskAlpha += (targetMaskAlpha - currentMaskAlpha) * 0.14;
 
@@ -865,7 +866,7 @@ function step3DInteractions(now) {
   screenUniforms.uCursorUV.value.copy(currentCursorUV);
   screenUniforms.uMaskRadius.value = currentMaskRadius;
   screenUniforms.uMaskAlpha.value = currentMaskAlpha;
-  screenUniforms.uRotation.value = now * 0.00035;
+  screenUniforms.uRotation.value = now * (isMobile ? 0.00012 : 0.00035);
   screenUniforms.uSliderX.value = currentSliderX;
   screenUniforms.uSliderAlpha.value = currentSliderAlpha;
 }

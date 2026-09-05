@@ -809,6 +809,10 @@ img, video, canvas { display: block; max-width: 100%; }
      drop shadow 0 5 15 — sky blue on the left, deep green on the right,
      each picking up the part of the plate it sits over.               */
 
+.hero-copy-group {
+  display: contents;
+}
+
 .hero-copy {
   position: absolute;
   z-index: 25;
@@ -3774,30 +3778,40 @@ html:not(.is-ready) .wordmark span {
     z-index: 10;
   }
 
-  /* Text blocks cleanly framed: Bio at top, value prop at bottom, phone in middle */
-  .hero-copy {
+  /* Both text blocks neatly stacked together at the very top */
+  .hero-copy-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
+    top: clamp(64px, 8.5vh, 80px);
     left: var(--pad);
     right: var(--pad);
-    white-space: normal;
-    font-size: 13.5px;
-    line-height: 1.6;
-    text-align: center;
+    gap: 8px;
     z-index: 15;
-    margin: 0;
+    pointer-events: auto;
+  }
+
+  .hero-copy {
+    position: static !important;
+    white-space: normal !important;
+    text-align: center !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 360px !important;
   }
 
   .hero-copy--left {
-    top: clamp(75px, 11vh, 95px);
-    bottom: auto;
+    font-size: clamp(13px, 3.6vw, 15px);
+    line-height: 1.42;
+    color: #ffffff;
+    font-weight: 500;
   }
 
   .hero-copy--right {
-    top: auto;
-    bottom: clamp(24px, 4.5vh, 44px);
-    font-size: 12.5px;
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.75);
+    font-size: clamp(11.5px, 3.1vw, 12.5px);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.72);
   }
 
   .hero-copy br { display: inline; }
