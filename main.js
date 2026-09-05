@@ -3732,16 +3732,15 @@ function initContactFormSubmit() {
   });
 }
 
-/* ---------- Testimonials Mobile 2-Row 3-Column Auto-Slider & Touch Swipe ---------- */
+/* ---------- Testimonials Mobile 2-Column x 3-Row Drag & Slide Interactivity ---------- */
 function initTestimonialsMobileSlider() {
-  const track = document.getElementById('testi-slider-track');
+  const grid = document.getElementById('combined-testi-grid');
   const dotsContainer = document.getElementById('testi-slider-dots');
-  if (!track) return;
+  if (!grid) return;
 
   const dots = dotsContainer ? dotsContainer.querySelectorAll('.testi-dot') : [];
-  const cols = track.querySelectorAll('.testi-col');
-  const totalSlides = cols.length;
-  if (totalSlides < 2) return;
+  const cards = grid.querySelectorAll('.testi-card');
+  const totalSlides = 2; // Column 1 (Cards 0,1,2) & Column 2 (Cards 3,4,5)
 
   let currentSlide = 0;
   let autoTimer = null;
@@ -3755,16 +3754,25 @@ function initTestimonialsMobileSlider() {
     });
   }
 
+  function getStep() {
+    // Card 3 is the top card of Column 2
+    const card3 = cards[3];
+    const card0 = cards[0];
+    if (card3 && card0) {
+      return Math.max(200, card3.offsetLeft - card0.offsetLeft);
+    }
+    return grid.clientWidth * 0.82;
+  }
+
   function goToSlide(idx, smooth = true) {
     if (idx < 0) idx = 0;
     if (idx >= totalSlides) idx = totalSlides - 1;
     currentSlide = idx;
-    const targetCol = cols[idx];
-    if (!targetCol) return;
+    const step = getStep();
+    const targetLeft = idx * step;
 
-    const scrollLeft = targetCol.offsetLeft - track.offsetLeft;
-    track.scrollTo({
-      left: scrollLeft,
+    grid.scrollTo({
+      left: targetLeft,
       behavior: smooth ? 'smooth' : 'auto'
     });
     updateActiveDot(idx);
@@ -3777,7 +3785,7 @@ function initTestimonialsMobileSlider() {
       if (isInteracting || document.hidden || window.innerWidth > 860) return;
       const next = (currentSlide + 1) % totalSlides;
       goToSlide(next, true);
-    }, 4000);
+    }, 4500);
   }
 
   function stopAutoSlide() {
@@ -3787,27 +3795,19 @@ function initTestimonialsMobileSlider() {
     }
   }
 
-  // Keep active dot in sync while user swipes horizontally
+  // Keep active dot in sync while user drags / swipes horizontally
   let scrollDebounce = null;
-  track.addEventListener('scroll', () => {
+  grid.addEventListener('scroll', () => {
+    if (window.innerWidth > 860) return;
     if (scrollDebounce) clearTimeout(scrollDebounce);
     scrollDebounce = setTimeout(() => {
-      const scrollPos = track.scrollLeft;
-      let closestIdx = 0;
-      let minDiff = Infinity;
-      cols.forEach((col, i) => {
-        const colPos = col.offsetLeft - track.offsetLeft;
-        const diff = Math.abs(scrollPos - colPos);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIdx = i;
-        }
-      });
-      updateActiveDot(closestIdx);
-    }, 60);
+      const step = getStep();
+      const activeIdx = grid.scrollLeft > step * 0.45 ? 1 : 0;
+      updateActiveDot(activeIdx);
+    }, 40);
   }, { passive: true });
 
-  // Pause on user touch / swipe, resume after 3.5s idle
+  // Pause on user touch / swipe, resume after 4s idle
   const pauseInteraction = () => {
     isInteracting = true;
     if (resumeTimer) clearTimeout(resumeTimer);
@@ -3817,15 +3817,55 @@ function initTestimonialsMobileSlider() {
     if (resumeTimer) clearTimeout(resumeTimer);
     resumeTimer = setTimeout(() => {
       isInteracting = false;
-    }, 3500);
+    }, 4000);
   };
 
-  track.addEventListener('touchstart', pauseInteraction, { passive: true });
-  track.addEventListener('touchend', resumeInteraction, { passive: true });
-  track.addEventListener('touchcancel', resumeInteraction, { passive: true });
-  track.addEventListener('pointerdown', pauseInteraction, { passive: true });
-  track.addEventListener('pointerup', resumeInteraction, { passive: true });
-  track.addEventListener('pointercancel', resumeInteraction, { passive: true });
+  grid.addEventListener('touchstart', pauseInteraction, { passive: true });
+  grid.addEventListener('touchend', resumeInteraction, { passive: true });
+  grid.addEventListener('touchcancel', resumeInteraction, { passive: true });
+
+  // Mouse drag-to-scroll support for desktop preview / testing
+  let isMouseDown = false;
+  let startX = 0;
+  let scrollStart = 0;
+  let hasDragged = false;
+
+  grid.addEventListener('mousedown', (e) => {
+    if (window.innerWidth > 860) return;
+    isMouseDown = true;
+    hasDragged = false;
+    startX = e.pageX;
+    scrollStart = grid.scrollLeft;
+    pauseInteraction();
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isMouseDown) return;
+    isMouseDown = false;
+    resumeInteraction();
+    if (hasDragged && window.innerWidth <= 860) {
+      const step = getStep();
+      const targetIdx = grid.scrollLeft > step * 0.4 ? 1 : 0;
+      goToSlide(targetIdx, true);
+    }
+  });
+
+  grid.addEventListener('mousemove', (e) => {
+    if (!isMouseDown || window.innerWidth > 860) return;
+    e.preventDefault();
+    const diffX = e.pageX - startX;
+    if (Math.abs(diffX) > 6) {
+      hasDragged = true;
+    }
+    grid.scrollLeft = scrollStart - diffX;
+  });
+
+  grid.addEventListener('click', (e) => {
+    if (hasDragged) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
 
   // Tap dots to navigate
   dots.forEach(dot => {
