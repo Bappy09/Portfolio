@@ -724,10 +724,9 @@ function step3DInteractions(now) {
   // 3. Gentle Breathing Float Motion
   const floatY = Math.sin(now * 0.0016) * 0.0025;
 
-  // 4. Continuous Scroll-Driven 360° Spin & Flip as phone moves down to right half
   const isDesktop = window.innerWidth > 860;
-  const targetX = isDesktop ? 0.135 : 0.0; // exact center of the right half
-  const targetY = 0.0; // vertically centered in Quote section
+  const targetX = isDesktop ? 0.135 : 0.0;
+  const targetY = isDesktop ? 0.0 : 0.075; // comfortably above quote text on mobile
   const transitionRange = quoteTop + quoteScrollRange * 0.35;
   const globalTransitionProg = Math.max(0, Math.min(1, scrollY / Math.max(1, transitionRange)));
   const moveT = 1 - Math.pow(1 - globalTransitionProg, 3);
@@ -1675,12 +1674,12 @@ function initAboutSectionEffects() {
     c.style.filter = 'blur(18px)';
     c.style.transform = 'translateY(26px)';
   });
-  if (ctaRow) {
+  if (ctaRow && window.innerWidth > 860) {
     ctaRow.style.opacity = '0.0';
     ctaRow.style.filter = 'blur(16px)';
     ctaRow.style.transform = 'translateY(22px)';
   }
-  if (socials) {
+  if (socials && window.innerWidth > 860) {
     socials.style.opacity = '0.0';
     socials.style.filter = 'blur(16px)';
     socials.style.transform = 'translateY(20px)';
@@ -1867,39 +1866,52 @@ function initAboutSectionEffects() {
         }
 
         // 5. CTA Button & Social Links Reveal (0.72 -> 0.80)
-        if (ctaRow) {
-          const phase5Prog = Math.min(1, Math.max(0, (rawProgress - 0.72) / 0.08));
-          const ease5 = phase5Prog * phase5Prog * (3 - 2 * phase5Prog);
-          const op5 = ease5 * 1.0;
-          const bl5 = (1 - ease5) * 16;
-          const ys5 = (1 - ease5) * 22;
-
-          if (rawProgress >= 0.80) {
-            ctaRow.style.opacity = '';
-            ctaRow.style.filter = '';
-            ctaRow.style.transform = '';
-          } else {
-            ctaRow.style.opacity = `${op5.toFixed(2)}`;
-            ctaRow.style.filter = `blur(${bl5.toFixed(1)}px)`;
-            ctaRow.style.transform = `translateY(${ys5.toFixed(1)}px)`;
+        if (window.innerWidth <= 860) {
+          if (ctaRow) {
+            ctaRow.style.opacity = '1.0';
+            ctaRow.style.filter = 'none';
+            ctaRow.style.transform = 'none';
           }
-        }
+          if (socials) {
+            socials.style.opacity = '1.0';
+            socials.style.filter = 'none';
+            socials.style.transform = 'none';
+          }
+        } else {
+          if (ctaRow) {
+            const phase5Prog = Math.min(1, Math.max(0, (rawProgress - 0.72) / 0.08));
+            const ease5 = phase5Prog * phase5Prog * (3 - 2 * phase5Prog);
+            const op5 = ease5 * 1.0;
+            const bl5 = (1 - ease5) * 16;
+            const ys5 = (1 - ease5) * 22;
 
-        if (socials) {
-          const phase6Prog = Math.min(1, Math.max(0, (rawProgress - 0.74) / 0.06));
-          const ease6 = phase6Prog * phase6Prog * (3 - 2 * phase6Prog);
-          const op6 = ease6 * 1.0;
-          const bl6 = (1 - ease6) * 16;
-          const ys6 = (1 - ease6) * 20;
+            if (rawProgress >= 0.80) {
+              ctaRow.style.opacity = '';
+              ctaRow.style.filter = '';
+              ctaRow.style.transform = '';
+            } else {
+              ctaRow.style.opacity = `${op5.toFixed(2)}`;
+              ctaRow.style.filter = `blur(${bl5.toFixed(1)}px)`;
+              ctaRow.style.transform = `translateY(${ys5.toFixed(1)}px)`;
+            }
+          }
 
-          if (rawProgress >= 0.80) {
-            socials.style.opacity = '';
-            socials.style.filter = '';
-            socials.style.transform = '';
-          } else {
-            socials.style.opacity = `${op6.toFixed(2)}`;
-            socials.style.filter = `blur(${bl6.toFixed(1)}px)`;
-            socials.style.transform = `translateY(${ys6.toFixed(1)}px)`;
+          if (socials) {
+            const phase6Prog = Math.min(1, Math.max(0, (rawProgress - 0.74) / 0.06));
+            const ease6 = phase6Prog * phase6Prog * (3 - 2 * phase6Prog);
+            const op6 = ease6 * 1.0;
+            const bl6 = (1 - ease6) * 16;
+            const ys6 = (1 - ease6) * 20;
+
+            if (rawProgress >= 0.80) {
+              socials.style.opacity = '';
+              socials.style.filter = '';
+              socials.style.transform = '';
+            } else {
+              socials.style.opacity = `${op6.toFixed(2)}`;
+              socials.style.filter = `blur(${bl6.toFixed(1)}px)`;
+              socials.style.transform = `translateY(${ys6.toFixed(1)}px)`;
+            }
           }
         }
       }
@@ -1981,11 +1993,12 @@ function initProcessStarMorphingNumbers() {
     const damping = 0.80;
     const MAX_STRETCH = 14;
 
-    const numeralW = 380;
-    const numeralH = 440;
+    const isMobileProcess = W <= 960;
+    const numeralW = isMobileProcess ? 200 : 380;
+    const numeralH = isMobileProcess ? 230 : 440;
 
     // Sample target point matrices for all 6 numerals
-    function sampleDigitPoints(text, targetCount, targetW = 380, targetH = 440) {
+    function sampleDigitPoints(text, targetCount, targetW = numeralW, targetH = numeralH) {
       const offCanvas = document.createElement('canvas');
       offCanvas.width = targetW;
       offCanvas.height = targetH;
@@ -1996,10 +2009,11 @@ function initProcessStarMorphingNumbers() {
       offCtx.fillRect(0, 0, targetW, targetH);
 
       offCtx.fillStyle = '#ffffff';
-      offCtx.font = '700 370px "Clash Display", sans-serif';
+      const fontSize = isMobileProcess ? 190 : 370;
+      offCtx.font = `700 ${fontSize}px "Clash Display", sans-serif`;
       offCtx.textAlign = 'center';
       offCtx.textBaseline = 'middle';
-      offCtx.fillText(text, targetW / 2, targetH / 2 + 10);
+      offCtx.fillText(text, targetW / 2, targetH / 2 + (isMobileProcess ? 6 : 10));
 
       const imgData = offCtx.getImageData(0, 0, targetW, targetH).data;
       const rawPoints = [];
@@ -2161,8 +2175,8 @@ function initProcessStarMorphingNumbers() {
       const elapsed = (now - t0) / 1000;
       ctx.clearRect(0, 0, W, H);
 
-      let offsetX = Math.max(40, (W * 0.43 - numeralW) / 2);
-      let offsetY = (H - numeralH) / 2;
+      let offsetX = isMobileProcess ? (W - numeralW) / 2 : Math.max(40, (W * 0.43 - numeralW) / 2);
+      let offsetY = isMobileProcess ? Math.max(70, H * 0.20) : (H - numeralH) / 2;
 
       if (W > 960) {
         const spacer = section.querySelector('.process-left-spacer');
@@ -2427,7 +2441,7 @@ function initCombinedTestiFaqSection() {
             faqHead.style.pointerEvents = 'none';
           }
           if (testiGrid) {
-            testiGrid.style.display = 'grid';
+            testiGrid.style.display = window.innerWidth <= 860 ? 'flex' : 'grid';
             testiGrid.style.opacity = '1.0';
             testiGrid.style.transform = 'translateY(0px)';
             testiGrid.style.pointerEvents = 'auto';
@@ -2507,23 +2521,34 @@ function initCombinedTestiFaqSection() {
 
           // 1D. 6 Cards Stagger reveal
           if (cards.length) {
-            const cardsProgress = Math.min(1, Math.max(0, (phase1Prog - 0.50) / 0.50));
-            cards.forEach((card, idx) => {
-              const cardStart = idx * 0.12;
-              const cardT = Math.min(1, Math.max(0, (cardsProgress - cardStart) / 0.40));
-              const easeCard = cardT * cardT * (3 - 2 * cardT);
-              const op = easeCard * 1.0;
-              const bl = (1 - easeCard) * 18;
-              const ys = (1 - easeCard) * 28;
+            if (window.innerWidth <= 860) {
+              cards.forEach(card => {
+                card.style.opacity = '1.0';
+                card.style.filter = 'none';
+                card.style.transform = 'none';
+              });
+              if (!hasAnimatedStats) {
+                runStatsCounter();
+              }
+            } else {
+              const cardsProgress = Math.min(1, Math.max(0, (phase1Prog - 0.50) / 0.50));
+              cards.forEach((card, idx) => {
+                const cardStart = idx * 0.12;
+                const cardT = Math.min(1, Math.max(0, (cardsProgress - cardStart) / 0.40));
+                const easeCard = cardT * cardT * (3 - 2 * cardT);
+                const op = easeCard * 1.0;
+                const bl = (1 - easeCard) * 18;
+                const ys = (1 - easeCard) * 28;
 
-              card.style.opacity = `${op.toFixed(2)}`;
-              card.style.filter = `blur(${bl.toFixed(1)}px)`;
-              card.style.transform = `translateY(${ys.toFixed(1)}px)`;
-            });
+                card.style.opacity = `${op.toFixed(2)}`;
+                card.style.filter = `blur(${bl.toFixed(1)}px)`;
+                card.style.transform = `translateY(${ys.toFixed(1)}px)`;
+              });
 
-            // Trigger stats counter
-            if (cardsProgress > 0.40 && !hasAnimatedStats) {
-              runStatsCounter();
+              // Trigger stats counter
+              if (cardsProgress > 0.40 && !hasAnimatedStats) {
+                runStatsCounter();
+              }
             }
           }
 
@@ -3254,6 +3279,10 @@ function initSelectedProjectsSection() {
   // 7.0 -> 7.8: Pause & smooth exit fade
 
   function updateProjects(timestamp) {
+    if (window.innerWidth <= 860) {
+      requestAnimationFrame(updateProjects);
+      return;
+    }
     if (isVisible) {
       const rect = section.getBoundingClientRect();
       const totalDistance = section.offsetHeight - window.innerHeight;
