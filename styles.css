@@ -4010,11 +4010,12 @@ html:not(.is-ready) .wordmark span {
   transform: translateY(0);
 }
 
-/* Responsive Breakpoints */
+/* Responsive Breakpoints & Mobile Touch Optimization */
 @media (max-width: 1200px) {
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
     padding: 0 40px 100px 40px;
+    gap: 28px;
   }
 }
 
@@ -4022,16 +4023,48 @@ html:not(.is-ready) .wordmark span {
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
     padding: 0 24px 80px 24px;
+    gap: 20px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px), (hover: none) {
+  .portfolio-card-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.6) 45%, transparent 100%);
+    padding: 20px 16px;
+  }
+  .portfolio-card-num,
+  .portfolio-card-title,
+  .portfolio-card-desc {
+    transform: none;
+  }
+  .portfolio-card-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 640px) {
   .portfolio-grid {
     grid-template-columns: 1fr;
     padding: 0 16px 60px 16px;
+    gap: 18px;
   }
   .portfolio-card {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 11;
+    border-radius: 14px;
+  }
+  .portfolio-card-title {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .portfolio-card-desc {
+    font-size: 12.5px;
+    line-height: 1.4;
   }
 }
 

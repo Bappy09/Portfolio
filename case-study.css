@@ -709,7 +709,8 @@ body.case-study-page {
 @media (max-width: 1024px) {
   .cs-meta-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 24px;
+    margin-bottom: 70px;
   }
   .cs-meta-item:nth-child(3) {
     border-left: none;
@@ -717,18 +718,20 @@ body.case-study-page {
   }
   .cs-two-col {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   .cs-process {
     grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
   }
   .cs-metric-row {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
-  .cs-outcomes {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .cs-showcase-row {
+  .cs-showcase-row,
+  .cs-showcase-row.split-equal {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   .cs-decision {
     grid-template-columns: 60px 1fr;
@@ -740,22 +743,204 @@ body.case-study-page {
 }
 
 @media (max-width: 768px) {
+  .cs-hero {
+    padding-top: clamp(96px, 16vw, 130px);
+    padding-bottom: 40px;
+  }
+  .cs-hero__title {
+    font-size: clamp(30px, 8.5vw, 54px);
+    margin-bottom: 16px;
+  }
+  .cs-hero__dek {
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .cs-hero__image-wrap {
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+    margin-bottom: 36px;
+  }
+  .cs-meta-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 16px;
+    padding: 24px 0;
+    margin-bottom: 60px;
+  }
+  .cs-meta-item {
+    gap: 4px;
+  }
+  .cs-meta-item label {
+    font-size: 10px;
+  }
+  .cs-meta-item strong {
+    font-size: 13.5px;
+  }
+  .cs-section {
+    padding-bottom: 70px;
+  }
+  .cs-sec-head {
+    margin-bottom: 32px;
+  }
+  .cs-sec-head__title {
+    font-size: clamp(26px, 6.5vw, 40px);
+    margin-bottom: 12px;
+  }
+  .cs-sec-head__dek {
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+  .cs-panel {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+  .cs-panel h3 {
+    font-size: 19px;
+    margin-bottom: 12px;
+  }
+  .cs-panel p,
+  .cs-panel ul li {
+    font-size: 14px;
+    line-height: 1.65;
+  }
   .cs-process {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .cs-step {
+    padding: 20px 18px;
+    border-radius: 14px;
+  }
+  .cs-step h4 {
+    font-size: 18px;
+    margin-bottom: 6px;
   }
   .cs-metric-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
-  .cs-outcomes {
+  .cs-metric {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  .cs-metric b {
+    font-size: 30px;
+    margin-bottom: 6px;
+  }
+  .cs-metric span {
+    font-size: 12.5px;
+  }
+  .cs-chips-wrap {
+    padding: 18px 16px;
+    border-radius: 14px;
+    gap: 8px;
+  }
+  .cs-chip {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  .cs-decision {
     grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 22px 0;
+  }
+  .cs-decision__num {
+    margin-bottom: 2px;
+  }
+  .cs-decision__title {
+    font-size: 19px;
+  }
+  .cs-decision__desc {
+    grid-column: 1;
+    font-size: 13.5px;
+    line-height: 1.65;
+    margin-top: 4px;
+  }
+  .cs-shot {
+    border-radius: 14px;
+  }
+  .cs-shot.large {
+    aspect-ratio: 16 / 10;
+  }
+  .cs-shot.tall {
+    aspect-ratio: 16 / 12;
+  }
+  .cs-shot.medium {
+    aspect-ratio: 16 / 10;
+  }
+  .cs-caption {
+    font-size: 10px;
+    margin-top: 8px;
+  }
+  .cs-next {
+    padding: 60px 0 80px;
+    margin-top: 20px;
+  }
+  .cs-next__title {
+    font-size: clamp(32px, 8.5vw, 60px);
   }
   .cs-next__grid {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .cs-next__all-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    font-size: 12px;
   }
   .cs-footer {
     flex-direction: column;
     gap: 12px;
     text-align: center;
+    padding: 28px 0;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-hero__top {
+    gap: 12px;
+  }
+  .cs-hero__back {
+    font-size: 11.5px;
+  }
+  .cs-hero__counter {
+    font-size: 11.5px;
+  }
+  .cs-hero__kicker {
+    font-size: 10.5px;
+    padding: 4px 10px;
+  }
+  .cs-hero__title {
+    font-size: clamp(26px, 8.2vw, 38px);
+  }
+  .cs-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .cs-meta-item:not(:first-child) {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 12px;
+  }
+  .cs-metric-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .cs-panel {
+    padding: 20px 16px;
+  }
+  .cs-panel ul {
+    gap: 10px;
+  }
+  .cs-panel ul li {
+    font-size: 13.5px;
   }
 }
