@@ -3784,31 +3784,34 @@ html:not(.is-ready) .wordmark span {
 
   .hero-copy {
     position: absolute;
-    left: var(--pad);
     white-space: normal;
-    text-align: left;
     margin: 0;
     z-index: 15;
     pointer-events: auto;
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(13px, 3.5vw, 14px) !important;
+    font-weight: 500 !important;
+    line-height: 1.55 !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6) !important;
   }
 
   .hero-copy--left {
+    left: var(--pad);
+    right: auto;
     top: clamp(68px, 9vh, 85px);
     bottom: auto;
-    font-size: clamp(13px, 3.6vw, 15px);
-    line-height: 1.45;
-    color: #ffffff;
-    font-weight: 500;
+    text-align: left;
     max-width: 320px;
   }
 
   .hero-copy--right {
+    left: auto;
+    right: var(--pad);
     top: auto;
-    bottom: clamp(60px, 8.5vh, 82px);
-    font-size: clamp(11.5px, 3.1vw, 12.8px);
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.78);
-    max-width: 310px;
+    bottom: clamp(100px, 14vh, 135px);
+    text-align: right;
+    max-width: 320px;
   }
 
   .hero-copy br { display: inline; }
