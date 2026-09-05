@@ -2402,6 +2402,15 @@ img, video, canvas { display: block; max-width: 100%; }
   display: block;
 }
 
+/* On desktop, proj-card-overlay and projects-main-title are hidden (desktop uses bottom-left projects-info-wrap) */
+.proj-card-overlay {
+  display: none;
+}
+
+.projects-main-title {
+  display: none;
+}
+
 /* Standalone See More Projects Slide */
 .proj-see-more-wrap {
   display: flex;
@@ -4148,6 +4157,206 @@ html:not(.is-ready) .wordmark span {
     visibility: visible;
     pointer-events: auto;
     transform: none;
+  }
+
+  /* Disable custom cursor trail on mobile / touch */
+  .cursor-trail,
+  .cursor-trail.is-project-hover {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* ══ SELECTED PROJECTS SECTION (MOBILE: VERTICAL 1-BY-1 CARDS LIKE PROJECTS PAGE) ══ */
+  .projects-sec {
+    height: auto !important;
+    min-height: auto !important;
+    padding: clamp(50px, 7vh, 80px) var(--pad) clamp(40px, 6vh, 60px) !important;
+    overflow: visible !important;
+    background: #000000 !important;
+  }
+
+  .projects-pin-container {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+    pointer-events: auto !important;
+  }
+
+  /* Section Title: Matches other section titles */
+  .projects-top-bar {
+    position: relative !important;
+    padding: 0 !important;
+    margin-bottom: 24px !important;
+    display: block !important;
+  }
+
+  .projects-top-label {
+    display: none !important;
+  }
+
+  .projects-main-title {
+    display: flex !important;
+    font-family: 'Clash Display', sans-serif !important;
+    font-size: clamp(40px, 4.5vw, 68px) !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.025em !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  /* Hide 3D background logo, starfield and bottom info overlay on mobile */
+  .projects-3d-logo-wrap,
+  .projects-info-wrap,
+  .projects-sec canvas.sec-starfield {
+    display: none !important;
+  }
+
+  /* Stage & Track: simple vertical stack */
+  .projects-slider-stage {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    overflow: visible !important;
+    perspective: none !important;
+    display: block !important;
+  }
+
+  .projects-track {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 20px !important;
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+  }
+
+  /* Individual Project Cards: 1-by-1 vertical stack like projects.html */
+  .proj-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 10.5 !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    background: #0d0d0d !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+    display: block !important;
+    text-decoration: none !important;
+    position: relative !important;
+    transform-style: flat !important;
+  }
+
+  .proj-card:active {
+    transform: scale(0.98) !important;
+  }
+
+  .proj-card-inner {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 14px !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .proj-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    display: block !important;
+    transform: none !important;
+  }
+
+  /* Exactly 5 projects on mobile: hide cards 6 and 7 */
+  .proj-card:nth-of-type(n+6) {
+    display: none !important;
+  }
+
+  /* Overlay on mobile, exactly matching projects.html portfolio-card-overlay */
+  .proj-card-overlay {
+    display: flex !important;
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.55) 50%, transparent 100%) !important;
+    opacity: 1 !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    padding: 20px 16px !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .proj-card-num {
+    font-family: var(--font-mono), monospace !important;
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    color: #ff5722 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 5px !important;
+  }
+
+  .proj-card-title {
+    font-family: 'Clash Display', sans-serif !important;
+    font-size: clamp(20px, 5.5vw, 24px) !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    margin: 0 0 5px 0 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.60) !important;
+    line-height: 1.15 !important;
+  }
+
+  .proj-card-desc {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 12.5px !important;
+    line-height: 1.4 !important;
+    color: rgba(255, 255, 255, 0.72) !important;
+    margin: 0 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85) !important;
+  }
+
+  /* Standalone See More Button Slide on mobile */
+  .proj-see-more-wrap {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    margin-top: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .see-more-projects-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    padding: 16px 28px !important;
+    font-size: 14.5px !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
   }
 
   /* 3D stage remains fixed on mobile so the phone smoothly transitions into the Quote section */

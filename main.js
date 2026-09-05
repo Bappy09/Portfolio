@@ -935,6 +935,15 @@ const cursorTrail = {
 let hoveredProjectCard = null;
 
 function updateCursorTrailTarget(x, y, targetEl) {
+  if (window.innerWidth <= 860 || ('ontouchstart' in window && window.innerWidth <= 1024)) {
+    hoveredProjectCard = null;
+    if (cursorTrailEl) {
+      cursorTrailEl.classList.remove('is-project-hover');
+      cursorTrailEl.classList.remove('is-live');
+    }
+    return;
+  }
+
   // If we are explicitly hovering a project card via native pointer events, prioritize it!
   if (hoveredProjectCard) {
     cursorTrail.activeControl = null;
@@ -3473,6 +3482,7 @@ function initSelectedProjectsSection() {
   // 6. Direct click/hover event fallbacks to ensure 100% clickability and custom cursor trail
   cards.forEach(card => {
     card.addEventListener('pointerenter', () => {
+      if (window.innerWidth <= 860) return;
       hoveredProjectCard = card;
     });
     card.addEventListener('pointerleave', () => {
