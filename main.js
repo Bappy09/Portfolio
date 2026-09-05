@@ -1310,12 +1310,13 @@ function stepScroll(dt) {
   }
   scroller.current += gap * ease(0.10, dt);
   window.scrollTo(0, scroller.current);
+  updateNavState();
 }
 
 /* ---------- navbar scroll state & burger menu ------------- */
 function updateNavState() {
   if (!navEl) return;
-  const isScrolled = window.scrollY > 40;
+  const isScrolled = window.scrollY > 20;
   navEl.classList.toggle('is-scrolled', isScrolled);
 }
 

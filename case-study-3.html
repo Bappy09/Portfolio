@@ -272,18 +272,6 @@
       </div>
     </section>
 
-    <!-- 07 / OUTCOME -->
-    <section class="cs-section">
-      <div class="cs-sec-head">
-        <div class="cs-sec-head__num">07 / OUTCOME</div>
-        <h2 class="cs-display cs-sec-head__title">What the design delivers</h2>
-        <p class="cs-sec-head__dek">Close the story by showing the product value created by the design work — not just the screens delivered.</p>
-      </div>
-      <div class="cs-outcomes">
-        
-      </div>
-    </section>
-
     <!-- NEXT PROJECT -->
     <section class="cs-next">
       <div class="cs-next__eyebrow">Next Project</div>
@@ -309,17 +297,44 @@
 
   </main>
 
-  <!-- Burger Script -->
+  <!-- Navbar Scroll State & Burger Script -->
   <script>
+    const nav = document.getElementById('nav');
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
+
+    function updateNavState() {
+      if (!nav) return;
+      const isScrolled = window.scrollY > 20;
+      nav.classList.toggle('is-scrolled', isScrolled);
+    }
+
+    updateNavState();
+    window.addEventListener('scroll', updateNavState, { passive: true });
+
     if (burger && menu) {
       burger.addEventListener('click', () => {
-        const expanded = burger.getAttribute('aria-expanded') === 'true';
-        burger.setAttribute('aria-expanded', !expanded);
-        menu.toggleAttribute('inert', expanded);
-        menu.classList.toggle('is-open', !expanded);
-        document.body.classList.toggle('menu-open', !expanded);
+        const open = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', !open);
+        burger.classList.toggle('is-open', !open);
+        menu.classList.toggle('is-open', !open);
+        if (!open) {
+          menu.removeAttribute('inert');
+          document.body.classList.add('no-scroll');
+        } else {
+          menu.setAttribute('inert', '');
+          document.body.classList.remove('no-scroll');
+        }
+      });
+
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          burger.setAttribute('aria-expanded', 'false');
+          burger.classList.remove('is-open');
+          menu.classList.remove('is-open');
+          menu.setAttribute('inert', '');
+          document.body.classList.remove('no-scroll');
+        });
       });
     }
   </script>
