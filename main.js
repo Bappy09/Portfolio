@@ -1353,10 +1353,41 @@ function stepScroll(dt) {
 }
 
 /* ---------- navbar scroll state & burger menu ------------- */
+let lastNavScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+
 function updateNavState() {
   if (!navEl) return;
-  const isScrolled = window.scrollY > 20;
+  const currentScrollY = window.scrollY;
+  const isScrolled = currentScrollY > 20;
   navEl.classList.toggle('is-scrolled', isScrolled);
+
+  // If mobile menu is open, never hide navbar so user can close it
+  if (menuOpen) {
+    navEl.classList.remove('is-hidden');
+    lastNavScrollY = currentScrollY;
+    return;
+  }
+
+  // Always keep navbar visible near the very top of the page
+  if (currentScrollY <= 40) {
+    navEl.classList.remove('is-hidden');
+    lastNavScrollY = currentScrollY;
+    return;
+  }
+
+  const delta = currentScrollY - lastNavScrollY;
+
+  // Use a 6px threshold to prevent false triggers from touch bounce or jitter
+  if (Math.abs(delta) >= 6) {
+    if (delta > 0 && currentScrollY > 60) {
+      // User is scrolling DOWN -> hide navbar
+      navEl.classList.add('is-hidden');
+    } else if (delta < 0) {
+      // User is scrolling UP -> show navbar
+      navEl.classList.remove('is-hidden');
+    }
+    lastNavScrollY = currentScrollY;
+  }
 }
 
 updateNavState();
@@ -2035,8 +2066,8 @@ function initProcessStarMorphingNumbers() {
     const MAX_STRETCH = 14;
 
     const isMobileProcess = W <= 960;
-    const numeralW = isMobileProcess ? 200 : 380;
-    const numeralH = isMobileProcess ? 230 : 440;
+    const numeralW = isMobileProcess ? Math.min(280, Math.round(W * 0.72)) : 380;
+    const numeralH = isMobileProcess ? Math.min(310, Math.round(H * 0.38)) : 440;
 
     // Sample target point matrices for all 6 numerals
     function sampleDigitPoints(text, targetCount, targetW = numeralW, targetH = numeralH) {
@@ -2050,11 +2081,11 @@ function initProcessStarMorphingNumbers() {
       offCtx.fillRect(0, 0, targetW, targetH);
 
       offCtx.fillStyle = '#ffffff';
-      const fontSize = isMobileProcess ? 190 : 370;
+      const fontSize = isMobileProcess ? Math.round(numeralH * 0.88) : 370;
       offCtx.font = `700 ${fontSize}px "Clash Display", sans-serif`;
       offCtx.textAlign = 'center';
       offCtx.textBaseline = 'middle';
-      offCtx.fillText(text, targetW / 2, targetH / 2 + (isMobileProcess ? 6 : 10));
+      offCtx.fillText(text, targetW / 2, targetH / 2 + (isMobileProcess ? 8 : 10));
 
       const imgData = offCtx.getImageData(0, 0, targetW, targetH).data;
       const rawPoints = [];
@@ -2246,9 +2277,9 @@ function initProcessStarMorphingNumbers() {
           const trackTopBound = trackCenter - 36;
           const availableSpace = trackTopBound - headBottom;
           if (availableSpace > numeralH) {
-            offsetY = Math.round(headBottom + (availableSpace - numeralH) * 0.55);
+            offsetY = Math.round(headBottom + (availableSpace - numeralH) * 0.50);
           } else {
-            offsetY = Math.max(headBottom + 16, Math.round(H * 0.28));
+            offsetY = Math.max(headBottom + 12, Math.round(H * 0.24));
           }
         }
       }
