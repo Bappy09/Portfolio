@@ -212,6 +212,7 @@ let currentSliderX = 0.0;
 let targetSliderAlpha = 0.0;
 let currentSliderAlpha = 0.0;
 let isHoveringScreen = false;
+let lastScreenTouchTime = 0;
 
 function createScreenMaterial() {
   // Using MeshBasicMaterial so phone screen behaves like a true emissive OLED display
@@ -476,11 +477,11 @@ function updateResponsiveFraming() {
     targetScale = 0.92;
     targetYOffset = -0.005;
   } else if (w > 540) {
-    targetScale = 0.82;
-    targetYOffset = -0.012;
+    targetScale = 0.94;
+    targetYOffset = -0.008;
   } else {
-    targetScale = 0.72;
-    targetYOffset = -0.018;
+    targetScale = 0.88;
+    targetYOffset = -0.010;
   }
 
   stageGroup.scale.setScalar(targetScale);
@@ -594,9 +595,9 @@ function setupInteractions() {
     }
   }, { passive: true });
 
-  // Pointer Down (Start Direct Grabbing ONLY when hovered over the 3D phone)
+  // Pointer Down (Start Direct Grabbing ONLY when hovered over the 3D phone on desktop)
   phoneCanvas.addEventListener('pointerdown', (e) => {
-    if (introActive || !isHoveringPhone) return;
+    if (introActive || !isHoveringPhone || window.innerWidth <= 860 || e.pointerType === 'touch') return;
 
     isDragging = true;
     isAutoReturning = false;
@@ -803,26 +804,27 @@ function step3DInteractions(now) {
   const quoteModeTarget = Math.max(0, Math.min(1, (globalTransitionProg - 0.45) * 2.5));
   screenUniforms.uQuoteMode.value = quoteModeTarget;
 
+  const isMobile = window.innerWidth <= 860;
+
   if (screenMesh && camera) {
     raycaster.setFromCamera(mouseNDC, camera);
     const screenHits = raycaster.intersectObject(screenMesh, false);
     if (screenHits.length > 0 && screenHits[0].uv) {
       targetCursorUV.copy(screenHits[0].uv);
       isHoveringScreen = true;
+      lastScreenTouchTime = now;
 
       if (quoteModeTarget > 0.4) {
-        // Quote section: slider divider follows mouse X directly
+        // Quote section: slider divider follows mouse/touch X directly
         targetSliderX = screenHits[0].uv.x;
         targetSliderAlpha = 1.0;
       } else {
-        // Hero section: badge mask follows mouse
+        // Hero section: badge mask follows mouse/finger
         targetMaskAlpha = 1.0;
-        targetMaskRadius = 0.58;
+        targetMaskRadius = isMobile ? 0.54 : 0.58;
       }
     } else {
       isHoveringScreen = false;
-      targetMaskAlpha = 0.0;
-      targetMaskRadius = 0.0;
 
       if (quoteModeTarget > 0.4) {
         // Persistent directional wipe:
@@ -835,6 +837,19 @@ function step3DInteractions(now) {
         targetSliderAlpha = 0.0; // Hide divider line smoothly when outside
       } else {
         targetSliderAlpha = 0.0;
+        if (isMobile) {
+          // On mobile: Mask is ALWAYS active and automatically slides smoothly to showcase Hi-Fi design!
+          targetMaskAlpha = 1.0;
+          targetMaskRadius = 0.54;
+          if (now - lastScreenTouchTime > 1000) {
+            const autoX = 0.5 + Math.sin(now * 0.0014) * 0.28;
+            const autoY = 0.5 + Math.cos(now * 0.0018) * 0.24;
+            targetCursorUV.set(autoX, autoY);
+          }
+        } else {
+          targetMaskAlpha = 0.0;
+          targetMaskRadius = 0.0;
+        }
       }
     }
   }

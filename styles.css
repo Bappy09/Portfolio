@@ -3764,21 +3764,43 @@ html:not(.is-ready) .wordmark span {
   .pill { height: 38px; padding: 0 16px; font-size: 13px; }
   .pill__b { font-size: 12.5px; }
 
-  /* 3D stage remains full-bleed canvas with responsive Three.js camera framing */
-  .hero__stage { position: absolute; inset: 0; width: 100%; height: 100%; }
-
-  /* the two blocks stop being placed by coordinate and simply stack */
-  .hero-copy {
-    position: static;
-    white-space: normal;
-    font-size: 13px;
-    line-height: 1.75;
+  /* 3D stage remains fixed on mobile so the phone smoothly transitions into the Quote section */
+  .hero__stage {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
   }
 
-  .hero-copy--left  { position: absolute; left: var(--pad); right: var(--pad); top: 57%; }
-  .hero-copy--right { position: absolute; left: var(--pad); right: var(--pad); top: 72%; }
+  /* Text blocks cleanly framed: Bio at top, value prop at bottom, phone in middle */
+  .hero-copy {
+    position: absolute;
+    left: var(--pad);
+    right: var(--pad);
+    white-space: normal;
+    font-size: 13.5px;
+    line-height: 1.6;
+    text-align: center;
+    z-index: 15;
+    margin: 0;
+  }
 
-  .hero-copy br { display: none; }
+  .hero-copy--left {
+    top: clamp(75px, 11vh, 95px);
+    bottom: auto;
+  }
+
+  .hero-copy--right {
+    top: auto;
+    bottom: clamp(24px, 4.5vh, 44px);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .hero-copy br { display: inline; }
 
   .creds { flex-direction: column; align-items: flex-start; gap: 22px; }
   .creds ul { gap: 18px 34px; }
