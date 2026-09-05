@@ -2567,7 +2567,7 @@ function initCombinedTestiFaqSection() {
             faqHead.style.pointerEvents = 'none';
           }
           if (testiGrid) {
-            testiGrid.style.display = window.innerWidth <= 860 ? 'flex' : 'grid';
+            testiGrid.style.display = 'block';
             testiGrid.style.opacity = '1.0';
             testiGrid.style.transform = 'translateY(0px)';
             testiGrid.style.pointerEvents = 'auto';
@@ -2707,7 +2707,7 @@ function initCombinedTestiFaqSection() {
           if (testiGrid) {
             testiGrid.style.opacity = `${opTesti.toFixed(2)}`;
             testiGrid.style.transform = `translateY(${(tTrans * -35).toFixed(1)}px)`;
-            testiGrid.style.display = opTesti > 0 ? 'grid' : 'none';
+            testiGrid.style.display = opTesti > 0 ? 'block' : 'none';
             testiGrid.style.pointerEvents = 'none';
           }
 
@@ -3657,6 +3657,7 @@ initProcessStarMorphingNumbers();
 initSelectedProjectsSection();
 initSpaceSectionTransition();
 initCombinedTestiFaqSection();
+initTestimonialsMobileSlider();
 initFaqInteractivity();
 initContactWoodHover();
 initContactFormSubmit();
@@ -3740,6 +3741,125 @@ function initContactFormSubmit() {
       }, 4000);
     });
   });
+}
+
+/* ---------- Testimonials Mobile 2-Row 3-Column Auto-Slider & Touch Swipe ---------- */
+function initTestimonialsMobileSlider() {
+  const track = document.getElementById('testi-slider-track');
+  const dotsContainer = document.getElementById('testi-slider-dots');
+  if (!track) return;
+
+  const dots = dotsContainer ? dotsContainer.querySelectorAll('.testi-dot') : [];
+  const cols = track.querySelectorAll('.testi-col');
+  const totalSlides = cols.length;
+  if (totalSlides < 2) return;
+
+  let currentSlide = 0;
+  let autoTimer = null;
+  let isInteracting = false;
+  let resumeTimer = null;
+
+  function updateActiveDot(idx) {
+    currentSlide = idx;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === idx);
+    });
+  }
+
+  function goToSlide(idx, smooth = true) {
+    if (idx < 0) idx = 0;
+    if (idx >= totalSlides) idx = totalSlides - 1;
+    currentSlide = idx;
+    const targetCol = cols[idx];
+    if (!targetCol) return;
+
+    const scrollLeft = targetCol.offsetLeft - track.offsetLeft;
+    track.scrollTo({
+      left: scrollLeft,
+      behavior: smooth ? 'smooth' : 'auto'
+    });
+    updateActiveDot(idx);
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    if (window.innerWidth > 860) return;
+    autoTimer = setInterval(() => {
+      if (isInteracting || document.hidden || window.innerWidth > 860) return;
+      const next = (currentSlide + 1) % totalSlides;
+      goToSlide(next, true);
+    }, 4000);
+  }
+
+  function stopAutoSlide() {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  // Keep active dot in sync while user swipes horizontally
+  let scrollDebounce = null;
+  track.addEventListener('scroll', () => {
+    if (scrollDebounce) clearTimeout(scrollDebounce);
+    scrollDebounce = setTimeout(() => {
+      const scrollPos = track.scrollLeft;
+      let closestIdx = 0;
+      let minDiff = Infinity;
+      cols.forEach((col, i) => {
+        const colPos = col.offsetLeft - track.offsetLeft;
+        const diff = Math.abs(scrollPos - colPos);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = i;
+        }
+      });
+      updateActiveDot(closestIdx);
+    }, 60);
+  }, { passive: true });
+
+  // Pause on user touch / swipe, resume after 3.5s idle
+  const pauseInteraction = () => {
+    isInteracting = true;
+    if (resumeTimer) clearTimeout(resumeTimer);
+  };
+
+  const resumeInteraction = () => {
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      isInteracting = false;
+    }, 3500);
+  };
+
+  track.addEventListener('touchstart', pauseInteraction, { passive: true });
+  track.addEventListener('touchend', resumeInteraction, { passive: true });
+  track.addEventListener('touchcancel', resumeInteraction, { passive: true });
+  track.addEventListener('pointerdown', pauseInteraction, { passive: true });
+  track.addEventListener('pointerup', resumeInteraction, { passive: true });
+  track.addEventListener('pointercancel', resumeInteraction, { passive: true });
+
+  // Tap dots to navigate
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.preventDefault();
+      const slideIdx = parseInt(dot.getAttribute('data-slide') || '0', 10);
+      pauseInteraction();
+      goToSlide(slideIdx, true);
+      resumeInteraction();
+    });
+  });
+
+  if (window.innerWidth <= 860) {
+    startAutoSlide();
+  }
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 860) {
+      if (!autoTimer) startAutoSlide();
+    } else {
+      stopAutoSlide();
+    }
+  }, { passive: true });
 }
 
 requestAnimationFrame(animate);

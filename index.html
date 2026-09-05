@@ -619,7 +619,7 @@
         
         <!-- 1. Testimonial Header -->
         <header class="testimonials-head" id="combined-testi-head">
-          <h2 class="testimonials-title"><span class="testi-word">What</span> <span class="testi-word">My</span> <span class="testi-word testi-word--orange">Clients</span> <span class="testi-word">Say</span></h2>
+          <h2 class="testimonials-title"><span class="testi-word">What</span> <span class="testi-word">My</span><br class="testi-title-br" /> <span class="testi-word testi-word--orange">Clients</span> <span class="testi-word">Say</span></h2>
           <p class="testimonials-subtitle" id="testimonials-subtitle">
             <span class="testi-desc-word">Here's</span>
             <span class="testi-desc-word">what</span>
@@ -632,7 +632,7 @@
             <span class="testi-desc-word">experiences</span>
             <span class="testi-desc-word">working</span>
             <span class="testi-desc-word">with</span>
-            <span class="testi-desc-word">me.</span>
+            <span class="testi-desc-word">me.</span><br class="testi-sub-br" />
             <span class="testi-desc-word">Their</span>
             <span class="testi-desc-word">trust</span>
             <span class="testi-desc-word">and</span>
@@ -702,93 +702,111 @@
       <!-- Right Column: Staggered elements container -->
       <div class="testi-right" style="position: relative; width: 100%; height: 100%;">
         
-        <!-- Testimonials Grid (6 Cards) -->
-        <div class="testimonials-grid" id="combined-testi-grid">
-          <!-- Card 1: John Harris (Dark Card) -->
-          <article class="testi-card testi-card--dark" data-card-idx="0">
-            <div class="testi-stars" aria-label="5 stars">
-              <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
-            </div>
-            <blockquote class="testi-quote">
-              Duncan truly understood my vision and turned it into impactful designs. The results went beyond my expectations!
-            </blockquote>
-            <div class="testi-author">
-              <img src="assets/client-john.jpg" alt="John Harris" class="testi-avatar" />
-              <div class="testi-author-info">
-                <h4 class="testi-author-name">John Harris</h4>
-                <p class="testi-author-role">CEO</p>
-              </div>
-            </div>
-          </article>
+        <!-- Testimonials Slider Stage (6 Cards, 2 rows, 3 columns) -->
+        <div class="testimonials-slider-stage" id="combined-testi-grid">
+          <div class="testimonials-slider-track" id="testi-slider-track">
+            <!-- Column 1 (2 Cards) -->
+            <div class="testi-col" data-col="0">
+              <!-- Card 1: John Harris (Dark Card) -->
+              <article class="testi-card testi-card--dark" data-card-idx="0">
+                <div class="testi-stars" aria-label="5 stars">
+                  <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+                </div>
+                <blockquote class="testi-quote">
+                  Duncan truly understood my vision and turned it into impactful designs. The results went beyond my expectations!
+                </blockquote>
+                <div class="testi-author">
+                  <img src="assets/client-john.jpg" alt="John Harris" class="testi-avatar" />
+                  <div class="testi-author-info">
+                    <h4 class="testi-author-name">John Harris</h4>
+                    <p class="testi-author-role">CEO</p>
+                  </div>
+                </div>
+              </article>
 
-          <!-- Card 2: Michael Lee (Dark Card) -->
-          <article class="testi-card testi-card--dark" data-card-idx="1">
-            <div class="testi-stars" aria-label="5 stars">
-              <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+              <!-- Card 2: Michael Lee (Dark Card) -->
+              <article class="testi-card testi-card--dark" data-card-idx="1">
+                <div class="testi-stars" aria-label="5 stars">
+                  <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+                </div>
+                <blockquote class="testi-quote">
+                  He took the time to understand our goals and delivered a design that resonated perfectly with our audience.
+                </blockquote>
+                <div class="testi-author">
+                  <img src="assets/client-michael.jpg" alt="Michael Lee" class="testi-avatar" />
+                  <div class="testi-author-info">
+                    <h4 class="testi-author-name">Michael Lee</h4>
+                    <p class="testi-author-role">Product Manager</p>
+                  </div>
+                </div>
+              </article>
             </div>
-            <blockquote class="testi-quote">
-              He took the time to understand our goals and delivered a design that resonated perfectly with our audience.
-            </blockquote>
-            <div class="testi-author">
-              <img src="assets/client-michael.jpg" alt="Michael Lee" class="testi-avatar" />
-              <div class="testi-author-info">
-                <h4 class="testi-author-name">Michael Lee</h4>
-                <p class="testi-author-role">Product Manager</p>
-              </div>
-            </div>
-          </article>
 
-          <!-- Card 3: 99% Satisfaction Rate (White Card) -->
-          <article class="testi-card testi-card--white" data-card-idx="2">
-            <p class="testi-stat-sub">I've worked with 20+ happy clients</p>
-            <div class="testi-stat-wrap">
-              <div class="testi-stat-num" data-target="99" data-suffix="%">0%</div>
-              <p class="testi-stat-label">Satisfaction Rate</p>
-            </div>
-          </article>
+            <!-- Column 2 (2 Cards) -->
+            <div class="testi-col" data-col="1">
+              <!-- Card 3: 200% Growth (Brand Primary Cosmic Orange Card) -->
+              <article class="testi-card testi-card--orange" data-card-idx="2">
+                <p class="testi-stat-sub">My work helped clients grow their conversions by 10x.</p>
+                <div class="testi-stat-wrap">
+                  <div class="testi-stat-num" data-target="200" data-suffix="%">0%</div>
+                  <p class="testi-stat-label">Growth</p>
+                </div>
+              </article>
 
-          <!-- Card 4: 200% Growth (Brand Primary Cosmic Orange Card) -->
-          <article class="testi-card testi-card--orange" data-card-idx="3">
-            <p class="testi-stat-sub">My work helped clients grow their conversions by 10x.</p>
-            <div class="testi-stat-wrap">
-              <div class="testi-stat-num" data-target="200" data-suffix="%">0%</div>
-              <p class="testi-stat-label">Growth</p>
+              <!-- Card 4: Sarah Johnson (Dark Card) -->
+              <article class="testi-card testi-card--dark" data-card-idx="3">
+                <div class="testi-stars" aria-label="5 stars">
+                  <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+                </div>
+                <blockquote class="testi-quote">
+                  His design skills are unmatched. He transformed my ideas into a high-performing, visually striking website.
+                </blockquote>
+                <div class="testi-author">
+                  <img src="assets/client-sarah.jpg" alt="Sarah Johnson" class="testi-avatar" />
+                  <div class="testi-author-info">
+                    <h4 class="testi-author-name">Sarah Johnson</h4>
+                    <p class="testi-author-role">CEO</p>
+                  </div>
+                </div>
+              </article>
             </div>
-          </article>
 
-          <!-- Card 5: Sarah Johnson (Dark Card) -->
-          <article class="testi-card testi-card--dark" data-card-idx="4">
-            <div class="testi-stars" aria-label="5 stars">
-              <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
-            </div>
-            <blockquote class="testi-quote">
-              His design skills are unmatched. He transformed my ideas into a high-performing, visually striking website.
-            </blockquote>
-            <div class="testi-author">
-              <img src="assets/client-sarah.jpg" alt="Sarah Johnson" class="testi-avatar" />
-              <div class="testi-author-info">
-                <h4 class="testi-author-name">Sarah Johnson</h4>
-                <p class="testi-author-role">CEO</p>
-              </div>
-            </div>
-          </article>
+            <!-- Column 3 (2 Cards) -->
+            <div class="testi-col" data-col="2">
+              <!-- Card 5: Laura Bennett (Dark Card) -->
+              <article class="testi-card testi-card--dark" data-card-idx="4">
+                <div class="testi-stars" aria-label="5 stars">
+                  <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+                </div>
+                <blockquote class="testi-quote">
+                  As a small business owner, I appreciated how stress-free Bappy Islam made the process.
+                </blockquote>
+                <div class="testi-author">
+                  <img src="assets/client-laura.jpg" alt="Laura Bennett" class="testi-avatar" />
+                  <div class="testi-author-info">
+                    <h4 class="testi-author-name">Laura Bennett</h4>
+                    <p class="testi-author-role">Manager</p>
+                  </div>
+                </div>
+              </article>
 
-          <!-- Card 6: Laura Bennett (Dark Card) -->
-          <article class="testi-card testi-card--dark" data-card-idx="5">
-            <div class="testi-stars" aria-label="5 stars">
-              <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+              <!-- Card 6: 99% Satisfaction Rate (White Card) -->
+              <article class="testi-card testi-card--white" data-card-idx="5">
+                <p class="testi-stat-sub">I've worked with 20+ happy clients</p>
+                <div class="testi-stat-wrap">
+                  <div class="testi-stat-num" data-target="99" data-suffix="%">0%</div>
+                  <p class="testi-stat-label">Satisfaction Rate</p>
+                </div>
+              </article>
             </div>
-            <blockquote class="testi-quote">
-              As a small business owner, I appreciated how stress-free Bappy Islam made the process.
-            </blockquote>
-            <div class="testi-author">
-              <img src="assets/client-laura.jpg" alt="Laura Bennett" class="testi-avatar" />
-              <div class="testi-author-info">
-                <h4 class="testi-author-name">Laura Bennett</h4>
-                <p class="testi-author-role">Manager</p>
-              </div>
-            </div>
-          </article>
+          </div>
+
+          <!-- Mobile Slider Navigation Dots -->
+          <div class="testi-slider-dots" id="testi-slider-dots" aria-hidden="true">
+            <button class="testi-dot is-active" data-slide="0" aria-label="Go to slide 1"></button>
+            <button class="testi-dot" data-slide="1" aria-label="Go to slide 2"></button>
+            <button class="testi-dot" data-slide="2" aria-label="Go to slide 3"></button>
+          </div>
         </div>
 
         <!-- FAQ Accordion (6 Items) -->
