@@ -3483,13 +3483,13 @@ img, video, canvas { display: block; max-width: 100%; }
     width: 100% !important;
   }
 
-  /* FAQ 6 Questions Column on Mobile: Hug content with smart padding */
+  /* FAQ 6 Questions Column on Mobile: 5x space from subtext, hugging content with smart padding */
   #testimonials-faq-combined .faq-right-col {
     position: relative !important;
     width: 100% !important;
     right: auto !important;
     bottom: auto !important;
-    margin-top: clamp(12px, 2vh, 18px) !important;
+    margin-top: clamp(60px, 8.2vh, 72px) !important;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
     flex-grow: 0 !important;
@@ -3534,7 +3534,7 @@ img, video, canvas { display: block; max-width: 100%; }
   }
 
   #testimonials-faq-combined .faq-right-col {
-    margin-top: 8px !important;
+    margin-top: clamp(38px, 5.5vh, 45px) !important;
   }
 
   .faq-accordion-item {
