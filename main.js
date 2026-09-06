@@ -3755,13 +3755,15 @@ function initTestimonialsMobileSlider() {
   }
 
   function getStep() {
-    // Card 3 is the top card of Column 2
+    // Card 3 is the top card of Column 2, Card 0 is the top card of Column 1
     const card3 = cards[3];
     const card0 = cards[0];
     if (card3 && card0) {
+      const stride = card3.getBoundingClientRect().left - card0.getBoundingClientRect().left;
+      if (stride > 100) return stride;
       return Math.max(200, card3.offsetLeft - card0.offsetLeft);
     }
-    return grid.clientWidth * 0.82;
+    return grid.clientWidth * 0.83;
   }
 
   function goToSlide(idx, smooth = true) {
