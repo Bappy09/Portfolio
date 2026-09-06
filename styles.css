@@ -3224,8 +3224,8 @@ img, video, canvas { display: block; max-width: 100%; }
 @media (max-width: 860px) {
   .combined-testi-faq-sec .combined-sticky-stage {
     padding-inline: clamp(20px, 5vw, 36px) !important;
-    padding-top: clamp(40px, 6vh, 52px) !important;
-    padding-bottom: clamp(12px, 2vh, 20px) !important;
+    padding-top: clamp(36px, 5.2vh, 48px) !important;
+    padding-bottom: clamp(10px, 1.8vh, 18px) !important;
     height: 100vh !important;
     height: 100dvh !important;
     min-height: 100vh !important;
@@ -3240,7 +3240,7 @@ img, video, canvas { display: block; max-width: 100%; }
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
-    gap: clamp(18px, 2.8vh, 26px) !important; /* Smart generous gap between subtext and cards */
+    gap: clamp(32px, 4.8vh, 48px) !important; /* Prominent generous space between subtext and 6 cards container */
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
