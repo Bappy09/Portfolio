@@ -3240,7 +3240,7 @@ img, video, canvas { display: block; max-width: 100%; }
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
-    gap: clamp(32px, 4.8vh, 48px) !important; /* Prominent generous space between subtext and 6 cards container */
+    gap: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
@@ -3309,18 +3309,21 @@ img, video, canvas { display: block; max-width: 100%; }
     display: block !important;
   }
 
-  /* 2 Columns × 3 Rows Horizontally-Draggable & Slidable Grid (Matching Green Box: Wide with ~10-15% Right Peek) */
+  /* 2 Columns × 3 Rows Horizontally-Draggable & Slidable Grid (Wide with ~12-15% Right Peek) */
   .testimonials-grid {
     display: grid !important;
     grid-template-columns: none !important;
     grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
     grid-auto-flow: column !important;
-    grid-auto-columns: clamp(285px, 83vw, 360px) !important; /* Extends far right with ~10-15% peek of next card */
-    gap: clamp(10px, 2.4vw, 14px) !important;
-    width: auto !important;
+    grid-auto-columns: clamp(260px, 78vw, 320px) !important; /* Extends far right with ~12-15% peek of next card */
+    gap: 12px !important;
+    margin-top: clamp(28px, 4.2vh, 42px) !important;
+    width: 100vw !important;
     max-width: 100vw !important;
-    margin-inline: calc(-1 * clamp(20px, 5vw, 36px)) !important;
-    padding-inline: clamp(20px, 5vw, 36px) !important;
+    margin-left: calc(-1 * clamp(20px, 5vw, 36px)) !important;
+    margin-right: calc(-1 * clamp(20px, 5vw, 36px)) !important;
+    padding-left: clamp(20px, 5vw, 36px) !important;
+    padding-right: clamp(20px, 5vw, 36px) !important;
     padding-bottom: 2px !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
@@ -3346,9 +3349,9 @@ img, video, canvas { display: block; max-width: 100%; }
   .testi-card {
     scroll-snap-align: start !important;
     scroll-snap-stop: always !important;
-    width: clamp(285px, 83vw, 360px) !important;
-    min-width: clamp(285px, 83vw, 360px) !important;
-    max-width: clamp(285px, 83vw, 360px) !important;
+    width: clamp(260px, 78vw, 320px) !important;
+    min-width: clamp(260px, 78vw, 320px) !important;
+    max-width: clamp(260px, 78vw, 320px) !important;
     min-height: clamp(134px, 16.5vh, 155px) !important; /* Increased height for elegance and comfort */
     padding: clamp(14px, 3.0vw, 18px) clamp(18px, 4.0vw, 24px) !important;
     border-radius: 20px !important;
@@ -3461,32 +3464,53 @@ img, video, canvas { display: block; max-width: 100%; }
     margin: 0 !important;
   }
 
-  /* Dots Navigation for the 2 Columns */
+  /* Dots Navigation completely removed as requested */
   .testi-slider-dots {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 8px !important;
-    margin-top: clamp(8px, 1.4vh, 14px) !important;
+    display: none !important;
+  }
+
+  /* Ensure testimonials grid hides during FAQ phase */
+  .testimonials-grid.is-hidden,
+  .testimonials-grid[style*="display: none"] {
+    display: none !important;
+  }
+
+  /* FAQ Header on Mobile: in-flow position */
+  #combined-faq-head {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
     width: 100% !important;
-    z-index: 4 !important;
   }
 
-  .testi-dot {
-    width: 7px !important;
-    height: 7px !important;
-    border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.28) !important;
-    border: none !important;
-    padding: 0 !important;
-    cursor: pointer !important;
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  /* FAQ 6 Questions Column on Mobile: Pin Question 6 to bottom, clean reduced gap from subtext */
+  #testimonials-faq-combined .faq-right-col {
+    position: relative !important;
+    width: 100% !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-top: clamp(10px, 1.5vh, 16px) !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    overflow-y: auto !important;
+    scrollbar-width: none !important;
+    touch-action: pan-y !important;
   }
 
-  .testi-dot.is-active {
-    width: 22px !important;
-    border-radius: 10px !important;
-    background: #ff5722 !important;
+  #testimonials-faq-combined .faq-right-col::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .faq-accordion-item {
+    padding: clamp(5px, 0.9vh, 9px) 0 !important;
+  }
+
+  .faq-accordion-item:last-child {
+    margin-bottom: 0 !important;
   }
 }
 
@@ -3497,7 +3521,19 @@ img, video, canvas { display: block; max-width: 100%; }
   }
 
   .testimonials-layout {
-    gap: 12px !important;
+    gap: 0 !important;
+  }
+
+  .testimonials-grid {
+    margin-top: 14px !important;
+  }
+
+  #testimonials-faq-combined .faq-right-col {
+    margin-top: 8px !important;
+  }
+
+  .faq-accordion-item {
+    padding: clamp(5px, 0.9vh, 8px) 0 !important;
   }
 
   .testi-quote {

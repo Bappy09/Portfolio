@@ -2567,10 +2567,11 @@ function initCombinedTestiFaqSection() {
             faqHead.style.pointerEvents = 'none';
           }
           if (testiGrid) {
-            testiGrid.style.display = 'grid';
+            testiGrid.style.setProperty('display', 'grid', 'important');
             testiGrid.style.opacity = '1.0';
             testiGrid.style.transform = 'translateY(0px)';
             testiGrid.style.pointerEvents = 'auto';
+            testiGrid.classList.remove('is-hidden');
           }
           if (faqGrid) {
             faqGrid.style.display = 'none';
@@ -2704,7 +2705,13 @@ function initCombinedTestiFaqSection() {
           if (testiGrid) {
             testiGrid.style.opacity = `${opTesti.toFixed(2)}`;
             testiGrid.style.transform = `translateY(${(tTrans * -35).toFixed(1)}px)`;
-            testiGrid.style.display = opTesti > 0 ? 'grid' : 'none';
+            if (opTesti > 0) {
+              testiGrid.style.setProperty('display', 'grid', 'important');
+              testiGrid.classList.remove('is-hidden');
+            } else {
+              testiGrid.style.setProperty('display', 'none', 'important');
+              testiGrid.classList.add('is-hidden');
+            }
             testiGrid.style.pointerEvents = 'none';
           }
 
@@ -2746,12 +2753,13 @@ function initCombinedTestiFaqSection() {
             faqHead.style.pointerEvents = 'auto';
           }
           if (testiGrid) {
-            testiGrid.style.display = 'none';
+            testiGrid.style.setProperty('display', 'none', 'important');
             testiGrid.style.opacity = '0.0';
             testiGrid.style.pointerEvents = 'none';
+            testiGrid.classList.add('is-hidden');
           }
           if (faqGrid) {
-            faqGrid.style.display = 'flex';
+            faqGrid.style.setProperty('display', 'flex', 'important');
             faqGrid.style.opacity = '1.0';
             faqGrid.style.transform = 'translateY(0px)';
             faqGrid.style.pointerEvents = 'auto';
@@ -2824,14 +2832,14 @@ function initCombinedTestiFaqSection() {
 
           // 3C. 6 Accordion Items reveal
           if (accordionItems.length) {
-            const listProgress = Math.min(1, Math.max(0, (phase3Prog - 0.50) / 0.50));
+            const listProgress = Math.min(1, Math.max(0, (phase3Prog - 0.25) / 0.65));
             accordionItems.forEach((card, idx) => {
               if (rawProgress >= 0.90) {
                 card.style.opacity = '';
                 card.style.filter = '';
                 card.style.transform = '';
               } else {
-                const cardStart = idx * 0.12;
+                const cardStart = idx * 0.10;
                 const cardT = Math.min(1, Math.max(0, (listProgress - cardStart) / 0.40));
                 const easeCard = cardT * cardT * (3 - 2 * cardT);
                 const op = easeCard * 1.0;
@@ -2844,6 +2852,7 @@ function initCombinedTestiFaqSection() {
               }
             });
           }
+
 
           // Maintain logo state
           if (stageEl) {
@@ -3740,30 +3749,15 @@ function initContactFormSubmit() {
   });
 }
 
-/* ---------- Testimonials Mobile 2-Column x 3-Row Drag & Slide Interactivity ---------- */
+/* ---------- Testimonials Mobile 2-Column x 3-Row Drag & Slide Interactivity (Manual only, No Auto-slide, No Dots) ---------- */
 function initTestimonialsMobileSlider() {
   const grid = document.getElementById('combined-testi-grid');
-  const dotsContainer = document.getElementById('testi-slider-dots');
   if (!grid) return;
 
-  const dots = dotsContainer ? dotsContainer.querySelectorAll('.testi-dot') : [];
   const cards = grid.querySelectorAll('.testi-card');
   const totalSlides = 2; // Column 1 (Cards 0,1,2) & Column 2 (Cards 3,4,5)
 
-  let currentSlide = 0;
-  let autoTimer = null;
-  let isInteracting = false;
-  let resumeTimer = null;
-
-  function updateActiveDot(idx) {
-    currentSlide = idx;
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('is-active', i === idx);
-    });
-  }
-
   function getStep() {
-    // Card 3 is the top card of Column 2, Card 0 is the top card of Column 1
     const card3 = cards[3];
     const card0 = cards[0];
     if (card3 && card0) {
@@ -3777,7 +3771,6 @@ function initTestimonialsMobileSlider() {
   function goToSlide(idx, smooth = true) {
     if (idx < 0) idx = 0;
     if (idx >= totalSlides) idx = totalSlides - 1;
-    currentSlide = idx;
     const step = getStep();
     const targetLeft = idx * step;
 
@@ -3785,54 +3778,7 @@ function initTestimonialsMobileSlider() {
       left: targetLeft,
       behavior: smooth ? 'smooth' : 'auto'
     });
-    updateActiveDot(idx);
   }
-
-  function startAutoSlide() {
-    stopAutoSlide();
-    if (window.innerWidth > 860) return;
-    autoTimer = setInterval(() => {
-      if (isInteracting || document.hidden || window.innerWidth > 860) return;
-      const next = (currentSlide + 1) % totalSlides;
-      goToSlide(next, true);
-    }, 4500);
-  }
-
-  function stopAutoSlide() {
-    if (autoTimer) {
-      clearInterval(autoTimer);
-      autoTimer = null;
-    }
-  }
-
-  // Keep active dot in sync while user drags / swipes horizontally
-  let scrollDebounce = null;
-  grid.addEventListener('scroll', () => {
-    if (window.innerWidth > 860) return;
-    if (scrollDebounce) clearTimeout(scrollDebounce);
-    scrollDebounce = setTimeout(() => {
-      const step = getStep();
-      const activeIdx = grid.scrollLeft > step * 0.45 ? 1 : 0;
-      updateActiveDot(activeIdx);
-    }, 40);
-  }, { passive: true });
-
-  // Pause on user touch / swipe, resume after 4s idle
-  const pauseInteraction = () => {
-    isInteracting = true;
-    if (resumeTimer) clearTimeout(resumeTimer);
-  };
-
-  const resumeInteraction = () => {
-    if (resumeTimer) clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(() => {
-      isInteracting = false;
-    }, 4000);
-  };
-
-  grid.addEventListener('touchstart', pauseInteraction, { passive: true });
-  grid.addEventListener('touchend', resumeInteraction, { passive: true });
-  grid.addEventListener('touchcancel', resumeInteraction, { passive: true });
 
   // Mouse drag-to-scroll support for desktop preview / testing
   let isMouseDown = false;
@@ -3846,13 +3792,11 @@ function initTestimonialsMobileSlider() {
     hasDragged = false;
     startX = e.pageX;
     scrollStart = grid.scrollLeft;
-    pauseInteraction();
   });
 
   window.addEventListener('mouseup', () => {
     if (!isMouseDown) return;
     isMouseDown = false;
-    resumeInteraction();
     if (hasDragged && window.innerWidth <= 860) {
       const step = getStep();
       const targetIdx = grid.scrollLeft > step * 0.4 ? 1 : 0;
@@ -3876,29 +3820,6 @@ function initTestimonialsMobileSlider() {
       e.stopPropagation();
     }
   }, true);
-
-  // Tap dots to navigate
-  dots.forEach(dot => {
-    dot.addEventListener('click', (e) => {
-      e.preventDefault();
-      const slideIdx = parseInt(dot.getAttribute('data-slide') || '0', 10);
-      pauseInteraction();
-      goToSlide(slideIdx, true);
-      resumeInteraction();
-    });
-  });
-
-  if (window.innerWidth <= 860) {
-    startAutoSlide();
-  }
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth <= 860) {
-      if (!autoTimer) startAutoSlide();
-    } else {
-      stopAutoSlide();
-    }
-  }, { passive: true });
 }
 
 requestAnimationFrame(animate);
