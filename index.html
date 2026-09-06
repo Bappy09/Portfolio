@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wdth,wght@25..151,100..1000&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=3.1" />
+<link rel="stylesheet" href="styles.css?v=3.2" />
 <script type="importmap">
 {
   "imports": {
@@ -209,7 +209,9 @@
     <canvas class="sec-starfield about__starfield" aria-hidden="true"></canvas>
 
     <div class="about-container">
-      <div class="about-head-label" id="about-head-label">About Me</div>
+      <h2 class="about-main-title about-head-label" id="about-head-label">
+        <span class="about-main-title-word">About</span> <span class="about-main-title-word" style="color: #ff5722;">Me</span>
+      </h2>
 
       <div class="about-grid">
         <!-- Left Column: Interactive 3D Tilt Portrait (Phase 1 Reveal) -->
@@ -446,7 +448,7 @@
         <!-- Project Card 1 (Caring Hands) -->
         <a href="case-study-1.html" class="proj-card is-active" data-index="0" data-title="Caring Hands" data-desc="A behavioral healthcare engagement platform featuring multi-portal access, workflow automation, rewards tracking, and clinical analytics dashboards.">
           <div class="proj-card-inner">
-            <img src="assets/showcase-1.jpg" alt="Caring Hands" class="proj-card-img" loading="eager" />
+            <img src="assets/showcase-1.jpg?v=3.2" alt="Caring Hands" class="proj-card-img" loading="eager" />
             <div class="proj-card-overlay">
               <span class="proj-card-num">Showcase 01</span>
               <h3 class="proj-card-title">Caring Hands</h3>
@@ -1000,13 +1002,11 @@
 
         <nav class="contact-links-nav" aria-label="Footer navigation">
           <div class="contact-links-group">
-            <span class="contact-links-title">Links</span>
             <a href="#home" class="contact-nav-link">Home</a>
             <a href="#about" class="contact-nav-link">About Me</a>
             <a href="#process" class="contact-nav-link">Process</a>
           </div>
           <div class="contact-links-group">
-            <span class="contact-links-title">Explore</span>
             <a href="#work" class="contact-nav-link">Projects</a>
             <a href="#testimonials" class="contact-nav-link">Testimonials</a>
             <a href="#contacts" class="contact-nav-link">Contacts</a>
@@ -1035,6 +1035,6 @@
 
 </main>
 
-<script type="module" src="main.js?v=3.1"></script>
+<script type="module" src="main.js?v=3.2"></script>
 </body>
 </html>

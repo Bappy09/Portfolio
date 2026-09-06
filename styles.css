@@ -1199,17 +1199,30 @@ img, video, canvas { display: block; max-width: 100%; }
   margin: 0;
 }
 
-.about-head-label {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, .50);
-  margin-bottom: clamp(20px, 3vh, 36px);
+.about-main-title {
+  font-family: 'Clash Display', sans-serif;
+  font-size: clamp(40px, 4.5vw, 68px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0 0 clamp(24px, 3.5vh, 40px) 0;
+  line-height: 1.1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: baseline;
   opacity: 0.10;
   filter: blur(14px);
   transform: translateY(18px);
   will-change: opacity, filter, transform;
+}
+
+.about-main-title-word {
+  display: inline-block;
+}
+
+.about-head-label {
+  margin-bottom: clamp(20px, 3vh, 36px);
 }
 
 .about-grid {
@@ -1265,11 +1278,11 @@ img, video, canvas { display: block; max-width: 100%; }
 .about-title {
   font-family: 'Clash Display', sans-serif;
   font-weight: 500;
-  font-size: clamp(42px, 4.8vw, 70px);
-  line-height: 1.1;
+  font-size: clamp(34px, 3.8vw, 52px);
+  line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  margin: 0 0 clamp(20px, 3vh, 32px) 0;
+  margin: 0 0 clamp(16px, 2.4vh, 24px) 0;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -1554,13 +1567,32 @@ img, video, canvas { display: block; max-width: 100%; }
     display: contents;
   }
 
-  /* 1. Portrait Photo Card (Top Full Width with Smooth Rounded Corners) */
+  /* 1. "ABOUT ME" Section Title (Top of section, big like other section titles) */
+  .about-main-title,
+  .about-head-label {
+    grid-column: 1 / -1;
+    grid-row: 1 !important;
+    font-family: 'Clash Display', sans-serif !important;
+    font-size: clamp(34px, 8.8vw, 44px) !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.025em !important;
+    line-height: 1.1 !important;
+    color: #ffffff !important;
+    margin: 0 0 clamp(12px, 1.8vh, 18px) 0 !important;
+    text-align: left !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    align-self: flex-start !important;
+  }
+
+  /* 2. Portrait Photo Card (Placed below the section title) */
   .about-portrait-wrapper {
     grid-column: 1 / -1;
-    grid-row: 1;
+    grid-row: 2 !important;
     perspective: 1200px;
     width: 100%;
-    margin: 0;
+    margin: 0 0 clamp(12px, 1.8vh, 18px) 0 !important;
     display: block;
   }
 
@@ -1570,7 +1602,7 @@ img, video, canvas { display: block; max-width: 100%; }
     max-width: 100%;
     margin: 0 !important;
     aspect-ratio: 4 / 3;
-    border-radius: clamp(20px, 5.5vw, 28px);
+    border-radius: clamp(16px, 4.5vw, 24px);
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.95);
@@ -1592,31 +1624,17 @@ img, video, canvas { display: block; max-width: 100%; }
     display: block;
   }
 
-  /* 2. "ABOUT ME" Section Label */
-  .about-head-label {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.50);
-    margin: clamp(18px, 2.5vh, 24px) 0 clamp(6px, 0.9vh, 9px) 0;
-    text-align: left;
-    align-self: flex-start;
-  }
-
   /* 3. "Hi, I'm Bappy" Title */
   .about-title {
     grid-column: 1 / -1;
-    grid-row: 3;
+    grid-row: 3 !important;
     font-family: 'Clash Display', sans-serif;
     font-weight: 500;
-    font-size: clamp(34px, 8.8vw, 44px);
-    line-height: 1.08;
+    font-size: clamp(24px, 6.2vw, 30px) !important;
+    line-height: 1.15;
     letter-spacing: -0.025em;
     color: #ffffff;
-    margin: 0 0 clamp(10px, 1.4vh, 14px) 0;
+    margin: 0 0 clamp(6px, 1vh, 10px) 0 !important;
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
@@ -1628,13 +1646,13 @@ img, video, canvas { display: block; max-width: 100%; }
   /* 4. Description Subtext */
   .about-desc {
     grid-column: 1 / -1;
-    grid-row: 4;
+    grid-row: 4 !important;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: clamp(13px, 3.4vw, 14.5px);
     line-height: 1.62;
     color: rgba(255, 255, 255, 0.72);
-    margin: 0 0 clamp(18px, 2.5vh, 24px) 0;
+    margin: 0 0 clamp(14px, 2vh, 18px) 0 !important;
     text-align: left;
     width: 100%;
   }
@@ -1642,13 +1660,13 @@ img, video, canvas { display: block; max-width: 100%; }
   /* 5. Stats Row (Horizontal Top Border & Vertical Column Dividers) */
   .about-stats-row {
     grid-column: 1 / -1;
-    grid-row: 5;
+    grid-row: 5 !important;
     display: grid;
     grid-template-columns: 1fr 1.15fr 1.15fr;
     gap: 0;
     width: 100%;
-    margin: 0 0 clamp(20px, 2.8vh, 26px) 0;
-    padding-top: clamp(16px, 2.2vh, 22px);
+    margin: 0 0 clamp(16px, 2.2vh, 22px) 0 !important;
+    padding-top: clamp(12px, 1.8vh, 16px);
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     box-sizing: border-box;
   }
@@ -3520,6 +3538,10 @@ img, video, canvas { display: block; max-width: 100%; }
 }
 
 @media (max-height: 720px) and (max-width: 860px) {
+  .about-portrait-card {
+    aspect-ratio: 16 / 9 !important;
+  }
+
   .testi-card {
     min-height: clamp(118px, 14.8vh, 135px) !important;
     padding: 11px 16px !important;
@@ -4230,14 +4252,7 @@ a.contact-detail-value:hover {
 }
 
 .contact-links-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px; /* 4px larger than 12px */
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.50); /* 50% white opacity */
-  margin-bottom: 2px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85), 0 4px 20px rgba(0, 0, 0, 0.60); /* Enhanced double drop shadow */
+  display: none !important;
 }
 
 .contact-nav-link {

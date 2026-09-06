@@ -1849,7 +1849,7 @@ function initAboutSectionEffects() {
             headLabel.style.filter = '';
             headLabel.style.transform = '';
           } else {
-            headLabel.style.opacity = `${(t * 0.50).toFixed(2)}`;
+            headLabel.style.opacity = `${(t * 1.0).toFixed(2)}`;
             headLabel.style.filter = `blur(${((1 - t) * 14).toFixed(1)}px)`;
             headLabel.style.transform = `translateY(${((1 - t) * 18).toFixed(1)}px)`;
           }
