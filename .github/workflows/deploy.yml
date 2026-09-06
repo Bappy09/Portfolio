@@ -20,3 +20,10 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         server-dir: /htdocs/  # এটি ইনফিনিটিফ্রি-র মেইন htdocs ফোল্ডারে ফাইলগুলো আপলোড করবে
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/hero-standalone.html
+          rebuild-standalone.py
+          assets/showcase-1.jpg
+          assets/showcase-11.jpg
