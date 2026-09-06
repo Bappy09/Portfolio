@@ -1,0 +1,22 @@
+name: Deploy Website to InfinityFree
+
+on:
+  push:
+    branches:
+      - main  # আপনি যখনই main ব্রাঞ্চে কোড পরিবর্তন করবেন, এটি অটোমেটিক আপলোড হবে
+
+jobs:
+  web-deploy:
+    name: FTP Upload
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v4
+    
+    - name: Sync files to InfinityFree
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: /htdocs/  # এটি ইনফিনিটিফ্রি-র মেইন htdocs ফোল্ডারে ফাইলগুলো আপলোড করবে
