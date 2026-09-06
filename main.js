@@ -2885,6 +2885,8 @@ function initCombinedTestiFaqSection() {
     requestAnimationFrame(updateCombinedChoreography);
   }
   requestAnimationFrame(updateCombinedChoreography);
+  window.addEventListener('scroll', updateCombinedChoreography, { passive: true });
+  window.addEventListener('resize', updateCombinedChoreography, { passive: true });
 
   // ─── 3D Shared Acrylic Glass Bubble Logo (WebGL PMREM Gradient Setup) ───
   const glassContainer = document.getElementById('combined-3d-glass-canvas-wrap');
