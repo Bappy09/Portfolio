@@ -4364,6 +4364,8 @@ a.contact-detail-value:hover {
     padding-bottom: env(safe-area-inset-bottom, 20px);
     overflow: hidden;
   }
+  .contact-wood-interactive,
+  .wood-img-base,
   .wood-img-grass {
     display: none !important;
   }

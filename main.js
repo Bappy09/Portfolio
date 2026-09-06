@@ -3690,6 +3690,7 @@ function initContactWoodHover() {
   if (!grass) return;
 
   stage.addEventListener('pointermove', (e) => {
+    if (window.innerWidth <= 960) return;
     const rect = stage.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -3698,6 +3699,7 @@ function initContactWoodHover() {
   });
 
   stage.addEventListener('pointerleave', () => {
+    if (window.innerWidth <= 960) return;
     grass.style.setProperty('--mouse-x', '-1000px');
     grass.style.setProperty('--mouse-y', '-1000px');
   });
