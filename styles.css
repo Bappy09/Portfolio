@@ -3483,19 +3483,20 @@ img, video, canvas { display: block; max-width: 100%; }
     width: 100% !important;
   }
 
-  /* FAQ 6 Questions Column on Mobile: Pin Question 6 to bottom, clean reduced gap from subtext */
+  /* FAQ 6 Questions Column on Mobile: Hug content with smart padding */
   #testimonials-faq-combined .faq-right-col {
     position: relative !important;
     width: 100% !important;
     right: auto !important;
     bottom: auto !important;
-    margin-top: clamp(10px, 1.5vh, 16px) !important;
+    margin-top: clamp(12px, 2vh, 18px) !important;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
-    flex-grow: 1 !important;
+    flex-grow: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
     overflow-y: auto !important;
     scrollbar-width: none !important;
     touch-action: pan-y !important;
@@ -3506,7 +3507,11 @@ img, video, canvas { display: block; max-width: 100%; }
   }
 
   .faq-accordion-item {
-    padding: clamp(5px, 0.9vh, 9px) 0 !important;
+    padding: clamp(11px, 1.5vh, 14px) 0 !important;
+  }
+
+  .faq-accordion-item:first-child {
+    padding-top: 0 !important;
   }
 
   .faq-accordion-item:last-child {
@@ -3652,7 +3657,7 @@ img, video, canvas { display: block; max-width: 100%; }
   background: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0;
-  padding: clamp(24px, 3vh, 36px) 0;
+  padding: clamp(16px, 1.8vh, 22px) 0;
   cursor: pointer;
   user-select: none;
   outline: none !important;

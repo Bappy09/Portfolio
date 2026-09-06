@@ -67,7 +67,7 @@ function runSteppedTicker() {
   }
   lastStepTime = now;
 
-  if (modelLoaded) {
+  if (modelLoaded && phoneMeshGroup) {
     // 3D Model is 100% parsed & in scene -> hit 100% and slide up
     currentPct = 100;
     updatePreloaderUI(100);
@@ -75,27 +75,28 @@ function runSteppedTicker() {
     return;
   }
 
-  // Behind real progress -> catch up with momentum steps
-  if (currentPct < realProgressPct) {
-    const diff = realProgressPct - currentPct;
+  // Behind real progress -> catch up with momentum steps (capped at 96 until model is ready)
+  const targetPct = modelLoaded ? 100 : Math.min(96, realProgressPct);
+  if (currentPct < targetPct) {
+    const diff = targetPct - currentPct;
     if (diff > 16) {
       // Big gap -> rapid lively momentum jumps (e.g. 35 -> 46 -> 60 -> 71 -> 75)
       const jump = Math.floor(Math.random() * 4) + Math.ceil(diff * 0.28);
-      currentPct = Math.min(realProgressPct, currentPct + jump);
+      currentPct = Math.min(targetPct, currentPct + jump);
       stepDelay = Math.floor(Math.random() * 30) + 35; // 35-65ms fast cadence
     } else if (diff > 3) {
       // Moderate gap -> steady stepped rhythm (e.g. 5, 8, 12, 17, 21, 25)
       const jump = Math.floor(Math.random() * 3) + 2;
-      currentPct = Math.min(realProgressPct, currentPct + jump);
+      currentPct = Math.min(targetPct, currentPct + jump);
       stepDelay = Math.floor(Math.random() * 40) + 45; // 45-85ms
     } else {
       // Approaching target -> single step with brief realistic landing pause
       currentPct += 1;
-      stepDelay = currentPct === realProgressPct ? 220 : 60; // pause briefly upon hitting target
+      stepDelay = currentPct === targetPct ? 220 : 60; // pause briefly upon hitting target
     }
-  } else {
-    // Waiting for real 3D model chunks -> gently creep forward with organic micro-pauses
-    if (currentPct < 99) {
+  } else if (!modelLoaded) {
+    // Waiting for real 3D model GLTF to finish loading -> gently creep forward up to 96%
+    if (currentPct < 96) {
       currentPct += 1;
       if (currentPct < 40) {
         stepDelay = Math.floor(Math.random() * 80) + 90; // 90-170ms
@@ -105,7 +106,7 @@ function runSteppedTicker() {
         stepDelay = Math.floor(Math.random() * 140) + 150; // 150-290ms
       }
     } else {
-      // Hold at 99 until the 3D model GLTF finishes loading into the scene
+      // Hold firmly at 96% until the 3D phone model GLTF is completely in scene
       stepDelay = 120;
     }
   }
@@ -379,57 +380,64 @@ function initThreeScene() {
 /* ---------- 3D Model Loader ------------------------------ */
 function loadPhoneModel() {
   const loader = new GLTFLoader();
-  const modelUrl = 'assets/phone.glb?v=' + Date.now();
+  const modelUrl = 'assets/phone.glb?v=2.6';
+
+  function onModelSuccess(gltf) {
+    phoneMeshGroup = gltf.scene;
+
+    // ══ TRUE GEOMETRIC CENTER PIVOT & SCALE NORMALIZATION ═══
+    const bbox = new THREE.Box3().setFromObject(phoneMeshGroup);
+    const center = bbox.getCenter(new THREE.Vector3());
+    const size = bbox.getSize(new THREE.Vector3());
+
+    // Center the model exactly at (0, 0, 0)
+    phoneMeshGroup.position.set(-center.x, -center.y, -center.z);
+
+    // Normalize scale (scaled down to match exact reference proportions)
+    const maxDim = Math.max(size.x, size.y, size.z);
+    if (maxDim > 0) {
+      const scaleFactor = 0.215 / maxDim;
+      phoneMeshGroup.scale.setScalar(scaleFactor);
+    }
+
+    // Use 100% original model materials, and attach interactive mask shader to the screen mesh
+    phoneMeshGroup.traverse((child) => {
+      if (child.isMesh && child.material) {
+        const mat = child.material;
+        mat.toneMapped = true;
+
+        // Attach dynamic Wireframe <-> Hi-Fi reveal mask shader to screen display
+        if (
+          mat.name === 'BsXHDwLKqtDOfrW' ||
+          (mat.name && mat.name.toLowerCase().includes('screen')) ||
+          (child.name && child.name.includes('HkNSnYzBPABcqwM'))
+        ) {
+          child.material = createScreenMaterial();
+          screenMesh = child;
+        }
+      }
+    });
+
+    phonePivot.add(phoneMeshGroup);
+
+    // Hide above screen until preloader exit
+    phonePivot.position.y = DEFAULT_POS.y + 0.60;
+    phonePivot.rotation.y = DEFAULT_ROT.y + Math.PI * 2;
+    phonePivot.rotation.x = DEFAULT_ROT.x - 0.45;
+    phonePivot.rotation.z = DEFAULT_ROT.z + 0.15;
+
+    // Pre-render a frame to warm up WebGL shader compilation and GPU buffers before reveal
+    if (renderer && scene && camera) {
+      renderer.render(scene, camera);
+    }
+
+    modelLoaded = true;
+    realProgressPct = 100;
+  }
 
   loader.load(
     modelUrl,
-    (gltf) => {
-      phoneMeshGroup = gltf.scene;
-
-      // ══ TRUE GEOMETRIC CENTER PIVOT & SCALE NORMALIZATION ═══
-      const bbox = new THREE.Box3().setFromObject(phoneMeshGroup);
-      const center = bbox.getCenter(new THREE.Vector3());
-      const size = bbox.getSize(new THREE.Vector3());
-
-      // Center the model exactly at (0, 0, 0)
-      phoneMeshGroup.position.set(-center.x, -center.y, -center.z);
-
-      // Normalize scale (scaled down to match exact reference proportions)
-      const maxDim = Math.max(size.x, size.y, size.z);
-      if (maxDim > 0) {
-        const scaleFactor = 0.215 / maxDim;
-        phoneMeshGroup.scale.setScalar(scaleFactor);
-      }
-
-      // Use 100% original model materials, and attach interactive mask shader to the screen mesh
-      phoneMeshGroup.traverse((child) => {
-        if (child.isMesh && child.material) {
-          const mat = child.material;
-          mat.toneMapped = true;
-
-          // Attach dynamic Wireframe <-> Hi-Fi reveal mask shader to screen display
-          if (
-            mat.name === 'BsXHDwLKqtDOfrW' ||
-            (mat.name && mat.name.toLowerCase().includes('screen')) ||
-            (child.name && child.name.includes('HkNSnYzBPABcqwM'))
-          ) {
-            child.material = createScreenMaterial();
-            screenMesh = child;
-          }
-        }
-      });
-
-      phonePivot.add(phoneMeshGroup);
-
-      // Hide above screen until preloader exit
-      phonePivot.position.y = DEFAULT_POS.y + 0.60;
-      phonePivot.rotation.y = DEFAULT_ROT.y + Math.PI * 2;
-      phonePivot.rotation.x = DEFAULT_ROT.x - 0.45;
-      phonePivot.rotation.z = DEFAULT_ROT.z + 0.15;
-
-      modelLoaded = true;
-      realProgressPct = 100;
-    },
+    onModelSuccess,
     (xhr) => {
       if (xhr.lengthComputable && xhr.total > 0) {
         const pct = (xhr.loaded / xhr.total) * 100;
@@ -440,20 +448,23 @@ function loadPhoneModel() {
       }
     },
     (err) => {
-      console.error('Error loading phone model:', err);
-      modelLoaded = true;
-      realProgressPct = 100;
+      console.warn('Network issue loading phone model, retrying...', err);
+      setTimeout(() => {
+        loader.load(modelUrl, onModelSuccess, null, (err2) => {
+          console.error('Failed to load phone model after retry:', err2);
+        });
+      }, 1200);
     }
   );
 
-  // Generous failsafe: Ensure preloader will never permanently hang
+  // Generous failsafe: Ensure preloader will never permanently hang (35s)
   setTimeout(() => {
     if (!modelLoaded) {
       console.warn('Preloader timeout reached: releasing UI');
       modelLoaded = true;
       realProgressPct = 100;
     }
-  }, 12000);
+  }, 35000);
 }
 
 /* ---------- Responsive 3D Stage Framing ------------------ */
