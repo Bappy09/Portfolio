@@ -2645,20 +2645,28 @@ function initCombinedTestiFaqSection() {
             stageEl.style.transform = `translateY(${yShift3.toFixed(1)}px) scale(${scale3.toFixed(3)})`;
           }
 
-          // 1D. 6 Cards Stagger reveal (One by one on both desktop & mobile)
+          // 1D. 6 Cards Stagger reveal (One by one on desktop, synchronized rows on mobile)
           if (cards.length) {
-            const cardsProgress = Math.min(1, Math.max(0, (phase1Prog - 0.50) / 0.50));
+            const cardsProgress = Math.min(1, Math.max(0, (phase1Prog - 0.40) / 0.50));
+            const isMobile = window.innerWidth <= 860;
             cards.forEach((card, idx) => {
-              const cardStart = idx * 0.12;
+              const staggerIdx = isMobile ? (idx % 3) : idx;
+              const cardStart = staggerIdx * 0.12;
               const cardT = Math.min(1, Math.max(0, (cardsProgress - cardStart) / 0.40));
               const easeCard = cardT * cardT * (3 - 2 * cardT);
               const op = easeCard * 1.0;
               const bl = (1 - easeCard) * 18;
               const ys = (1 - easeCard) * 28;
 
-              card.style.opacity = `${op.toFixed(2)}`;
-              card.style.filter = `blur(${bl.toFixed(1)}px)`;
-              card.style.transform = `translateY(${ys.toFixed(1)}px)`;
+              if (cardsProgress >= 0.85) {
+                card.style.opacity = '';
+                card.style.filter = '';
+                card.style.transform = '';
+              } else {
+                card.style.opacity = `${op.toFixed(2)}`;
+                card.style.filter = `blur(${bl.toFixed(1)}px)`;
+                card.style.transform = `translateY(${ys.toFixed(1)}px)`;
+              }
             });
 
             // Trigger stats counter

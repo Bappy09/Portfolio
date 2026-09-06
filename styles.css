@@ -3312,6 +3312,7 @@ img, video, canvas { display: block; max-width: 100%; }
   /* 2 Columns × 3 Rows Horizontally-Draggable & Slidable Grid (Matching Green Box: Wide with ~10-15% Right Peek) */
   .testimonials-grid {
     display: grid !important;
+    grid-template-columns: none !important;
     grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
     grid-auto-flow: column !important;
     grid-auto-columns: clamp(285px, 83vw, 360px) !important; /* Extends far right with ~10-15% peek of next card */
@@ -3345,7 +3346,9 @@ img, video, canvas { display: block; max-width: 100%; }
   .testi-card {
     scroll-snap-align: start !important;
     scroll-snap-stop: always !important;
-    width: 100% !important;
+    width: clamp(285px, 83vw, 360px) !important;
+    min-width: clamp(285px, 83vw, 360px) !important;
+    max-width: clamp(285px, 83vw, 360px) !important;
     min-height: clamp(116px, 14vh, 136px) !important;
     padding: clamp(11px, 2.4vw, 14px) clamp(16px, 3.6vw, 22px) !important;
     border-radius: 18px !important;
