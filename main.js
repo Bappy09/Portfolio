@@ -3761,7 +3761,7 @@ function initTestimonialsMobileSlider() {
     if (card3 && card0) {
       return Math.max(200, card3.offsetLeft - card0.offsetLeft);
     }
-    return grid.clientWidth * 2.0;
+    return grid.clientWidth * 0.82;
   }
 
   function goToSlide(idx, smooth = true) {

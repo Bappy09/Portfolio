@@ -3232,6 +3232,7 @@ img, video, canvas { display: block; max-width: 100%; }
     flex-direction: column !important;
     justify-content: center !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   .testimonials-layout {
@@ -3257,6 +3258,7 @@ img, video, canvas { display: block; max-width: 100%; }
     flex-direction: column !important;
     flex-grow: 1 !important;
     justify-content: center !important;
+    overflow: visible !important;
   }
 
   /* Hide 3D logo on mobile so testimonials cards have full vertical room */
@@ -3305,7 +3307,7 @@ img, video, canvas { display: block; max-width: 100%; }
     display: block !important;
   }
 
-  /* 2 Columns × 3 Rows Horizontally-Draggable & Slidable Grid */
+  /* 2 Columns × 3 Rows Horizontally-Draggable & Slidable Grid (2.5X WIDER CARDS) */
   .testimonials-grid {
     display: grid !important;
     grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
